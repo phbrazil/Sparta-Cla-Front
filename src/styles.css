@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css?family=Oxanium:400,500,600,700,800|Poppins:400,400i,500,500i,600,600i,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@700&display=swap');
+
+:root {
+  --background-color: #f6f6f6;
+  --background-Black: #1c181e;
+  --primary-color: #e4a101;
+  --secondary-color: #1c181e;
+  --text-color: #d4d4d4;
+  --text-color-light: #90949c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  background-color: var(--background-color);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+	font-weight: normal;
+	font-style: normal;
+	font-size: 0.9375rem;
+	font-weight: 500;
+	color: var(--text-color);;
+}
+
+p {
+  font-family: 'Poppins', sans-serif;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Oxanium', cursive;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: none;
+}
