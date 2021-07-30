@@ -1,22 +1,16 @@
 .btn-custom {
-  display: inline-flex;
-  -webkit-box-pack: center;
-  justify-content: center;
-  border-radius: 1.46875rem;
-  -webkit-box-align: center;
-  align-items: center;
-  letter-spacing: 0.0625rem;
   transition: all 0.3s linear 0s;
   color: var(--text-color);
   background-color: var(--primary-color);
   border: 0.0625rem solid var(--primary-color);
+  transform: skewX(-10deg);
   font-size: 0.875rem;
   line-height: 0.875rem;
-  height: unset;
-  padding: 0.625rem 1.875rem;
+  padding: 1rem 1.875rem;
   text-transform: unset;
   font-weight: 600;
   cursor: pointer;
+  text-transform: uppercase;
 }
 
 
