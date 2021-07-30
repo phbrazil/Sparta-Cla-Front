@@ -69,7 +69,7 @@
   }
   .header::before {
     height: 5.455rem;
-    width: 56%;
+    width: 69%;
   }
   .text-logo {
     padding-left: 0px;
@@ -84,4 +84,18 @@
   .nav-item-btn {
     margin-left: 0;
   }
+  .text-logo img {
+    width: 2.5rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .navbar-brand, .text-logo img {
+    margin-right: 0;
+  }
+
+  .text-logo {
+    font-size: 1.5rem;
+  }
+
 }
