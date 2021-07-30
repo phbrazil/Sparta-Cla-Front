@@ -2,13 +2,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
 import { ButtomComponent } from './components/buttom/buttom.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    ButtomComponent
+    ButtomComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule
@@ -16,7 +18,8 @@ import { ButtomComponent } from './components/buttom/buttom.component';
 
   exports: [
     HeaderComponent,
-    ButtomComponent
+    ButtomComponent,
+    FooterComponent
   ]
 })
 export class SharedModule { }
