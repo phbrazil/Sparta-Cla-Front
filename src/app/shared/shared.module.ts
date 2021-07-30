@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
 import { ButtomComponent } from './components/buttom/buttom.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 
 
@@ -11,7 +12,8 @@ import { FooterComponent } from './components/footer/footer.component';
   declarations: [
     HeaderComponent,
     ButtomComponent,
-    FooterComponent
+    FooterComponent,
+    ModalComponent
   ],
   imports: [
     CommonModule
@@ -20,7 +22,8 @@ import { FooterComponent } from './components/footer/footer.component';
   exports: [
     HeaderComponent,
     ButtomComponent,
-    FooterComponent
+    FooterComponent,
+    ModalComponent
   ]
 })
 export class SharedModule { }
