@@ -3,7 +3,7 @@ import { first } from 'rxjs/operators';
 
 
 import { Injectable } from '@angular/core';
-import { AccountService } from 'app/_services';
+import { AccountService } from '../_services';
 
 @Injectable()
 export class AuthService {
@@ -22,9 +22,9 @@ export class ListComponent implements OnInit {
 
     ngOnInit() {
 
-        this.accountService.getAll().pipe(first())
-            .subscribe(users => this.users = users);
-            
+        //this.accountService.getAll().pipe(first())
+           // .subscribe(users => this.users = users);
+
     }
 
     deleteUser(id: string) {
@@ -33,7 +33,7 @@ export class ListComponent implements OnInit {
         this.accountService.delete(id)
             .pipe(first())
             .subscribe(() => {
-                this.users = this.users.filter(x => x.id !== id) 
+                this.users = this.users.filter(x => x.id !== id)
             });
     }
 }
