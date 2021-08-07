@@ -6,6 +6,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { ButtomComponent } from './components/buttom/buttom.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ModalComponent } from './components/modal/modal.component';
+import { BannerAlertComponent } from './components/banner-alert/banner-alert.component';
 
 
 
@@ -14,7 +15,8 @@ import { ModalComponent } from './components/modal/modal.component';
     HeaderComponent,
     ButtomComponent,
     FooterComponent,
-    ModalComponent
+    ModalComponent,
+    BannerAlertComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +27,8 @@ import { ModalComponent } from './components/modal/modal.component';
     HeaderComponent,
     ButtomComponent,
     FooterComponent,
-    ModalComponent
+    ModalComponent,
+    BannerAlertComponent
   ]
 })
 export class SharedModule { }
