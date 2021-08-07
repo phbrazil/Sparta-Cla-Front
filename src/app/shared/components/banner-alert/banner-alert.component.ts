@@ -11,7 +11,7 @@ export class BannerAlertComponent implements OnInit {
   title: string = "Apoie nosso projeto";
 
   @Input()
-  subtitle: string = "Nos apoie doando quanquer quantia ou compartilhando com amigos.git";
+  subtitle: string = "Nos apoie doando quanquer quantia ou compartilhando com amigos";
 
   constructor() { }
 
