@@ -1,1 +1,1 @@
-//declare var;
+declare module 'call-of-duty-api'
