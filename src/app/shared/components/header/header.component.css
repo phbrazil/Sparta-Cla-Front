@@ -41,14 +41,16 @@
   align-content: center;
 }
 
-.navbar-expand-lg .navbar-collapse ul li:hover {
+.navbar-expand-lg .navbar-collapse ul li a:hover {
   background-color: var(--primary-color);
   color: var(--secondary-color);
+  transform: skewX(-10deg);
 }
 
 .navbar-expand-lg .navbar-collapse ul li a {
   color: #edeaea;
   font-weight: 700;
+  padding: 0.9375rem;
   text-transform: uppercase;
 }
 
@@ -62,8 +64,6 @@
 .nav-item-btn:hover {
   background-color: #e4a10100!important;
 }
-
-
 
 .navbar-light .navbar-toggler-icon {
   background-image: url(../../../../assets/images/menu.png);
