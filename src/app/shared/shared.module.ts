@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 import { HeaderComponent } from './components/header/header.component';
 import { ButtomComponent } from './components/buttom/buttom.component';
@@ -16,7 +17,8 @@ import { ModalComponent } from './components/modal/modal.component';
     ModalComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
 
   exports: [
