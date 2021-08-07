@@ -5,5 +5,5 @@ h2, h3 {
 }
 
 p, li {
-  color: var(--text-color-light);
+  color: var(--text-color);
 }

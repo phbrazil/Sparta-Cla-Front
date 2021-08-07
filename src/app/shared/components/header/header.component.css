@@ -47,7 +47,13 @@
 }
 
 .navbar-expand-lg .navbar-collapse ul li a {
-  color: var(--text-color);
+  color: #edeaea;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.navbar-expand-lg .navbar-collapse ul li a:hover {
+  color: var(--secondary-color);
 }
 
 .nav-item-btn {
