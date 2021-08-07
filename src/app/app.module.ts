@@ -9,7 +9,6 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-
 @NgModule({
   declarations: [
     AppComponent,

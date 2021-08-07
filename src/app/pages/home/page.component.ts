@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AccountActivision } from 'src/app/_services/account.activision';
 
 @Component({
   selector: 'app-page',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private activisionService: AccountActivision) { }
 
   ngOnInit(): void {
+
+    this.activisionService.activisionLogin('Lierrmm');
   }
 
 }
