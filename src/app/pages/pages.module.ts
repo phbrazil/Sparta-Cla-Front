@@ -8,6 +8,7 @@ import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.componen
 import { FAQComponent } from './faq/faq.component';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { AboutComponent } from './about/about.component';
+import { RulesComponent } from './rules/rules.component';
 
 
 
@@ -18,6 +19,7 @@ import { AboutComponent } from './about/about.component';
     PrivacyPolicyComponent,
     FAQComponent,
     AboutComponent,
+    RulesComponent,
   ],
   imports: [
     CommonModule,
@@ -30,7 +32,8 @@ import { AboutComponent } from './about/about.component';
     TermsComponent,
     PrivacyPolicyComponent,
     FAQComponent,
-    AboutComponent
+    AboutComponent,
+    RulesComponent,
   ]
 })
 export class HomeModule { }
