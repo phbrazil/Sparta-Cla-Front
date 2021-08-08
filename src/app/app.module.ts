@@ -8,7 +8,7 @@ import { HomeModule } from './pages/pages.module'
 import { AppRoutingModule } from './app-routing.module';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SharedModule,
     HomeModule,
     NgbModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
