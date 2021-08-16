@@ -1,0 +1,27 @@
+.coming-match-item {
+  border-top: 5px solid #e4a101;
+  background-color: rgb(33, 19, 44);
+  box-shadow: 0px 5px 12.09px 0.91px rgb(0 0 0 / 34%);
+}
+
+.coming-match-team {
+  display: flex;
+  align-items: first baseline;
+  justify-content: center;
+  text-align: center;
+  padding: 30px 35px 40px;
+}
+
+.coming-match-info {
+  padding: 35px 35px;
+  text-align: center;
+  background: #1b1024;
+}
+
+.coming-match-time .coming-time {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #20132b;
+  padding: 20px 35px;
+}

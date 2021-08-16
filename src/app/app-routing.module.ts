@@ -7,11 +7,13 @@ import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.co
 import { FAQComponent } from './pages/faq/faq.component';
 import { AboutComponent } from './pages/about/about.component';
 import { RulesComponent } from './pages/rules/rules.component';
+import { TournamentComponent } from './pages/tournament/tournament.component';
 
 const routes: Routes = [
 
   { path: '', component: PageComponent },
   { path: 'sobre', component: AboutComponent },
+  { path: 'torneios', component: TournamentComponent },
   { path: 'regras', component: RulesComponent },
   { path: 'faq', component: FAQComponent},
   { path: 'politicas-de-privacidade', component: PrivacyPolicyComponent },

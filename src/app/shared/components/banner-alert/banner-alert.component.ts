@@ -8,10 +8,10 @@ import { Component, Input, OnInit } from '@angular/core';
 export class BannerAlertComponent implements OnInit {
 
   @Input()
-  title: string = "Apoie nosso projeto";
+  title = "Apoie nosso projeto";
 
   @Input()
-  subtitle: string = "Nos apoie doando quanquer quantia ou compartilhando com amigos";
+  subtitle = "Nos apoie doando quanquer quantia ou compartilhando com amigos";
 
   constructor() { }
 

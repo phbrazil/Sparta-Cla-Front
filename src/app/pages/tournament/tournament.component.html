@@ -1,0 +1,45 @@
+
+<section class="container">
+  <div class="warp mt-5 mb-5 pt-5 pb-5">
+    <div class="row justify-content-center">
+      <div class="col-xl-6 col-lg-8">
+          <div class="section-title title-style-three text-center mb-70">
+              <h2>Próximos <span class="text-yellow">Torneios</span></h2>
+              <p>Inscreva-se em competições com sua equipe</p>
+          </div>
+      </div>
+    </div>
+    <div class="row ">
+      <div class="col-lg-4 col-md-6 mt-5 mb-2" *ngFor="let toneio of tournament">
+        <div class="coming-match-item mb-30">
+            <div class="coming-match-team">
+                <div class="match-team-info">
+                    <div class="match-team-logo">
+                      <h2 class="text-yellow"></h2>
+                    </div>
+                    <div class="match-team-name">
+                      <h5>Data</h5>
+                    </div>
+                    <div class="match-team-name">
+                      <h5 class="pt-2">Premio</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="coming-match-info">
+                <div class="match-info-action">
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                </div>
+            </div>
+            <div class="coming-match-time">
+                <div class="coming-time">
+                    <app-buttom title="Jogar"></app-buttom>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

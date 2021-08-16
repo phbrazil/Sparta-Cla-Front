@@ -9,14 +9,12 @@ import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 })
 export class ModalComponent implements OnInit {
 
+  closeModal: string;
+
   constructor(private modalService: NgbModal) {}
 
   ngOnInit(): void {
   }
-
-  closeModal: string;
-
-
 
   triggerModal(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((res) => {
