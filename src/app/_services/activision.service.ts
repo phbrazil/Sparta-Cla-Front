@@ -34,7 +34,6 @@ export class ActivisionService {
 
 
 
-        var $ = require('jquery');
 
         const headers = new HttpHeaders()
             .set('cache-control', 'no-cache')
