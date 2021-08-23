@@ -10,28 +10,32 @@
       </div>
     </div>
     <div class="row ">
-      <div class="col-lg-4 col-md-6 mt-5 mb-2" *ngFor="let toneio of tournament">
+      <div class="col-lg-4 col-md-6 mt-5 mb-2" *ngFor="let torneio of tournament">
         <div class="coming-match-item mb-30">
             <div class="coming-match-team">
                 <div class="match-team-info">
                     <div class="match-team-logo">
-                      <h2 class="text-yellow">duo</h2>
+                      <h2 class="text-yellow">{{ torneio.mode }}</h2>
+
                     </div>
                     <div class="match-team-name">
-                      <h5>Data</h5>
+                      <h5 class="tournament-date">{{ torneio.date }}</h5>
                     </div>
                     <div class="match-team-name">
-                      <h5 class="pt-2">Premio</h5>
+                      <h5 class="pt-4 tournament-award">{{ torneio.award }} <br><span class="subtxt">Por Time</span></h5>
                     </div>
                 </div>
             </div>
             <div class="coming-match-info">
                 <div class="match-info-action">
-                    <p>Duracao</p>
-                    <p>Inicio</p>
-                    <p>pontuacao</p>
-                    <p>divisao</p>
-                    <p>custo</p>
+                  <ul>
+                    <li>Modo: <span>{{ torneio.mode }}</span></li>
+                    <li>Duração: <span>{{ torneio.duration }}</span></li>
+                    <li>Início: <span>{{ torneio.start }}</span></li>
+                    <li>Pontos: <span>{{ torneio.scoring }}</span></li>
+                    <li>Times: <span>{{ torneio.division }}</span></li>
+                    <li>Valor: <span>{{ torneio.cost }}</span></li>
+                  </ul>
                 </div>
             </div>
             <div class="coming-match-time">
