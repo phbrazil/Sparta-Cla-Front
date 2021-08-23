@@ -1,6 +1,6 @@
 .banner-content {
   width: 100%;
-  background-image: url(../../../../assets/images/banner_alert.jpg);
+  background: var(--background-Black);
 }
 
 .banner-alert {
