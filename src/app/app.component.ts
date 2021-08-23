@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+//import * as _ from 'call-of-duty-api';
 
 @Component({
   selector: 'app-root',
