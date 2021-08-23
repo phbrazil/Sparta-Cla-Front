@@ -1,20 +1,171 @@
 <section class="container">
   <div class="row">
     <div class="col-md-12">
-      <accordion>
-        <accordion-group heading="Static Header">
-          This content is straight in the template.
-        </accordion-group>
-        <accordion-group heading="Another group">
-          <p>Some content</p>
-        </accordion-group>
-        <accordion-group heading="Another group">
-          <p>Some content</p>
-        </accordion-group>
-        <accordion-group heading="Another group">
-          <p>Some content</p>
-        </accordion-group>
-      </accordion>
+      <div id="accordion" class="checkout">
+        <div class="panel checkout-step">
+            <div> <span class="checkout-step-number">1</span>
+                <h4 class="checkout-step-title"> <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" > Phone Number Verification</a></h4>
+            </div>
+            <div id="collapseOne" class="collapse in">
+                <div class="checkout-step-body">
+                    <p>We need your phone number so that we can update you about your order.</p>
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div class="checkout-login">
+                                <form>
+                                    <div class="login-phone">
+                                        <input type="text" class="form-control" placeholder="Phone Number">
+                                    </div>
+                                    <a class="btn btn-default " role="button" data-toggle="collapse" href="#otp-verifaction" >Next</a>
+                                    <!-- add class disabled to inactive button -->
+                                </form>
+                            </div>
+                            <!-- /input-group -->
+                        </div>
+                        <!-- /.col-lg-6 -->
+                    </div>
+                    <div class="collapse" id="otp-verifaction">
+                        <div class="otp-verifaction">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label class="col-md-12 control-label sr-only" for="Phone">Phone</label>
+                                            <div class="col-md-3">
+                                                <input id="number" name="number" type="text" placeholder="0" class="form-control input-md" required="">
+                                            </div>
+                                            <div class="col-md-3">
+                                                <input id="number" name="number" type="text" placeholder="0" class="form-control input-md" required="">
+                                            </div>
+                                            <div class="col-md-3">
+                                                <input id="number" name="number" type="text" placeholder="0" class="form-control input-md" required="">
+                                            </div>
+                                            <div class="col-md-3 ">
+                                                <input id="number" name="number" type="text" placeholder="0" class="form-control input-md" required="">
+                                            </div>
+                                        </div>
+                                        <!-- Button -->
+                                        <div class="form-group">
+                                            <label class="control-label sr-only" for="next">next</label>
+                                            <div class="col-md-12">
+                                                <a class="collapsed btn btn-default" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Next</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel checkout-step">
+            <div role="tab" id="headingTwo"> <span class="checkout-step-number">2</span>
+                <h4 class="checkout-step-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" > Delivery Address </a> </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse">
+                <div class="checkout-step-body">
+                    <div class="checout-address-step">
+                        <div class="row">
+                            <form class="">
+                                <!-- Multiple Radios (inline) -->
+                                <div class="form-group">
+                                    <label class="col-md-12 control-label" for="address"></label>
+                                    <div class="col-md-12 ">
+                                        <label class="radio-inline" for="address-0">
+                                            <input type="radio" name="address" id="address-0" value="Home" checked="checked"> Home </label>
+                                        <label class="radio-inline" for="address-1">
+                                            <input type="radio" name="address" id="address-1" value="Office"> Office </label>
+                                        <label class="radio-inline" for="address-2">
+                                            <input type="radio" name="address" id="address-2" value="Other"> Other </label>
+                                    </div>
+                                </div>
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <label class="control-label" for="name">Name</label>
+                                        <input id="name" name="name" type="text" placeholder="Name" class="form-control input-md" required="">
+                                    </div>
+                                </div>
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-12 control-label" for="flat">Flat / House / Office No.</label>
+                                    <div class="col-md-12">
+                                        <input id="flat" name="flat" type="text" placeholder="address" class="form-control input-md" required="">
+                                    </div>
+                                </div>
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-12 control-label" for="street">Street / Society / Office Name</label>
+                                    <div class="col-md-12">
+                                        <input id="street" name="street" type="text" placeholder="Street Address" class="form-control input-md">
+                                    </div>
+                                </div>
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-12 control-label" for="Locality">Locality</label>
+                                    <div class="col-md-12">
+                                        <input id="Locality" name="Locality" type="text" placeholder="Ahmedabad" class="form-control input-md" required="">
+                                    </div>
+                                </div>
+                                <!-- Button -->
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <button id="singlebutton" name="singlebutton" class="btn btn-primary">Save</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <a class="collapsed btn btn-default" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"> Next </a>
+                </div>
+            </div>
+        </div>
+        <div class="panel checkout-step">
+            <div role="tab" id="headingThree"> <span class="checkout-step-number">3</span>
+                <h4 class="checkout-step-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"  > Time & Date </a> </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse">
+                <div class="checkout-step-body">
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-md-12 control-label" for="time">Time</label>
+                            <div class="col-md-12">
+                                <div class="radio">
+                                    <label for="time-0">
+                                        <input type="radio" name="time" id="time-0" value="8:00 - 9:00" checked="checked"> 8:00 - 9:00 </label>
+                                </div>
+                                <div class="radio">
+                                    <label for="time-1">
+                                        <input type="radio" name="time" id="time-1" value="10:00 - 11:00"> 10:00 - 11:00 </label>
+                                </div>
+                                <div class="radio">
+                                    <label for="time-2">
+                                        <input type="radio" name="time" id="time-2" value="12:00 - 1:00"> 12:00 - 1:00 </label>
+                                </div>
+                                <div class="radio">
+                                    <label for="time-3">
+                                        <input type="radio" name="time" id="time-3" value="1:00 - 2:00"> 1:00 - 2:00 </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="collapsed btn btn-default" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour"> Next </a>
+                </div>
+            </div>
+        </div>
+        <div class="panel checkout-step">
+            <div role="tab" id="headingFour"> <span class="checkout-step-number">4</span>
+                <h4 class="checkout-step-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour"  > Payment </a> </h4>
+            </div>
+            <div id="collapseFour" class="panel-collapse collapse">
+                <div class="checkout-step-body">
+                    Payment Mode
+                    <a href="#" class="btn btn-default">Proccess to payment</a>
+                </div>
+            </div>
+        </div>
+    </div>
     <hr/>
     </div>
   </div>

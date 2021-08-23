@@ -1,5 +1,6 @@
 .header {
   background-color: var(--background-Black);
+  background-image: url(../../../../assets/images/banner_alert.jpg);
 }
 
 .header::before {
