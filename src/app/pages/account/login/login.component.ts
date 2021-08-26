@@ -52,7 +52,9 @@ export class LoginComponent implements OnInit {
 
       this.isLoading = false;
 
-      //REMOVE O FADE BUGADO QUE CONTINUAVA NA HOME
+
+      //REMOVE FADE BUGADO QUE CONTINUAVA AO LOGAR
+      $('body').removeClass('modal-open');
       $('.modal-backdrop').remove();
 
 
