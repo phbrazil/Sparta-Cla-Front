@@ -11,6 +11,9 @@ export class TournamentComponent implements OnInit {
 
   tournament: Tournament[] = []
 
+  tournaments;
+
+
   constructor(private service: TournamentService) { }
 
   ngOnInit(): void {
@@ -19,8 +22,12 @@ export class TournamentComponent implements OnInit {
 
   findAllTournament() {
     this.service.getTournament().subscribe(res => {
-      console.log(res);
-      this.tournament = res;
+
+      this.tournaments = JSON.stringify(res)
+
+      this.tournaments = JSON.parse(this.tournaments)
+
+      this.tournament = this.tournaments.game;
 
     })
   }

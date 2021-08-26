@@ -9,3 +9,4 @@ export class Tournament {
     division: number;
     cost: any;
 }
+
