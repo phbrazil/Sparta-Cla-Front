@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AccountService, AlertService } from 'src/app/_services';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-login',
@@ -25,11 +26,11 @@ export class LoginComponent implements OnInit {
   }
 
   enviar() {
-    if(this.formLogin.invalid) {
+    if (this.formLogin.invalid) {
 
       this.alertService.error('Dados incorretos', { keepAfterRouteChange: true });
 
-    }else{
+    } else {
 
       this.postLogin(this.formLogin)
 
@@ -40,7 +41,7 @@ export class LoginComponent implements OnInit {
   resetForm() {
 
     this.formLogin.reset();
-    
+
   }
 
   postLogin(formLogin: FormGroup) {
@@ -51,21 +52,25 @@ export class LoginComponent implements OnInit {
 
       this.isLoading = false;
 
+      //REMOVE O FADE BUGADO QUE CONTINUAVA NA HOME
+      $('.modal-backdrop').remove();
+
+
       this.router.navigate(['/welcome']);
 
-    }, err =>{
+    }, err => {
 
       this.isLoading = false;
 
-      if(err.status === 401){
+      if (err.status === 401) {
 
         console.log('acesso negado')
 
         this.alertService.error('Acesso Negado', { keepAfterRouteChange: true });
 
-      }else{
+      } else {
 
-        this.alertService.error('Erro '+err.status, { keepAfterRouteChange: true });
+        this.alertService.error('Erro ' + err.status, { keepAfterRouteChange: true });
 
       }
 

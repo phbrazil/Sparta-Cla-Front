@@ -13,6 +13,7 @@ export class TournamentComponent implements OnInit {
 
   tournaments;
 
+  isLoading = false;
 
   constructor(private service: TournamentService) { }
 
@@ -21,6 +22,7 @@ export class TournamentComponent implements OnInit {
   }
 
   findAllTournament() {
+    this.isLoading = true;
     this.service.getTournament().subscribe(res => {
 
       this.tournaments = JSON.stringify(res)
@@ -29,6 +31,10 @@ export class TournamentComponent implements OnInit {
 
       this.tournament = this.tournaments.game;
 
+      this.isLoading = false;
+
+    }, err => {
+      this.isLoading = false;
     })
   }
 
