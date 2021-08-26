@@ -1,0 +1,108 @@
+.header-logged {
+  background-color: var(--background-Black);
+  background-image: url(../../../../assets/images/banner_alert.jpg);
+}
+
+.header-logged::before {
+  content: "";
+  position: absolute;
+  width: 29%;
+  background: var(--primary-color);
+  height: 7.625rem;
+  top: 0;
+  clip-path: polygon(0px 0px, 91% 0px, 100% 100%, 0% 100%);
+}
+
+.text-logo {
+    font-family: 'Oxanium', cursive;
+    font-weight: bold;
+    font-size: 2rem;
+    padding-left: 2rem;
+    text-transform: uppercase;
+}
+
+.text-logo img {
+    margin-right: 1.25rem;
+}
+
+.navbar-expand-lg .navbar-collapse {
+  display: flex;
+  flex-basis: auto;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 1.25rem;
+}
+
+
+.navbar-expand-lg .navbar-collapse ul li {
+  padding: 0.9375rem;
+  display: flex;
+  align-items: center;
+  align-content: center;
+}
+
+.navbar-expand-lg .navbar-collapse ul li a:hover {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  transform: skewX(-10deg);
+}
+
+.navbar-expand-lg .navbar-collapse ul li a {
+  color: #edeaea;
+  font-weight: 700;
+  padding: 0.9375rem;
+  text-transform: uppercase;
+}
+
+.navbar-expand-lg .navbar-collapse ul li a:hover {
+  color: var(--secondary-color);
+}
+
+.nav-item-btn {
+  margin-left: 1.875rem;
+}
+.nav-item-btn:hover {
+  background-color: #e4a10100!important;
+}
+
+.navbar-light .navbar-toggler-icon {
+  background-image: url(../../../../assets/images/menu.png);
+}
+
+@media (max-width: 465px) {
+  .collapse:not(.show) {
+    display: none!important;
+  }
+  .header-logged::before {
+    height: 5.455rem;
+    width: 69%;
+  }
+  .text-logo {
+    padding-left: 0px;
+    font-size: 1.5rem;
+  }
+  .text-logo img {
+    margin-right: 0.725rem;
+  }
+  .navbar-expand-lg .navbar-collapse {
+    justify-content: flex-start;
+  }
+  .nav-item-btn {
+    margin-left: 0;
+  }
+  .text-logo img {
+    width: 2.5rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .navbar-brand, .text-logo img {
+    margin-right: 0;
+  }
+
+  .text-logo {
+    font-size: 1.5rem;
+  }
+
+}
