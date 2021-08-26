@@ -1,12 +1,12 @@
 <app-alert class="transparencia-alert col-md-12 mt-4"></app-alert>
 <div *ngIf="!user; else logged">
     <app-header></app-header>
+    <main>
+        <router-outlet></router-outlet>
+    </main>
 </div>
 <app-banner-alert></app-banner-alert>
 <ng-template #logged>
     <app-welcome></app-welcome>
 </ng-template>
-<main>
-    <router-outlet></router-outlet>
-</main>
 <app-footer></app-footer>
