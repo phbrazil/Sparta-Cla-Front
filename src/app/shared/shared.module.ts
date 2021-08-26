@@ -7,6 +7,8 @@ import { ButtomComponent } from './components/buttom/buttom.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { BannerAlertComponent } from './components/banner-alert/banner-alert.component';
+import { LoginModule } from '../pages/account/login/login.module';
+
 
 
 
@@ -16,11 +18,13 @@ import { BannerAlertComponent } from './components/banner-alert/banner-alert.com
     ButtomComponent,
     FooterComponent,
     ModalComponent,
-    BannerAlertComponent
+    BannerAlertComponent,
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    LoginModule
+
   ],
 
   exports: [

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { PageComponent } from './home/page.component';
 import { SharedModule } from '../shared/shared.module';
@@ -26,7 +27,9 @@ import { TournamentComponent } from './tournament/tournament.component';
   imports: [
     CommonModule,
     SharedModule,
-    AccordionModule.forRoot()
+    AccordionModule.forRoot(),
+    FormsModule,
+    ReactiveFormsModule,
 
   ],
   exports: [
@@ -36,7 +39,7 @@ import { TournamentComponent } from './tournament/tournament.component';
     FAQComponent,
     AboutComponent,
     RulesComponent,
-    TournamentComponent
+    TournamentComponent,
   ]
 })
 export class HomeModule { }
