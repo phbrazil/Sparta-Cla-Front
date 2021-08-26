@@ -8,10 +8,12 @@ import { FAQComponent } from './pages/faq/faq.component';
 import { AboutComponent } from './pages/about/about.component';
 import { RulesComponent } from './pages/rules/rules.component';
 import { TournamentComponent } from './pages/tournament/tournament.component';
+import { LoginComponent } from './pages/account/login/login.component';
 
 const routes: Routes = [
 
   { path: '', component: PageComponent },
+  { path: 'teste', component: LoginComponent },
   { path: 'sobre', component: AboutComponent },
   { path: 'torneios', component: TournamentComponent },
   { path: 'regras', component: RulesComponent },
