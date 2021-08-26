@@ -52,11 +52,9 @@ export class LoginComponent implements OnInit {
 
       this.isLoading = false;
 
-
       //REMOVE FADE BUGADO QUE CONTINUAVA AO LOGAR
       $('body').removeClass('modal-open');
       $('.modal-backdrop').remove();
-
 
       this.router.navigate(['/welcome']);
 
@@ -65,8 +63,6 @@ export class LoginComponent implements OnInit {
       this.isLoading = false;
 
       if (err.status === 401) {
-
-        console.log('acesso negado')
 
         this.alertService.error('Acesso Negado', { keepAfterRouteChange: true });
 
