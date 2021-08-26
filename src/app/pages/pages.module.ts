@@ -31,9 +31,7 @@ import { AdminModule } from './welcome/admin/admin.module';
     SharedModule,
     AccordionModule.forRoot(),
     FormsModule,
-    ReactiveFormsModule,
-    AdminModule
-
+    ReactiveFormsModule
   ],
   exports: [
     PageComponent,

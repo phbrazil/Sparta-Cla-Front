@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { AdminRoutingModule } from './admin-routing.module';
 import { WelcomeComponent } from '../welcome.component';
 import { HeaderLoggedComponent } from '../header-logged/header-logged.component';
+import { HomeModule } from '../../pages.module';
 
 
 @NgModule({
@@ -12,7 +11,9 @@ import { HeaderLoggedComponent } from '../header-logged/header-logged.component'
     HeaderLoggedComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    HomeModule
+    
   ],
   exports: [
     WelcomeComponent,
