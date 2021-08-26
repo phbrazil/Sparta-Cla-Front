@@ -14,8 +14,6 @@ export class PageComponent implements OnInit {
 
    var res = this.warzone.getWarzoneInfo('Lierrmm#2364', 'psn');
 
-   console.log(res)
-
   }
 
 }

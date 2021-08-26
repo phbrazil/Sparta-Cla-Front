@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { LoginService } from 'src/app/_services/login.service';
+import { Router } from '@angular/router';
+import { AccountService, AlertService } from 'src/app/_services';
 
 @Component({
   selector: 'app-login',
@@ -8,10 +9,13 @@ import { LoginService } from 'src/app/_services/login.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  login: Array<any>;
   formLogin: FormGroup;
 
-  constructor(private fb: FormBuilder, private postForm: LoginService) { }
+  isLoading = false;
+
+  constructor(private fb: FormBuilder,
+    private alertService: AlertService, private router: Router,
+    private accountService: AccountService) { }
 
   ngOnInit(): void {
     this.formLogin = this.fb.group({
@@ -22,20 +26,50 @@ export class LoginComponent implements OnInit {
 
   enviar() {
     if(this.formLogin.invalid) {
-      return alert('Form Invalido!!!' + JSON.stringify(this.formLogin.value, null, 4));
+
+      this.alertService.error('Dados incorretos', { keepAfterRouteChange: true });
+
+    }else{
+
+      this.postLogin(this.formLogin)
+
     }
 
-    alert('Sucesso!!!' + JSON.stringify(this.formLogin.value, null, 4));
   }
 
   resetForm() {
+
     this.formLogin.reset();
+    
   }
 
-  postLogin(frm: FormGroup) {
-    this.postForm.postLogin(this.formLogin).subscribe(resposta => {
-      console.log(resposta);
-      this.login.push(resposta);
+  postLogin(formLogin: FormGroup) {
+
+    this.isLoading = true;
+
+    this.accountService.login(formLogin.value.email, formLogin.value.senha).subscribe(resposta => {
+
+      this.isLoading = false;
+
+      this.router.navigate(['/welcome']);
+
+    }, err =>{
+
+      this.isLoading = false;
+
+      if(err.status === 401){
+
+        console.log('acesso negado')
+
+        this.alertService.error('Acesso Negado', { keepAfterRouteChange: true });
+
+      }else{
+
+        this.alertService.error('Erro '+err.status, { keepAfterRouteChange: true });
+
+      }
+
+
     })
   }
 

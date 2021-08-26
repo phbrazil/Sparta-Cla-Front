@@ -8,6 +8,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { BannerAlertComponent } from './components/banner-alert/banner-alert.component';
 import { LoginModule } from '../pages/account/login/login.module';
+import { AlertComponent } from './components/alert';
 
 
 
@@ -19,6 +20,7 @@ import { LoginModule } from '../pages/account/login/login.module';
     FooterComponent,
     ModalComponent,
     BannerAlertComponent,
+    AlertComponent
   ],
   imports: [
     CommonModule,
@@ -32,7 +34,8 @@ import { LoginModule } from '../pages/account/login/login.module';
     ButtomComponent,
     FooterComponent,
     ModalComponent,
-    BannerAlertComponent
+    BannerAlertComponent,
+    AlertComponent
   ]
 })
 export class SharedModule { }

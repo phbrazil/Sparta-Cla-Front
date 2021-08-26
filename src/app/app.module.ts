@@ -9,10 +9,13 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
+import { AlertComponent } from './shared/components/alert';
+import { WelcomeComponent } from './pages/welcome/welcome.component';
+import { AdminModule } from './pages/welcome/admin/admin.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent    
   ],
   imports: [
     BrowserModule,
@@ -20,7 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomeModule,
     NgbModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    AdminModule
   ],
   providers: [],
   bootstrap: [AppComponent]

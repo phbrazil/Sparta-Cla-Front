@@ -8,6 +8,9 @@ import { FAQComponent } from './pages/faq/faq.component';
 import { AboutComponent } from './pages/about/about.component';
 import { RulesComponent } from './pages/rules/rules.component';
 import { TournamentComponent } from './pages/tournament/tournament.component';
+import { AuthGuard } from './_services/auth.guard';
+
+const welcomeModule = () => import('./pages/welcome/admin/admin-routing.module').then(x => x.AdminRoutingModule);
 
 const routes: Routes = [
 
@@ -17,8 +20,8 @@ const routes: Routes = [
   { path: 'regras', component: RulesComponent },
   { path: 'faq', component: FAQComponent},
   { path: 'politicas-de-privacidade', component: PrivacyPolicyComponent },
-  { path: 'termos-de-uso', component: TermsComponent }
-
+  { path: 'termos-de-uso', component: TermsComponent },
+  { path: 'welcome', loadChildren: welcomeModule, canActivate: [AuthGuard]},
 ];
 
 

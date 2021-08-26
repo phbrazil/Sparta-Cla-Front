@@ -156,7 +156,7 @@ export class AccountService {
 
         //const url = 'http://localhost:8080/account/api/auth/signin';
 
-        const url = 'https://spartaclan.herokuapp.com/account/api/auth/signin';
+        const url = 'https://sparta-clan.herokuapp.com/account/api/auth/signin';
 
         return this.http.post<User>(url, { username, password })
             .pipe(map(user => {
@@ -177,7 +177,7 @@ export class AccountService {
         localStorage.removeItem('email');
         localStorage.removeItem('id');
         this.userSubject.next(null);
-        this.router.navigate(['/account/login']);
+        this.router.navigate(['/']);
     }
 
     register(user: User) {
