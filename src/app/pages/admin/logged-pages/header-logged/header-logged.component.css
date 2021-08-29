@@ -70,6 +70,28 @@
   background-image: url(../../../../../assets/images/menu.png);
 }
 
+.btn-custom {
+  transition: all 0.3s linear 0s;
+  color: #edeaea;
+  background-color: var(--primary-color);
+  border: 0.0625rem solid var(--primary-color);
+  transform: skewX(-10deg);
+  font-size: 0.875rem;
+  line-height: 0.875rem;
+  padding: 1rem 1.875rem;
+  text-transform: unset;
+  font-weight: 600;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+
+.btn-custom:hover {
+  filter: brightness(1.2);
+  border-color: var(--primary-color);
+}
+
+
 @media (max-width: 465px) {
   .collapse:not(.show) {
     display: none!important;

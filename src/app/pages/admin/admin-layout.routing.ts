@@ -1,6 +1,5 @@
 import { Routes } from "@angular/router";
 import { TournamentComponent } from "../tournament/tournament.component";
-import { LoggedPagesComponent } from "./logged-pages/logged-pages.component";
 import { ProfileComponent } from "./logged-pages/profile/profile.component";
 import { WelcomeComponent } from "./logged-pages/welcome/welcome.component";
 
@@ -10,7 +9,5 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'welcome', component: WelcomeComponent },
     { path: 'my-profile', component: ProfileComponent },
     { path: 'my-tournaments', component: TournamentComponent },
-
-
 
 ];
