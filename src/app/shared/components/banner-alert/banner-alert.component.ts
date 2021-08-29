@@ -18,4 +18,8 @@ export class BannerAlertComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  doacao() {
+    document.location.href = "http://vaka.me/2351962";
+  }
+
 }
