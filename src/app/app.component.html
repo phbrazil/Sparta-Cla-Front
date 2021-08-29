@@ -2,13 +2,10 @@
 <div *ngIf="!user; else logged">
     <app-header></app-header>
     <app-banner-alert></app-banner-alert>
-    <main>
-        <router-outlet></router-outlet>
-    </main>
+    <router-outlet></router-outlet>
 </div>
 <ng-template #logged>
-    <main>
-        <app-welcome></app-welcome>
-    </main>
+    <app-header-logged></app-header-logged>
+    <app-logged-pages></app-logged-pages>
 </ng-template>
 <app-footer></app-footer>
