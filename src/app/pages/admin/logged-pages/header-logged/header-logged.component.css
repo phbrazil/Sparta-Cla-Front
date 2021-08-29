@@ -1,6 +1,6 @@
 .header-logged {
   background-color: var(--background-Black);
-  background-image: url(../../../../assets/images/banner_alert.jpg);
+  background-image: url(../../../../../assets/images/banner_alert.jpg);
 }
 
 .header-logged::before {
@@ -67,7 +67,7 @@
 }
 
 .navbar-light .navbar-toggler-icon {
-  background-image: url(../../../../assets/images/menu.png);
+  background-image: url(../../../../../assets/images/menu.png);
 }
 
 @media (max-width: 465px) {

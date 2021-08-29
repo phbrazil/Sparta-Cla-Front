@@ -5,17 +5,21 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './pages/pages.module';
-import { AppRoutingModule } from './app-routing.module';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
-import { AlertComponent } from './shared/components/alert';
-import { WelcomeComponent } from './pages/welcome/welcome.component';
-import { AdminModule } from './pages/welcome/admin/admin.module';
+import { AppRoutingModule } from './app-routing';
+import { RouterModule } from '@angular/router';
+import { LoggedPagesComponent } from './pages/admin/logged-pages/logged-pages.component';
+import { HeaderLoggedComponent } from './pages/admin/logged-pages/header-logged/header-logged.component';
+import { ProfileComponent } from './pages/admin/logged-pages/profile/profile.component';
+import { WelcomeComponent } from './pages/admin/logged-pages/welcome/welcome.component';
+import { AdminLayoutModule } from './pages/admin/admin-layout.module';
 
 @NgModule({
   declarations: [
-    AppComponent    
+    AppComponent,
+    LoggedPagesComponent
   ],
   imports: [
     BrowserModule,
@@ -24,8 +28,8 @@ import { AdminModule } from './pages/welcome/admin/admin.module';
     NgbModule,
     AppRoutingModule,
     HttpClientModule,
-    AdminModule
-  ],
+    RouterModule,
+  AdminLayoutModule  ],
   providers: [],
   bootstrap: [AppComponent]
 })

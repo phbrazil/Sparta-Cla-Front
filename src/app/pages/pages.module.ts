@@ -11,8 +11,6 @@ import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { AboutComponent } from './about/about.component';
 import { RulesComponent } from './rules/rules.component';
 import { TournamentComponent } from './tournament/tournament.component';
-import { WelcomeComponent } from './welcome/welcome.component';
-import { AdminModule } from './welcome/admin/admin.module';
 
 
 

@@ -160,6 +160,7 @@ export class AccountService {
 
         return this.http.post<User>(url, { username, password })
             .pipe(map(user => {
+                console.log(user)
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('user', JSON.stringify(user));
                 localStorage.setItem('token', user.token);
