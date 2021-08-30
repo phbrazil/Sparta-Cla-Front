@@ -19,7 +19,7 @@ export class BannerAlertComponent implements OnInit {
   }
 
   doacao() {
-    document.location.href = "http://vaka.me/2351962";
+    window.open("http://vaka.me/2351962", "_blank")
   }
 
 }

@@ -1,0 +1,64 @@
+h5 {
+    text-transform: uppercase;
+    color: var(--primary-color);
+    font-weight: bold;
+  }
+  
+  p {
+    color: var(--text-white);
+  }
+  
+  .just-gamers-list-icon {
+    float: left;
+    width: 97px;
+    height: 97px;
+    text-align: center;
+    line-height: 85px;
+    display: block;
+    border: 6px solid #333240;
+    margin-right: 25px;
+    transition: .3s linear;
+  }
+  
+  .just-gamers-list-icon img {
+    padding: 5px;
+  }
+  
+  .just-gamers-list ul li:hover .just-gamers-list-icon {
+    border-color: var(--primary-color);
+  }
+  
+  .just-gamers-list-content {
+    position: relative;
+    top: 5px;
+  }
+  
+  .just-gamers-list ul li {
+    margin-bottom: 40px;
+    padding-right: 20px;
+    padding: 15px;
+    overflow: hidden;
+    -webkit-box-shadow: 5px 4px 13px -2px rgba(0,0,0,0.32);
+    box-shadow: 5px 4px 13px -2px rgba(0,0,0,0.32);
+    background-color: rgb(29, 18, 39);
+  }
+  
+  .just-gamers-img {
+    position: absolute;
+    width: 100%;
+    top: -83px;
+    right: 0;
+  }
+  
+  .just-gamers-circle-shape {
+    position: absolute;
+    bottom: 215px;
+    left: 145px;
+    z-index: -1;
+  }
+  
+  .gamers-chart-shape {
+    position: absolute;
+    right: 0;
+    top: 70px;
+  }
