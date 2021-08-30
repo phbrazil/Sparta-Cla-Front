@@ -154,9 +154,9 @@ export class AccountService {
 
     login(username, password) {
 
-        const url = 'http://localhost:8080/account/api/auth/signin';
+        //const url = 'http://localhost:8080/account/api/auth/signin';
 
-        //const url = 'https://sparta-clan.herokuapp.com/account/api/auth/signin';
+        const url = 'https://sparta-clan.herokuapp.com/account/api/auth/signin';
 
         return this.http.post<User>(url, { username, password })
             .pipe(map(user => {
@@ -234,7 +234,7 @@ export class AccountService {
 
         //const url = `http://localhost:8080/account/api/auth/deleteUser/${id}`;
         const url = `https://spartaclan.herokuapp.com/account/api/auth/deleteUser/${id}`
-        
+
         return this.http.delete(url)
 
             // return this.http.delete(`${environment.apiUrl}/users/${id}`)
@@ -263,7 +263,7 @@ export class AccountService {
         return this.http.get(url, header);
     }
 
-   
+
 
     resetPassword(email) {
 
