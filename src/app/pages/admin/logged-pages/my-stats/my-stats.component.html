@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="mt-4 mb-4">
+
+    <div *ngIf="isLoading" class="d-flex justify-content-center">
+      <div class="spinner-grow text-warning" role="status" style="width: 5rem; height: 5rem;">
+        <span class="sr-only">Carregando...</span>
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <div *ngIf="!isLoading" class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title"><span class="text-yellow">{{user.wzProfile}}</span></h5>
+              <h5 class="card-title">KD <span class="text-yellow">{{KD}}</span></h5>
+              <h5 class="card-title">Vitórias <span class="text-yellow">{{stats.br.wins}}</span></h5>
+              <h5 class="card-title">Top 5 <span class="text-yellow">{{stats.br.topFive}}</span></h5>
+              <h5 class="card-title">Top 10 <span class="text-yellow">{{stats.br.topTen}}</span></h5>
+              <h5 class="card-title">Top 25 <span class="text-yellow">{{stats.br.topTwentyFive}}</span></h5>
+              <p class="card-text">Kills <span class="text-yellow">{{stats.br.kills}}</span></p>
+              <p class="card-text">Mortes <span class="text-yellow">{{stats.br.deaths}}</span></p>
+              <p class="card-text">Caídas <span class="text-yellow">{{stats.br.downs}}</span></p>
+              <p class="card-text">Partidas <span class="text-yellow">{{stats.br.gamesPlayed}}</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div *ngIf="!isLoading" class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title"><span class="text-yellow">{{user.wzProfile}}</span></h5>
+              <h5 class="card-title">KD <span class="text-yellow">{{KD}}</span></h5>
+              <h5 class="card-title">Vitórias <span class="text-yellow">{{stats.br.wins}}</span></h5>
+              <h5 class="card-title">Top 5 <span class="text-yellow">{{stats.br.topFive}}</span></h5>
+              <h5 class="card-title">Top 10 <span class="text-yellow">{{stats.br.topTen}}</span></h5>
+              <h5 class="card-title">Top 25 <span class="text-yellow">{{stats.br.topTwentyFive}}</span></h5>
+              <p class="card-text">Kills <span class="text-yellow">{{stats.br.kills}}</span></p>
+              <p class="card-text">Mortes <span class="text-yellow">{{stats.br.deaths}}</span></p>
+              <p class="card-text">Caídas <span class="text-yellow">{{stats.br.downs}}</span></p>
+              <p class="card-text">Partidas <span class="text-yellow">{{stats.br.gamesPlayed}}</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div *ngIf="!isLoading" class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title"><span class="text-yellow">{{user.wzProfile}}</span></h5>
+              <h5 class="card-title">KD <span class="text-yellow">{{KD}}</span></h5>
+              <h5 class="card-title">Vitórias <span class="text-yellow">{{stats.br.wins}}</span></h5>
+              <h5 class="card-title">Top 5 <span class="text-yellow">{{stats.br.topFive}}</span></h5>
+              <h5 class="card-title">Top 10 <span class="text-yellow">{{stats.br.topTen}}</span></h5>
+              <h5 class="card-title">Top 25 <span class="text-yellow">{{stats.br.topTwentyFive}}</span></h5>
+              <p class="card-text">Kills <span class="text-yellow">{{stats.br.kills}}</span></p>
+              <p class="card-text">Mortes <span class="text-yellow">{{stats.br.deaths}}</span></p>
+              <p class="card-text">Caídas <span class="text-yellow">{{stats.br.downs}}</span></p>
+              <p class="card-text">Partidas <span class="text-yellow">{{stats.br.gamesPlayed}}</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

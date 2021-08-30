@@ -7,13 +7,15 @@ import { HeaderLoggedComponent } from './logged-pages/header-logged/header-logge
 import { ProfileComponent } from './logged-pages/profile/profile.component';
 import { RouterModule } from '@angular/router';
 import { AdminLayoutRoutes } from './admin-layout.routing';
+import { MyStatsComponent } from './logged-pages/my-stats/my-stats.component';
 
 
 @NgModule({
   declarations: [
     WelcomeComponent,
     HeaderLoggedComponent,
-    ProfileComponent  ],
+    ProfileComponent,
+    MyStatsComponent  ],
   imports: [
     CommonModule,
     HomeModule,
@@ -22,6 +24,7 @@ import { AdminLayoutRoutes } from './admin-layout.routing';
   ],exports: [
     WelcomeComponent,
     HeaderLoggedComponent,
-    ProfileComponent  ],
+    ProfileComponent,
+    MyStatsComponent  ],
 })
 export class AdminLayoutModule { }

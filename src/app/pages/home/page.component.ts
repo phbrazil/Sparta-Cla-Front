@@ -12,8 +12,6 @@ export class PageComponent implements OnInit {
 
   ngOnInit(): void {
 
-   var res = this.warzone.getWarzoneInfo('Lierrmm#2364', 'psn');
-
   }
 
 }

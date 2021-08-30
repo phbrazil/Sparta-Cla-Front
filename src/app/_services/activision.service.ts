@@ -2,20 +2,20 @@
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AlertService } from './alert.service';
-//import * as CallOfDuty from 'call-of-duty-api';
+import { Observable } from 'rxjs';
+import { AccountService } from './account.service';
+import { User } from '../_models/user';
 
 @Injectable({ providedIn: 'root' })
 export class ActivisionService {
 
     declare require: any;
 
-    url: string = 'https://my.callofduty.com/api/papi-client/stats/cod/v1/title/mw/platform/battle/gamer/iShot%2321899/profile/type/mp';
-
     constructor(
-        private router: Router,
         private http: HttpClient,
-        private alertService: AlertService,
     ) {
+
+
     }
 
 
@@ -30,28 +30,19 @@ export class ActivisionService {
     https://docs.codapi.dev/
     */
 
-    getWarzoneInfo(user: string, platform: string) {
+    getWarzoneInfo(username: string, platform: string, token: string): Observable<any[]> {
 
+        //let url = `https://sparta-clan.herokuapp.com/spartaclan/getStats/${username}/${platform}`
+        //let url = `http://localhost:8080/spartaclan/getStats/${username}/${platform}`
 
-
-        var $ = require('jquery');
-
+        let url = `https://call-of-duty-modern-warfare.p.rapidapi.com/warzone/${username}/${platform}`
         const headers = new HttpHeaders()
-            .set('cache-control', 'no-cache')
-            .set('content-type', 'application/json')
-            .set('postman-token', 'b408a67d-5f78-54fc-2fb7-00f6e9cefbd1');
+            .set('x-rapidapi-host', `call-of-duty-modern-warfare.p.rapidapi.com`)
+            .set('x-rapidapi-key', `75e0530bedmshbf71e4633fd28fep125b50jsn269fb6971b8d`)
+            .set('Content-Type', `application/json`)
 
-        const body = {
-            email: 'myemail@xyz.com',
-            user_password: 'mypasss',
-            token: 'my token'
-        }
+        return this.http.get<any>(url, { headers: headers });
 
-        return this.http
-            //.get(this.url, body, { headers: headers })
-                    .get(this.url)
-            .subscribe(res => res);
-    
 
     }
 
