@@ -6,11 +6,16 @@
         <span class="sr-only">Carregando...</span>
       </div>
     </div>
+    <div *ngIf="hasErrors" class="d-flex justify-content-center mt-4">
+      <div class="alert alert-danger" role="alert">
+        Ocorreu um erro, tente novamente mais tarde
+      </div>
+    </div>
 
     <div class="col-md-12">
       <div class="row">
         <div class="col-md-4 mb-4">
-          <div *ngIf="!isLoading" class="card" style="width: 18rem;">
+          <div *ngIf="!isLoading && !hasErrors" class="card" style="width: 18rem;">
             <div class="card-body">
               <h5 class="card-title"><span class="text-yellow">{{user.wzProfile}}</span></h5>
               <h5 class="card-title">KD <span class="text-yellow">{{KD}}</span></h5>
@@ -26,7 +31,7 @@
           </div>
         </div>
         <div class="col-md-4">
-          <div *ngIf="!isLoading" class="card" style="width: 18rem;">
+          <div *ngIf="!isLoading && !hasErrors" class="card" style="width: 18rem;">
             <div class="card-body">
               <h5 class="card-title"><span class="text-yellow">{{user.wzProfile}}</span></h5>
               <h5 class="card-title">KD <span class="text-yellow">{{KD}}</span></h5>
@@ -42,7 +47,7 @@
           </div>
         </div>
         <div class="col-md-4">
-          <div *ngIf="!isLoading" class="card" style="width: 18rem;">
+          <div *ngIf="!isLoading && !hasErrors" class="card" style="width: 18rem;">
             <div class="card-body">
               <h5 class="card-title"><span class="text-yellow">{{user.wzProfile}}</span></h5>
               <h5 class="card-title">KD <span class="text-yellow">{{KD}}</span></h5>

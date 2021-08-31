@@ -18,14 +18,16 @@ export class MyStatsComponent implements OnInit {
 
   isLoading = false;
 
+  hasErrors = false;
+
   constructor(private activisionService: ActivisionService,
     private accountService: AccountService) {
 
-      this.accountService.user.subscribe(x => this.user = x);
+    this.accountService.user.subscribe(x => this.user = x);
 
-      this.user.wzProfile = 'paulo_9ember'
+    this.user.wzProfile = 'paulo_9ember'
 
-     }
+  }
 
   ngOnInit(): void {
 
@@ -33,25 +35,38 @@ export class MyStatsComponent implements OnInit {
     this.getStats(this.user.wzProfile, 'psn')
   }
 
-  getStats(wzProfile: string, platform: string){
+  getStats(wzProfile: string, platform: string) {
 
     this.isLoading = true;
 
     this.activisionService.getWarzoneInfo(wzProfile, platform, this.user.token).subscribe(res => {
 
-      this.stats = res;
+      let json = JSON.stringify(res)
 
-      this.KD = Math.round(this.stats.br.kdRatio * 100) /100;
+      console.log(json)
+
+      if (JSON.parse(json).error) {
+
+        this.hasErrors = true
+        this.isLoading = false;
+
+      } else {
+
+        this.stats = res;
+
+        this.KD = Math.round(this.stats.br.kdRatio * 100) / 100;
+
+        this.isLoading = false;
+
+        console.log(this.stats)
+      }
+
+
+    }, err => {
 
       this.isLoading = false;
 
-      console.log(this.stats)
-
-    }, err =>{
-
-      this.isLoading = false;
-
-      console.log('Error: ',err)
+      this.hasErrors = true
     })
 
   }
