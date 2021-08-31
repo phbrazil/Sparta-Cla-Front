@@ -43,8 +43,6 @@ export class MyStatsComponent implements OnInit {
 
       let json = JSON.stringify(res)
 
-      console.log(json)
-
       if (JSON.parse(json).error) {
 
         this.hasErrors = true
@@ -58,7 +56,6 @@ export class MyStatsComponent implements OnInit {
 
         this.isLoading = false;
 
-        console.log(this.stats)
       }
 
 
