@@ -49,9 +49,9 @@ export class ActivisionService {
     getWarzoneInfoCloudFunction(email: string, password: string, gamerTag: string, platform: string): Observable<any> {
 
 
-      //let url = `https://us-central1-cyber-oficina.cloudfunctions.net/warzone-stats`
+      let url = `https://us-central1-cyber-oficina.cloudfunctions.net/warzone-stats`
 
-      let url = 'http://localhost:3000';
+      //let url = 'http://localhost:3000';
 
       const body = {
         "email": email,
