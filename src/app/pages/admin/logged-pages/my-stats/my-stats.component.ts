@@ -39,7 +39,13 @@ export class MyStatsComponent implements OnInit {
 
     this.isLoading = true;
 
-    this.activisionService.getWarzoneInfo(wzProfile, platform, this.user.token).subscribe(res => {
+    const email = 'paulo.henriqueb@me.com';
+    const password = 'mortadela1';
+
+    //this.activisionService.getWarzoneInfoRapidAPI(wzProfile, platform, this.user.token).subscribe(res => {
+    this.activisionService.getWarzoneInfoCloudFunction(email, password, this.user.wzProfile, platform ).subscribe(res => {
+
+      console.log(res)
 
       let json = JSON.stringify(res)
 
@@ -50,7 +56,10 @@ export class MyStatsComponent implements OnInit {
 
       } else {
 
-        this.stats = res;
+        //SE API FOR CLOUD FUNCTION
+        this.stats = res.response;
+
+        //this.stats = res;
 
         this.KD = Math.round(this.stats.br.kdRatio * 100) / 100;
 

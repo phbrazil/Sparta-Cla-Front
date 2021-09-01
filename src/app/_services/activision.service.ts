@@ -30,7 +30,7 @@ export class ActivisionService {
     https://docs.codapi.dev/
     */
 
-    getWarzoneInfo(username: string, platform: string, token: string): Observable<any[]> {
+    getWarzoneInfoRapidAPI(username: string, platform: string, token: string): Observable<any[]> {
 
         //let url = `https://sparta-clan.herokuapp.com/spartaclan/getStats/${username}/${platform}`
         //let url = `http://localhost:8080/spartaclan/getStats/${username}/${platform}`
@@ -45,6 +45,28 @@ export class ActivisionService {
 
 
     }
+
+    getWarzoneInfoCloudFunction(email: string, password: string, gamerTag: string, platform: string): Observable<any> {
+
+
+      //let url = `https://us-central1-cyber-oficina.cloudfunctions.net/warzone-stats`
+
+      let url = 'http://localhost:3000';
+
+      const body = {
+        "email": email,
+        "password": password,
+        "gamerTag": gamerTag,
+        "platform": platform
+      }
+
+      const headers = new HttpHeaders()
+      .set('Content-Type', `application/json`)
+
+      return this.http.post<any>(url, JSON.stringify(body), {headers: headers});
+
+
+  }
 
 
 }
