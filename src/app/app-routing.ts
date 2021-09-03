@@ -24,7 +24,6 @@ const routes: Routes = [
   { path: 'faq', component: FAQComponent },
   { path: 'politicas-de-privacidade', component: PrivacyPolicyComponent },
   { path: 'termos-de-uso', component: TermsComponent },
-  
   {
     path: '',
     component: LoggedPagesComponent,

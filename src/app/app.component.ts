@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from './_models/user';
 import { AccountService } from './_services';
 //import * as _ from 'call-of-duty-api';
@@ -12,13 +13,20 @@ export class AppComponent {
 
   user: User;
 
-  constructor(private accountService: AccountService){
+  constructor(private accountService: AccountService, private router: Router){
     this.accountService.user.subscribe(x => this.user = x);
   }
 
   title = 'Sparta Clan';
 
   ngOnInit(): void{
+
+    //se logado direciona para a pagina inicial welcome
+    if(this.user){
+      this.router.navigate(['/welcome']);
+    }else{
+      this.accountService.logout();
+    }
 
   }
 }
