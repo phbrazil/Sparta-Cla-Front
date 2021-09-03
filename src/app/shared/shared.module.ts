@@ -26,7 +26,6 @@ import { AlertComponent } from './components/alert';
     CommonModule,
     RouterModule,
     LoginModule
-
   ],
 
   exports: [

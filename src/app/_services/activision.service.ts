@@ -30,12 +30,19 @@ export class ActivisionService {
     https://docs.codapi.dev/
     */
 
+    //json-server --watch stats_example.json
+
+
     getWarzoneInfoRapidAPI(username: string, platform: string, token: string): Observable<any[]> {
 
         //let url = `https://sparta-clan.herokuapp.com/spartaclan/getStats/${username}/${platform}`
         //let url = `http://localhost:8080/spartaclan/getStats/${username}/${platform}`
 
-        let url = `https://call-of-duty-modern-warfare.p.rapidapi.com/warzone/${username}/${platform}`
+       // let url = `https://call-of-duty-modern-warfare.p.rapidapi.com/warzone/${username}/${platform}`
+
+       let url: string = 'http://localhost:3000'
+
+
         const headers = new HttpHeaders()
             .set('x-rapidapi-host', `call-of-duty-modern-warfare.p.rapidapi.com`)
             .set('x-rapidapi-key', `75e0530bedmshbf71e4633fd28fep125b50jsn269fb6971b8d`)
@@ -51,7 +58,12 @@ export class ActivisionService {
 
       let url = `https://us-central1-cyber-oficina.cloudfunctions.net/warzone-stats`
 
-      //let url = 'http://localhost:3000';
+      //LOCAL FAKE BACKEND
+      //let url = 'http://localhost:3000/stats';
+
+      //local node function
+      //let url = 'http://localhost:3000/';
+
 
       const body = {
         "email": email,
@@ -61,7 +73,10 @@ export class ActivisionService {
       }
 
       const headers = new HttpHeaders()
-      .set('Content-Type', `application/json`)
+      .set('Content-Type', 'application/json')
+
+      //JSON SERVER LOCAL
+      //return this.http.get<any>(url);
 
       return this.http.post<any>(url, JSON.stringify(body), {headers: headers});
 

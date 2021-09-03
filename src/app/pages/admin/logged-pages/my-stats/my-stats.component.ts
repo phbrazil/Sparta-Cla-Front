@@ -16,6 +16,10 @@ export class MyStatsComponent implements OnInit {
 
   KD;
 
+  recentMatches;
+
+  KDRecent;
+
   isLoading = false;
 
   hasErrors = false;
@@ -25,14 +29,15 @@ export class MyStatsComponent implements OnInit {
 
     this.accountService.user.subscribe(x => this.user = x);
 
-    this.user.wzProfile = 'paulo_9ember'
+    this.user.wzProfile = 'paulo_9ember';
+    this.user.platform = 'psn'
 
   }
 
   ngOnInit(): void {
 
 
-    this.getStats(this.user.wzProfile, 'psn')
+    this.getStats(this.user.wzProfile, this.user.platform)
   }
 
   getStats(wzProfile: string, platform: string) {
@@ -43,9 +48,7 @@ export class MyStatsComponent implements OnInit {
     const password = 'mortadela1';
 
     //this.activisionService.getWarzoneInfoRapidAPI(wzProfile, platform, this.user.token).subscribe(res => {
-    this.activisionService.getWarzoneInfoCloudFunction(email, password, this.user.wzProfile, platform ).subscribe(res => {
-
-      console.log(res)
+    this.activisionService.getWarzoneInfoCloudFunction(email, password, wzProfile, platform ).subscribe(res => {
 
       let json = JSON.stringify(res)
 
@@ -58,10 +61,12 @@ export class MyStatsComponent implements OnInit {
 
         //SE API FOR CLOUD FUNCTION
         this.stats = res.response;
+        this.recentMatches = res.recentMatches;
 
         //this.stats = res;
 
         this.KD = Math.round(this.stats.br.kdRatio * 100) / 100;
+        this.KDRecent = Math.round(this.recentMatches.summary.all.kdRatio *100) /100;
 
         this.isLoading = false;
 
