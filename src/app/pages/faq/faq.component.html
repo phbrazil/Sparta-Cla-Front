@@ -1,172 +1,93 @@
-<section class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <div id="accordion" class="checkout">
-        <div class="panel checkout-step">
-            <div> <span class="checkout-step-number">1</span>
-                <h4 class="checkout-step-title"> <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" > Phone Number Verification</a></h4>
+<section class="container ">
+  <div class="row mt-5 mb-5 pt-5 pb-5">
+    <div class="col-md-12 game-content">
+        <h2 class="mb-5">Perguntas <span _ngcontent-ryn-c63="" class="text-yellow">Frequentes</span></h2>
+      <div class="accordion" id="accordionExample">
+        <div class="card">
+            <div class="card-header collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true">
+                <span >Como as divisões são formadas? </span>
+                <span class="accicon"><i class="fa fa-chevron-right rotate-icon"></i></span>
             </div>
-            <div id="collapseOne" class="collapse in">
-                <div class="checkout-step-body">
-                    <p>We need your phone number so that we can update you about your order.</p>
-                    <div class="row">
-                        <div class="col-lg-8">
-                            <div class="checkout-login">
-                                <form>
-                                    <div class="login-phone">
-                                        <input type="text" class="form-control" placeholder="Phone Number">
-                                    </div>
-                                    <a class="btn btn-default " role="button" data-toggle="collapse" href="#otp-verifaction" >Next</a>
-                                    <!-- add class disabled to inactive button -->
-                                </form>
-                            </div>
-                            <!-- /input-group -->
-                        </div>
-                        <!-- /.col-lg-6 -->
-                    </div>
-                    <div class="collapse" id="otp-verifaction">
-                        <div class="otp-verifaction">
-                            <div class="row">
-                                <div class="col-lg-8">
-                                    <div class="row">
-                                        <div class="form-group">
-                                            <label class="col-md-12 control-label sr-only" for="Phone">Phone</label>
-                                            <div class="col-md-3">
-                                                <input id="number" name="number" type="text" placeholder="0" class="form-control input-md" required="">
-                                            </div>
-                                            <div class="col-md-3">
-                                                <input id="number" name="number" type="text" placeholder="0" class="form-control input-md" required="">
-                                            </div>
-                                            <div class="col-md-3">
-                                                <input id="number" name="number" type="text" placeholder="0" class="form-control input-md" required="">
-                                            </div>
-                                            <div class="col-md-3 ">
-                                                <input id="number" name="number" type="text" placeholder="0" class="form-control input-md" required="">
-                                            </div>
-                                        </div>
-                                        <!-- Button -->
-                                        <div class="form-group">
-                                            <label class="control-label sr-only" for="next">next</label>
-                                            <div class="col-md-12">
-                                                <a class="collapsed btn btn-default" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Next</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
+                <div class="card-body">
+                    Nosso algoritmo de classificação de habilidade analisa todas as estatísticas históricas da zona de guerra para colocá-lo em uma
+                    divisão com jogadores de nível de habilidade semelhante. Conforme o tempo passa e hospedamos mais torneios com mais jogadores,
+                    o algoritmo melhora sozinho para melhor classificar as equipes.
                 </div>
             </div>
         </div>
-        <div class="panel checkout-step">
-            <div role="tab" id="headingTwo"> <span class="checkout-step-number">2</span>
-                <h4 class="checkout-step-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" > Delivery Address </a> </h4>
+        <div class="card">
+            <div class="card-header collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                <span>Como funcionam os torneios de kill race?</span>
+                <span class="accicon"><i class="fa fa-chevron-right rotate-icon"></i></span>
             </div>
-            <div id="collapseTwo" class="panel-collapse collapse">
-                <div class="checkout-step-body">
-                    <div class="checout-address-step">
-                        <div class="row">
-                            <form class="">
-                                <!-- Multiple Radios (inline) -->
-                                <div class="form-group">
-                                    <label class="col-md-12 control-label" for="address"></label>
-                                    <div class="col-md-12 ">
-                                        <label class="radio-inline" for="address-0">
-                                            <input type="radio" name="address" id="address-0" value="Home" checked="checked"> Home </label>
-                                        <label class="radio-inline" for="address-1">
-                                            <input type="radio" name="address" id="address-1" value="Office"> Office </label>
-                                        <label class="radio-inline" for="address-2">
-                                            <input type="radio" name="address" id="address-2" value="Other"> Other </label>
-                                    </div>
-                                </div>
-                                <!-- Text input-->
-                                <div class="form-group">
-                                    <div class="col-md-12">
-                                        <label class="control-label" for="name">Name</label>
-                                        <input id="name" name="name" type="text" placeholder="Name" class="form-control input-md" required="">
-                                    </div>
-                                </div>
-                                <!-- Text input-->
-                                <div class="form-group">
-                                    <label class="col-md-12 control-label" for="flat">Flat / House / Office No.</label>
-                                    <div class="col-md-12">
-                                        <input id="flat" name="flat" type="text" placeholder="address" class="form-control input-md" required="">
-                                    </div>
-                                </div>
-                                <!-- Text input-->
-                                <div class="form-group">
-                                    <label class="col-md-12 control-label" for="street">Street / Society / Office Name</label>
-                                    <div class="col-md-12">
-                                        <input id="street" name="street" type="text" placeholder="Street Address" class="form-control input-md">
-                                    </div>
-                                </div>
-                                <!-- Text input-->
-                                <div class="form-group">
-                                    <label class="col-md-12 control-label" for="Locality">Locality</label>
-                                    <div class="col-md-12">
-                                        <input id="Locality" name="Locality" type="text" placeholder="Ahmedabad" class="form-control input-md" required="">
-                                    </div>
-                                </div>
-                                <!-- Button -->
-                                <div class="form-group">
-                                    <div class="col-md-12">
-                                        <button id="singlebutton" name="singlebutton" class="btn btn-primary">Save</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <a class="collapsed btn btn-default" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"> Next </a>
+            <div id="collapseTwo" class="collapse" data-parent="#accordionExample">
+                <div class="card-body">
+                    Os anfitriões da Z League matam torneios de corrida, aqui está um resumo de como eles funcionam:
+
+                    Entre em quantos jogos Warzone públicos você quiser com sua equipe durante o período de tempo alocado do torneio.
+                    Cada morte que você obtém é 1 ponto e pontos adicionais são concedidos com base em quão bem sua equipe se classificou naquele jogo.
+                    Nós pegamos as pontuações (mortes + pontos de colocação) de seus melhores jogos para determinar sua pontuação total.
+                    As equipes com as pontuações mais altas ganham os prêmios correspondentes.
                 </div>
             </div>
         </div>
-        <div class="panel checkout-step">
-            <div role="tab" id="headingThree"> <span class="checkout-step-number">3</span>
-                <h4 class="checkout-step-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"  > Time & Date </a> </h4>
+        <div class="card">
+            <div class="card-header collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false">
+                <span>Posso mudar meu ID de plataforma antes do torneio?</span>
+                <span class="accicon"><i class="fa fa-chevron-right rotate-icon"></i></span>
             </div>
-            <div id="collapseThree" class="panel-collapse collapse">
-                <div class="checkout-step-body">
-                    <div class="row">
-                        <div class="form-group">
-                            <label class="col-md-12 control-label" for="time">Time</label>
-                            <div class="col-md-12">
-                                <div class="radio">
-                                    <label for="time-0">
-                                        <input type="radio" name="time" id="time-0" value="8:00 - 9:00" checked="checked"> 8:00 - 9:00 </label>
-                                </div>
-                                <div class="radio">
-                                    <label for="time-1">
-                                        <input type="radio" name="time" id="time-1" value="10:00 - 11:00"> 10:00 - 11:00 </label>
-                                </div>
-                                <div class="radio">
-                                    <label for="time-2">
-                                        <input type="radio" name="time" id="time-2" value="12:00 - 1:00"> 12:00 - 1:00 </label>
-                                </div>
-                                <div class="radio">
-                                    <label for="time-3">
-                                        <input type="radio" name="time" id="time-3" value="1:00 - 2:00"> 1:00 - 2:00 </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <a class="collapsed btn btn-default" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour"> Next </a>
+            <div id="collapseThree" class="collapse" data-parent="#accordionExample">
+                <div class="card-body">
+                    Não, você não pode alterar sua ID de plataforma antes do torneio se já estiver registrado
                 </div>
             </div>
         </div>
-        <div class="panel checkout-step">
-            <div role="tab" id="headingFour"> <span class="checkout-step-number">4</span>
-                <h4 class="checkout-step-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour"  > Payment </a> </h4>
+        <div class="card">
+            <div class="card-header collapsed" data-toggle="collapse" data-target="#collapseFor" aria-expanded="false">
+                <span>Minha equipe está cadastrada?</span>
+                <span class="accicon"><i class="fa fa-chevron-right rotate-icon"></i></span>
             </div>
-            <div id="collapseFour" class="panel-collapse collapse">
-                <div class="checkout-step-body">
-                    Payment Mode
-                    <a href="#" class="btn btn-default">Proccess to payment</a>
+            <div id="collapseFor" class="collapse" data-parent="#accordionExample">
+                <div class="card-body">
+                    Você receberá um e-mail assim que sua equipe estiver totalmente registrada.
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false">
+                <span>O que acontece em caso de empate?</span>
+                <span class="accicon"><i class="fa fa-chevron-right rotate-icon"></i></span>
+            </div>
+            <div id="collapseFive" class="collapse" data-parent="#accordionExample">
+                <div class="card-body">
+                    Em caso de empate, a maioria das mortes nos principais jogos das equipes será usada como o primeiro desempate.
+                    O segundo desempate será o número de vitórias nos principais jogos das equipes. O terceiro desempate será o menor
+                    número de jogos disputados. Se as equipes ainda estiverem empatadas, o prêmio para a posição e a próxima posição
+                    será dividido entre as equipes. Para maior clareza, se duas equipes estão empatadas em p2 após a contabilização de
+                    pontos, total de mortes de equipes, vitórias e número de jogos disputados, o prêmio para p2 e p3 seria dividido pelas equipes.
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header collapsed" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false">
+                <span>Como funcionam os prêmios?</span>
+                <span class="accicon"><i class="fa fa-chevron-right rotate-icon"></i></span>
+            </div>
+            <div id="collapseSix" class="collapse" data-parent="#accordionExample">
+                <div class="card-body">
+                    Todos os prêmios anunciados são pagamentos baseados em uma divisão totalmente preenchida.
+                    No caso raro de não conseguirmos colocar uma divisão completa com base no seu nível de habilidade,
+                    o prêmio será calculado proporcionalmente com base no número de participantes em uma determinada divisão.
+                    Todos os participantes que jogam em uma divisão modificada serão notificados por e-mail antes do início do torneio.
+                    Sparta Clã oferece competição baseada em habilidades e se esforça para garantir que os participantes sejam combinados com base em suas habilidades.
+                    Os vencedores serão contatados em até 12 horas após a finalização da pontuação. Os vencedores devem ter concluído uma verificação de
+                    identidade antes de os prêmios serem concedidos. Dependendo do método de pagamento, você pode estar sujeito a taxas. Z League não é
+                    responsável por quaisquer taxas cobradas por terceiros.
                 </div>
             </div>
         </div>
     </div>
-    <hr/>
     </div>
   </div>
 </section>
