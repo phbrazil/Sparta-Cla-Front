@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeModule } from '../pages.module';
-import { LoggedPagesComponent } from './logged-pages/logged-pages.component';
 import { WelcomeComponent } from './logged-pages/welcome/welcome.component';
 import { HeaderLoggedComponent } from './logged-pages/header-logged/header-logged.component';
 import { ProfileComponent } from './logged-pages/profile/profile.component';
@@ -20,7 +19,7 @@ import { MyStatsComponent } from './logged-pages/my-stats/my-stats.component';
     CommonModule,
     HomeModule,
     RouterModule.forChild(AdminLayoutRoutes),
-    
+
   ],exports: [
     WelcomeComponent,
     HeaderLoggedComponent,

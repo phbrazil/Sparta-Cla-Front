@@ -22,8 +22,8 @@ import { TournamentComponent } from './tournament/tournament.component';
     FAQComponent,
     AboutComponent,
     RulesComponent,
-    TournamentComponent
-  ],
+    TournamentComponent,
+    ],
   imports: [
     CommonModule,
     SharedModule,
