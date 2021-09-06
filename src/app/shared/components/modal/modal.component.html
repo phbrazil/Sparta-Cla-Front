@@ -1,11 +1,23 @@
+<a href="#modalRegister" title="Criar conta" data-toggle="modal" data-target="#modalRegister">Criar conta</a>
 <app-buttom title="Entrar" data-toggle="modal" data-target="#modalLogin"></app-buttom>
 
-<!-- Modal -->
+<!-- Modal login -->
 <div *ngIf="!user" class="modal fade" id="modalLogin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">
         <app-login></app-login>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Register-->
+<div class="modal fade" id="modalRegister" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <app-register></app-register>
       </div>
     </div>
   </div>

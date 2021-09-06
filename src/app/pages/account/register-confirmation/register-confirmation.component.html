@@ -1,0 +1,106 @@
+<div class="container">
+  <div class="row mb-5 mt-5 pt-5 pb-5 game-content justify-content-center">
+    <form class="mt-4 mb-4 pt-3 pb-3 col-8" [formGroup]="formRegisterConfirmation" (ngSubmit)="enviar()">
+      <h2 class="mb-2 text-center">Complete seu  <span class="text-yellow">perfil</span></h2>
+      <p class="text-center mb-5">Seu email foi verificado! Precisamos saber mais alguns detalhes sobre você antes que você possa se registrar para um torneio</p>
+      <h4>Minha informação</h4>
+      <div class="form-group">
+        <label for="usuario">Nome de usuario*</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="usuario">@</span>
+          </div>
+          <input type="text" class="form-control" id="usuario" aria-describedby="inputGroupPrepend" name="usuario" required>
+          <ng-container *ngIf="formRegisterConfirmation.controls.usuario.touched">
+            <span *ngIf="formRegisterConfirmation.controls.usuario.errors?.required">
+                Campo obrigatório
+            </span>
+            <span *ngIf="formRegisterConfirmation.controls.usuario.errors?.usuario">
+             Nome inválido
+            </span>
+          </ng-container>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="nome">Nome*</label>
+        <input type="text" class="form-control" id="nome" aria-describedby="nome" formControlName="nome" name="nome">
+        <ng-container *ngIf="formRegisterConfirmation.controls.nome.touched">
+          <span *ngIf="formRegisterConfirmation.controls.nome.errors?.required">
+              Campo obrigatório
+          </span>
+          <span *ngIf="formRegisterConfirmation.controls.nome.errors?.nome">
+           Nome inválido
+        </span>
+      </ng-container>
+      </div>
+      <div class="form-group">
+        <label for="Sobrenome">Sobrenome*</label>
+        <input type="text" class="form-control" id="Sobrenome" aria-describedby="Sobrenome" formControlName="Sobrenome" name="Sobrenome">
+        <ng-container *ngIf="formRegisterConfirmation.controls.Sobrenome.touched">
+          <span *ngIf="formRegisterConfirmation.controls.Sobrenome.errors?.required">
+              Campo obrigatório
+          </span>
+          <span *ngIf="formRegisterConfirmation.controls.Sobrenome.errors?.Sobrenome">
+           Nome inválido
+        </span>
+      </ng-container>
+      </div>
+      <div class="form-group">
+        <label for="pais">País*</label>
+        <select class="form-control" id="pais" name="pais">
+          <option value="Argentina">Argentina</option>
+          <option value="Bolívia">Bolívia</option>
+          <option value="Brasil">Brasil</option>
+          <option value="Chile">Chile</option>
+          <option value="Colômbia">Colômbia</option>
+          <option value="Equador">Equador</option>
+          <option value="Guiana">Guiana</option>
+          <option value="Paraguai">Paraguai</option>
+          <option value="Peru">Peru</option>
+          <option value="Suriname">Suriname</option>
+          <option value="Uruguai">Uruguai</option>
+          <option value="Venezuela">Venezuela</option>
+        </select>
+        <ng-container *ngIf="formRegisterConfirmation.controls.pais.touched">
+          <span *ngIf="formRegisterConfirmation.controls.pais.errors?.required">
+              Campo obrigatório
+          </span>
+      </ng-container>
+      </div>
+      <div class="form-group">
+        <label for="Estado">Estado*</label>
+        <input type="text" class="form-control" id="Estado" formControlName="Estado" name="Estado">
+        <ng-container *ngIf="formRegisterConfirmation.controls.Estado.touched">
+          <span *ngIf="formRegisterConfirmation.controls.Estado.errors?.required">
+              Campo obrigatório
+          </span>
+      </ng-container>
+      </div>
+      <div class="form-group">
+        <label for="data">Data de nascimento*</label>
+        <input type="date" class="form-control" id="data" formControlName="pais" name="data">
+        <ng-container *ngIf="formRegisterConfirmation.controls.pais.touched">
+          <span *ngIf="formRegisterConfirmation.controls.pais.errors?.required">
+              Campo obrigatório
+          </span>
+      </ng-container>
+      </div>
+      <h4 class="pt-5 pb-3">Id da plataforma</h4>
+      <div class="form-group">
+        <label for="idPlataforma">Id plataforma*</label>
+        <input type="text" class="form-control" id="idPlataforma" aria-describedby="idPlataforma" formControlName="idPlataforma" name="idPlataforma">
+        <ng-container *ngIf="formRegisterConfirmation.controls.nome.touched">
+          <span *ngIf="formRegisterConfirmation.controls.nome.errors?.required">
+              Campo obrigatório
+          </span>
+          <span *ngIf="formRegisterConfirmation.controls.nome.errors?.nome">
+           Nome inválido
+        </span>
+      </ng-container>
+      </div>
+      <button type="submit" class="btn btn-custom mb-3" [disabled]="!formRegisterConfirmation.valid">
+        Criar conta</button><br>
+    </form>
+  </div>
+</div>
+

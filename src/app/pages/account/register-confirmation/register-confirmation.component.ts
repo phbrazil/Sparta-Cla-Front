@@ -2,18 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: 'app-register-confirmation',
+  templateUrl: './register-confirmation.component.html',
+  styleUrls: ['./register-confirmation.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterConfirmationComponent implements OnInit {
 
-  formRegister: FormGroup;
+  formRegisterConfirmation: FormGroup;
 
   constructor(private fb: FormBuilder,) { }
 
   ngOnInit(): void {
-    this.formRegister = this.fb.group({
+    this.formRegisterConfirmation = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       senha: ['', [Validators.required, Validators.minLength(8)]]
     })

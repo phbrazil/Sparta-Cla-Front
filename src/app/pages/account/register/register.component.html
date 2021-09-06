@@ -1,1 +1,37 @@
-<p>register works!</p>
+<div class="container">
+  <div class="row">
+    <form class="mt-4 mb-4 pt-3 pb-3 col-12" [formGroup]="formRegister" (ngSubmit)="enviar()">
+      <h2 class="mb-5 text-center">Criar <span class="text-yellow">conta</span></h2>
+      <div class="form-group">
+        <label for="email">Email*</label>
+        <input type="email" class="form-control" id="email" aria-describedby="email" formControlName="email" name="email">
+        <ng-container *ngIf="formRegister.controls.email.touched">
+          <span *ngIf="formRegister.controls.email.errors?.required">
+              Campo obrigatório
+          </span>
+          <span *ngIf="formRegister.controls.email.errors?.email">
+            E-mail inválido
+        </span>
+      </ng-container>
+      </div>
+      <div class="form-group">
+        <label for="senha">Senha*</label>
+        <input type="password" class="form-control" id="senha" formControlName="senha" name="senha">
+        <ng-container *ngIf="formRegister.controls.senha.touched">
+          <span *ngIf="formRegister.controls.senha.errors?.required">
+              Campo obrigatório
+          </span>
+      </ng-container>
+      </div>
+      <div class="form-group">
+        <span class="txt-terms">Ao criar uma conta, você concorda com os <a routerLink="/termos-de-uso">termos</a>  e <a routerLink="/politicas-de-privacidade">política de privacidade</a> do Sparta Clã</span>
+      </div>
+
+      <button type="submit" class="btn btn-custom mb-3" [disabled]="!formRegister.valid">
+        Criar</button><br>
+
+      <span>Já tem uma <a href="#modalLogin" class="text-yellow">conta?</a></span>
+    </form>
+  </div>
+</div>
+

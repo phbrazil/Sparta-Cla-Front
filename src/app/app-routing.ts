@@ -12,7 +12,7 @@ import { AuthGuard } from './_services/auth.guard';
 import { LoggedPagesComponent } from './pages/admin/logged-pages/logged-pages.component';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { RegisterComponent } from './pages/account/register/register.component';
+import { RegisterConfirmationComponent } from './pages/account/register-confirmation/register-confirmation.component';
 
 const adminModule = () => import('./pages/admin/admin-layout.module').then(x => x.AdminLayoutModule);
 
@@ -25,7 +25,7 @@ const routes: Routes = [
   { path: 'faq', component: FAQComponent },
   { path: 'politicas-de-privacidade', component: PrivacyPolicyComponent },
   { path: 'termos-de-uso', component: TermsComponent },
-  { path: 'register', component: RegisterComponent },
+  { path: 'confirmar-cadastro', component: RegisterConfirmationComponent },
   {
     path: '',
     component: LoggedPagesComponent,

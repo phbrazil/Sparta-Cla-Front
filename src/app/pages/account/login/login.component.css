@@ -2,19 +2,6 @@ a:hover {
   color: var(--secondary-color)
 }
 
-.form-control {
-  border-radius: 64px;
-}
-
-.form-control:focus {
-  color: #495057;
-  background-color: #fff;
-  border-color: var(--primary-color)!important;
-  border-radius: 64px;
-  outline: 0;
-  box-shadow: 0 0 0 0.2rem rgb(228 161 1 / 25%)!important;
-}
-
 .form-check {
   position: relative;
   padding-left: 1.25rem;
@@ -23,17 +10,3 @@ a:hover {
   justify-content: flex-end;
 }
 
-.btn-custom {
-  transition: all 0.3s linear 0s;
-    color: #edeaea;
-    background-color: var(--primary-color);
-    border: 0.0625rem solid var(--primary-color);
-    transform: skewX(-10deg);
-    font-size: 0.875rem;
-    line-height: 0.875rem;
-    padding: 1rem 1.875rem;
-    text-transform: unset;
-    font-weight: 600;
-    cursor: pointer;
-    text-transform: uppercase;
-}

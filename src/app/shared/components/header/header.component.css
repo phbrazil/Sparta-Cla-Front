@@ -49,7 +49,7 @@
 }
 
 .navbar-expand-lg .navbar-collapse ul li a {
-  color: #edeaea;
+  color: var(--color-header);
   font-weight: 700;
   padding: 0.9375rem;
   text-transform: uppercase;

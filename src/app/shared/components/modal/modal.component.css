@@ -2,6 +2,13 @@
   top: 150px;
 }
 
+a {
+  color: var(--color-header);
+  margin-right: 1.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
 @media (max-width: 468px) {
   .modal {
     top: 15px;
