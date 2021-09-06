@@ -19,6 +19,24 @@
   color: var(--primary-color)
 }
 
+.footer-social ul {
+  display: flex;
+  flex-direction: row;
+}
+
+.footer-social ul li {
+  padding: 0 10px;
+}
+
+.fa {
+  font-size: 1.25rem;
+  color: #fff;
+  line-height: 2.5rem;
+}
+
+.fa:hover {
+  color: var(--primary-color);
+}
 .s-copyright-wrap {
   background: var(--background-Black);
   padding: 1.5625rem 0.625rem;
