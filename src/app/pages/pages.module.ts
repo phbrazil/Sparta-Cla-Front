@@ -11,6 +11,7 @@ import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { AboutComponent } from './about/about.component';
 import { RulesComponent } from './rules/rules.component';
 import { TournamentComponent } from './tournament/tournament.component';
+import { TableResultComponent } from './table-result/table-result.component';
 
 
 
@@ -23,6 +24,7 @@ import { TournamentComponent } from './tournament/tournament.component';
     AboutComponent,
     RulesComponent,
     TournamentComponent,
+    TableResultComponent,
     ],
   imports: [
     CommonModule,

@@ -61,5 +61,53 @@
       "division": "12",
       "cost": "R$ 10"
     }
+  ],
+
+  "partidas": [
+    { "id": 1,
+      "Classification": "1",
+      "date": "20/08/2021",
+      "team": "Justice League",
+      "match": "2",
+      "kills": "15",
+      "position": "3",
+      "score": "19"
+    },
+    { "id": 2,
+      "Classification": "2",
+      "date": "20/08/2021",
+      "team": "Justice League",
+      "match": "2",
+      "kills": "15",
+      "position": "3",
+      "score": "19"
+    },
+    { "id": 3,
+      "Classification": "3",
+      "date": "20/08/2021",
+      "team": "Justice League",
+      "match": "2",
+      "kills": "15",
+      "position": "3",
+      "score": "19"
+    },
+    { "id": 4,
+      "Classification": "4",
+      "date": "20/08/2021",
+      "team": "Justice League",
+      "match": "2",
+      "kills": "12",
+      "position": "3",
+      "score": "19"
+    },
+    { "id": 5,
+      "Classification": "5",
+      "date": "20/08/2021",
+      "team": "Justice League",
+      "match": "2",
+      "kills": "10",
+      "position": "3",
+      "score": "19"
+    }
   ]
 }

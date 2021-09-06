@@ -9,7 +9,7 @@ import { Tournament } from '../../_models/tournament';
 })
 export class TournamentComponent implements OnInit {
 
-  tournament: Tournament[] = []
+  tournament: Tournament[] = [];
 
   tournaments;
 

@@ -13,6 +13,7 @@ import { LoggedPagesComponent } from './pages/admin/logged-pages/logged-pages.co
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { RegisterConfirmationComponent } from './pages/account/register-confirmation/register-confirmation.component';
+import { TableResultComponent } from './pages/table-result/table-result.component';
 
 const adminModule = () => import('./pages/admin/admin-layout.module').then(x => x.AdminLayoutModule);
 
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'faq', component: FAQComponent },
   { path: 'politicas-de-privacidade', component: PrivacyPolicyComponent },
   { path: 'termos-de-uso', component: TermsComponent },
+  { path: 'resultado-partida', component: TableResultComponent },
   { path: 'confirmar-cadastro', component: RegisterConfirmationComponent },
   {
     path: '',
