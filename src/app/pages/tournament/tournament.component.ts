@@ -34,5 +34,6 @@ export class TournamentComponent implements OnInit {
     //this.tournaments = JSON.parse(this.tournaments)
     //this.tournament = this.tournaments.game;
 
+
   }
 }
