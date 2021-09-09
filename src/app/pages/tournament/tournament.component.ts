@@ -9,10 +9,10 @@ import { Tournament } from '../../_models/tournament';
 })
 export class TournamentComponent implements OnInit {
 
+  readonly qtdPagina = 6;
+  pagina = 0;
   tournament: Tournament[] = [];
-
   tournaments;
-
   isLoading = false;
 
   constructor(private service: TournamentService) { }
@@ -21,21 +21,18 @@ export class TournamentComponent implements OnInit {
     this.findAllTournament();
   }
 
-  findAllTournament() {
-    this.isLoading = true;
-    this.service.getTournament().subscribe(res => {
-
-      this.tournaments = JSON.stringify(res)
-
-      this.tournaments = JSON.parse(this.tournaments)
-
-      this.tournament = this.tournaments.game;
-
-      this.isLoading = false;
-
-    }, err => {
-      this.isLoading = false;
-    })
+  onScroll() {
+    this.findAllTournament();
+    console.log('scrolled!!');
   }
 
+  findAllTournament() {
+    this.isLoading = true;
+    this.pagina++;
+    this.service.getTournament(this.pagina, this.qtdPagina).subscribe( (tournament: Tournament[]) => this.tournament.push(...tournament), error => this.isLoading = false);
+    //this.tournaments = JSON.stringify(res)
+    //this.tournaments = JSON.parse(this.tournaments)
+    //this.tournament = this.tournaments.game;
+
+  }
 }

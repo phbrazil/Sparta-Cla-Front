@@ -13,7 +13,7 @@
         <span class="sr-only">Carregando...</span>
       </div>
     </div>
-    <div class="row">
+    <div class="row" infiniteScroll (scrolled)="onScroll()">
       <div class="col-lg-4 col-md-6 mt-5 mb-2" *ngFor="let torneio of tournament">
         <div class="coming-match-item mb-30">
           <div class="coming-match-team">

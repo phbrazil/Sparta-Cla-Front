@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { PageComponent } from './home/page.component';
 import { SharedModule } from '../shared/shared.module';
@@ -31,7 +32,8 @@ import { TableResultComponent } from './table-result/table-result.component';
     SharedModule,
     AccordionModule.forRoot(),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    InfiniteScrollModule
   ],
   exports: [
     PageComponent,
