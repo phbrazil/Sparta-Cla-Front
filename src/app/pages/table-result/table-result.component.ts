@@ -20,7 +20,6 @@ export class TableResultComponent implements OnInit {
   getPontuacao() {
     this.pontuacao.getTable().subscribe(res => {
       this.tables = res;
-      console.log(res);
     }, err => {
       console.log(err);
     })

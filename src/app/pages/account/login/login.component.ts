@@ -20,8 +20,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.formLogin = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      senha: ['', [Validators.required, Validators.minLength(8)]]
+      emailLogin: ['', [Validators.required, Validators.email]],
+      senhaLogin: ['', [Validators.required, Validators.minLength(8)]]
     })
   }
 
@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
 
     this.isLoading = true;
 
-    this.accountService.login(formLogin.value.email, formLogin.value.senha).subscribe(resposta => {
+    this.accountService.login(formLogin.value.emailLogin, formLogin.value.senhaLogin).subscribe(resposta => {
 
       this.isLoading = false;
 
