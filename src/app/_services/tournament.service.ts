@@ -13,8 +13,8 @@ export class TournamentService {
     'Content-Type': 'application/json',
   });
 
-  readonly baseUrl: string = 'http://localhost:3000/game'
-  //readonly baseUrl: string = 'https://sparta-clan.herokuapp.com/tournaments/getAll'
+  //readonly baseUrl: string = 'http://localhost:3000/game'
+  readonly baseUrl: string = 'https://sparta-clan.herokuapp.com/tournaments/getAll'
   //readonly baseUrl: string = 'http://localhost:8080/tournaments/getAll'
 
   constructor(private http: HttpClient) { }
