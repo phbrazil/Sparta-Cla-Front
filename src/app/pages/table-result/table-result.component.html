@@ -5,18 +5,19 @@
       <table class="table">
         <thead class="thead-dark">
           <tr>
-            <th scope="col">#</th>
-            <th scope="col">Time</th>
-            <th scope="col">Partidas</th>
-            <th scope="col">Kills</th>
-            <th scope="col">Colocação</th>
-            <th scope="col">Pontuação</th>
+            <th scope="col"># Time</th>
+            <th scope="col">Divisao</th>
+            <th scope="col">Total de<br> jogos</th>
+            <th scope="col">Melhores 2<br> vitórias</th>
+            <th scope="col">Melhores 2<br> Kills</th>
+            <th scope="col">Ponto por<br> colocação</th>
+            <th scope="col">Total de<br> Pontos</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let table of tables">
-            <td>{{ table.Classification }}</td>
-            <th scope="row">{{ table.team }}</th>
+            <td>{{ table.Classification }} {{ table.team }}</td>
+            <th scope="row"></th>
             <td>{{ table.match }}</td>
             <td>{{ table.kills }}</td>
             <td>{{ table.position }}</td>
