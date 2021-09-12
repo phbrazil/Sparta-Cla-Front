@@ -69,7 +69,8 @@ export class ActivisionService {
         "email": email,
         "password": password,
         "gamerTag": gamerTag,
-        "platform": platform
+        "platform": platform,
+        "SSOToken": "MTAwNTU1MTE2MzI1ODIxMjE0MDg6MTYzMjYxMzA4NzYwMTphNjJiMDAxZGE2YjYyNjY2MzVhNTJjZDk0ZDJlMzYzYg"
       }
 
       const headers = new HttpHeaders()
