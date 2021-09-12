@@ -9,7 +9,10 @@
       </div>
       <div *ngIf="isLoading" class="d-flex justify-content-center">
         <div class="spinner-grow text-warning" role="status" style="width: 5rem; height: 5rem;">
-          <span class="sr-only">Carregando...</span>
+        </div>
+        <div class="ml-4">
+          <span class="text-warning">Favor aguarde... <br>nossos servidores estão iniciando,<br> ainda há homens
+            trabalhando...</span>
         </div>
       </div>
       <div *ngIf="!isLoading && !hasErrors" class="row">
@@ -40,11 +43,11 @@
               <p class="card-text">Mortes no Gulag <span
                   class="text-yellow">{{recentMatches.summary.all.gulagDeaths}}</span></p>
               <p class="card-text">HeadShots <span class="text-yellow">{{recentMatches.summary.all.headshots}}</span>
-              <p class="card-text">Kills TRIO <span
+              <!--p class="card-text">Kills TRIO <span
                   class="text-yellow">{{recentMatches.summary.br_brbbtrio.kills}}</span>
               <p class="card-text">Kills DUO <span
                   class="text-yellow">{{recentMatches.summary.br_brbbduo.kills}}</span>
-              </p>
+              </p-->
             </div>
           </div>
         </div>

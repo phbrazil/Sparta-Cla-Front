@@ -10,7 +10,10 @@
     </div>
     <div *ngIf="isLoading" class="d-flex justify-content-center">
       <div class="spinner-grow text-warning" role="status" style="width: 5rem; height: 5rem;">
-        <span class="sr-only">Carregando...</span>
+      </div>
+      <div class="ml-4">
+        <span class="text-warning">Favor aguarde... <br>nossos servidores estão iniciando,<br> ainda há homens
+          trabalhando...</span>
       </div>
     </div>
     <div class="row" infiniteScroll (scrolled)="onScroll()" *ngIf="tournament.length; else semJogos">
@@ -53,7 +56,6 @@
   </div>
 </section>
 
-
 <ng-template #semJogos>
   <div class="row justify-content-center">
     <div class="col-xl-6 col-lg-8">
@@ -64,3 +66,4 @@
     </div>
   </div>
 </ng-template>
+

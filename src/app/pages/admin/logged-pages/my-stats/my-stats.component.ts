@@ -48,7 +48,7 @@ export class MyStatsComponent implements OnInit {
     const password = 'mortadela1';
 
     //this.activisionService.getWarzoneInfoRapidAPI(wzProfile, platform, this.user.token).subscribe(res => {
-    this.activisionService.getWarzoneInfoCloudFunction(email, password, wzProfile, platform ).subscribe(res => {
+    this.activisionService.getWarzoneInfoCloudFunction(email, password, wzProfile, platform).subscribe(res => {
 
       let json = JSON.stringify(res)
 
@@ -57,7 +57,13 @@ export class MyStatsComponent implements OnInit {
         this.hasErrors = true
         this.isLoading = false;
 
-      } else {
+      } else {  
+
+        var SSOToken = res.SSOToken.replaceAll('=', ':').replaceAll(';', ':');
+
+        SSOToken = SSOToken.split(":"); 
+
+        console.log(SSOToken[7].trim())
 
         //SE API FOR CLOUD FUNCTION
         this.stats = res.response;
@@ -66,7 +72,7 @@ export class MyStatsComponent implements OnInit {
         //this.stats = res;
 
         this.KD = Math.round(this.stats.br.kdRatio * 100) / 100;
-        this.KDRecent = Math.round(this.recentMatches.summary.all.kdRatio *100) /100;
+        this.KDRecent = Math.round(this.recentMatches.summary.all.kdRatio * 100) / 100;
 
         this.isLoading = false;
 
