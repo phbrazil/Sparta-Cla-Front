@@ -180,10 +180,11 @@ export class AccountService {
         this.router.navigate(['/']);
     }
 
-    register(user: User) {
-        //return this.http.post('http://localhost:8080/sparta/api/auth/signup', user);
+    register(body) {
 
-        return this.http.post('https://spartaclan.herokuapp.com/sparta/api/auth/signup', user);
+        //return this.http.post<any>('http://localhost:8080/spartaclan/createAccount', body);
+
+        return this.http.post<any>('https://sparta-clan.herokuapp.com/spartaclan/createAccount', body);
 
 
     }

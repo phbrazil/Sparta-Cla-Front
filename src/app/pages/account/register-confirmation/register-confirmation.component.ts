@@ -16,12 +16,9 @@ export class RegisterConfirmationComponent implements OnInit {
     this.formRegisterConfirmation = this.fb.group({
       usuario: ['', [Validators.required, Validators.email]],
       nome: ['', [Validators.required]],
-      sobrenome: ['', [Validators.required ]],
       pais: ['', [Validators.required]],
       estado: ['', [Validators.required]],
-
       idPlataforma: ['', [Validators.required]]
-
     })
   }
   enviar() {

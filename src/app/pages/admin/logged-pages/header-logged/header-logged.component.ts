@@ -12,11 +12,10 @@ export class HeaderLoggedComponent implements OnInit {
 
   ngOnInit(): void {
 
-    console.log('to logado')
   }
 
   logout(){
-      
+
     this.accountService.logout();
 }
 
