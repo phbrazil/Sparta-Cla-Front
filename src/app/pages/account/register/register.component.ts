@@ -39,9 +39,6 @@ export class RegisterComponent implements OnInit {
 
       }
 
-
-      console.log(resposta)
-
       this.isRegistering = false;
 
 
@@ -49,7 +46,16 @@ export class RegisterComponent implements OnInit {
 
       this.isRegistering = false;
 
-      console.log(err)
+
+      if(err.error.message== 'Email já em uso'){
+
+        this.alertService.error('Esse email já está em uso, tente redefinir sua senha ou verificar sua caixa de emails', { keepAfterRouteChange: true });
+
+      }else{
+
+        this.alertService.error('Ocorreu um erro, tente novamente mais tarde', { keepAfterRouteChange: true });
+
+      }
     })
   }
 
