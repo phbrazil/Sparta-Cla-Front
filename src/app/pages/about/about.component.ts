@@ -12,4 +12,8 @@ export class AboutComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  doe() {
+    window.open("http://vaka.me/2351962", "_blank");
+  }
+
 }
