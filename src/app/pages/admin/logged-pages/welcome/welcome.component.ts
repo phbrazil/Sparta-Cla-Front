@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from 'src/app/_models/user';
 
 @Component({
@@ -12,7 +13,7 @@ export class WelcomeComponent implements OnInit {
 
   firstName = "";
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
 
@@ -25,6 +26,14 @@ export class WelcomeComponent implements OnInit {
         this.firstName += fullName[i];
       }
     }
+
+    //finalizar cadastro
+    if(this.user.pendingRegistration){
+
+      this.router.navigate(['/confirm-registration']);
+
+    }
+
 
   }
 

@@ -5,15 +5,13 @@ import { RouterModule } from '@angular/router';
 
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { RegisterConfirmationComponent } from './register-confirmation/register-confirmation.component';
 
 
 
 @NgModule({
   declarations: [
     LoginComponent,
-    RegisterComponent,
-    RegisterConfirmationComponent
+    RegisterComponent
   ],
   imports: [
     CommonModule,
@@ -23,8 +21,7 @@ import { RegisterConfirmationComponent } from './register-confirmation/register-
   ],
   exports: [
     LoginComponent,
-    RegisterComponent,
-    RegisterConfirmationComponent
+    RegisterComponent
   ]
 })
 export class AccountModule { }
