@@ -3,7 +3,7 @@
     <form class="mt-4 mb-4 pt-3 pb-3 col-8" [formGroup]="formRegisterConfirmation" (ngSubmit)="enviar()">
       <h2 class="mb-2 text-center">Complete seu  <span class="text-yellow">perfil</span></h2>
       <p class="text-center mb-5">Seu email foi verificado! Precisamos saber mais alguns detalhes sobre você antes que você possa se registrar para um torneio</p>
-      <h4>Minha informação</h4>
+      <h4>Minhas informações</h4>
       <div class="form-group">
         <label for="usuario">Nome de usuario*</label>
         <div class="input-group">
@@ -22,7 +22,7 @@
         </div>
       </div>
       <div class="form-group">
-        <label for="nome">Nome*</label>
+        <label for="nome">Nome Completo*</label>
         <input type="text" class="form-control" id="nome" aria-describedby="nome" formControlName="nome" name="nome">
         <ng-container *ngIf="formRegisterConfirmation.controls.nome.touched">
           <span *ngIf="formRegisterConfirmation.controls.nome.errors?.required">
@@ -34,24 +34,12 @@
       </ng-container>
       </div>
       <div class="form-group">
-        <label for="Sobrenome">Sobrenome*</label>
-        <input type="text" class="form-control" id="Sobrenome" aria-describedby="Sobrenome" formControlName="Sobrenome" name="Sobrenome">
-        <ng-container *ngIf="formRegisterConfirmation.controls.Sobrenome.touched">
-          <span *ngIf="formRegisterConfirmation.controls.Sobrenome.errors?.required">
-              Campo obrigatório
-          </span>
-          <span *ngIf="formRegisterConfirmation.controls.Sobrenome.errors?.Sobrenome">
-           Nome inválido
-        </span>
-      </ng-container>
-      </div>
-      <div class="form-group">
         <label for="pais">País*</label>
         <select class="form-control" id="pais" name="pais">
           <option value=""></option>
           <option value="Argentina">Argentina</option>
           <option value="Bolívia">Bolívia</option>
-          <option value="Brasil">Brasil</option>
+          <option value="Brasil" selected>Brasil</option>
           <option value="Chile">Chile</option>
           <option value="Colômbia">Colômbia</option>
           <option value="Equador">Equador</option>

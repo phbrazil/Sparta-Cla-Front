@@ -5,11 +5,14 @@ export class User{
     email: string
     wzProfile: string
     platform: string
-    rua: string
-    numero: string
-    bairro: string
-    cidade: string
+    nascimento: string
+    //rua: string
+    //numero: string
+    //bairro: string
+    pais: string
     estado: string
+    pendingRegistration: boolean
+    message: string
 
 
 
