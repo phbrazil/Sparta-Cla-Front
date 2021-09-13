@@ -14,11 +14,13 @@ export class RegisterConfirmationComponent implements OnInit {
 
   ngOnInit(): void {
     this.formRegisterConfirmation = this.fb.group({
-      usuario: ['', [Validators.required, Validators.email]],
+      username: ['', [Validators.required]],
       nome: ['', [Validators.required]],
       pais: ['', [Validators.required]],
       estado: ['', [Validators.required]],
-      idPlataforma: ['', [Validators.required]]
+      wzProfile: ['', [Validators.required]],
+      platform: ['', [Validators.required]],
+      nascimento: ['', [Validators.required]]
     })
   }
   enviar() {

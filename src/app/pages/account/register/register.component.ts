@@ -31,6 +31,8 @@ export class RegisterComponent implements OnInit {
 
       if(resposta.message == 'Usuário criado com sucesso'){
 
+        this.formRegister.reset();
+
         this.alertService.success('Usuário criado, verifique seu email para completar o cadastro', { keepAfterRouteChange: true });
 
       }else{

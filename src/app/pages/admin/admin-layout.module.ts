@@ -7,6 +7,8 @@ import { ProfileComponent } from './logged-pages/profile/profile.component';
 import { RouterModule } from '@angular/router';
 import { AdminLayoutRoutes } from './admin-layout.routing';
 import { MyStatsComponent } from './logged-pages/my-stats/my-stats.component';
+import { RegisterConfirmationComponent } from './logged-pages/register-confirmation/register-confirmation.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -14,16 +16,20 @@ import { MyStatsComponent } from './logged-pages/my-stats/my-stats.component';
     WelcomeComponent,
     HeaderLoggedComponent,
     ProfileComponent,
-    MyStatsComponent  ],
+    MyStatsComponent,
+    RegisterConfirmationComponent],
   imports: [
     CommonModule,
     HomeModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forChild(AdminLayoutRoutes),
 
-  ],exports: [
+  ], exports: [
     WelcomeComponent,
     HeaderLoggedComponent,
     ProfileComponent,
-    MyStatsComponent  ],
+    MyStatsComponent,
+    RegisterConfirmationComponent],
 })
 export class AdminLayoutModule { }
