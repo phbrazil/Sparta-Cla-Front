@@ -21,8 +21,6 @@ export class AppComponent {
 
   ngOnInit(): void{
 
-    console.log(this.user)
-
     //se logado direciona para a pagina inicial welcome
     if(this.user){
       this.router.navigate(['/welcome']);

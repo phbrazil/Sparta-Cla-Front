@@ -14,6 +14,8 @@ export class LoginComponent implements OnInit {
 
   isLoading = false;
 
+  user;
+
   constructor(private fb: FormBuilder,
     private alertService: AlertService, private router: Router,
     private accountService: AccountService) { }
@@ -56,7 +58,14 @@ export class LoginComponent implements OnInit {
       $('body').removeClass('modal-open');
       $('.modal-backdrop').remove();
 
-      this.router.navigate(['/welcome']);
+      this.user = JSON.parse(localStorage.getItem('user'));
+
+      if(!this.user.pendingEmailConfirmation){
+        this.router.navigate(['/welcome']);
+      }else{
+        this.accountService.logout();
+        this.alertService.info("Sua conta foi criada mas você ainda não confirmou seu email cadastrado. Verifique sua caixa de emails ou clique <a href='/resendEmailConfirmation'>aqui</a> para reenviar.", { keepAfterRouteChange: true })
+      }
 
     }, err => {
 
