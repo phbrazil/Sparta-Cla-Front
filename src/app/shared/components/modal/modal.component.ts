@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services';
 
@@ -11,7 +11,7 @@ import { AccountService } from 'src/app/_services';
 })
 export class ModalComponent implements OnInit {
 
-  title: string = "Login";
+  @Input() title: string;
 
   user: User;
 

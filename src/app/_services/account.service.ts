@@ -200,7 +200,6 @@ export class AccountService {
                 .set('Authorization', `Bearer ${token}`)
         }
 
-
         const url = `http://localhost:8080/account/api/auth/user/${id}`;
 
         //const url = `https://spartaclan.herokuapp.com/account/api/auth/user/${id}`
