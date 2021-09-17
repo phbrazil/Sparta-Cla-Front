@@ -15,6 +15,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RegisterConfirmationComponent } from './pages/admin/logged-pages/register-confirmation/register-confirmation.component';
 import { TableResultComponent } from './pages/table-result/table-result.component';
 import { RegisterComponent } from './pages/account/register/register.component';
+import { ConfirmEmailComponent } from './pages/account/confirm-email/confirm-email.component';
 
 const adminModule = () => import('./pages/admin/admin-layout.module').then(x => x.AdminLayoutModule);
 
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: 'termos-de-uso', component: TermsComponent },
   { path: 'resultado-partida', component: TableResultComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'confirm', component: ConfirmEmailComponent },
   {
     path: '',
     component: LoggedPagesComponent,
