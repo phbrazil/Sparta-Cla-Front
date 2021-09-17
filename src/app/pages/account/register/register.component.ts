@@ -33,7 +33,7 @@ export class RegisterComponent implements OnInit {
 
         this.formRegister.reset();
 
-        this.alertService.success('Usuário criado, verifique seu email para completar o cadastro', { keepAfterRouteChange: true });
+        this.alertService.success('Estamos quase lá!!! Verifique seu email para completar o cadastro', { keepAfterRouteChange: true });
 
       }else{
 
