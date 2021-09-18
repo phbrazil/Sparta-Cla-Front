@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AccountService, AlertService } from 'src/app/_services';
 
 @Component({
   selector: 'app-confirm-email',
@@ -8,14 +9,47 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ConfirmEmailComponent implements OnInit {
 
-  constructor(private activateRoute: ActivatedRoute) { }
+  validationCode: string;
+  isLoading =false;
+
+  constructor(private activateRoute: ActivatedRoute,
+    private accountService: AccountService,
+    private alertService: AlertService,
+    private router: Router) { }
 
   ngOnInit(): void {
 
     this.activateRoute.queryParams.subscribe(params => {
-      let validationCode = params['key'];
-      console.log(validationCode);
+      this.validationCode = params['key'];
     });
+  }
+
+  confirm() {
+
+    this.isLoading = true;
+
+    this.accountService.confirmEmail(this.validationCode).subscribe(status => {
+
+      if (status == true) {
+
+        this.isLoading = false;
+
+        this.alertService.success("Obrigado! Efetue o acesso à sua conta e complete seu cadastro", { keepAfterRouteChange: true })
+
+        this.router.navigate(['/']);
+
+      }else{
+        this.isLoading = false;
+
+        this.alertService.error(`Ocorreu um erro, tente novamente mais tarde, status: ${status}`)
+      }
+
+    }, err=>{
+      this.isLoading = false;
+
+      this.alertService.error(`Ocorreu um erro, tente novamente mais tarde, status: ${err}`)
+    });
+
   }
 
 }

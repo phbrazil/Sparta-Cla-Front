@@ -2,7 +2,9 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-9 text-center mt-4 mb-4">
-        <button class="btn-custom" title="Confirmar">Confirmar Cadastro</button>
+        <button (click)="confirm()" [disabled]="isLoading" class="btn-custom" title="Confirmar">
+          <span *ngIf="isLoading" class="spinner-border spinner-border-sm mr-1"></span>
+          Confirmar Cadastro</button>
       </div>
     </div>
   </div>
