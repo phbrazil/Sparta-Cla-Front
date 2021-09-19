@@ -22,7 +22,7 @@ export class TournamentComponent implements OnInit {
   }
 
   onScroll() {
-    this.findAllTournament();
+    //this.findAllTournament();
     console.log('scrolled!!');
   }
 

@@ -40,4 +40,8 @@ export class RegisterConfirmationComponent implements OnInit {
 
   }
 
+  choosePlatform(event){
+    console.log(event);
+  }
+
 }

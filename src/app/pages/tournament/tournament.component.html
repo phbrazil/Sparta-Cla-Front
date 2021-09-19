@@ -16,7 +16,7 @@
           trabalhando...</span>
       </div>
     </div>
-    <div class="row" infiniteScroll (scrolled)="onScroll()" *ngIf="tournament.length; else semJogos">
+    <div class="row" infiniteScroll (scrolled)="onScroll()" *ngIf="tournament.length > 0 && !isLoading">
       <div class="col-lg-4 col-md-6 mt-5 mb-2" *ngFor="let torneio of tournament" >
         <div class="coming-match-item mb-30">
           <div class="coming-match-team">
@@ -56,12 +56,12 @@
   </div>
 </section>
 
-<ng-template #semJogos>
-  <div class="row justify-content-center">
+<ng-template>
+  <div *ngIf="!isLoading && tournament.length == 0" class="row justify-content-center">
     <div class="col-xl-6 col-lg-8">
       <div class="section-title title-style-three text-center mb-70">
         <h2>Não possuí  <span class="text-yellow">Jogos</span></h2>
-        <p>No momento  nao temos campeonatos disponiveis</p>
+        <p>No momento não temos campeonatos disponíveis</p>
       </div>
     </div>
   </div>

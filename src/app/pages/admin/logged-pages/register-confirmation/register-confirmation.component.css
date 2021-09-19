@@ -1,0 +1,14 @@
+.center {
+  display: flex;
+  align-items: first baseline;
+  justify-content: center;
+  text-align: center;
+  padding: 20px 25px 20px;
+}
+
+.choosePlatform:hover {
+  position: relative;
+  transform: translateY(-5%);
+  transition: all 0.7s ease 0s;
+  box-shadow: 0px 5px 12.09px 0.91px rgb(0 0 0 / 90%);
+}
