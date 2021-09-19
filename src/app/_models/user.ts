@@ -10,6 +10,7 @@ export class User {
   pais: string
   estado: string
   pendingRegistration: boolean
+  pendingEmailConfirmation: boolean
   message: string
 
 

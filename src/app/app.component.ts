@@ -12,22 +12,21 @@ import { AccountService } from './_services';
 export class AppComponent {
 
   user: User;
+  validationCode: string;
 
-  constructor(private accountService: AccountService, private router: Router){
+  constructor(private accountService: AccountService, private router: Router) {
     this.accountService.user.subscribe(x => this.user = x);
   }
 
   title = 'Sparta Clan';
 
-  ngOnInit(): void{
-
-    console.log(this.user)
+  ngOnInit(): void {
 
     //se logado direciona para a pagina inicial welcome
-    if(this.user){
+    if (this.user) {
+
       this.router.navigate(['/welcome']);
-    }else{
-      this.accountService.logout();
+
     }
 
   }

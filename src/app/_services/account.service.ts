@@ -186,8 +186,16 @@ export class AccountService {
 
         return this.http.post<any>('https://sparta-clan.herokuapp.com/spartaclan/createAccount', body);
 
-
     }
+
+    confirmEmail(validationCode: string) {
+
+      //return this.http.post<any>('http://localhost:8080/spartaclan/confirmEmail', body);
+
+      return this.http.post<any>(`https://sparta-clan.herokuapp.com/spartaclan/confirmEmail/${validationCode}`, {});
+
+
+  }
 
 
 
@@ -199,7 +207,6 @@ export class AccountService {
             headers: new HttpHeaders()
                 .set('Authorization', `Bearer ${token}`)
         }
-
 
         const url = `http://localhost:8080/account/api/auth/user/${id}`;
 

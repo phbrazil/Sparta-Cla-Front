@@ -28,7 +28,7 @@ export class WelcomeComponent implements OnInit {
     }
 
     //finalizar cadastro
-    if(this.user.pendingRegistration){
+    if(this.user.pendingRegistration && !this.user.pendingEmailConfirmation){
 
       this.router.navigate(['/confirm-registration']);
 
