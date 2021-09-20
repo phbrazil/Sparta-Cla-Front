@@ -29,7 +29,9 @@ export class RegisterComponent implements OnInit {
 
     this.accountService.register(this.formRegister.value).subscribe(resposta => {
 
-      if(resposta.message == 'Usuário criado com sucesso'){
+      console.log(resposta)
+
+      if(resposta.message.code == 200){
 
         this.formRegister.reset();
 
