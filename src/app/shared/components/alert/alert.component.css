@@ -1,5 +1,6 @@
 .alert {
-  background: #fff!important
+  background: #fff!important;
+  color: inherit!important;
 }
 
 .toast-header {

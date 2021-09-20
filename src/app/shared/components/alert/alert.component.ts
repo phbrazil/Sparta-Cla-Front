@@ -14,6 +14,8 @@ export class AlertComponent implements OnInit, OnDestroy {
     alertSubscription: Subscription;
     routeSubscription: Subscription;
 
+    private message: string;
+
     constructor(private router: Router, private alertService: AlertService) { }
 
     ngOnInit() {
@@ -32,6 +34,7 @@ export class AlertComponent implements OnInit, OnDestroy {
 
                 // add alert to array
                 this.alerts.push(alert);
+                this.message = alert.message.substring(0,20);
 
                 // auto close alert if required
                 if (alert.autoClose) {
@@ -76,7 +79,7 @@ export class AlertComponent implements OnInit, OnDestroy {
         if (!alert) return;
 
         const classes = ['alert', 'alert-dismissable', 'mt-4', 'container'];
-                
+
         const alertTypeClass = {
             [AlertType.Success]: 'alert alert-success',
             [AlertType.Error]: 'alert alert-danger',
