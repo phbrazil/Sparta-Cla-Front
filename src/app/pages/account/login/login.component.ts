@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
   enviar() {
     if (this.formLogin.invalid) {
 
-      this.alertService.error('Dados incorretos', { keepAfterRouteChange: true });
+      this.alertService.error('Dados incorretos', 'tente novamente', { keepAfterRouteChange: true });
 
     } else {
 
@@ -65,7 +65,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/welcome']);
       }else{
         this.accountService.logout();
-        this.alertService.info("Sua conta foi criada mas você ainda não confirmou seu email cadastrado. Verifique sua caixa de emails ou clique <a href='/resendEmailConfirmation'>aqui</a> para reenviar.", { keepAfterRouteChange: true })
+        this.alertService.info("Sua conta foi criada mas você ainda não confirmou seu email cadastrado.", "Verifique sua caixa de emails ou clique <a href='/resendEmailConfirmation'>aqui</a> para reenviar.", { keepAfterRouteChange: true })
       }
 
     }, err => {
@@ -74,11 +74,11 @@ export class LoginComponent implements OnInit {
 
       if (err.status === 401) {
 
-        this.alertService.error('Acesso Negado', { keepAfterRouteChange: true });
+        this.alertService.error('Acesso Negado', 'tente novamente', { keepAfterRouteChange: true });
 
       } else {
 
-        this.alertService.error('Erro ' + err.status, { keepAfterRouteChange: true });
+        this.alertService.error('Erro ' + err.status, 'tente novamente', { keepAfterRouteChange: true });
 
       }
 

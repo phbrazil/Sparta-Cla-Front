@@ -34,20 +34,20 @@ export class ConfirmEmailComponent implements OnInit {
 
         this.isLoading = false;
 
-        this.alertService.success("Obrigado! Efetue o acesso à sua conta e complete seu cadastro", { keepAfterRouteChange: true })
+        this.alertService.success("Obrigado!", "Efetue o acesso à sua conta e complete seu cadastro", { keepAfterRouteChange: true })
 
         this.router.navigate(['/']);
 
       }else{
         this.isLoading = false;
 
-        this.alertService.error(`Ocorreu um erro, tente novamente mais tarde, status: ${status}`)
+        this.alertService.error("Ocorreu um erro! ", `tente novamente mais tarde, status: ${status}`);
       }
 
     }, err=>{
       this.isLoading = false;
 
-      this.alertService.error(`Ocorreu um erro, tente novamente mais tarde, status: ${err}`)
+      this.alertService.error("Ocorreu um erro! ", `tente novamente mais tarde, status: ${err}`);
     });
 
   }

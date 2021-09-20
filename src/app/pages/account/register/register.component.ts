@@ -18,9 +18,9 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.formRegister = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      nome: ['', [Validators.required]],
-      password: ['', [Validators.required, Validators.minLength(8)]]
+      emailRegister: ['', [Validators.required, Validators.email]],
+      nomeRegister: ['', [Validators.required]],
+      passwordRegister: ['', [Validators.required, Validators.minLength(8)]]
     })
   }
   enviar() {
@@ -35,11 +35,11 @@ export class RegisterComponent implements OnInit {
 
         this.formRegister.reset();
 
-        this.alertService.success('Estamos quase lá!!! Verifique seu email para completar o cadastro', { keepAfterRouteChange: true });
+        this.alertService.success(resposta.message.text, resposta.message.subText, { keepAfterRouteChange: true });
 
       }else{
 
-        this.alertService.error('Ocorreu um erro, tente novamente mais tarde', { keepAfterRouteChange: true });
+        this.alertService.error(resposta.message.text, resposta.message.subText, { keepAfterRouteChange: true });
 
       }
 
@@ -53,11 +53,11 @@ export class RegisterComponent implements OnInit {
 
       if(err.error.message== 'Email já em uso'){
 
-        this.alertService.error('Esse email já está em uso, tente redefinir sua senha ou verificar sua caixa de emails', { keepAfterRouteChange: true });
+        this.alertService.error('Esse email já está em uso, ', "tente redefinir sua senha ou verificar sua caixa de emails", { keepAfterRouteChange: true });
 
       }else{
-
-        this.alertService.error('Ocorreu um erro, tente novamente mais tarde', { keepAfterRouteChange: true });
+        console.log(err.error, "mensagem de erro");
+        this.alertService.error(err.error.message.text, err.error.message.subText, { keepAfterRouteChange: true });
 
       }
     })

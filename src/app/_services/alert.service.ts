@@ -15,23 +15,23 @@ export class AlertService {
     }
 
     // convenience methods
-    success(message: string, options?: any) {
-        this.alert(new Alert({ ...options, type: AlertType.Success, message }));
+    success(message: string, subText: string, options?: any) {
+        this.alert(new Alert({ ...options, type: AlertType.Success, message , subText}));
     }
 
-    error(message: string, options?: any) {
-        this.alert(new Alert({ ...options, type: AlertType.Error, message }));
+    error(message: string, subText: string, options?: any) {
+        this.alert(new Alert({ ...options, type: AlertType.Error, message, subText }));
     }
 
-    info(message: string, options?: any) {
+    info(message: string, subText: string, options?: any) {
         this.alert(new Alert({ ...options, type: AlertType.Info, message }));
     }
 
-    warn(message: string, options?: any) {
+    warn(message: string, subText: string, options?: any) {
         this.alert(new Alert({ ...options, type: AlertType.Warning, message }));
     }
 
-    // main alert method    
+    // main alert method
     alert(alert: Alert) {
         alert.id = alert.id || this.defaultId;
         this.subject.next(alert);

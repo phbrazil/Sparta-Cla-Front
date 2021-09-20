@@ -144,7 +144,7 @@ export class AccountService {
                         return dados;
                     }));
             } else {
-                this.alertService.error('Cep inválido', { keepAfterRouteChange: true });
+                this.alertService.error('Cep inválido', 'tente novamente',  { keepAfterRouteChange: true });
 
             }
         }

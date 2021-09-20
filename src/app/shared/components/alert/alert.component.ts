@@ -14,7 +14,8 @@ export class AlertComponent implements OnInit, OnDestroy {
     alertSubscription: Subscription;
     routeSubscription: Subscription;
 
-    private message: string;
+    private title: string;
+    private description: string;
 
     constructor(private router: Router, private alertService: AlertService) { }
 
@@ -34,7 +35,8 @@ export class AlertComponent implements OnInit, OnDestroy {
 
                 // add alert to array
                 this.alerts.push(alert);
-                this.message = alert.message.substring(0,20);
+                this.title = alert.message.substring(0);
+                this.description = alert.subText;
 
                 // auto close alert if required
                 if (alert.autoClose) {
