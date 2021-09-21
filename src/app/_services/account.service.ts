@@ -182,11 +182,9 @@ export class AccountService {
 
     register(body) {
 
-      console.log(body)
+        //return this.http.post<any>('http://localhost:8080/spartaclan/createAccount', body);
 
-        return this.http.post<any>('http://localhost:8080/spartaclan/createAccount', body);
-
-        //return this.http.post<any>('https://sparta-clan.herokuapp.com/spartaclan/createAccount', body);
+        return this.http.post<any>('https://sparta-clan.herokuapp.com/spartaclan/createAccount', body);
 
     }
 

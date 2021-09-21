@@ -61,7 +61,6 @@ export class LoginComponent implements OnInit {
       this.user = JSON.parse(localStorage.getItem('user'));
 
       if(!this.user.pendingEmailConfirmation){
-        console.log(this.user)
         this.router.navigate(['/welcome']);
       }else{
         this.accountService.logout();
