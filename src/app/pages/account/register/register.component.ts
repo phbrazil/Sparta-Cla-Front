@@ -18,9 +18,9 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.formRegister = this.fb.group({
-      emailRegister: ['', [Validators.required, Validators.email]],
-      nomeRegister: ['', [Validators.required]],
-      passwordRegister: ['', [Validators.required, Validators.minLength(8)]]
+      email: ['', [Validators.required, Validators.email]],
+      nome: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(8)]]
     })
   }
   enviar() {
@@ -28,8 +28,6 @@ export class RegisterComponent implements OnInit {
     this.isRegistering = true;
 
     this.accountService.register(this.formRegister.value).subscribe(resposta => {
-
-      console.log(resposta)
 
       if(resposta.message.code == 200){
 
@@ -50,16 +48,9 @@ export class RegisterComponent implements OnInit {
 
       this.isRegistering = false;
 
+      this.alertService.error(err.message, err.message, { keepAfterRouteChange: true })
 
-      if(err.error.message== 'Email já em uso'){
 
-        this.alertService.error('Esse email já está em uso, ', "tente redefinir sua senha ou verificar sua caixa de emails", { keepAfterRouteChange: true });
-
-      }else{
-        console.log(err.error, "mensagem de erro");
-        this.alertService.error(err.error.message.text, err.error.message.subText, { keepAfterRouteChange: true });
-
-      }
     })
   }
 
