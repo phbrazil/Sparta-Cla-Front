@@ -196,7 +196,7 @@ export class AccountService {
 
       //return this.http.put<any>('http://localhost:8080/spartaclan/completeAccount', body, {headers});
 
-      return this.http.put<any>('https://sparta-clan.herokuapp.com/spartaclan/completeAccount', body);
+      return this.http.put<any>('https://sparta-clan.herokuapp.com/spartaclan/completeAccount', body, {headers});
 
   }
 
