@@ -43,11 +43,13 @@ export class RegisterConfirmationComponent implements OnInit {
 
     this.isLoading = true;
 
-    this.accountService.completeRegister(this.formRegisterConfirmation.value).subscribe(resposta =>{
+    this.accountService.completeRegister(this.formRegisterConfirmation.value).subscribe(user =>{
 
-      localStorage.setItem('user', JSON.stringify(resposta));
+      this.accountService.setUser(user);
 
-      this.alertService.success(resposta.message.text, resposta.message.subText, { keepAfterRouteChange: true });
+      localStorage.setItem('user', JSON.stringify(user));
+
+      this.alertService.success(user.message.text, user.message.subText, { keepAfterRouteChange: true });
 
       this.isLoading = false;
 

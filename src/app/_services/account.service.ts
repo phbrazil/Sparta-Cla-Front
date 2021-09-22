@@ -26,6 +26,12 @@ export class AccountService {
         return this.userSubject.value;
     }
 
+    public setUser(user: User){
+
+      this.userSubject.next(user);
+
+    }
+
     private handleError<T>(operation = 'operation', result?: T) {
         return (error: any): Observable<T> => {
 
