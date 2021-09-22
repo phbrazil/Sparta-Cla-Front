@@ -188,6 +188,18 @@ export class AccountService {
 
     }
 
+    completeRegister(body) {
+
+      const token = localStorage.getItem('token');
+
+      const headers = { 'Authorization': `Bearer ${token}`}
+
+      //return this.http.put<any>('http://localhost:8080/spartaclan/completeAccount', body, {headers});
+
+      return this.http.put<any>('https://sparta-clan.herokuapp.com/spartaclan/completeAccount', body);
+
+  }
+
     confirmEmail(validationCode: string) {
 
       //return this.http.post<any>('http://localhost:8080/spartaclan/confirmEmail', body);

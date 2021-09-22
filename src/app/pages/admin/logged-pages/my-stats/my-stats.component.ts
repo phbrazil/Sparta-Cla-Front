@@ -29,9 +29,6 @@ export class MyStatsComponent implements OnInit {
 
     this.accountService.user.subscribe(x => this.user = x);
 
-    this.user.wzProfile = 'paulo_9ember';
-    this.user.platform = 'psn'
-
   }
 
   ngOnInit(): void {
@@ -57,11 +54,11 @@ export class MyStatsComponent implements OnInit {
         this.hasErrors = true
         this.isLoading = false;
 
-      } else {  
+      } else {
 
         var SSOToken = res.SSOToken.replaceAll('=', ':').replaceAll(';', ':');
 
-        SSOToken = SSOToken.split(":"); 
+        SSOToken = SSOToken.split(":");
 
         console.log(SSOToken[7].trim())
 

@@ -11,23 +11,23 @@
           <div class="input-group-prepend">
             <span class="input-group-text">@</span>
           </div>
-          <input type="text" class="form-control" id="username" aria-describedby="username" name="username" required>
-          <ng-container *ngIf="formRegisterConfirmation.controls.username.touched">
-            <span *ngIf="formRegisterConfirmation.controls.username.errors?.required">
-              Campo obrigatório
+          <input type="text" class="form-control" id="username" aria-describedby="usuario" name="usuario" formControlName="usuario" required>
+          <ng-container *ngIf="formRegisterConfirmation.controls.usuario.touched">
+            <span class="text-danger" *ngIf="formRegisterConfirmation.controls.usuario.errors?.required">
+              Usuário obrigatório
             </span>
-            <span *ngIf="formRegisterConfirmation.controls.username.errors?.username">
+            <span *ngIf="formRegisterConfirmation.controls.usuario.errors?.usuario">
               Nome inválido
             </span>
           </ng-container>
         </div>
       </div>
       <div class="form-group">
-        <label for="nome">Nome Completo*</label>
-        <input type="text" class="form-control" id="nome" aria-describedby="nome" formControlName="nome" name="nome">
+        <label for="nome">Nome Completo</label>
+        <input readonly [(ngModel)]="user.nome" type="text" class="form-control" id="nome" aria-describedby="nome" formControlName="nome" name="nome">
         <ng-container *ngIf="formRegisterConfirmation.controls.nome.touched">
-          <span *ngIf="formRegisterConfirmation.controls.nome.errors?.required">
-            Campo obrigatório
+          <span class="text-danger" *ngIf="formRegisterConfirmation.controls.nome.errors?.required">
+            Nome obrigatório
           </span>
           <span *ngIf="formRegisterConfirmation.controls.nome.errors?.nome">
             Nome inválido
@@ -35,8 +35,20 @@
         </ng-container>
       </div>
       <div class="form-group">
+        <label for="nome">Email</label>
+        <input readonly [(ngModel)]="user.email" type="email" class="form-control" id="email" aria-describedby="email" formControlName="email" name="email">
+        <ng-container *ngIf="formRegisterConfirmation.controls.email.touched">
+          <span class="text-danger" *ngIf="formRegisterConfirmation.controls.email.errors?.required">
+            Email obrigatório
+          </span>
+          <span *ngIf="formRegisterConfirmation.controls.email.errors?.email">
+            Email inválido
+          </span>
+        </ng-container>
+      </div>
+      <div class="form-group">
         <label for="pais">País*</label>
-        <select class="form-control" id="pais" name="pais">
+        <select class="form-control" id="pais" name="pais" formControlName="pais">
           <option value=""></option>
           <option value="Argentina">Argentina</option>
           <option value="Bolívia">Bolívia</option>
@@ -52,7 +64,7 @@
           <option value="Venezuela">Venezuela</option>
         </select>
         <ng-container *ngIf="formRegisterConfirmation.controls.pais.touched">
-          <span *ngIf="formRegisterConfirmation.controls.pais.errors?.required">
+          <span class="text-danger" *ngIf="formRegisterConfirmation.controls.pais.errors?.required">
             Campo obrigatório
           </span>
         </ng-container>
@@ -61,7 +73,7 @@
         <label for="estado">Estado*</label>
         <input type="text" class="form-control" id="estado" formControlName="estado" name="estado">
         <ng-container *ngIf="formRegisterConfirmation.controls.estado.touched">
-          <span *ngIf="formRegisterConfirmation.controls.estado.errors?.required">
+          <span class="text-danger" *ngIf="formRegisterConfirmation.controls.estado.errors?.required">
             Campo obrigatório
           </span>
         </ng-container>
@@ -70,7 +82,7 @@
         <label for="data">Data de nascimento*</label>
         <input type="date" class="form-control" id="data" formControlName="nascimento" name="nascimento">
         <ng-container *ngIf="formRegisterConfirmation.controls.nascimento.touched">
-          <span *ngIf="formRegisterConfirmation.controls.nascimento.errors?.required">
+          <span class="text-danger" *ngIf="formRegisterConfirmation.controls.nascimento.errors?.required">
             Campo obrigatório
           </span>
         </ng-container>
@@ -81,7 +93,7 @@
         <div class="col-md-12">
           <div class="row mt-2">
             <div class="col-md-4" (click)="choosePlatform('psn')">
-              <div class="card choosePlatform mb-2">
+              <div class="card choosePlatform mb-2 {{platform === 'psn' ? 'bg-dark' : ''}} ">
                 <img src="/assets/images/psn.png" class="mt-2 ml-2 mr-2 center"
                   style="max-height: 170px; max-width: 170px;" alt="psn logo">
                 <div class="card-body center">
@@ -90,7 +102,7 @@
               </div>
             </div>
             <div class="col-md-4" (click)="choosePlatform('xbl')">
-              <div class="card choosePlatform mb-2">
+              <div class="card choosePlatform mb-2 {{platform === 'xbl' ? 'bg-dark' : ''}} ">
                 <img src="/assets/images/xbox.png" class="mt-2 ml-2 mr-2 center"
                   style="max-height: 160px; max-width: 160px;" alt="xbox logo">
                 <div class="card-body center">
@@ -99,7 +111,7 @@
               </div>
             </div>
             <div class="col-md-4" (click)="choosePlatform('battle')">
-              <div class="card choosePlatform mb-2">
+              <div class="card choosePlatform mb-2 {{platform === 'battle' ? 'bg-dark' : ''}} ">
                 <img src="/assets/images/battle.png" class="mt-2 ml-2 mr-2 center"
                   style="max-height: 160px; max-width: 160px;" alt="BattleNET logo">
                 <div class="card-body center">
@@ -115,7 +127,7 @@
         <input type="text" class="form-control" id="wzProfile" aria-describedby="idPlataforma"
           formControlName="wzProfile" name="wzProfile">
         <ng-container *ngIf="formRegisterConfirmation.controls.wzProfile.touched">
-          <span *ngIf="formRegisterConfirmation.controls.wzProfile.errors?.required">
+          <span class="text-danger" *ngIf="formRegisterConfirmation.controls.wzProfile.errors?.required">
             Campo obrigatório
           </span>
           <span *ngIf="formRegisterConfirmation.controls.wzProfile.errors?.nome">
@@ -124,6 +136,7 @@
         </ng-container>
       </div>
       <button type="submit" class="btn btn-custom mb-3" [disabled]="!formRegisterConfirmation.valid">
+        <span *ngIf="isLoading" class="spinner-border spinner-border-sm mr-1"></span>
         Finalizar</button><br>
     </form>
   </div>
