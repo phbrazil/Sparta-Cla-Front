@@ -291,11 +291,7 @@ export class AccountService {
 
 
 
-    resetPassword(email) {
-
-        let body = {
-            "email": email
-        }
+    resetPassword(body) {
 
         //return this.http.post<any>('http://localhost:8080/account/api/auth/resetPassword', body);
         return this.http.post<any>('https://spartaclan.herokuapp.com/account/api/auth/resetPassword', body);
