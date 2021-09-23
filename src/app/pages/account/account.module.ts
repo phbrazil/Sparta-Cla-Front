@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 
 
@@ -13,7 +14,8 @@ import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
   declarations: [
     LoginComponent,
     RegisterComponent,
-    ConfirmEmailComponent
+    ConfirmEmailComponent,
+    ResetPasswordComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +25,9 @@ import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
   ],
   exports: [
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ConfirmEmailComponent,
+    ResetPasswordComponent
   ]
 })
 export class AccountModule { }
