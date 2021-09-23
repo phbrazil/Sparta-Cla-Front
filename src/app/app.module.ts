@@ -12,7 +12,6 @@ import { AppRoutingModule } from './app-routing';
 import { RouterModule } from '@angular/router';
 import { LoggedPagesComponent } from './pages/admin/logged-pages/logged-pages.component';
 import { AdminLayoutModule } from './pages/admin/admin-layout.module';
-
 @NgModule({
   declarations: [
     AppComponent,

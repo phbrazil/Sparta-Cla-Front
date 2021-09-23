@@ -15,7 +15,7 @@
       </ng-container>
       </div>
       <div class="form-group">
-        <label for="email">Nome Completo*</label>
+        <label for="nome">Nome Completo*</label>
         <input type="text" class="form-control" id="nome" aria-describedby="nome" formControlName="nome" name="nome">
         <ng-container *ngIf="formRegister.controls.nome.touched">
           <span *ngIf="formRegister.controls.nome.errors?.required">
@@ -27,7 +27,7 @@
       </ng-container>
       </div>
       <div class="form-group">
-        <label for="senha">Senha*</label>
+        <label for="password">Senha*</label>
         <input type="password" class="form-control" id="password" formControlName="password" name="password">
         <ng-container *ngIf="formRegister.controls.password.touched">
           <span *ngIf="formRegister.controls.password.errors?.required">

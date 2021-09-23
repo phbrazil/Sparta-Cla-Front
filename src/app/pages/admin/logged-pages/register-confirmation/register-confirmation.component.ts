@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { User } from 'src/app/_models/user';
+import { AccountService, AlertService } from 'src/app/_services';
 
 @Component({
   selector: 'app-register-confirmation',
@@ -10,14 +12,24 @@ import { ActivatedRoute } from '@angular/router';
 export class RegisterConfirmationComponent implements OnInit {
 
   formRegisterConfirmation: FormGroup;
+  platform: string;
 
-  constructor(private fb: FormBuilder, private activatedRoute: ActivatedRoute) { }
+  user: User
+
+  isLoading = false;
+
+  constructor(private fb: FormBuilder, private activatedRoute: ActivatedRoute, private accountService: AccountService,
+    private alertService: AlertService, private router: Router) { }
 
   ngOnInit(): void {
+
+    this.accountService.user.subscribe(x => this.user = x);
+
     this.formRegisterConfirmation = this.fb.group({
-      username: ['', [Validators.required]],
+      usuario: ['', [Validators.required]],
       nome: ['', [Validators.required]],
-      pais: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      pais: ['Brasil', [Validators.required]],
       estado: ['', [Validators.required]],
       wzProfile: ['', [Validators.required]],
       platform: ['', [Validators.required]],
@@ -29,6 +41,27 @@ export class RegisterConfirmationComponent implements OnInit {
   }
   enviar() {
 
+    this.isLoading = true;
+
+    this.accountService.completeRegister(this.formRegisterConfirmation.value).subscribe(user =>{
+
+      this.accountService.setUser(user);
+
+      localStorage.setItem('user', JSON.stringify(user));
+
+      this.alertService.success(user.message.text, user.message.subText, { keepAfterRouteChange: true });
+
+      this.isLoading = false;
+
+      this.router.navigate(['/welcome']);
+
+    }, err => {
+
+      this.alertService.error(err.error.message.text, err.error.message.subText, { keepAfterRouteChange: true });
+
+      this.isLoading = false;
+
+    })
   }
 
   checkUrl() {
@@ -40,8 +73,10 @@ export class RegisterConfirmationComponent implements OnInit {
 
   }
 
-  choosePlatform(event){
-    console.log(event);
+  choosePlatform(platform){
+    this.platform = platform;
+    this.formRegisterConfirmation.patchValue({platform: platform});
+
   }
 
 }

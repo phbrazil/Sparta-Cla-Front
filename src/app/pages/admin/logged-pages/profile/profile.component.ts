@@ -10,14 +10,12 @@ import { AccountService } from 'src/app/_services';
 
 
 export class ProfileComponent implements OnInit {
-  
+
   user: User;
 
   constructor(private accountService: AccountService) {
 
     this.accountService.user.subscribe(x => this.user = x);
-
-    this.user.wzProfile = 'paulo_9ember'
 
    }
 

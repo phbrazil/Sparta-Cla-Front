@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from './_models/user';
 import { AccountService } from './_services';
-//import * as _ from 'call-of-duty-api';
+//declare var $ : any;
 
 @Component({
   selector: 'app-root',

@@ -1,7 +1,7 @@
-<app-buttom title="{{title}}" data-toggle="modal" data-target="#modalLogin"></app-buttom>
+<app-buttom id="buttonLogin" (click)="setModalLoginAsOpen()" title="{{title}}" data-toggle="modal" data-target="#modalLogin"></app-buttom>
 
 <!-- Modal login -->
-<div *ngIf="!user" class="modal fade" id="modalLogin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div *ngIf="!user && !isModalReset && !isModalRegister" class="modal fade" id="modalLogin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">
@@ -12,11 +12,22 @@
 </div>
 
 <!-- Modal Register-->
-<div class="modal fade" id="modalRegister" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div *ngIf="!isModalLogin && !isModalReset" class="modal fade" id="modalRegister" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">
         <app-register></app-register>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Reset-->
+<div *ngIf="!isModalLogin && !isModalRegister" class="modal fade" id="modalReset" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <app-reset-password></app-reset-password>
       </div>
     </div>
   </div>

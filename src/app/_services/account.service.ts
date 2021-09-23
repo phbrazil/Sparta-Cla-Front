@@ -26,6 +26,12 @@ export class AccountService {
         return this.userSubject.value;
     }
 
+    public setUser(user: User){
+
+      this.userSubject.next(user);
+
+    }
+
     private handleError<T>(operation = 'operation', result?: T) {
         return (error: any): Observable<T> => {
 
@@ -188,6 +194,18 @@ export class AccountService {
 
     }
 
+    completeRegister(body) {
+
+      const token = localStorage.getItem('token');
+
+      const headers = { 'Authorization': `Bearer ${token}`}
+
+      //return this.http.put<any>('http://localhost:8080/spartaclan/completeAccount', body, {headers});
+
+      return this.http.put<any>('https://sparta-clan.herokuapp.com/spartaclan/completeAccount', body, {headers});
+
+  }
+
     confirmEmail(validationCode: string) {
 
       //return this.http.post<any>('http://localhost:8080/spartaclan/confirmEmail', body);
@@ -273,11 +291,7 @@ export class AccountService {
 
 
 
-    resetPassword(email) {
-
-        let body = {
-            "email": email
-        }
+    resetPassword(body) {
 
         //return this.http.post<any>('http://localhost:8080/account/api/auth/resetPassword', body);
         return this.http.post<any>('https://spartaclan.herokuapp.com/account/api/auth/resetPassword', body);
