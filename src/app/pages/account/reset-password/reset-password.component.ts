@@ -39,6 +39,18 @@ export class ResetPasswordComponent implements OnInit {
 
   postReset(body){
 
+    this.isLoading = true;
+
+    this.accountService.resetPassword(body).subscribe(res =>{
+      this.isLoading = false;
+
+
+    }, err =>{
+      this.isLoading = false;
+
+      this.alertService.error('Ocorreu um erro', 'tente novamente mais tarde', { keepAfterRouteChange: true });
+    })
+
   }
 
 
