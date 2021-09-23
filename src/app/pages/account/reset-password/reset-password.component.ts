@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AccountService, AlertService } from 'src/app/_services';
+import { ModalControlService } from 'src/app/_services/modal-control.service';
 
 @Component({
   selector: 'app-reset-password',
@@ -16,7 +17,9 @@ export class ResetPasswordComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private alertService: AlertService, private router: Router,
-    private accountService: AccountService) { }
+    private accountService: AccountService, private modalControl: ModalControlService) {
+
+    }
   ngOnInit(): void {
 
     this.formReset = this.fb.group({

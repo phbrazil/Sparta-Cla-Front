@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AccountService, AlertService } from 'src/app/_services';
 import * as $ from 'jquery';
+import { ModalControlService } from 'src/app/_services/modal-control.service';
 
 @Component({
   selector: 'app-login',
@@ -18,9 +19,10 @@ export class LoginComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private alertService: AlertService, private router: Router,
-    private accountService: AccountService) { }
+    private accountService: AccountService, private modalControl: ModalControlService) { }
 
   ngOnInit(): void {
+
     this.formLogin = this.fb.group({
       emailLogin: ['', [Validators.required, Validators.email]],
       senhaLogin: ['', [Validators.required, Validators.minLength(8)]]
@@ -60,9 +62,9 @@ export class LoginComponent implements OnInit {
 
       this.user = JSON.parse(localStorage.getItem('user'));
 
-      if(!this.user.pendingEmailConfirmation){
+      if (!this.user.pendingEmailConfirmation) {
         this.router.navigate(['/welcome']);
-      }else{
+      } else {
         this.accountService.logout();
         this.alertService.info("Sua conta foi criada mas você ainda não confirmou seu email cadastrado.", "Verifique sua caixa de emails ou clique <a href='/resendEmailConfirmation'>aqui</a> para reenviar.", { keepAfterRouteChange: true })
       }
@@ -83,6 +85,30 @@ export class LoginComponent implements OnInit {
 
 
     })
+  }
+
+  setModalResetAsOpen() {
+
+    //REMOVE FADE BUGADO QUE CONTINUAVA
+    $('body').removeClass('modal-open');
+    $('.modal-backdrop').remove();
+
+    this.modalControl.setModalReset(true);
+    this.modalControl.setModalRegister(false);
+    this.modalControl.setModalLogin(false);
+
+  }
+
+  setModalRegisterAsOpen() {
+
+    //REMOVE FADE BUGADO QUE CONTINUAVA
+    $('body').removeClass('modal-open');
+    $('.modal-backdrop').remove();
+
+    this.modalControl.setModalRegister(true);
+    this.modalControl.setModalReset(false);
+    this.modalControl.setModalLogin(false);
+
   }
 
 }

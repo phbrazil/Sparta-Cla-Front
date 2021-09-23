@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AccountService, AlertService } from 'src/app/_services';
+import { ModalControlService } from 'src/app/_services/modal-control.service';
 
 @Component({
   selector: 'app-register',
@@ -14,9 +15,10 @@ export class RegisterComponent implements OnInit {
   isRegistering = false;
 
   constructor(private fb: FormBuilder, private accountService: AccountService,
-    private alertService: AlertService) { }
+    private alertService: AlertService, private modalControl: ModalControlService) { }
 
   ngOnInit(): void {
+
     this.formRegister = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       nome: ['', [Validators.required]],
@@ -29,13 +31,13 @@ export class RegisterComponent implements OnInit {
 
     this.accountService.register(this.formRegister.value).subscribe(resposta => {
 
-      if(resposta.message.code == 200){
+      if (resposta.message.code == 200) {
 
         this.formRegister.reset();
 
         this.alertService.success(resposta.message.text, resposta.message.subText, { keepAfterRouteChange: true });
 
-      }else{
+      } else {
 
         this.alertService.error(resposta.message.text, resposta.message.subText, { keepAfterRouteChange: true });
 

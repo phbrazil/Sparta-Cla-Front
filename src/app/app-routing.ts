@@ -12,7 +12,6 @@ import { AuthGuard } from './_services/auth.guard';
 import { LoggedPagesComponent } from './pages/admin/logged-pages/logged-pages.component';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { RegisterConfirmationComponent } from './pages/admin/logged-pages/register-confirmation/register-confirmation.component';
 import { TableResultComponent } from './pages/table-result/table-result.component';
 import { RegisterComponent } from './pages/account/register/register.component';
 import { ConfirmEmailComponent } from './pages/account/confirm-email/confirm-email.component';
