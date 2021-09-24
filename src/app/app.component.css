@@ -4,7 +4,7 @@
     background-color: transparent;
     /*       color: red;*/
     overflow: hidden;
-    position: absolute; 
+    position: absolute;
     cursor: default;
     z-index: 999999!important;
 }
