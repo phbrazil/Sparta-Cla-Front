@@ -17,7 +17,6 @@ export class NewPasswordComponent implements OnInit {
   ngOnInit(): void {
 
     this.formNewPassword = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
       confirmPassword: ['', [Validators.required, Validators.minLength(8)]],
       password: ['', [Validators.required, Validators.minLength(8)]]
     })
@@ -25,6 +24,10 @@ export class NewPasswordComponent implements OnInit {
   }
 
   enviar(){
+
+    console.log('to aqui')
+
+    //this.isChangingPassword = true;
 
   }
 
