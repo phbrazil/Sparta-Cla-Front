@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AccountService, AlertService } from 'src/app/_services';
 import * as $ from 'jquery';
 import { ModalControlService } from 'src/app/_services/modal-control.service';
+import { User } from 'src/app/_models/user';
 
 @Component({
   selector: 'app-login',
@@ -15,11 +16,12 @@ export class LoginComponent implements OnInit {
 
   isLoading = false;
 
-  user;
+  user: User;
 
   constructor(private fb: FormBuilder,
     private alertService: AlertService, private router: Router,
-    private accountService: AccountService, private modalControl: ModalControlService) { }
+    private accountService: AccountService, private modalControl: ModalControlService) {
+  }
 
   ngOnInit(): void {
 
@@ -54,21 +56,25 @@ export class LoginComponent implements OnInit {
 
     this.accountService.login(formLogin.value.emailLogin, formLogin.value.senhaLogin).subscribe(resposta => {
 
+      this.accountService.user.subscribe(x => this.user = x);
+
       this.isLoading = false;
 
       //REMOVE FADE BUGADO QUE CONTINUAVA AO LOGAR
       $('body').removeClass('modal-open');
       $('.modal-backdrop').remove();
 
-      this.user = JSON.parse(localStorage.getItem('user'));
+      //this.user = JSON.parse(localStorage.getItem('user'));
 
-      if(this.user.pendingEmailConfirmation){
+      if (this.user.pendingEmailConfirmation) {
         this.accountService.logout();
         this.alertService.info("Sua conta foi criada mas você ainda não confirmou seu email cadastrado.", "Verifique sua caixa de emails ou clique <a href='/resendEmailConfirmation'>aqui</a> para reenviar.", { keepAfterRouteChange: true })
-      }else{
-        if(this.user.changePassword){
+      } else {
+        if (this.user.changePassword) {
+          this.accountService.logout();
           this.router.navigate(['/new-password']);
-        }else{
+
+        } else {
           this.router.navigate(['/welcome']);
         }
       }

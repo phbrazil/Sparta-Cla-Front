@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { AccountService } from 'src/app/_services';
+import { ModalControlService } from 'src/app/_services/modal-control.service';
 @Component({
   selector: 'app-new-password',
   templateUrl: './new-password.component.html',
@@ -12,9 +13,12 @@ export class NewPasswordComponent implements OnInit {
 
   isChangingPassword = false;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private accountService: AccountService,
+    private modalControl: ModalControlService) { }
 
   ngOnInit(): void {
+
+    this.modalControl.closeAllModals();
 
     this.formNewPassword = this.fb.group({
       confirmPassword: ['', [Validators.required, Validators.minLength(8)]],
@@ -23,11 +27,9 @@ export class NewPasswordComponent implements OnInit {
 
   }
 
-  enviar(){
+  enviar() {
 
-    console.log('to aqui')
-
-    //this.isChangingPassword = true;
+    this.isChangingPassword = true;
 
   }
 
