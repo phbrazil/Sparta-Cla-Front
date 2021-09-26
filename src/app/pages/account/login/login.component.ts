@@ -68,7 +68,7 @@ export class LoginComponent implements OnInit {
 
       if (this.user.pendingEmailConfirmation) {
         this.accountService.logout();
-        this.alertService.info("Sua conta foi criada mas você ainda não confirmou seu email cadastrado.", "Verifique sua caixa de emails ou clique <a href='/resendEmailConfirmation'>aqui</a> para reenviar.", { keepAfterRouteChange: true })
+        this.alertService.info("Sua conta foi criada mas você ainda não confirmou seu email cadastrado.", "Verifique sua caixa de emails ou clique <a (click)='resendEmailConfirmation()'>aqui</a> para reenviar.", { keepAfterRouteChange: true })
       } else {
         if (this.user.changePassword) {
           this.accountService.logout();
