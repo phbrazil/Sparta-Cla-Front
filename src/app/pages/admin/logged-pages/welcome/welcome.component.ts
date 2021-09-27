@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/_models/user';
+import { AccountService } from 'src/app/_services';
 
 @Component({
   selector: 'app-welcome',
@@ -9,11 +10,13 @@ import { User } from 'src/app/_models/user';
 })
 export class WelcomeComponent implements OnInit {
 
-  user = JSON.parse(localStorage.getItem('user'));
+  user: User;
 
   firstName = "";
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private accountService: AccountService) {
+    this.accountService.user.subscribe(x => this.user = x);
+   }
 
   ngOnInit(): void {
 
@@ -32,6 +35,7 @@ export class WelcomeComponent implements OnInit {
 
       this.router.navigate(['/confirm-registration']);
 
+      //troca de senha necessária
     }
 
 
