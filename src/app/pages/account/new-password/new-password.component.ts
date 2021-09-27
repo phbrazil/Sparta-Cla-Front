@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AccountService } from 'src/app/_services';
+import { Router } from '@angular/router';
+import { AccountService, AlertService } from 'src/app/_services';
 import { ModalControlService } from 'src/app/_services/modal-control.service';
 @Component({
   selector: 'app-new-password',
@@ -9,14 +10,22 @@ import { ModalControlService } from 'src/app/_services/modal-control.service';
 })
 export class NewPasswordComponent implements OnInit {
 
+  emailNewPassword: string;
+
   formNewPassword: FormGroup;
 
   isChangingPassword = false;
 
   constructor(private fb: FormBuilder, private accountService: AccountService,
-    private modalControl: ModalControlService) { }
+    private modalControl: ModalControlService, private alert: AlertService, private router: Router) { }
 
   ngOnInit(): void {
+
+    this.accountService.getEmailNewPassword().subscribe(email => {
+
+      this.emailNewPassword = email;
+
+    });
 
     this.modalControl.closeAllModals();
 
@@ -30,6 +39,21 @@ export class NewPasswordComponent implements OnInit {
   enviar() {
 
     this.isChangingPassword = true;
+
+
+    this.accountService.confirmNewPassword(this.emailNewPassword, this.formNewPassword.value.password).subscribe(res =>{
+
+      this.router.navigate(['/welcome']);
+
+      this.isChangingPassword = false;
+
+    }, err =>{
+
+      this.isChangingPassword = false;
+
+      this.alert.error('Ocorreu um erro', 'Tente novamente mais tarde', { keepAfterRouteChange: true })
+    })
+
 
   }
 

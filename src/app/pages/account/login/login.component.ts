@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AccountService, AlertService } from 'src/app/_services';
@@ -13,6 +13,9 @@ import { User } from 'src/app/_models/user';
 })
 export class LoginComponent implements OnInit {
   formLogin: FormGroup;
+
+  emailNewPassword: string;
+
 
   isLoading = false;
 
@@ -71,6 +74,7 @@ export class LoginComponent implements OnInit {
         this.alertService.info("Sua conta foi criada mas você ainda não confirmou seu email cadastrado.", "Verifique sua caixa de emails ou clique <a (click)='resendEmailConfirmation()'>aqui</a> para reenviar.", { keepAfterRouteChange: true })
       } else {
         if (this.user.changePassword) {
+          this.accountService.setEmailNewPassword(this.user.email);
           this.accountService.logout();
           this.router.navigate(['/new-password']);
 
@@ -92,7 +96,7 @@ export class LoginComponent implements OnInit {
 
       } else {
 
-        this.alertService.error('Erro ' + err.status, 'tente novamente', { keepAfterRouteChange: true });
+        this.alertService.error('Erro ' + err.status, 'tente novamente mais tarde', { keepAfterRouteChange: true });
 
       }
 
