@@ -12,7 +12,5 @@ export class User {
   pendingRegistration: boolean
   pendingEmailConfirmation: boolean
   message: string
-
-
-
+  changePassword: boolean
 }
