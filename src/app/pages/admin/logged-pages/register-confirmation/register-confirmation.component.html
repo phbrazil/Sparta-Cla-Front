@@ -11,7 +11,8 @@
           <div class="input-group-prepend">
             <span class="input-group-text">@</span>
           </div>
-          <input type="text" class="form-control" id="username" aria-describedby="usuario" name="usuario" formControlName="usuario" required>
+          <input type="text" class="form-control" id="username" aria-describedby="usuario" name="usuario"
+            formControlName="usuario" required>
           <ng-container *ngIf="formRegisterConfirmation.controls.usuario.touched">
             <span class="text-danger" *ngIf="formRegisterConfirmation.controls.usuario.errors?.required">
               Usuário obrigatório
@@ -24,7 +25,8 @@
       </div>
       <div class="form-group">
         <label for="nome">Nome Completo</label>
-        <input readonly [(ngModel)]="user.nome" type="text" class="form-control" id="nome" aria-describedby="nome" formControlName="nome" name="nome">
+        <input readonly [(ngModel)]="user.nome" type="text" class="form-control" id="nome" aria-describedby="nome"
+          formControlName="nome" name="nome">
         <ng-container *ngIf="formRegisterConfirmation.controls.nome.touched">
           <span class="text-danger" *ngIf="formRegisterConfirmation.controls.nome.errors?.required">
             Nome obrigatório
@@ -36,7 +38,8 @@
       </div>
       <div class="form-group">
         <label for="nome">Email</label>
-        <input readonly [(ngModel)]="user.email" type="email" class="form-control" id="email" aria-describedby="email" formControlName="email" name="email">
+        <input readonly [(ngModel)]="user.email" type="email" class="form-control" id="email" aria-describedby="email"
+          formControlName="email" name="email">
         <ng-container *ngIf="formRegisterConfirmation.controls.email.touched">
           <span class="text-danger" *ngIf="formRegisterConfirmation.controls.email.errors?.required">
             Email obrigatório
@@ -134,6 +137,33 @@
             Nome inválido
           </span>
         </ng-container>
+      </div>
+      <div *ngIf="platform == 'xbl'" class="form-group">
+        <label><strong>Como encontro meu usuário da Xbox Live?</strong></label>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Ligue seu Xbox</li>
+          <li class="list-group-item">Pressione o botão Xbox em seu controle</li>
+          <li class="list-group-item">Vá na aba "Perfil e Configurações"</li>
+          <li class="list-group-item">Você verá seu usuário da Xbox Live</li>
+        </ul>
+      </div>
+      <div *ngIf="platform == 'psn'" class="form-group">
+        <label><strong>Como encontro meu usuário da PSN?</strong></label>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Ligue seu Playstation</li>
+          <li class="list-group-item">Clique em Gerenciamento da Conta</li>
+          <li class="list-group-item">Selecione Informações da Conta</li>
+          <li class="list-group-item">Você verá seu usuário da PSN</li>
+        </ul>
+      </div>
+      <div *ngIf="platform == 'battle'" class="form-group">
+        <label><strong>Como encontro meu usuário da BATTLENET?</strong></label>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Acesse sua conta no site da <a href="https://www.blizzard.com/pt-br" target = "_blank">Blizzard</a></li>
+          <li class="list-group-item">Clique no seu nome no canto superior direito da tela</li>
+          <li class="list-group-item">Você verá seu usuário com #1234</li>
+          <li class="list-group-item">Insira seu ID, incluíndo os números</li>
+        </ul>
       </div>
       <button type="submit" class="btn btn-custom mb-3" [disabled]="!formRegisterConfirmation.valid">
         <span *ngIf="isLoading" class="spinner-border spinner-border-sm mr-1"></span>

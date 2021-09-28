@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from './_models/user';
 import { AccountService } from './_services';
+import { AuthInterceptor } from './_services/auth.interceptor';
 import { ModalControlService } from './_services/modal-control.service';
 //declare var $ : any;
 
@@ -10,19 +11,25 @@ import { ModalControlService } from './_services/modal-control.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent extends AuthInterceptor {
 
   user: User;
   validationCode: string;
 
   constructor(private accountService: AccountService, private router: Router,
-    private modalControl: ModalControlService) {
+    private modalControl: ModalControlService,) {
+      super();
     this.accountService.user.subscribe(x => this.user = x);
   }
 
   title = 'Sparta Clã';
 
   ngOnInit(): void {
+
+
+    console.log('to aqui');
+
+
 
     this.modalControl.closeAllModals();
 
