@@ -16,13 +16,14 @@ export class AppComponent {
   validationCode: string;
 
   constructor(private accountService: AccountService, private router: Router,
-    private modalControl: ModalControlService) {
+    private modalControl: ModalControlService,) {
     this.accountService.user.subscribe(x => this.user = x);
   }
 
   title = 'Sparta Clã';
 
   ngOnInit(): void {
+
 
     this.modalControl.closeAllModals();
 

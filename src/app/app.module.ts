@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing';
 import { RouterModule } from '@angular/router';
 import { LoggedPagesComponent } from './pages/admin/logged-pages/logged-pages.component';
 import { AdminLayoutModule } from './pages/admin/admin-layout.module';
+import { InterceptorModule } from './_services/interceptor.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +26,9 @@ import { AdminLayoutModule } from './pages/admin/admin-layout.module';
     AppRoutingModule,
     HttpClientModule,
     RouterModule,
-  AdminLayoutModule  ],
+    AdminLayoutModule,
+    InterceptorModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

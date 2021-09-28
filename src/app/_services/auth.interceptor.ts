@@ -20,8 +20,6 @@ export class AuthInterceptor implements HttpInterceptor {
       },
     });
 
-    console.log('to aqui')
-
     return next.handle(req);
   }
 }
