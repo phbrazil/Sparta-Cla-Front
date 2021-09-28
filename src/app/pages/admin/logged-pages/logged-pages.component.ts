@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/_models/user';
 
 @Component({
   selector: 'app-logged-pages',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./logged-pages.component.css']
 })
 export class LoggedPagesComponent implements OnInit {
+
+  user: User
 
   constructor() { }
 

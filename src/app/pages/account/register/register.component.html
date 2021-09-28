@@ -43,7 +43,8 @@
         <span *ngIf="isRegistering" class="spinner-border spinner-border-sm mr-1"></span>
         Criar</button><br>
 
-      <span>Já tem uma <a href="" data-toggle="modal" data-target="#modalLogin" class="text-yellow">conta?</a></span>
+
+      <span>Já tem uma <a data-toggle="modal" data-target="#modalLogin" (click)="setModalLoginAsOpen()" class="text-yellow">conta?</a></span>
     </form>
   </div>
 </div>

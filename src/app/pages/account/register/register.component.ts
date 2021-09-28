@@ -56,4 +56,10 @@ export class RegisterComponent implements OnInit {
     })
   }
 
+  setModalLoginAsOpen(){
+    this.modalControl.setModalLogin(true);
+    this.modalControl.setModalRegister(false);
+    this.modalControl.setModalReset(false);
+  }
+
 }

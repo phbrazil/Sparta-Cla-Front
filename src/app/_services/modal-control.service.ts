@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-
+import * as $ from 'jquery'
 @Injectable({
   providedIn: 'root'
 })
@@ -37,6 +37,19 @@ export class ModalControlService {
   public getModalRegister(): Observable<boolean>{
     return this.isModalRegister.asObservable();
   }
+
+  closeAllModals() {
+
+    //REMOVE FADE BUGADO QUE CONTINUAVA
+    $('body').removeClass('modal-open');
+    $('.modal-backdrop').remove();
+
+    this.setModalLogin(false);
+    this.setModalRegister(false);
+    this.setModalReset(false);
+
+  }
+
 
 
 }

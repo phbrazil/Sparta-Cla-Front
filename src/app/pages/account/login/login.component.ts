@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AccountService, AlertService } from 'src/app/_services';
 import * as $ from 'jquery';
 import { ModalControlService } from 'src/app/_services/modal-control.service';
+import { User } from 'src/app/_models/user';
 
 @Component({
   selector: 'app-login',
@@ -13,13 +14,17 @@ import { ModalControlService } from 'src/app/_services/modal-control.service';
 export class LoginComponent implements OnInit {
   formLogin: FormGroup;
 
+  emailNewPassword: string;
+
+
   isLoading = false;
 
-  user;
+  user: User;
 
   constructor(private fb: FormBuilder,
     private alertService: AlertService, private router: Router,
-    private accountService: AccountService, private modalControl: ModalControlService) { }
+    private accountService: AccountService, private modalControl: ModalControlService) {
+  }
 
   ngOnInit(): void {
 
@@ -54,20 +59,32 @@ export class LoginComponent implements OnInit {
 
     this.accountService.login(formLogin.value.emailLogin, formLogin.value.senhaLogin).subscribe(resposta => {
 
+      this.accountService.user.subscribe(x => this.user = x);
+
       this.isLoading = false;
 
       //REMOVE FADE BUGADO QUE CONTINUAVA AO LOGAR
       $('body').removeClass('modal-open');
       $('.modal-backdrop').remove();
 
-      this.user = JSON.parse(localStorage.getItem('user'));
+      //this.user = JSON.parse(localStorage.getItem('user'));
 
-      if (!this.user.pendingEmailConfirmation) {
-        this.router.navigate(['/welcome']);
-      } else {
+      if (this.user.pendingEmailConfirmation) {
         this.accountService.logout();
-        this.alertService.info("Sua conta foi criada mas você ainda não confirmou seu email cadastrado.", "Verifique sua caixa de emails ou clique <a href='/resendEmailConfirmation'>aqui</a> para reenviar.", { keepAfterRouteChange: true })
+        this.alertService.info("Sua conta foi criada mas você ainda não confirmou seu email cadastrado.", "Verifique sua caixa de emails ou clique <a (click)='resendEmailConfirmation()'>aqui</a> para reenviar.", { keepAfterRouteChange: true })
+      } else {
+        if (this.user.changePassword) {
+          this.accountService.setEmailNewPassword(this.user.email);
+          this.accountService.logout();
+          this.router.navigate(['/new-password']);
+
+        } else {
+          this.router.navigate(['/welcome']);
+        }
       }
+
+
+
 
     }, err => {
 
@@ -79,7 +96,7 @@ export class LoginComponent implements OnInit {
 
       } else {
 
-        this.alertService.error('Erro ' + err.status, 'tente novamente', { keepAfterRouteChange: true });
+        this.alertService.error('Erro ' + err.status, 'tente novamente mais tarde', { keepAfterRouteChange: true });
 
       }
 

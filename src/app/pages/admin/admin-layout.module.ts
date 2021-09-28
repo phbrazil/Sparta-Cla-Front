@@ -9,6 +9,7 @@ import { AdminLayoutRoutes } from './admin-layout.routing';
 import { MyStatsComponent } from './logged-pages/my-stats/my-stats.component';
 import { RegisterConfirmationComponent } from './logged-pages/register-confirmation/register-confirmation.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CreditsComponent } from './logged-pages/credits/credits.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HeaderLoggedComponent,
     ProfileComponent,
     MyStatsComponent,
-    RegisterConfirmationComponent],
+    RegisterConfirmationComponent,
+    CreditsComponent],
   imports: [
     CommonModule,
     HomeModule,
