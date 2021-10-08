@@ -13,4 +13,5 @@ export class User {
   pendingEmailConfirmation: boolean
   message: string
   changePassword: boolean
+  admin: boolean
 }

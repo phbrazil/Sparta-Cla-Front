@@ -10,6 +10,8 @@ import { MyStatsComponent } from './logged-pages/my-stats/my-stats.component';
 import { RegisterConfirmationComponent } from './logged-pages/register-confirmation/register-confirmation.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreditsComponent } from './logged-pages/credits/credits.component';
+import { NewTournamentComponent } from './logged-pages/new-tournament/new-tournament.component';
+import { ManageComponent } from './logged-pages/manage/manage.component';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { CreditsComponent } from './logged-pages/credits/credits.component';
     ProfileComponent,
     MyStatsComponent,
     RegisterConfirmationComponent,
-    CreditsComponent],
+    CreditsComponent,
+    NewTournamentComponent,
+    ManageComponent],
   imports: [
     CommonModule,
     HomeModule,

@@ -180,6 +180,7 @@ export class AccountService {
         localStorage.setItem('user', JSON.stringify(user));
         localStorage.setItem('token', user.token);
         this.userSubject.next(user);
+        console.log(user)
         return user;
       }));
   }

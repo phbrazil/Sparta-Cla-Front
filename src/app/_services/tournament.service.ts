@@ -29,5 +29,13 @@ export class TournamentService {
 
     }
 
+    newTournament(body: Tournament) {
+
+      //return this.http.post<Tournament>('http://localhost:8080/spartaclan/newTournament', body);
+
+      return this.http.post<Tournament>('https://sparta-clan.herokuapp.com/spartaclan/newTournament', body);
+
+    }
+
 
 }
