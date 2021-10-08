@@ -10,6 +10,7 @@ import { MyStatsComponent } from './logged-pages/my-stats/my-stats.component';
 import { RegisterConfirmationComponent } from './logged-pages/register-confirmation/register-confirmation.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreditsComponent } from './logged-pages/credits/credits.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 import { NewTournamentComponent } from './logged-pages/new-tournament/new-tournament.component';
 import { ManageComponent } from './logged-pages/manage/manage.component';
 
@@ -29,6 +30,7 @@ import { ManageComponent } from './logged-pages/manage/manage.component';
     HomeModule,
     FormsModule,
     ReactiveFormsModule,
+    SharedModule,
     RouterModule.forChild(AdminLayoutRoutes),
 
   ], exports: [
