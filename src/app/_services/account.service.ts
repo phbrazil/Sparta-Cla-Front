@@ -258,6 +258,22 @@ export class AccountService {
 
   }
 
+  delete(id: string) {
+
+    //const url = `http://localhost:8080/account/api/auth/deleteUser/${id}`;
+    const url = `https://sparta-clan.herokuapp.com/account/api/auth/delete/${id}`
+
+    return this.http.delete(url)
+
+      // return this.http.delete(`${environment.apiUrl}/users/${id}`)
+      .pipe(map(x => {
+        // auto logout if the logged in user deleted their own record
+        if (id == this.userValue.idUser) {
+          this.logout();
+        }
+        return x;
+      }));
+  }
 
   resetPassword(body) {
 
