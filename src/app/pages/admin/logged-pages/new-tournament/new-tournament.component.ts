@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AlertService } from 'src/app/_services';
+import { TournamentService } from 'src/app/_services/tournament.service';
+import { Tournament } from '../../../../_models/tournament';
 
 @Component({
   selector: 'app-new-tournament',
@@ -7,9 +11,52 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewTournamentComponent implements OnInit {
 
-  constructor() { }
+  formNewTournament: FormGroup;
+  isLoading = false;
+  tournament: Tournament;
+
+
+  constructor(private fb: FormBuilder, private tournamentService: TournamentService, private alertService: AlertService) { }
 
   ngOnInit(): void {
+
+    this.formNewTournament = this.fb.group({
+      mode: ['', [Validators.required]],
+      date: ['', [Validators.required]],
+      award: ['', [Validators.required]],
+      duration: ['', [Validators.required]],
+      start: ['', [Validators.required]],
+      scoring: ['', [Validators.required]],
+      division: [0, [Validators.required]],
+      cost: ['', [Validators.required]],
+      active: [true, [Validators.required]]
+    })
+
+  }
+
+  enviar() {
+
+    this.isLoading = true;
+
+    this.tournamentService.newTournament(this.formNewTournament.value).subscribe(res =>{
+
+      this.alertService.success('Novo campeonato criado', 'Verifique na lista de campeonatos ativos', { keepAfterRouteChange: true });
+
+      this.isLoading = false;
+
+      this.formNewTournament.reset();
+
+    }, err => {
+
+      console.log(err)
+
+      this.alertService.error('Ocorreu um erro', 'Tente novamente mais tarde', { keepAfterRouteChange: true });
+
+      this.isLoading = false;
+
+
+    })
+
   }
 
 }
