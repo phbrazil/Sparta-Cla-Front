@@ -1,4 +1,4 @@
-<div class="container">
+<div *ngIf="user.admin" class="container">
   <div class="row mb-5 mt-5 pt-5 pb-5 game-content justify-content-center">
     <form class="mt-4 mb-4 pt-3 pb-3 col-sm-12 col-md-8" [formGroup]="formNewTournament" (ngSubmit)="enviar()">
       <h2 class="mb-2 text-center">Crie um <span class="text-yellow">Campeonato</span></h2>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AlertService } from 'src/app/_services';
+import { User } from 'src/app/_models/user';
+import { AccountService, AlertService } from 'src/app/_services';
 import { TournamentService } from 'src/app/_services/tournament.service';
 import { Tournament } from '../../../../_models/tournament';
 
@@ -14,9 +15,15 @@ export class NewTournamentComponent implements OnInit {
   formNewTournament: FormGroup;
   isLoading = false;
   tournament: Tournament;
+  user: User;
 
 
-  constructor(private fb: FormBuilder, private tournamentService: TournamentService, private alertService: AlertService) { }
+  constructor(private fb: FormBuilder, private tournamentService: TournamentService, private alertService: AlertService,
+    private accountService: AccountService) {
+
+    this.accountService.user.subscribe(x => this.user = x);
+
+   }
 
   ngOnInit(): void {
 
