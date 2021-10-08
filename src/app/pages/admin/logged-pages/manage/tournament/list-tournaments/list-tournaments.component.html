@@ -1,0 +1,42 @@
+<section class="container">
+  <div class="row mb-5 mt-5 pb-5 pt-5">
+    <div class="col-md-12 game-content">
+      <div class="row">
+        <div class="col-md-8">
+          <h2 class="mb-5">Campeonatos <span class="text-yellow">ativos</span></h2>
+        </div>
+        <div class="col-md-4">
+          <a class="btn-custom" routerLink="/new-tournament">Novo Campeonato</a>
+        </div>
+      </div>
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Modo</th>
+            <th scope="col">Premiação</th>
+            <th scope="col">Custo</th>
+            <th scope="col">Data</th>
+            <th scope="col">Divisão</th>
+            <th scope="col">Duração</th>
+            <th scope="col">Pontuação</th>
+            <th scope="col">Início</th>
+            <th scope="col">Editar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let tournament of tournaments">
+            <td>{{ tournament.mode }}</td>
+            <th scope="row"></th>
+            <td>{{ tournament.award }}</td>
+            <td>{{ tournament.cost }}</td>
+            <td>{{ tournament.date }}</td>
+            <td>{{ tournament.division }}</td>
+            <td>{{ tournament.duration }}</td>
+            <td>{{ tournament.start }}</td>
+            <td> <a class="btn-sm btn-primary" routerLink="/new-tournament">Editar</a> </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/_models/user';
 import { AccountService, AlertService } from 'src/app/_services';
 import { TournamentService } from 'src/app/_services/tournament.service';
-import { Tournament } from '../../../../_models/tournament';
+import { Tournament } from '../../../../../../_models/tournament';
 
 @Component({
   selector: 'app-new-tournament',
@@ -42,8 +42,6 @@ export class NewTournamentComponent implements OnInit {
   }
 
   enviar() {
-
-    console.log(this.formNewTournament.value)
 
     this.isLoading = true;
 
