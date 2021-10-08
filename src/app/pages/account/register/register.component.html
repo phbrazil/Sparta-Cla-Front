@@ -42,8 +42,6 @@
       <button type="submit" class="btn btn-custom mb-3" [disabled]="!formRegister.valid || isRegistering">
         <span *ngIf="isRegistering" class="spinner-border spinner-border-sm mr-1"></span>
         Criar</button><br>
-
-
       <span>Já tem uma <a data-toggle="modal" data-target="#modalLogin" (click)="setModalLoginAsOpen()" class="text-yellow">conta?</a></span>
     </form>
   </div>

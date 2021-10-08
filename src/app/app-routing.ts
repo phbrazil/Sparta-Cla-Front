@@ -1,3 +1,4 @@
+import { RegisterConfirmationComponent } from './pages/admin/logged-pages/register-confirmation/register-confirmation.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -16,6 +17,8 @@ import { TableResultComponent } from './pages/table-result/table-result.componen
 import { RegisterComponent } from './pages/account/register/register.component';
 import { ConfirmEmailComponent } from './pages/account/confirm-email/confirm-email.component';
 import { NewPasswordComponent } from './pages/account/new-password/new-password.component';
+import { ProfileComponent } from './pages/admin/logged-pages/profile/profile.component';
+import { MyStatsComponent } from './pages/admin/logged-pages/my-stats/my-stats.component';
 
 const adminModule = () => import('./pages/admin/admin-layout.module').then(x => x.AdminLayoutModule);
 
@@ -29,8 +32,9 @@ const routes: Routes = [
   { path: 'politicas-de-privacidade', component: PrivacyPolicyComponent },
   { path: 'termos-de-uso', component: TermsComponent },
   { path: 'resultado-partida', component: TableResultComponent },
-  { path: 'register', component: RegisterComponent },
+  { path: 'register', component: RegisterConfirmationComponent },
   { path: 'confirm', component: ConfirmEmailComponent },
+  { path: 'profile', component: ProfileComponent },
   { path: 'new-password', component: NewPasswordComponent },
   {
     path: '',

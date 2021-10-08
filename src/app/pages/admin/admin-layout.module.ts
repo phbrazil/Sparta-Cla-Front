@@ -10,6 +10,7 @@ import { MyStatsComponent } from './logged-pages/my-stats/my-stats.component';
 import { RegisterConfirmationComponent } from './logged-pages/register-confirmation/register-confirmation.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreditsComponent } from './logged-pages/credits/credits.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { CreditsComponent } from './logged-pages/credits/credits.component';
     HomeModule,
     FormsModule,
     ReactiveFormsModule,
+    SharedModule,
     RouterModule.forChild(AdminLayoutRoutes),
 
   ], exports: [
