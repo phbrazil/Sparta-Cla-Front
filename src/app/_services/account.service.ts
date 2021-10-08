@@ -246,44 +246,18 @@ export class AccountService {
     return this.http.get<User>(url, header);
   }
 
-  editUser(id, params) {
+  editUser(body) {
 
-    //const url = `http://localhost:8080/account/api/auth/editUsuario/${id}`;
-    const url = `https://sparta-clan.herokuapp.com/account/api/auth/editUser/${id}`
+    const token = localStorage.getItem('token');
 
-    return this.http.put(url, params)
+    const headers = { 'Authorization': `Bearer ${token}` }
 
-      //return this.http.put(`${environment.apiUrl}/users/${id}`, params)
-      .pipe(map(x => {
-        // update stored user if the logged in user updated their own record
-        if (id == this.userValue.id) {
-          // update local storage
-          const user = { ...this.userValue, ...params };
-          localStorage.setItem('user', JSON.stringify(user));
+    //return this.http.put<any>('http://localhost:8080/spartaclan/editAccount', body, { headers });
 
-          // publish updated user to subscribers
-          this.userSubject.next(user);
-        }
-        return x;
-      }));
+    return this.http.put<any>('https://sparta-clan.herokuapp.com/spartaclan/editAccount', body, { headers });
+
   }
 
-  delete(id: string) {
-
-    //const url = `http://localhost:8080/account/api/auth/deleteUser/${id}`;
-    const url = `https://sparta-clan.herokuapp.com/account/api/auth/delete/${id}`
-
-    return this.http.delete(url)
-
-      // return this.http.delete(`${environment.apiUrl}/users/${id}`)
-      .pipe(map(x => {
-        // auto logout if the logged in user deleted their own record
-        if (id == this.userValue.id) {
-          this.logout();
-        }
-        return x;
-      }));
-  }
 
   resetPassword(body) {
 
