@@ -43,11 +43,13 @@ export class NewTournamentComponent implements OnInit {
 
   enviar() {
 
+    console.log(this.formNewTournament.value)
+
     this.isLoading = true;
 
     this.tournamentService.newTournament(this.formNewTournament.value).subscribe(res =>{
 
-      this.alertService.success('Novo campeonato criado', 'Verifique na lista de campeonatos ativos', { keepAfterRouteChange: true });
+      this.alertService.success(res.text, res.subText, { keepAfterRouteChange: true });
 
       this.isLoading = false;
 
@@ -55,9 +57,7 @@ export class NewTournamentComponent implements OnInit {
 
     }, err => {
 
-      console.log(err)
-
-      this.alertService.error('Ocorreu um erro', 'Tente novamente mais tarde', { keepAfterRouteChange: true });
+      this.alertService.error(err.text, err.subText, { keepAfterRouteChange: true });
 
       this.isLoading = false;
 

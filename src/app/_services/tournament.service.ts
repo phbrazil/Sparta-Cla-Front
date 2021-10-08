@@ -31,9 +31,13 @@ export class TournamentService {
 
     newTournament(body: Tournament) {
 
-      //return this.http.post<Tournament>('http://localhost:8080/spartaclan/newTournament', body);
+      const token = localStorage.getItem('token');
 
-      return this.http.post<Tournament>('https://sparta-clan.herokuapp.com/spartaclan/newTournament', body);
+      const headers = { 'Authorization': `Bearer ${token}` }
+
+      //return this.http.post<any>('http://localhost:8080/tournaments/newTournament', body, { headers });
+
+      return this.http.post<any>('https://sparta-clan.herokuapp.com/tournaments/newTournament', body, { headers });
 
     }
 
