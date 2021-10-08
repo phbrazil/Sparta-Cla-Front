@@ -1,0 +1,112 @@
+<div *ngIf="user.admin" class="container">
+  <div class="row mb-5 mt-5 pt-5 pb-5 game-content justify-content-center">
+    <form class="mt-4 mb-4 pt-3 pb-3 col-sm-12 col-md-8" [formGroup]="formNewTournament" (ngSubmit)="enviar()">
+      <h2 class="mb-2 text-center">Crie um <span class="text-yellow">Campeonato</span></h2>
+      <h5>Use com sabedoria</h5>
+      <div class="form-group">
+        <label for="pais">Modo*</label>
+        <select class="form-control" id="mode" name="mode" formControlName="mode">
+          <option value=""></option>
+          <option value="Solo">Solo</option>
+          <option value="Duo">Duo</option>
+          <option value="Trio" selected>Trio</option>
+          <option value="Squad">Squad</option>
+          <option value="2 VS 2">2 VS 2</option>
+        </select>
+        <ng-container *ngIf="formNewTournament.controls.mode.touched">
+          <span class="text-danger" *ngIf="formNewTournament.controls.mode.errors?.required">
+            Campo obrigatório
+          </span>
+        </ng-container>
+      </div>
+      <div class="form-group">
+        <label for="date">Data*</label>
+        <input  type="date" class="form-control" id="date" aria-describedby="date"
+          formControlName="date" name="date">
+        <ng-container *ngIf="formNewTournament.controls.date.touched">
+          <span class="text-danger" *ngIf="formNewTournament.controls.date.errors?.required">
+            Data obrigatória
+          </span>
+          <span *ngIf="formNewTournament.controls.date.errors?.date">
+            Data inválida
+          </span>
+        </ng-container>
+      </div>
+      <div class="form-group">
+        <label for="award">Premiação*</label>
+        <select class="form-control" id="award" name="award" formControlName="award">
+          <option value=""></option>
+          <option value="10 Créditos">10 Créditos</option>
+          <option value="20 Créditos">20 Créditos</option>
+          <option value="30 Créditos">30 Créditos</option>
+          <option value="40 Créditos">40 Créditos</option>
+          <option value="50 Créditos">50 Créditos</option>
+        </select>
+        <ng-container *ngIf="formNewTournament.controls.award.touched">
+          <span class="text-danger" *ngIf="formNewTournament.controls.award.errors?.required">
+            Campo obrigatório
+          </span>
+        </ng-container>
+      </div>
+      <div class="form-group">
+        <label for="duration">Duração*</label>
+        <select class="form-control" id="duration" name="duration" formControlName="duration">
+          <option value=""></option>
+          <option value="1:00">1:00</option>
+          <option value="1:30">1:30</option>
+          <option value="2:00" selected>2:00</option>
+          <option value="2:30">2:30</option>
+        </select>
+        <ng-container *ngIf="formNewTournament.controls.duration.touched">
+          <span class="text-danger" *ngIf="formNewTournament.controls.duration.errors?.required">
+            Campo obrigatório
+          </span>
+        </ng-container>
+      </div>
+      <div class="form-group">
+        <label for="estado">Início*</label>
+        <input type="time" class="form-control" id="start" formControlName="start" name="start">
+        <ng-container *ngIf="formNewTournament.controls.start.touched">
+          <span class="text-danger" *ngIf="formNewTournament.controls.start.errors?.required">
+            Campo obrigatório
+          </span>
+        </ng-container>
+      </div>
+      <div class="form-group">
+        <label for="duration">Pontuação*</label>
+        <select class="form-control" id="scoring" name="scoring" formControlName="scoring">
+          <option value=""></option>
+          <option value="3 melhores partidas" selected>3 melhores partidas</option>
+          <option value="2 melhores partidas">2 melhores partidas</option>
+          <option value="Melhor partida">Melhor partida</option>
+        </select>
+        <ng-container *ngIf="formNewTournament.controls.scoring.touched">
+          <span class="text-danger" *ngIf="formNewTournament.controls.scoring.errors?.required">
+            Campo obrigatório
+          </span>
+        </ng-container>
+      </div>
+
+      <div class="form-group">
+        <label for="duration">Custo*</label>
+        <select class="form-control" id="cost" name="cost" formControlName="cost">
+          <option value=""></option>
+          <option value="Grátis" selected>Grátis</option>
+          <option value="10 Créditos">10 Créditos</option>
+          <option value="20 Créditos">20 Créditos</option>
+          <option value="30 Créditos">30 Créditos</option>
+          <option value="40 Créditos">40 Créditos</option>
+          <option value="50 Créditos">50 Créditos</option>
+        </select>
+        <ng-container *ngIf="formNewTournament.controls.cost.touched">
+          <span class="text-danger" *ngIf="formNewTournament.controls.cost.errors?.required">
+            Campo obrigatório
+          </span>
+        </ng-container>
+      </div>
+      <button type="submit" class="btn btn-custom mb-3" [disabled]="!formNewTournament.valid">
+        <span *ngIf="isLoading" class="spinner-border spinner-border-sm mr-1"></span>
+        Finalizar</button><br>
+    </form>
+  </div>
+</div>
