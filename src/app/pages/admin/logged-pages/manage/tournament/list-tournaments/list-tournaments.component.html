@@ -9,7 +9,15 @@
           <a class="btn-custom" routerLink="/new-tournament">Novo Campeonato</a>
         </div>
       </div>
-      <table class="table">
+      <div *ngIf="isLoading" class="d-flex justify-content-center">
+        <div class="spinner-grow text-warning" role="status" style="width: 5rem; height: 5rem;">
+        </div>
+        <div class="ml-4">
+          <span class="text-warning">Favor aguarde... <br>nossos servidores estão iniciando,<br> ainda há homens
+            trabalhando...</span>
+        </div>
+      </div>
+      <table *ngIf="!isLoading" aria-describedby="campeonatos" class="table">
         <thead class="thead-dark">
           <tr>
             <th scope="col">Modo</th>
@@ -26,12 +34,12 @@
         <tbody>
           <tr *ngFor="let tournament of tournaments">
             <td>{{ tournament.mode }}</td>
-            <th scope="row"></th>
             <td>{{ tournament.award }}</td>
             <td>{{ tournament.cost }}</td>
             <td>{{ tournament.date }}</td>
             <td>{{ tournament.division }}</td>
             <td>{{ tournament.duration }}</td>
+            <td>{{ tournament.scoring }}</td>
             <td>{{ tournament.start }}</td>
             <td> <a class="btn-sm btn-primary" routerLink="/new-tournament">Editar</a> </td>
           </tr>
