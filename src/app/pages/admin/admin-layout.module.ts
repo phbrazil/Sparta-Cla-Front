@@ -11,6 +11,8 @@ import { RegisterConfirmationComponent } from './logged-pages/register-confirmat
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreditsComponent } from './logged-pages/credits/credits.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { NewTournamentComponent } from './logged-pages/new-tournament/new-tournament.component';
+import { ManageComponent } from './logged-pages/manage/manage.component';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { SharedModule } from 'src/app/shared/shared.module';
     ProfileComponent,
     MyStatsComponent,
     RegisterConfirmationComponent,
-    CreditsComponent],
+    CreditsComponent,
+    NewTournamentComponent,
+    ManageComponent],
   imports: [
     CommonModule,
     HomeModule,
