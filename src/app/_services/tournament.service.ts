@@ -14,8 +14,8 @@ export class TournamentService {
   });
 
   //readonly baseUrl: string = 'http://localhost:3000/game'
-  //readonly baseUrl: string = 'https://sparta-clan.herokuapp.com/tournaments/getAllTournaments'
-  readonly baseUrl: string = 'http://localhost:8080/tournaments/getAllTournaments'
+  readonly baseUrl: string = 'https://sparta-clan.herokuapp.com/tournaments/getAllTournaments'
+  //readonly baseUrl: string = 'http://localhost:8080/tournaments/getAllTournaments'
 
   constructor(private http: HttpClient) { }
 

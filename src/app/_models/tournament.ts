@@ -8,5 +8,6 @@ export class Tournament {
     scoring: string;
     division: number;
     cost: any;
+    active: boolean;
 }
 
