@@ -11,8 +11,7 @@ export class TournamentComponent implements OnInit {
 
   readonly qtdPagina = 6;
   pagina = 0;
-  tournament: Tournament[] = [];
-  tournaments;
+  tournaments: Tournament[] = [];
   isLoading = false;
 
   constructor(private service: TournamentService) { }
@@ -31,9 +30,7 @@ export class TournamentComponent implements OnInit {
     //this.pagina++;
     //this.service.getTournament(this.pagina, this.qtdPagina).subscribe( (tournament: Tournament[]) => this.tournament.push(...tournament),
     this.service.getTournament(this.pagina, this.qtdPagina).subscribe(res => {
-      this.tournaments = JSON.stringify(res)
-      this.tournaments = JSON.parse(this.tournaments)
-      this.tournament = this.tournaments.game;
+      this.tournaments = res;
       this.isLoading = false;
 
     }, err => {

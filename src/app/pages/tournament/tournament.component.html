@@ -16,8 +16,8 @@
           trabalhando...</span>
       </div>
     </div>
-    <div class="row" infiniteScroll (scrolled)="onScroll()" *ngIf="tournament.length > 0 && !isLoading">
-      <div class="col-lg-4 col-md-6 mt-5 mb-2" *ngFor="let torneio of tournament" >
+    <div class="row" infiniteScroll (scrolled)="onScroll()" *ngIf="!isLoading && tournaments.length > 0">
+      <div class="col-lg-4 col-md-6 mt-5 mb-2" *ngFor="let torneio of tournaments" >
         <div class="coming-match-item mb-30">
           <div class="coming-match-team">
             <div class="match-team-info">
