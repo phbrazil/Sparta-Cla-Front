@@ -2,7 +2,7 @@ export class Tournament {
     id: number;
     mode: string;
     date: string;
-    award: number;
+    award: string;
     duration: string;
     start: string;
     scoring: string;

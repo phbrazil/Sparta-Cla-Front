@@ -17,7 +17,7 @@
             trabalhando...</span>
         </div>
       </div>
-      <table *ngIf="!isLoading" aria-describedby="campeonatos" class="table">
+      <table *ngIf="!isLoading" aria-describedby="campeonatos" class="table table-responsive">
         <thead class="thead-dark">
           <tr>
             <th scope="col">Modo</th>
@@ -41,7 +41,7 @@
             <td>{{ tournament.duration }}</td>
             <td>{{ tournament.scoring }}</td>
             <td>{{ tournament.start }}</td>
-            <td> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEdit">
+            <td> <button (click)="editTournament(tournament.id)" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEdit">
               Editar
             </button> </td>
           </tr>
@@ -52,10 +52,10 @@
 </section>
 
 <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="modalEdit" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-body">
-        <app-edit-tournament></app-edit-tournament>
+        <app-edit-tournament [id]="idTournament"></app-edit-tournament>
       </div>
     </div>
   </div>
