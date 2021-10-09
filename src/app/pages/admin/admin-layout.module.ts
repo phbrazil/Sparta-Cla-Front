@@ -14,6 +14,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { NewTournamentComponent } from './logged-pages/manage/tournament/new-tournament/new-tournament.component';
 import { ManageComponent } from './logged-pages/manage/manage.component';
 import { ListTournamentsComponent } from './logged-pages/manage/tournament/list-tournaments/list-tournaments.component';
+import { EditTournamentComponent } from './logged-pages/manage/tournament/edit-tournament/edit-tournament.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { ListTournamentsComponent } from './logged-pages/manage/tournament/list-
     CreditsComponent,
     NewTournamentComponent,
     ManageComponent,
-    ListTournamentsComponent],
+    ListTournamentsComponent,
+    EditTournamentComponent],
   imports: [
     CommonModule,
     HomeModule,
