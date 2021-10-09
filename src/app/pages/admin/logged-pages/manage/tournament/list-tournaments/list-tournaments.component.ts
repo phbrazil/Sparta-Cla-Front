@@ -13,6 +13,7 @@ export class ListTournamentsComponent implements OnInit {
   pagina = 0;
   tournaments: Tournament[] = [];
   isLoading = false;
+  idTournament: string;
 
   constructor(private service: TournamentService) { }
 
@@ -34,6 +35,11 @@ export class ListTournamentsComponent implements OnInit {
       console.log("Ocorreu algum Erro", err);
       this.isLoading = false;
     });
+  }
+
+  editTournament(id){
+    console.log(id)
+    this.idTournament = id;
   }
 
 }

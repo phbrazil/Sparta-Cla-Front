@@ -1,0 +1,136 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title">Campeonato {{tournament?.mode}} dia {{tournament?.date}}</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="formEditTournament" (ngSubmit)="enviar()">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="mode">Modo*</label>
+              <select class="form-control" id="mode" name="mode" formControlName="mode">
+                <option value=""></option>
+                <option value="Solo">Solo</option>
+                <option value="Duo">Duo</option>
+                <option value="Trio" selected>Trio</option>
+                <option value="Squad">Squad</option>
+                <option value="2 VS 2 (Squad)">2 VS 2 (Squad)</option>
+              </select>
+              <ng-container *ngIf="formEditTournament.controls.mode.touched">
+                <span class="text-danger" *ngIf="formEditTournament.controls.mode.errors?.required">
+                  Campo obrigatório
+                </span>
+              </ng-container>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="date">Data*</label>
+              <input type="date" class="form-control" id="date" aria-describedby="date" formControlName="date"
+                name="date">
+              <ng-container *ngIf="formEditTournament.controls.date.touched">
+                <span class="text-danger" *ngIf="formEditTournament.controls.date.errors?.required">
+                  Data obrigatória
+                </span>
+                <span *ngIf="formEditTournament.controls.date.errors?.date">
+                  Data inválida
+                </span>
+              </ng-container>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="award">Premiação*</label>
+              <select class="form-control" id="award" name="award" formControlName="award">
+                <option value=""></option>
+                <option value="10 Créditos">10 Créditos</option>
+                <option value="20 Créditos">20 Créditos</option>
+                <option value="30 Créditos">30 Créditos</option>
+                <option value="40 Créditos">40 Créditos</option>
+                <option value="50 Créditos">50 Créditos</option>
+              </select>
+              <ng-container *ngIf="formEditTournament.controls.award.touched">
+                <span class="text-danger" *ngIf="formEditTournament.controls.award.errors?.required">
+                  Campo obrigatório
+                </span>
+              </ng-container>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="duration">Duração*</label>
+              <select class="form-control" id="duration" name="duration" formControlName="duration">
+                <option value=""></option>
+                <option value="1:00">1:00</option>
+                <option value="1:30">1:30</option>
+                <option value="2:00" selected>2:00</option>
+                <option value="2:30">2:30</option>
+              </select>
+              <ng-container *ngIf="formEditTournament.controls.duration.touched">
+                <span class="text-danger" *ngIf="formEditTournament.controls.duration.errors?.required">
+                  Campo obrigatório
+                </span>
+              </ng-container>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="estado">Início*</label>
+              <input type="time" class="form-control" id="start" formControlName="start" name="start">
+              <ng-container *ngIf="formEditTournament.controls.start.touched">
+                <span class="text-danger" *ngIf="formEditTournament.controls.start.errors?.required">
+                  Campo obrigatório
+                </span>
+              </ng-container>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="duration">Pontuação*</label>
+              <select class="form-control" id="scoring" name="scoring" formControlName="scoring">
+                <option value=""></option>
+                <option value="3 melhores partidas" selected>3 melhores partidas</option>
+                <option value="2 melhores partidas">2 melhores partidas</option>
+                <option value="Melhor partida">Melhor partida</option>
+              </select>
+              <ng-container *ngIf="formEditTournament.controls.scoring.touched">
+                <span class="text-danger" *ngIf="formEditTournament.controls.scoring.errors?.required">
+                  Campo obrigatório
+                </span>
+              </ng-container>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="duration">Custo*</label>
+              <select class="form-control" id="cost" name="cost" formControlName="cost">
+                <option value=""></option>
+                <option value="Grátis" selected>Grátis</option>
+                <option value="10 Créditos">10 Créditos</option>
+                <option value="20 Créditos">20 Créditos</option>
+                <option value="30 Créditos">30 Créditos</option>
+                <option value="40 Créditos">40 Créditos</option>
+                <option value="50 Créditos">50 Créditos</option>
+              </select>
+              <ng-container *ngIf="formEditTournament.controls.cost.touched">
+                <span class="text-danger" *ngIf="formEditTournament.controls.cost.errors?.required">
+                  Campo obrigatório
+                </span>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-custom mb-3" [disabled]="!formEditTournament.valid">
+          <span *ngIf="isLoading" class="spinner-border spinner-border-sm mr-1"></span>
+          Salvar</button>
+        <button type="button" class="btn btn-custom mb-3" data-dismiss="modal">Fechar</button>
+      </div>
+    </form>
+  </div>
+</div>
