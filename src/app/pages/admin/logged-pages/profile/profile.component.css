@@ -77,6 +77,12 @@ body{
   color: #adb5bd;
   }
 
+  .black {
+    background: #000;
+    color: var(--primary-color);
+    margin-left: 0.9375rem;
+  }
+
   h6 {
     padding-left: 25px;
   }

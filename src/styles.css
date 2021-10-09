@@ -141,6 +141,17 @@ ul {
   text-align: center;
 }
 
+.toast-header {
+  justify-content: center;
+}
+
+.alert-success {
+  color: inherit;
+  background-color: #ffffff;
+  border-color: #c3e6cb;
+  text-align: center;
+}
+
 
 @media (max-width: 465px) {
   .title {
