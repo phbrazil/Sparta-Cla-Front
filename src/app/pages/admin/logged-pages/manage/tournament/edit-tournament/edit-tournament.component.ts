@@ -42,7 +42,7 @@ export class EditTournamentComponent implements OnInit {
 
     if (this.id) {
 
-      this.tournamentService.getTournamentById(this.id).subscribe(tournament =>{
+      this.tournamentService.getTournamentById(this.id).subscribe(tournament => {
 
         this.tournament = tournament;
 
@@ -50,7 +50,7 @@ export class EditTournamentComponent implements OnInit {
 
         this.loadTournament();
 
-      }, err =>{
+      }, err => {
 
         console.log(err)
 
@@ -71,6 +71,9 @@ export class EditTournamentComponent implements OnInit {
       $('.modal-backdrop').remove();
       $('#modalEdit').toggle();
 
+      this.reloadCurrentRoute();
+
+
     }, err => {
 
       this.alertService.success(err.text, err.subText, { keepAfterRouteChange: true });
@@ -78,6 +81,14 @@ export class EditTournamentComponent implements OnInit {
     })
 
   }
+
+  reloadCurrentRoute() {
+    const currentUrl = this.router.url;
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([currentUrl]);
+    });
+  }
+
 
   loadTournament() {
 
