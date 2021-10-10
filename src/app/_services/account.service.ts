@@ -248,6 +248,7 @@ export class AccountService {
 
   editUser(body) {
 
+    console.log("Body aqui", body);
     const token = localStorage.getItem('token');
 
     const headers = { 'Authorization': `Bearer ${token}` }

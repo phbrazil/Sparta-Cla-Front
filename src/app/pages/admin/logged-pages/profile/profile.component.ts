@@ -88,7 +88,7 @@ export class ProfileComponent implements OnInit {
   editUser(): void {
 
     if (this.user.idUser) {
-      this.accountService.editUser(this.user.idUser, this.userForm.value).subscribe( success => {
+      this.accountService.editUser(this.userForm.value).subscribe( success => {
         alert("Sucesso!");
         console.log(success, "sucesso");
       }, error => {
