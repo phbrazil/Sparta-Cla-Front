@@ -51,6 +51,8 @@ export class ProfileComponent implements OnInit {
       wzProfile: [{value: `${user.wzProfile}`, disabled: true}, [Validators.required]],
       platform: [{value: `${user.platform}`, disabled: true}, [Validators.required]],
     })
+
+    console.log(this.userForm.value)
   }
 
   formUserNull(): User {

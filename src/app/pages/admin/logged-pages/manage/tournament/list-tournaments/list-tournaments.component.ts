@@ -23,6 +23,10 @@ export class ListTournamentsComponent implements OnInit {
 
   }
 
+  ngOnChanges(){
+    this.findAllTournament();
+  }
+
   findAllTournament() {
     this.isLoading = true;
     //this.pagina++;

@@ -41,5 +41,29 @@ export class TournamentService {
 
     }
 
+    editTournament(body: Tournament) {
+
+      const token = localStorage.getItem('token');
+
+      const headers = { 'Authorization': `Bearer ${token}` }
+
+      //return this.http.post<any>('http://localhost:8080/tournaments/editTournament', body, { headers });
+
+      return this.http.put<any>('https://sparta-clan.herokuapp.com/tournaments/editTournament', body, { headers });
+
+    }
+
+    getTournamentById(id: number) {
+
+      const token = localStorage.getItem('token');
+
+      const headers = { 'Authorization': `Bearer ${token}` }
+
+      //return this.http.post<any>('http://localhost:8080/tournaments/getTournament', body, { headers });
+
+      return this.http.get<Tournament>(`https://sparta-clan.herokuapp.com/tournaments/getTournament/${id}`, { headers });
+
+    }
+
 
 }
