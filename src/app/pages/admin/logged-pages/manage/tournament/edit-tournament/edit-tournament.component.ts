@@ -1,10 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Tournament } from 'src/app/_models/tournament';
 import { User } from 'src/app/_models/user';
 import { AccountService, AlertService } from 'src/app/_services';
 import { TournamentService } from 'src/app/_services/tournament.service';
-
+import * as $ from 'jquery';
 @Component({
   selector: 'app-edit-tournament',
   templateUrl: './edit-tournament.component.html',
@@ -19,7 +20,7 @@ export class EditTournamentComponent implements OnInit {
   @Input() id: number;
 
   constructor(private fb: FormBuilder, private tournamentService: TournamentService, private alertService: AlertService,
-    private accountService: AccountService) { }
+    private accountService: AccountService, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -37,34 +38,48 @@ export class EditTournamentComponent implements OnInit {
 
   }
 
-  ngOnChanges(){
+  ngOnChanges() {
 
-    if(this.id){
+    if (this.id) {
 
-      let tournament: Tournament = {
-        id: this.id,
-        mode: 'Duo',
-        date: '1990-01-01',
-        award: '10 Créditos',
-        duration: '1:30',
-        start: '15:30',
-        scoring: '2 melhores partidas',
-        division: 10,
-        cost: '20 Créditos',
-        active: true
-      }
-      this.tournament = tournament;
+      this.tournamentService.getTournamentById(this.id).subscribe(tournament =>{
 
-      this.loadTournament();
+        this.tournament = tournament;
+
+        console.log(tournament)
+
+        this.loadTournament();
+
+      }, err =>{
+
+        console.log(err)
+
+      })
+
 
     }
   }
 
-  enviar(){
+  enviar() {
+
+    this.tournamentService.editTournament(this.formEditTournament.value).subscribe(res => {
+
+      this.alertService.success(res.text, res.subText, { keepAfterRouteChange: true });
+
+      //REMOVE FADE BUGADO QUE CONTINUAVA
+      $('body').removeClass('modal-open');
+      $('.modal-backdrop').remove();
+      $('#modalEdit').toggle();
+
+    }, err => {
+
+      this.alertService.success(err.text, err.subText, { keepAfterRouteChange: true });
+
+    })
 
   }
 
-  loadTournament(){
+  loadTournament() {
 
     this.formEditTournament = this.fb.group({
       mode: [this.tournament.mode, [Validators.required]],
@@ -77,8 +92,6 @@ export class EditTournamentComponent implements OnInit {
       cost: [this.tournament.cost, [Validators.required]],
       active: [true, [Validators.required]]
     })
-
-
   }
 
 }

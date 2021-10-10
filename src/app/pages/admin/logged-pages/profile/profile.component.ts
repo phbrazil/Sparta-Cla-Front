@@ -46,6 +46,8 @@ export class ProfileComponent implements OnInit {
       userWzProfile: [{value: `${user.wzProfile}`, disabled: true}, [Validators.required]],
       userPlatform: [{value: `${user.platform}`, disabled: true}, [Validators.required]],
     })
+
+    console.log(this.userForm.value)
   }
 
   formUserNull(): User {
@@ -88,7 +90,7 @@ export class ProfileComponent implements OnInit {
   editUser(): void {
 
     if (this.user.idUser) {
-      this.accountService.editUser(this.user.idUser, this.userForm.value).subscribe( success => {
+      this.accountService.editUser(this.userForm.value).subscribe( success => {
         alert("Sucesso!");
         console.log(success, "sucesso");
       }, error => {
