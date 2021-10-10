@@ -43,11 +43,13 @@ export class TournamentService {
 
     editTournament(body: Tournament) {
 
+      console.log(body)
+
       const token = localStorage.getItem('token');
 
       const headers = { 'Authorization': `Bearer ${token}` }
 
-      //return this.http.post<any>('http://localhost:8080/tournaments/editTournament', body, { headers });
+      //return this.http.put<any>('http://localhost:8080/tournaments/editTournament', body, { headers });
 
       return this.http.put<any>('https://sparta-clan.herokuapp.com/tournaments/editTournament', body, { headers });
 
