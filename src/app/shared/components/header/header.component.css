@@ -67,7 +67,7 @@
 }
 
 .navbar-light .navbar-toggler-icon {
-  background-image: url(../../../../assets/images/menu.png);
+  background-image: url(src/assets/images/menu.png);
 }
 
 @media (max-width: 465px) {

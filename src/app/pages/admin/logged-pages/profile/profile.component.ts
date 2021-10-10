@@ -38,7 +38,7 @@ export class ProfileComponent implements OnInit {
       // userEstado: [user.estado, [Validators.required]],
       // userWzProfile: [user.wzProfile, [Validators.required]],
       // userPlatform: [user.platform, [Validators.required]],
-
+      idUser: [user.idUser],
       userName: [{value: `${user.nome}`, disabled: true}, [Validators.required]],
       userWz: [{value: `${user.username}`, disabled: true}, [Validators.required]],
       userPais: [{value: `${user.pais}`, disabled: true}, [Validators.required]],
@@ -64,10 +64,11 @@ export class ProfileComponent implements OnInit {
 
   enableForm(): void {
     this.disable = false;
-    document.getElementsByTagName("input")[0].disabled = false;
+    document.getElementsByTagName("select")[0].disabled = false;
     document.getElementsByTagName("input")[1].disabled = false;
-    document.getElementsByTagName("input")[4].disabled = false;
-    document.getElementsByTagName("input")[5].disabled = false;
+    document.getElementsByTagName("input")[2].disabled = false;
+    // document.getElementsByTagName("input")[4].disabled = false;
+     document.getElementsByTagName("input")[5].disabled = false;
     document.getElementsByTagName("input")[6].disabled = false;
     document.getElementsByTagName("input")[7].disabled = false;
 
@@ -75,9 +76,10 @@ export class ProfileComponent implements OnInit {
 
   disableForm() {
     this.disable = true;
-    document.getElementsByTagName("input")[0].disabled = true;
+    document.getElementsByTagName("select")[0].disabled = true;
     document.getElementsByTagName("input")[1].disabled = true;
-    document.getElementsByTagName("input")[4].disabled = true;
+    document.getElementsByTagName("input")[2].disabled = true;
+    // document.getElementsByTagName("input")[4].disabled = true;
     document.getElementsByTagName("input")[5].disabled = true;
     document.getElementsByTagName("input")[6].disabled = true;
     document.getElementsByTagName("input")[7].disabled = true;
