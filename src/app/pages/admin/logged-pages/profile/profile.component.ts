@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/_models/user';
-import { AccountService } from 'src/app/_services';
+import { AccountService, AlertService } from 'src/app/_services';
+import { ActivisionService } from 'src/app/_services/activision.service';
+import { Constants } from 'src/app/utils/Constants';
 
 @Component({
   selector: 'app-profile',
@@ -13,17 +15,26 @@ import { AccountService } from 'src/app/_services';
 export class ProfileComponent implements OnInit {
   userForm: FormGroup;
   user: User;
+  stats: any;
+  kd: any;
   disable = true;
 
-  constructor(private accountService: AccountService, private fb: FormBuilder) {
+  constructor(private accountService: AccountService,
+              private fb: FormBuilder,
+              private alertService: AlertService,
+              private activisionService: ActivisionService) {
 
     this.accountService.user.subscribe(x => this.user = x);
 
    }
 
   ngOnInit(): void {
+
+    this.getStats(this.user.wzProfile, this.user.platform);
+
     if (this.user.idUser) {
        this.formUser(this.user);
+       console.log(this.user)
     }
     else {
       this.formUser(this.formUserNull());
@@ -32,19 +43,13 @@ export class ProfileComponent implements OnInit {
 
   formUser (user: User): void {
     this.userForm = this.fb.group({
-      // userName: [user.nome, [Validators.required]],
-      // userWz: [user.username, [Validators.required]],
-      // userPais: [user.pais, [Validators.required]],
-      // userEstado: [user.estado, [Validators.required]],
-      // userWzProfile: [user.wzProfile, [Validators.required]],
-      // userPlatform: [user.platform, [Validators.required]],
-      idUser: [user.idUser],
-      userName: [{value: `${user.nome}`, disabled: true}, [Validators.required]],
-      userWz: [{value: `${user.username}`, disabled: true}, [Validators.required]],
-      userPais: [{value: `${user.pais}`, disabled: true}, [Validators.required]],
-      userEstado: [{value: `${user.estado}`, disabled: true}, [Validators.required]],
-      userWzProfile: [{value: `${user.wzProfile}`, disabled: true}, [Validators.required]],
-      userPlatform: [{value: `${user.platform}`, disabled: true}, [Validators.required]],
+      idUser: [{value: `${user.idUser}`, disabled: true}, [Validators.required]],
+      usuario: [{value: `${user.username}`, disabled: true}, [Validators.required]],
+      pais: [{value: `${user.pais}`, disabled: true}, [Validators.required]],
+      estado: [{value: `${user.estado}`, disabled: true}, [Validators.required]],
+      nascimento: [{value: `${user.nascimento}`, disabled: true}, [Validators.required]],
+      wzProfile: [{value: `${user.wzProfile}`, disabled: true}, [Validators.required]],
+      platform: [{value: `${user.platform}`, disabled: true}, [Validators.required]],
     })
 
     console.log(this.userForm.value)
@@ -69,8 +74,7 @@ export class ProfileComponent implements OnInit {
     document.getElementsByTagName("select")[0].disabled = false;
     document.getElementsByTagName("input")[1].disabled = false;
     document.getElementsByTagName("input")[2].disabled = false;
-    // document.getElementsByTagName("input")[4].disabled = false;
-     document.getElementsByTagName("input")[5].disabled = false;
+    document.getElementsByTagName("input")[5].disabled = false;
     document.getElementsByTagName("input")[6].disabled = false;
     document.getElementsByTagName("input")[7].disabled = false;
 
@@ -81,7 +85,6 @@ export class ProfileComponent implements OnInit {
     document.getElementsByTagName("select")[0].disabled = true;
     document.getElementsByTagName("input")[1].disabled = true;
     document.getElementsByTagName("input")[2].disabled = true;
-    // document.getElementsByTagName("input")[4].disabled = true;
     document.getElementsByTagName("input")[5].disabled = true;
     document.getElementsByTagName("input")[6].disabled = true;
     document.getElementsByTagName("input")[7].disabled = true;
@@ -90,14 +93,31 @@ export class ProfileComponent implements OnInit {
   editUser(): void {
 
     if (this.user.idUser) {
-      this.accountService.editUser(this.userForm.value).subscribe( success => {
-        alert("Sucesso!");
-        console.log(success, "sucesso");
+      this.accountService.editUser(this.userForm.value).subscribe( () => {
+
+        let user = JSON.parse(localStorage.getItem('user'));
+        user.estado = this.userForm.value.estado;
+        localStorage.setItem('user', JSON.stringify(user));
+
+        this.alertService.success('Sucesso', 'usuário editado');
+
+        this.disable = true;
+        this.disableForm();
+
+
       }, error => {
         alert("Erro");
         console.log("deu ruim", error)
       });
     }
+  }
+
+  getStats(wzProfile: string, platform: string) {
+
+    this.activisionService.getWarzoneInfoCloudFunction(Constants.email, Constants.password, wzProfile, platform).subscribe( res => {
+      this.stats = res.response;
+      this.kd = Math.round(this.stats.br.kdRatio * 100) / 100;
+    });
   }
 
 }
