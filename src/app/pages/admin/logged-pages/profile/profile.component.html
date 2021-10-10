@@ -19,15 +19,15 @@
                       <div class="col">
                           <div class="card-profile-stats d-flex justify-content-center mt-md-5">
                               <div>
-                                  <span class="heading">153</span>
+                                  <span class="heading">{{stats.br.wins}}</span>
                                   <span class="description">Wins</span>
                               </div>
                               <div>
-                                  <span class="heading">2000</span>
+                                  <span class="heading">{{stats.br.kills}}</span>
                                   <span class="description">Kills</span>
                               </div>
                               <div>
-                                  <span class="heading">0.89</span>
+                                  <span class="heading">{{kd}}</span>
                                   <span class="description">Kd</span>
                               </div>
                           </div>
@@ -41,20 +41,20 @@
             <div class="card">
                 <div class="card-body">
                     <form autocomplete="off" novalidate [formGroup]="userForm" (ngSubmit)="editUser()">
-                        <!-- <input type="text" formControlName="idUser" name="idUser" value="{{user.idUser}}"> -->
+                        <input type="hidden" formControlName="idUser" name="idUser" value="{{user.idUser}}">
                         <h6 class="heading-small text-muted mb-4">Informação pessoal</h6>
                         <div class="pl-lg-4">
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group focused">
                                         <label class="form-control-label" for="input-username">Nome Completo</label>
-                                        <input type="text" id="input-username" class="form-control form-control-alternative" name="userName" formControlName="userName">
+                                        <input type="text" id="input-username" class="form-control form-control-alternative" value="{{user.nome}}" disabled>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                   <div class="form-group focused">
                                       <label class="form-control-label" for="input-userWz">Usuário Warzone</label>
-                                      <input type="text" id="input-userWz" class="form-control form-control-alternative" name="userWz" formControlName="userWz">
+                                      <input type="text" id="input-userWz" class="form-control form-control-alternative" name="usuario" formControlName="usuario">
                                   </div>
                               </div>
                             </div>
@@ -69,7 +69,7 @@
                                 <div class="col-lg-6">
                                     <div class="form-group focused">
                                         <label class="form-control-label" for="input-last-name">Data Nascimento</label>
-                                        <input type="text" id="input-last-name" class="form-control form-control-alternative" value="{{user.nascimento | date:'dd/MM/yyyy'}}" disabled>
+                                        <input type="text" id="input-last-name" class="form-control form-control-alternative" name="nascimento" formControlName="{{user.nascimento | date: 'dd/MM/yyyy'}}" value="{{user.nascimento | date: 'dd/MM/yyyy'}}" disabled  disabled>
                                     </div>
                                 </div>
                             </div>
@@ -82,15 +82,15 @@
                                 <div class="col-lg-6">
                                     <div class="form-group focused">
                                         <label class="form-control-label" for="input-address">País</label>
-                                        <input type="text" id="input-address" class="form-control form-control-alternative" name="userPais" formControlName="userPais">
+                                        <input type="text" id="input-address" class="form-control form-control-alternative" name="pais" formControlName="pais">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                   <div class="form-group focused">
                                       <label class="form-control-label" for="input-address">Estado</label>
                                       <!-- <input type="text" id="input-address" class="form-control form-control-alternative" name="userEstado" formControlName="userEstado"> -->
-                                      <select class="form-control" id="input-address" name="userEstado" formControlName="userEstado">
-                                        <option value=""></option>
+                                      <select class="form-control" id="input-address" name="estado" formControlName="estado">
+                                        <option value="{{user.estado}}" selected>{{user.estado}}</option>
                                         <option value="Acre">Acre</option>
                                         <option value="Alagoas">Alagoas</option>
                                         <option value="Amapá">Amapá</option>
@@ -129,13 +129,13 @@
                             <div class="col-lg-6">
                                 <div class="form-group focused">
                                     <label class="form-control-label" for="input-address">Console</label>
-                                    <input type="text" id="input-address" class="form-control form-control-alternative" name="userPlatform" formControlName="userPlatform">
+                                    <input type="text" id="input-address" class="form-control form-control-alternative" name="platform" formControlName="platform">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                               <div class="form-group focused">
                                   <label class="form-control-label" for="input-address">Id</label>
-                                  <input type="text" id="input-address" class="form-control form-control-alternative" name="userWzProfile" formControlName="userWzProfile">
+                                  <input type="text" id="input-address" class="form-control form-control-alternative" name="wzProfile" formControlName="wzProfile">
                               </div>
                           </div>
                         </div>
