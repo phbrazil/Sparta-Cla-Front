@@ -8,6 +8,7 @@ import { ProfileComponent } from "./logged-pages/profile/profile.component";
 import { RegisterConfirmationComponent } from "./logged-pages/register-confirmation/register-confirmation.component";
 import { WelcomeComponent } from "./logged-pages/welcome/welcome.component";
 import { ListTournamentsComponent } from "./logged-pages/manage/tournament/list-tournaments/list-tournaments.component";
+import { ListUsersComponent } from "./logged-pages/manage/users/list-users/list-users.component";
 
 export const AdminLayoutRoutes: Routes = [
 
@@ -21,5 +22,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'manage', component: ManageComponent },
     { path: 'new-tournament', component: NewTournamentComponent },
     { path: 'list-tournaments', component: ListTournamentsComponent },
+    { path: 'list-users', component: ListUsersComponent },
 
 ];

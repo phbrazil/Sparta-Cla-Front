@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Tournament } from 'src/app/_models/tournament';
+import { AlertService } from 'src/app/_services';
 import { TournamentService } from 'src/app/_services/tournament.service';
-
+import * as $ from 'jquery';
 @Component({
   selector: 'app-list-tournaments',
   templateUrl: './list-tournaments.component.html',
@@ -13,9 +15,9 @@ export class ListTournamentsComponent implements OnInit {
   pagina = 0;
   tournaments: Tournament[] = [];
   isLoading = false;
-  idTournament: string;
+  idTournament: number;
 
-  constructor(private service: TournamentService) { }
+  constructor(private service: TournamentService, private router: Router, private alertService: AlertService) { }
 
   ngOnInit(): void {
 
@@ -23,7 +25,7 @@ export class ListTournamentsComponent implements OnInit {
 
   }
 
-  ngOnChanges(){
+  ngOnChanges() {
     this.findAllTournament();
   }
 
@@ -41,8 +43,40 @@ export class ListTournamentsComponent implements OnInit {
     });
   }
 
-  editTournament(id){
+  editTournament(id) {
     this.idTournament = id;
+  }
+
+  disableTournament(id) {
+    this.idTournament = id;
+  }
+
+  confirmDisable() {
+
+    this.service.disableTournament(this.idTournament).subscribe(res => {
+
+      this.alertService.success(res.text, res.subText, { keepAfterRouteChange: true });
+
+      //REMOVE FADE BUGADO QUE CONTINUAVA
+      $('body').removeClass('modal-open');
+      $('.modal-backdrop').remove();
+      $('#modalDisable').toggle();
+
+      this.reloadCurrentRoute();
+
+    }, err => {
+
+      this.alertService.error(err.text, err.subText, { keepAfterRouteChange: true });
+
+    })
+
+  }
+
+  reloadCurrentRoute() {
+    const currentUrl = this.router.url;
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([currentUrl]);
+    });
   }
 
 }

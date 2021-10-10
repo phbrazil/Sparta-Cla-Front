@@ -1,0 +1,68 @@
+<section class="container">
+  <div class="row mb-5 mt-5 pb-5 pt-5">
+    <div class="col-md-12 game-content">
+      <div class="row">
+        <div class="col-md-8">
+          <h2 class="mb-5">Usuários <span class="text-yellow">ativos</span></h2>
+        </div>
+        <!--div class="col-md-4">
+          <a class="btn-custom" routerLink="/new-tournament">Novo Usuário</a>
+        </div-->
+      </div>
+      <div *ngIf="isLoading" class="d-flex justify-content-center">
+        <div class="spinner-grow text-warning" role="status" style="width: 5rem; height: 5rem;">
+        </div>
+        <div class="ml-4">
+          <span class="text-warning">Favor aguarde... <br>nossos servidores estão iniciando,<br> ainda há homens
+            trabalhando...</span>
+        </div>
+      </div>
+      <table *ngIf="!isLoading" aria-describedby="usuarios" class="table table-responsive">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Email</th>
+            <th scope="col">Usuário</th>
+            <th scope="col">Nascimento</th>
+            <th scope="col">Data de Cadastro</th>
+            <th scope="col">País</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Usuário Warzone</th>
+            <th scope="col">Plataforma Warzone</th>
+            <th scope="col">Editar</th>
+            <th scope="col">Inativar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{ user.nome }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.usuario }}</td>
+            <td>{{ user.nascimento }}</td>
+            <td>{{ user.dataCadastro }}</td>
+            <td>{{ user.pais }}</td>
+            <td>{{ user.estado }}</td>
+            <td>{{ user.wzProfile }}</td>
+            <td>{{ user.platform }}</td>
+            <td> <button (click)="editUser(user.idUser)" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEdit">
+              Editar
+            </button> </td>
+            <td> <button (click)="disableUser(user.idUser)" type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDisable">
+              Inativar
+            </button> </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="modalEdit" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-body">
+        <app-edit-user [idUser]="idUser"></app-edit-user>
+      </div>
+    </div>
+  </div>
+</div>

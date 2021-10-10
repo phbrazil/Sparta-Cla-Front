@@ -65,5 +65,17 @@ export class TournamentService {
 
     }
 
+    disableTournament(id: number) {
+
+      const token = localStorage.getItem('token');
+
+      const headers = { 'Authorization': `Bearer ${token}` }
+
+      //return this.http.post<any>('http://localhost:8080/tournaments/disableTournament', body, { headers });
+
+      return this.http.delete<any>(`https://sparta-clan.herokuapp.com/tournaments/disableTournament/${id}`, { headers });
+
+    }
+
 
 }

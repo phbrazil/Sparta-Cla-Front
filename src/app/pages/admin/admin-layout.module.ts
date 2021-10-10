@@ -15,6 +15,8 @@ import { NewTournamentComponent } from './logged-pages/manage/tournament/new-tou
 import { ManageComponent } from './logged-pages/manage/manage.component';
 import { ListTournamentsComponent } from './logged-pages/manage/tournament/list-tournaments/list-tournaments.component';
 import { EditTournamentComponent } from './logged-pages/manage/tournament/edit-tournament/edit-tournament.component';
+import { ListUsersComponent } from './logged-pages/manage/users/list-users/list-users.component';
+import { EditUserComponent } from './logged-pages/manage/users/edit-user/edit-user.component';
 
 
 @NgModule({
@@ -28,7 +30,9 @@ import { EditTournamentComponent } from './logged-pages/manage/tournament/edit-t
     NewTournamentComponent,
     ManageComponent,
     ListTournamentsComponent,
-    EditTournamentComponent],
+    EditTournamentComponent,
+    ListUsersComponent,
+    EditUserComponent],
   imports: [
     CommonModule,
     HomeModule,
