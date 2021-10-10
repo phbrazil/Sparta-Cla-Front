@@ -34,7 +34,6 @@ export class ProfileComponent implements OnInit {
 
     if (this.user.idUser) {
        this.formUser(this.user);
-       console.log(this.user)
     }
     else {
       this.formUser(this.formUserNull());
@@ -51,8 +50,6 @@ export class ProfileComponent implements OnInit {
       wzProfile: [{value: `${user.wzProfile}`, disabled: true}, [Validators.required]],
       platform: [{value: `${user.platform}`, disabled: true}, [Validators.required]],
     })
-
-    console.log(this.userForm.value)
   }
 
   formUserNull(): User {

@@ -42,7 +42,6 @@ export class ListTournamentsComponent implements OnInit {
   }
 
   editTournament(id){
-    console.log(id)
     this.idTournament = id;
   }
 

@@ -43,8 +43,6 @@ export class TournamentService {
 
     editTournament(body: Tournament) {
 
-      console.log(body)
-
       const token = localStorage.getItem('token');
 
       const headers = { 'Authorization': `Bearer ${token}` }
