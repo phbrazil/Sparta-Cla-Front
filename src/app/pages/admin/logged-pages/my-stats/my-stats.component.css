@@ -1,0 +1,96 @@
+.card {
+  margin-bottom: 1.875rem;
+  background-color: #fff;
+  transition: all .5s ease-in-out;
+  position: relative;
+  border: 0px solid transparent;
+  box-shadow: 0px 2px 21px 0px rgb(59 53 63 / 12%);
+  height: calc(100% - 30px);
+}
+
+.title {
+  font-size: 3.25rem;
+}
+
+h2 {
+  padding: 1.875rem 0;
+}
+
+.align-items-center {
+  align-items: center !important;
+}
+
+.avtivity-card .activity-icon {
+  height: 80px;
+  width: 80px;
+  min-width: 80px;
+  display: block;
+  -webkit-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  transition: all 0.5s;
+  border-radius: 100%;
+  line-height: 80px;
+  text-align: center;
+}
+
+.media-body {
+  flex: 1;
+}
+
+.fa {
+  font-size: 3rem;
+}
+
+.table-responsive-xl table {
+  background: #fff;
+  box-shadow: 0px 2px 21px 0px rgb(59 53 63 / 12%);
+  text-align: center;
+}
+
+.table-responsive-xl thead tr {
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 800;
+  color: #6d6d6d;
+  font-family: 'Oxanium', cursive;
+}
+
+.table-responsive-xl thead tr th {
+  vertical-align: middle;
+  padding: 24px 25px;
+  color: var(--primary-color);
+  background-color: #343a40;
+  border-color: #454d55;
+}
+
+.table-responsive-xl tbody td {
+  font-size: 16px;
+  font-weight: 500;
+  color: #868686;
+  padding: 20px 25px;
+  vertical-align: middle;
+  border-top: none;
+  border-bottom: 1px solid #ededed;
+}
+
+.gulag-icon .fa {
+  font-size: 1.5rem;
+}
+
+.table-responsive-xl .gulag-icon {
+  position: relative;
+}
+
+.table-responsive-xl tbody td:nth-child(1) {
+  color: var(--primary-color);
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.fa-check-circle {
+  color: #27ae60;
+}
+
+.fa-times-circle {
+  color: #c0392b
+}
