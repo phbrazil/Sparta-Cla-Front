@@ -13,9 +13,8 @@ export class TournamentService {
     'Content-Type': 'application/json',
   });
 
-  //readonly baseUrl: string = 'http://localhost:3000/game'
-  readonly baseUrl: string = 'https://sparta-clan.herokuapp.com/tournaments/getAllTournaments'
-  //readonly baseUrl: string = 'http://localhost:8080/tournaments/getAllTournaments'
+  //readonly baseUrl: string = 'https://sparta-clan.herokuapp.com'
+  readonly baseUrl: string = 'http://localhost:8080'
 
   constructor(private http: HttpClient) { }
 
@@ -24,8 +23,7 @@ export class TournamentService {
     httpParams = httpParams.set('_page', pagina.toString());
     httpParams = httpParams.set('_limit', qtdPagina.toString());
 
-    return this.http.get<Tournament[]>(this.baseUrl, {params: httpParams});
-    //return this.http.get<Tournament[]>(`${this.baseUrl}`, {headers: this.headers});
+    return this.http.get<Tournament[]>(`${this.baseUrl}/tournaments/getAllTournaments`, {params: httpParams});
 
     }
 
@@ -35,9 +33,7 @@ export class TournamentService {
 
       const headers = { 'Authorization': `Bearer ${token}` }
 
-      //return this.http.post<any>('http://localhost:8080/tournaments/newTournament', body, { headers });
-
-      return this.http.post<any>('https://sparta-clan.herokuapp.com/tournaments/newTournament', body, { headers });
+      return this.http.post<any>(`${this.baseUrl}/tournaments/newTournament`, body, { headers });
 
     }
 
@@ -47,9 +43,7 @@ export class TournamentService {
 
       const headers = { 'Authorization': `Bearer ${token}` }
 
-      //return this.http.put<any>('http://localhost:8080/tournaments/editTournament', body, { headers });
-
-      return this.http.put<any>('https://sparta-clan.herokuapp.com/tournaments/editTournament', body, { headers });
+      return this.http.put<any>(`${this.baseUrl}/tournaments/editTournament`, body, { headers });
 
     }
 
@@ -59,9 +53,7 @@ export class TournamentService {
 
       const headers = { 'Authorization': `Bearer ${token}` }
 
-      //return this.http.post<any>('http://localhost:8080/tournaments/getTournament', body, { headers });
-
-      return this.http.get<Tournament>(`https://sparta-clan.herokuapp.com/tournaments/getTournament/${id}`, { headers });
+      return this.http.get<Tournament>(`${this.baseUrl}/tournaments/getTournament/${id}`, { headers });
 
     }
 
@@ -71,9 +63,7 @@ export class TournamentService {
 
       const headers = { 'Authorization': `Bearer ${token}` }
 
-      //return this.http.post<any>('http://localhost:8080/tournaments/disableTournament', body, { headers });
-
-      return this.http.delete<any>(`https://sparta-clan.herokuapp.com/tournaments/disableTournament/${id}`, { headers });
+      return this.http.delete<any>(`${this.baseUrl}/tournaments/disableTournament/${id}`, { headers });
 
     }
 

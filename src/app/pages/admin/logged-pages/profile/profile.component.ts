@@ -43,7 +43,7 @@ export class ProfileComponent implements OnInit {
   formUser (user: User): void {
     this.userForm = this.fb.group({
       idUser: [{value: `${user.idUser}`, disabled: true}, [Validators.required]],
-      usuario: [{value: `${user.username}`, disabled: true}, [Validators.required]],
+      username: [{value: `${user.username}`, disabled: true}, [Validators.required]],
       pais: [{value: `${user.pais}`, disabled: true}, [Validators.required]],
       estado: [{value: `${user.estado}`, disabled: true}, [Validators.required]],
       nascimento: [{value: `${user.nascimento}`, disabled: true}, [Validators.required]],

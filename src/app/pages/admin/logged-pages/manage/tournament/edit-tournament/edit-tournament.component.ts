@@ -75,7 +75,7 @@ export class EditTournamentComponent implements OnInit {
 
     }, err => {
 
-      this.alertService.success(err.text, err.subText, { keepAfterRouteChange: true });
+      this.alertService.error(err.text, err.subText, { keepAfterRouteChange: true });
 
     })
 

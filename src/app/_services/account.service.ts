@@ -13,6 +13,11 @@ export class AccountService {
   public user: Observable<User>;
   private emailNewPassword = new BehaviorSubject<string>(null);
 
+
+  //readonly baseUrl: string = 'https://sparta-clan.herokuapp.com'
+  readonly baseUrl: string = 'http://localhost:8080'
+
+
   constructor(
     private router: Router,
     private http: HttpClient,
@@ -71,7 +76,7 @@ export class AccountService {
 
       if (validaCep.test(cep)) {
         //let url = `http://localhost:8080/sparta/getCep/${cep}`;
-        let url = `https://spartaclan.herokuapp.com/sparta/getCep/${cep}`;
+        let url = `${this.baseUrl}/sparta/getCep/${cep}`;
 
         return this.http.get<any>(url)
           .pipe(map(dados => {
@@ -170,9 +175,7 @@ export class AccountService {
 
   login(username, password) {
 
-    //const url = 'http://localhost:8080/account/api/auth/signin';
-
-    const url = 'https://sparta-clan.herokuapp.com/account/api/auth/signin';
+    const url = `${this.baseUrl}/account/api/auth/signin`;
 
     return this.http.post<User>(url, { username, password })
       .pipe(map(user => {
@@ -200,9 +203,8 @@ export class AccountService {
 
   register(body) {
 
-    //return this.http.post<any>('http://localhost:8080/spartaclan/createAccount', body);
 
-    return this.http.post<any>('https://sparta-clan.herokuapp.com/spartaclan/createAccount', body);
+    return this.http.post<any>(`${this.baseUrl}/spartaclan/createAccount`, body);
 
   }
 
@@ -212,17 +214,13 @@ export class AccountService {
 
     const headers = { 'Authorization': `Bearer ${token}` }
 
-    //return this.http.put<any>('http://localhost:8080/spartaclan/completeAccount', body, {headers});
-
-    return this.http.put<any>('https://sparta-clan.herokuapp.com/spartaclan/completeAccount', body, { headers });
+    return this.http.put<any>(`${this.baseUrl}/spartaclan/completeAccount`, body, { headers });
 
   }
 
   confirmEmail(validationCode: string) {
 
-    //return this.http.post<any>('http://localhost:8080/spartaclan/confirmEmail', body);
-
-    return this.http.post<any>(`https://sparta-clan.herokuapp.com/spartaclan/confirmEmail/${validationCode}`, {});
+    return this.http.post<any>(`${this.baseUrl}/spartaclan/confirmEmail/${validationCode}`, {});
 
 
   }
@@ -236,16 +234,13 @@ export class AccountService {
         .set('Authorization', `Bearer ${token}`)
     }
 
-    //const url = `http://localhost:8080/spartaclan/getAllUsers`;
-
-    const url = `https://sparta-clan.herokuapp.com/spartaclan/getAllUsers`
-
+    const url = `${this.baseUrl}/spartaclan/getAllUsers`
 
     return this.http.get<[User]>(url, header);
   }
 
 
-  getById(id: string) {
+  getUserById(idUser: number) {
 
     const token = localStorage.getItem('token');
 
@@ -254,9 +249,7 @@ export class AccountService {
         .set('Authorization', `Bearer ${token}`)
     }
 
-    const url = `http://localhost:8080/account/api/auth/user/${id}`;
-
-    //const url = `https://sparta-clan.herokuapp.com/account/api/auth/user/${id}`
+    const url = `${this.baseUrl}/spartaclan/getUser/${idUser}`
 
 
     return this.http.get<User>(url, header);
@@ -264,21 +257,20 @@ export class AccountService {
 
   editUser(body) {
 
+    console.log(body)
+
     const token = localStorage.getItem('token');
 
     const headers = { 'Authorization': `Bearer ${token}` }
 
-    //return this.http.put<any>('http://localhost:8080/spartaclan/completeAccount', body, {headers});
-
-    return this.http.put<any>('https://sparta-clan.herokuapp.com/spartaclan/editAccount', body, { headers });
+    return this.http.put<any>(`${this.baseUrl}/spartaclan/editAccount`, body, { headers });
 
   }
 
 
   delete(id: string) {
 
-    //const url = `http://localhost:8080/account/api/auth/deleteUser/${id}`;
-    const url = `https://sparta-clan.herokuapp.com/account/api/auth/delete/${id}`
+    const url = `${this.baseUrl}/account/api/auth/delete/${id}`
 
     return this.http.delete(url)
 
@@ -294,16 +286,13 @@ export class AccountService {
 
   resetPassword(body) {
 
-    //return this.http.post<any>('http://localhost:8080/account/api/auth/resetPassword', body);
-    return this.http.post<any>(' https://sparta-clan.herokuapp.com/account/api/auth/resetPassword', body);
+    return this.http.post<any>(`${this.baseUrl}/account/api/auth/resetPassword`, body);
 
   }
 
   confirmNewPassword(email, password) {
 
-    //const url = 'http://localhost:8080/account/api/auth/confirmNewPassword';
-
-    const url = 'https://sparta-clan.herokuapp.com/account/api/auth/confirmNewPassword';
+    const url = `${this.baseUrl}/account/api/auth/confirmNewPassword`;
 
     return this.http.post<User>(url, { email, password })
       .pipe(map(user => {

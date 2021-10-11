@@ -28,7 +28,6 @@ export class ListUsersComponent implements OnInit {
   findAllUsers() {
     this.isLoading = true;
     this.accountService.getAllUsers().subscribe(users => {
-      console.log(users)
       this.users = users;
       this.isLoading = false;
 
