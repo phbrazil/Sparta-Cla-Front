@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Constants } from 'src/app/utils/Constants';
 import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services';
 import { ActivisionService } from 'src/app/_services/activision.service';
@@ -37,11 +38,10 @@ export class MyStatsComponent implements OnInit {
 
     this.isLoading = true;
 
-    const email = 'paulo.henriqueb@me.com';
-    const password = 'mortadela1';
-
     //this.activisionService.getWarzoneInfoRapidAPI(wzProfile, platform, this.user.token).subscribe(res => {
-    this.activisionService.getWarzoneInfoCloudFunction(email, password, wzProfile, platform).subscribe(res => {
+    this.activisionService.getWarzoneInfoCloudFunction(Constants.email, Constants.password, wzProfile, platform).subscribe(res => {
+
+      console.log(res);
 
       this.isLoading = false;
 

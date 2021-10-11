@@ -5,6 +5,7 @@ import { AlertService } from './alert.service';
 import { Observable } from 'rxjs';
 import { AccountService } from './account.service';
 import { User } from '../_models/user';
+import { Constants } from '../utils/Constants';
 
 @Injectable({ providedIn: 'root' })
 export class ActivisionService {
@@ -70,7 +71,7 @@ export class ActivisionService {
         "password": password,
         "gamerTag": gamerTag,
         "platform": platform,
-        "SSOToken": "MTAwNTU1MTE2MzI1ODIxMjE0MDg6MTYzMjYxMzA4NzYwMTphNjJiMDAxZGE2YjYyNjY2MzVhNTJjZDk0ZDJlMzYzYg"
+        "SSOToken": Constants.SSOToken
       }
 
       const headers = new HttpHeaders()
