@@ -45,9 +45,6 @@ export class MyStatsComponent implements OnInit {
     this.activisionService.getWarzoneInfoCloudFunction(email, password, wzProfile, platform).subscribe(res => {
 
       this.statics = res.recentMatches.matches;
-      console.log("result statics", this.statics);
-
-      console.log("response",res);
 
       let json = JSON.stringify(res)
 
@@ -88,7 +85,11 @@ export class MyStatsComponent implements OnInit {
   }
 
   returnDaysPlay(days: number): number {
-    return  days / 86.400;
+    let result = Math.round(days / 86.400);
+    const day = result.toString();
+    let dayNumber = day.substr(0, 2);
+    result = parseInt(dayNumber);
+    return   result;
   }
 
   returnKd(kd: number): number {
