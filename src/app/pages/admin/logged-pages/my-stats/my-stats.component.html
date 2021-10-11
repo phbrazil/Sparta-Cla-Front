@@ -86,9 +86,8 @@
                         <td>{{stats.playerStats.kills}}</td>
                         <td>{{stats.playerStats.deaths}}</td>
                         <td class="gulag-icon">
-                          <i class="fa fa-check-circle" *ngIf="stats.playerStats.gulagKills > 0 && stats.playerStats.deaths == 0 "></i>
-                          <i class="fa fa-times-circle" *ngIf="stats.playerStats.gulagKills == 0 && stats.playerStats.deaths > 0 "></i>
-                          <i class="fas fa-flag" *ngIf="stats.playerStats.gulagKills > 0 && stats.playerStats.deaths > 0"></i>
+                          <i class="fa fa-check-circle" *ngIf="stats.playerStats.gulagKills == 1 && stats.playerStats.deaths == 0 "></i>
+                          <i class="fa fa-times-circle" *ngIf="stats.playerStats.deaths == 1 "></i>
                         </td>
                     </tr>
                 </tbody>
