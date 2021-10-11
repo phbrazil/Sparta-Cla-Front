@@ -15,6 +15,7 @@ export class EditTournamentComponent implements OnInit {
 
   formEditTournament: FormGroup;
   isLoading = false;
+  isLoadingTournament = false;
   tournament: Tournament;
   user: User;
   @Input() id: number;
@@ -43,13 +44,19 @@ export class EditTournamentComponent implements OnInit {
 
     if (this.id) {
 
+      this.isLoadingTournament = true;
+
       this.tournamentService.getTournamentById(this.id).subscribe(tournament => {
+
+        this.isLoadingTournament = false;
 
         this.tournament = tournament;
 
         this.loadTournament();
 
       }, err => {
+
+        this.isLoadingTournament = false;
 
         console.log(err)
 
@@ -61,9 +68,13 @@ export class EditTournamentComponent implements OnInit {
 
   enviar() {
 
+    this.isLoading = true;
+
     this.tournamentService.editTournament(this.formEditTournament.value).subscribe(res => {
 
       this.alertService.success(res.text, res.subText, { keepAfterRouteChange: true });
+
+      this.isLoading = false;
 
       //REMOVE FADE BUGADO QUE CONTINUAVA
       $('body').removeClass('modal-open');
@@ -74,6 +85,8 @@ export class EditTournamentComponent implements OnInit {
 
 
     }, err => {
+
+      this.isLoading = false;
 
       this.alertService.error(err.text, err.subText, { keepAfterRouteChange: true });
 

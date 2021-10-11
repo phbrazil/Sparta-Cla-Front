@@ -1,7 +1,14 @@
 <section>
   <div class="container game-content mt-5 mb-5 pt-5 pb-5">
-    <div class="row ">
-      <div class="col-12 ">
+    <div class="row">
+      <div *ngIf="isLoading" class="d-flex justify-content-center">
+        <div class="spinner-grow text-warning" role="status" style="width: 5rem; height: 5rem;">
+        </div>
+        <div class="ml-4">
+          <span class="text-warning">Favor aguarde... <br>Suas estatísticas estão sendo carregadas</span>
+        </div>
+      </div>
+      <div *ngIf="!isLoading" class="col-12">
         <h2>{{user.username}} <span class="text-yellow">Estatísticas</span></h2>
         <div class="row">
           <div class="col-sm-3">
@@ -12,8 +19,8 @@
                     <i class="fa fa-trophy"></i>
                   </span>
                   <div class="media-body">
-                      <p class="fs-14 mb-2">KD</p>
-                      <span class="title text-black font-w600">{{KD}}</span>
+                    <p class="fs-14 mb-2">KD</p>
+                    <span class="title text-black font-w600">{{KD}}</span>
                   </div>
                 </div>
               </div>
@@ -27,8 +34,8 @@
                     <i class="fa fa-trophy"></i>
                   </span>
                   <div class="media-body">
-                      <p class="fs-14 mb-2">Vitórias</p>
-                      <span class="title text-black font-w600">{{stats.br.wins}}</span>
+                    <p class="fs-14 mb-2">Vitórias</p>
+                    <span class="title text-black font-w600">{{stats.br.wins}}</span>
                   </div>
                 </div>
               </div>
@@ -42,8 +49,8 @@
                     <i class="fa fa-trophy"></i>
                   </span>
                   <div class="media-body">
-                      <p class="fs-14 mb-2">Kills</p>
-                      <span class="title text-black font-w600">{{stats.br.kills}}</span>
+                    <p class="fs-14 mb-2">Kills</p>
+                    <span class="title text-black font-w600">{{stats.br.kills}}</span>
                   </div>
                 </div>
               </div>
@@ -57,8 +64,8 @@
                     <i class="fa fa-trophy"></i>
                   </span>
                   <div class="media-body">
-                      <p class="fs-14 mb-2">Mortes</p>
-                      <span class="title text-black font-w600">{{stats.br.deaths}}</span>
+                    <p class="fs-14 mb-2">Mortes</p>
+                    <span class="title text-black font-w600">{{stats.br.deaths}}</span>
                   </div>
                 </div>
               </div>
@@ -72,8 +79,8 @@
                     <i class="fa fa-trophy"></i>
                   </span>
                   <div class="media-body">
-                      <p class="fs-14 mb-2">Top 5</p>
-                      <span class="title text-black font-w600">{{stats.br.topFive}}</span>
+                    <p class="fs-14 mb-2">Top 5</p>
+                    <span class="title text-black font-w600">{{stats.br.topFive}}</span>
                   </div>
                 </div>
               </div>
@@ -87,8 +94,8 @@
                     <i class="fa fa-trophy"></i>
                   </span>
                   <div class="media-body">
-                      <p class="fs-14 mb-2">Top 10</p>
-                      <span class="title text-black font-w600">{{stats.br.topTen}}</span>
+                    <p class="fs-14 mb-2">Top 10</p>
+                    <span class="title text-black font-w600">{{stats.br.topTen}}</span>
                   </div>
                 </div>
               </div>
@@ -102,8 +109,8 @@
                     <i class="fa fa-trophy"></i>
                   </span>
                   <div class="media-body">
-                      <p class="fs-14 mb-2">Partidas Jogadas</p>
-                      <span class="title text-black font-w600">{{stats.br.gamesPlayed}}</span>
+                    <p class="fs-14 mb-2">Partidas Jogadas</p>
+                    <span class="title text-black font-w600">{{stats.br.gamesPlayed}}</span>
                   </div>
                 </div>
               </div>
@@ -117,43 +124,46 @@
                     <i class="fa fa-trophy"></i>
                   </span>
                   <div class="media-body">
-                      <p class="fs-14 mb-2">Dias Jogando</p>
-                      <span class="title text-black font-w600">{{returnDaysPlay(stats.br.timePlayed)}} D</span>
+                    <p class="fs-14 mb-2">Dias Jogando</p>
+                    <span class="title text-black font-w600">{{returnDaysPlay(stats.br.timePlayed)}} D</span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-          <div class="table-responsive-xl">
-            <h2>Útimas<span class="text-yellow"> Partidas</span></h2>
-            <table class="table mt-0">
-                <thead>
-                    <tr>
-                        <th scope="col">Posição</th>
-                        <th scope="col">Modo</th>
-                        <th scope="col">kd</th>
-                        <th scope="col">kills</th>
-                        <th scope="col">Morreu</th>
-                        <th scope="col">Gulag</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let stats of statics">
-                        <td>{{stats.playerStats.teamPlacement}} º</td>
-                        <td>{{returnMode(stats.mode)}}</td>
-                        <td>{{returnKd(stats.playerStats.kdRatio)}}</td>
-                        <td>{{stats.playerStats.kills}}</td>
-                        <td>{{stats.playerStats.deaths}}</td>
-                        <td class="gulag-icon">
-                          <i class="fa fa-check-circle" *ngIf="stats.playerStats.gulagKills == 1 && stats.playerStats.gulagDeaths == 0"></i>
-                          <i class="fa fa-times-circle" *ngIf="stats.playerStats.gulagDeaths == 1 && stats.playerStats.gulagKills == 0"></i>
-                          <i class="fa fa-flag" *ngIf="stats.playerStats.gulagDeaths == 1 && stats.playerStats.gulagKills == 1"></i>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-          </div>
+        <div class="table-responsive-xl">
+          <h2>Útimas<span class="text-yellow"> Partidas</span></h2>
+          <table class="table mt-0">
+            <thead>
+              <tr>
+                <th scope="col">Posição</th>
+                <th scope="col">Modo</th>
+                <th scope="col">kd</th>
+                <th scope="col">kills</th>
+                <th scope="col">Morreu</th>
+                <th scope="col">Gulag</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let stats of statics">
+                <td>{{stats.playerStats.teamPlacement}} º</td>
+                <td>{{returnMode(stats.mode)}}</td>
+                <td>{{returnKd(stats.playerStats.kdRatio)}}</td>
+                <td>{{stats.playerStats.kills}}</td>
+                <td>{{stats.playerStats.deaths}}</td>
+                <td class="gulag-icon">
+                  <i class="fa fa-check-circle"
+                    *ngIf="stats.playerStats.gulagKills == 1 && stats.playerStats.gulagDeaths == 0"></i>
+                  <i class="fa fa-times-circle"
+                    *ngIf="stats.playerStats.gulagDeaths == 1 && stats.playerStats.gulagKills == 0"></i>
+                  <i class="fa fa-flag"
+                    *ngIf="stats.playerStats.gulagDeaths == 1 && stats.playerStats.gulagKills == 1"></i>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>

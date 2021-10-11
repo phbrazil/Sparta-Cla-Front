@@ -1,4 +1,9 @@
-<div class="modal-content">
+<div *ngIf="isLoadingUser" class="d-flex justify-content-center">
+  <div class="spinner-grow text-warning" role="status" style="width: 5rem; height: 5rem;">
+  </div>
+</div>
+
+<div *ngIf="!isLoadingUser"  class="modal-content">
   <div class="modal-header">
     <h5 class="modal-title">Usuário {{user?.nome}}</h5>
     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -139,7 +144,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-custom mb-3" [disabled]="!formEditUser.valid">
+        <button type="submit" class="btn btn-custom mb-3" [disabled]="!formEditUser.valid || isLoading">
           <span *ngIf="isLoading" class="spinner-border spinner-border-sm mr-1"></span>
           Salvar</button>
         <button type="button" class="btn btn-custom mb-3" data-dismiss="modal">Fechar</button>
