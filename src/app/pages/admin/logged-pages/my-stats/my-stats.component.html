@@ -28,7 +28,7 @@
                   </span>
                   <div class="media-body">
                       <p class="fs-14 mb-2">Vitórias</p>
-                      <span class="title text-black font-w600">{{stats?.br.wins}}</span>
+                      <span class="title text-black font-w600">{{stats.br.wins}}</span>
                   </div>
                 </div>
               </div>
@@ -43,7 +43,7 @@
                   </span>
                   <div class="media-body">
                       <p class="fs-14 mb-2">Kills</p>
-                      <span class="title text-black font-w600">{{stats?.br.kills}}</span>
+                      <span class="title text-black font-w600">{{stats.br.kills}}</span>
                   </div>
                 </div>
               </div>
@@ -58,7 +58,7 @@
                   </span>
                   <div class="media-body">
                       <p class="fs-14 mb-2">Mortes</p>
-                      <span class="title text-black font-w600">{{stats?.br.deaths}}</span>
+                      <span class="title text-black font-w600">{{stats.br.deaths}}</span>
                   </div>
                 </div>
               </div>
@@ -86,8 +86,8 @@
                         <td>{{stats.playerStats.kills}}</td>
                         <td>{{stats.playerStats.deaths}}</td>
                         <td class="gulag-icon">
-                          <i class="fa fa-check-circle" *ngIf="stats.playerStats.gulagKills == 1 && stats.playerStats.deaths == 0 "></i>
-                          <i class="fa fa-times-circle" *ngIf="stats.playerStats.deaths == 1 "></i>
+                          <i class="fa fa-check-circle" *ngIf="stats.playerStats.gulagKills > 0"></i>
+                          <i class="fa fa-times-circle" *ngIf="stats.playerStats.gulagDeaths > 0"></i>
                         </td>
                     </tr>
                 </tbody>
