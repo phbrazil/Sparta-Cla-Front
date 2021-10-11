@@ -6,3 +6,11 @@ tbody, thead{
 .table .thead-dark th {
   font-weight: 300;
 }
+
+.modal-delete-position{
+  margin-top: 20%;
+}
+
+.modal-edit-position{
+  margin-top: 2%;
+}
