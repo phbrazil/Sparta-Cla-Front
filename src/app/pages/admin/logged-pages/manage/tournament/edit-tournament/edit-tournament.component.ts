@@ -25,6 +25,7 @@ export class EditTournamentComponent implements OnInit {
   ngOnInit(): void {
 
     this.formEditTournament = this.fb.group({
+      id: ['', [Validators.required]],
       mode: ['', [Validators.required]],
       date: ['', [Validators.required]],
       award: ['', [Validators.required]],
@@ -45,8 +46,6 @@ export class EditTournamentComponent implements OnInit {
       this.tournamentService.getTournamentById(this.id).subscribe(tournament => {
 
         this.tournament = tournament;
-
-        console.log(tournament)
 
         this.loadTournament();
 
@@ -93,6 +92,7 @@ export class EditTournamentComponent implements OnInit {
   loadTournament() {
 
     this.formEditTournament = this.fb.group({
+      id: [this.tournament.id, [Validators.required]],
       mode: [this.tournament.mode, [Validators.required]],
       date: [this.tournament.date, [Validators.required]],
       award: [this.tournament.award, [Validators.required]],

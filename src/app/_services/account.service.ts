@@ -227,6 +227,22 @@ export class AccountService {
 
   }
 
+  getAllUsers() {
+
+    const token = localStorage.getItem('token');
+
+    var header = {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+    }
+
+    //const url = `http://localhost:8080/spartaclan/getAllUsers`;
+
+    const url = `https://sparta-clan.herokuapp.com/spartaclan/getAllUsers`
+
+
+    return this.http.get<[User]>(url, header);
+  }
 
 
   getById(id: string) {
@@ -248,7 +264,6 @@ export class AccountService {
 
   editUser(body) {
 
-    console.log("Body aqui", body);
     const token = localStorage.getItem('token');
 
     const headers = { 'Authorization': `Bearer ${token}` }
