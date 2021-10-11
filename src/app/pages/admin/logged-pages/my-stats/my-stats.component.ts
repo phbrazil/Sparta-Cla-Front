@@ -10,19 +10,16 @@ import { ActivisionService } from 'src/app/_services/activision.service';
 })
 export class MyStatsComponent implements OnInit {
 
+  statics: Array<any>;
   user: User
-
   stats;
-
   KD;
-
   recentMatches;
-
   KDRecent;
-
   isLoading = false;
-
   hasErrors = false;
+
+
 
   constructor(private activisionService: ActivisionService,
     private accountService: AccountService) {
@@ -46,6 +43,18 @@ export class MyStatsComponent implements OnInit {
 
     //this.activisionService.getWarzoneInfoRapidAPI(wzProfile, platform, this.user.token).subscribe(res => {
     this.activisionService.getWarzoneInfoCloudFunction(email, password, wzProfile, platform).subscribe(res => {
+      console.log(res, "retorno statistica");
+      console.log(res.recentMatches.matches[1].playerStats.teamPlacement);
+      console.log(res.recentMatches.matches[1].mode);
+      console.log(res.recentMatches.matches[1].playerStats.kdRatio);
+      console.log(res.recentMatches.matches[1].playerStats.kills);
+      console.log(res.recentMatches.matches[1].playerStats.deaths);
+      console.log(res.recentMatches.matches[1].playerStats.gulagKills);
+
+      this.statics = res.recentMatches.matches;
+      console.log("result statics", this.statics)
+
+
 
       let json = JSON.stringify(res)
 
@@ -85,4 +94,14 @@ export class MyStatsComponent implements OnInit {
 
   }
 
+  returnMode(mode: string) {
+    switch (mode) {
+      case "br_rebirth_rbrthquad":
+        return "Rebirth";
+      case "br_dbd_dbd":
+        return "Prova de Ferro 84";
+      case "br_brtrios":
+        return "BR Trios";
+    }
+  }
 }
