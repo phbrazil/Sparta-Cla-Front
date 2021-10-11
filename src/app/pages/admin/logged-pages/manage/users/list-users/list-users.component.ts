@@ -13,8 +13,13 @@ export class ListUsersComponent implements OnInit {
   isLoading = false;
   users: User[] = [];
   idUser: number;
+  user: User;
 
-  constructor(private accountService: AccountService, private alertService: AlertService, private router: Router) { }
+  constructor(private accountService: AccountService, private alertService: AlertService, private router: Router) {
+
+    this.accountService.user.subscribe(x => this.user = x);
+
+  }
 
   ngOnInit(): void {
 
