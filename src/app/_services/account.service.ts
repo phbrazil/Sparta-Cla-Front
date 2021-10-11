@@ -210,6 +210,8 @@ export class AccountService {
 
   completeRegister(body) {
 
+    console.log(body)
+
     const token = localStorage.getItem('token');
 
     const headers = { 'Authorization': `Bearer ${token}` }

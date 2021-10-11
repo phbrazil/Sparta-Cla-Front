@@ -11,13 +11,13 @@
           <div class="input-group-prepend">
             <span class="input-group-text">@</span>
           </div>
-          <input type="text" class="form-control" id="username" aria-describedby="usuario" name="usuario"
-            formControlName="usuario" required>
-          <ng-container *ngIf="formRegisterConfirmation.controls.usuario.touched">
-            <span class="text-danger" *ngIf="formRegisterConfirmation.controls.usuario.errors?.required">
+          <input type="text" class="form-control" id="username" aria-describedby="username" name="username"
+            formControlName="username" required>
+          <ng-container *ngIf="formRegisterConfirmation.controls.username.touched">
+            <span class="text-danger" *ngIf="formRegisterConfirmation.controls.username.errors?.required">
               Usuário obrigatório
             </span>
-            <span *ngIf="formRegisterConfirmation.controls.usuario.errors?.usuario">
+            <span *ngIf="formRegisterConfirmation.controls.username.errors?.username">
               Nome inválido
             </span>
           </ng-container>
