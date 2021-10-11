@@ -100,8 +100,14 @@ export class MyStatsComponent implements OnInit {
         return "Rebirth";
       case "br_dbd_dbd":
         return "Prova de Ferro 84";
+      case "br_brsquad":
+        return "BR Squad";
       case "br_brtrios":
         return "BR Trios";
+      case "br_brduos":
+        return "BR Duos";
+      case "br_brsolo":
+        return "BR Solo";
     }
   }
 }
