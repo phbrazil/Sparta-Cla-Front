@@ -64,6 +64,66 @@
               </div>
             </div>
           </div>
+          <div class="col-sm-3">
+            <div class="card">
+              <div class="card-body">
+                <div class="media align-items-center">
+                  <span class="activity-icon bgl-success mr-md-4 mr-3">
+                    <i class="fa fa-trophy"></i>
+                  </span>
+                  <div class="media-body">
+                      <p class="fs-14 mb-2">Top 5</p>
+                      <span class="title text-black font-w600">{{stats.br.topFive}}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="card">
+              <div class="card-body">
+                <div class="media align-items-center">
+                  <span class="activity-icon bgl-success mr-md-4 mr-3">
+                    <i class="fa fa-trophy"></i>
+                  </span>
+                  <div class="media-body">
+                      <p class="fs-14 mb-2">Top 10</p>
+                      <span class="title text-black font-w600">{{stats.br.topTen}}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="card">
+              <div class="card-body">
+                <div class="media align-items-center">
+                  <span class="activity-icon bgl-success mr-md-4 mr-3">
+                    <i class="fa fa-trophy"></i>
+                  </span>
+                  <div class="media-body">
+                      <p class="fs-14 mb-2">Partidas Jogadas</p>
+                      <span class="title text-black font-w600">{{stats.br.gamesPlayed}}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="card">
+              <div class="card-body">
+                <div class="media align-items-center">
+                  <span class="activity-icon bgl-success mr-md-4 mr-3">
+                    <i class="fa fa-trophy"></i>
+                  </span>
+                  <div class="media-body">
+                      <p class="fs-14 mb-2">Tempo Jogando</p>
+                      <span class="title text-black font-w600">{{returnDaysPlay(stats.br.timePlayed)}} D</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
           <div class="table-responsive-xl">
             <h2>Útimas<span class="text-yellow"> Partidas</span></h2>
@@ -82,7 +142,7 @@
                     <tr *ngFor="let stats of statics">
                         <td>{{stats.playerStats.teamPlacement}} º</td>
                         <td>{{returnMode(stats.mode)}}</td>
-                        <td>{{stats.playerStats.kdRatio}}</td>
+                        <td>{{returnKd(stats.playerStats.kdRatio)}}</td>
                         <td>{{stats.playerStats.kills}}</td>
                         <td>{{stats.playerStats.deaths}}</td>
                         <td class="gulag-icon">
@@ -98,73 +158,3 @@
     </div>
   </div>
 </section>
-
-
-<div class="container">
-  <div class="mt-4 mb-4">
-    <div class="col-md-12">
-      <h2><span class="text-yellow">{{user.wzProfile}}</span></h2>
-      <div *ngIf="hasErrors" class="d-flex justify-content-center mt-4">
-        <div class="alert alert-danger" role="alert">
-          Ocorreu um erro, tente novamente mais tarde
-        </div>
-      </div>
-      <div *ngIf="isLoading" class="d-flex justify-content-center">
-        <div class="spinner-grow text-warning" role="status" style="width: 5rem; height: 5rem;">
-        </div>
-        <div class="ml-4">
-          <span class="text-warning">Favor aguarde... <br>nossos servidores estão iniciando,<br> ainda há homens
-            trabalhando...</span>
-        </div>
-      </div>
-      <div *ngIf="!isLoading && !hasErrors" class="row">
-        <div class="col-md-4 mb-4">
-          <div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title"><span class="text-yellow"><strong>Estatísticas Gerais</strong></span></h5>
-              <h5 class="card-title">KD <span class="text-yellow">{{KD}}</span></h5>
-              <h5 class="card-title">Vitórias <span class="text-yellow">{{stats.br.wins}}</span></h5>
-              <p class="card-text">Top 5 <span class="text-yellow">{{stats.br.topFive}}</span></p>
-              <p class="card-text">Top 10 <span class="text-yellow">{{stats.br.topTen}}</span></p>
-              <p class="card-text">Top 25 <span class="text-yellow">{{stats.br.topTwentyFive}}</span></p>
-              <p class="card-text">Kills <span class="text-yellow">{{stats.br.kills}}</span></p>
-              <p class="card-text">Mortes <span class="text-yellow">{{stats.br.deaths}}</span></p>
-              <p class="card-text">Quedas <span class="text-yellow">{{stats.br.downs}}</span></p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title"><span class="text-yellow"><strong>Últimas 20 partidas</strong></span></h5>
-              <h5 class="card-title">KD <span class="text-yellow">{{KDRecent}}</span></h5>
-              <p class="card-text">Kills <span class="text-yellow">{{recentMatches.summary.all.kills}}</span></p>
-              <p class="card-text">Mortes <span class="text-yellow">{{recentMatches.summary.all.deaths}}</span></p>
-              <p class="card-text">Vitórias no Gulag <span
-                  class="text-yellow">{{recentMatches.summary.all.gulagKills}}</span></p>
-              <p class="card-text">Mortes no Gulag <span
-                  class="text-yellow">{{recentMatches.summary.all.gulagDeaths}}</span></p>
-              <p class="card-text">HeadShots <span class="text-yellow">{{recentMatches.summary.all.headshots}}</span>
-              <!--p class="card-text">Kills TRIO <span
-                  class="text-yellow">{{recentMatches.summary.br_brbbtrio.kills}}</span>
-              <p class="card-text">Kills DUO <span
-                  class="text-yellow">{{recentMatches.summary.br_brbbduo.kills}}</span>
-              </p-->
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title"><span class="text-yellow"><strong>Mais informações</strong></span></h5>
-              <p class="card-text">Revives usados <span class="text-yellow">{{stats.br.revives}}</span></p>
-              <p class="card-text">Pontuação <span class="text-yellow">{{stats.br.score}}</span></p>
-              <p class="card-text">Tempo jogando <span class="text-yellow">{{stats.br.timePlayed}}</span></p>
-              <p class="card-text">Partidas jogadas <span class="text-yellow">{{stats.br.gamesPlayed}}</span></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>

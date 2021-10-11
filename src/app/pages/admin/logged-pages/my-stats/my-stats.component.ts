@@ -43,18 +43,11 @@ export class MyStatsComponent implements OnInit {
 
     //this.activisionService.getWarzoneInfoRapidAPI(wzProfile, platform, this.user.token).subscribe(res => {
     this.activisionService.getWarzoneInfoCloudFunction(email, password, wzProfile, platform).subscribe(res => {
-      console.log(res, "retorno statistica");
-      console.log(res.recentMatches.matches[1].playerStats.teamPlacement);
-      console.log(res.recentMatches.matches[1].mode);
-      console.log(res.recentMatches.matches[1].playerStats.kdRatio);
-      console.log(res.recentMatches.matches[1].playerStats.kills);
-      console.log(res.recentMatches.matches[1].playerStats.deaths);
-      console.log(res.recentMatches.matches[1].playerStats.gulagKills);
 
       this.statics = res.recentMatches.matches;
-      console.log("result statics", this.statics)
+      console.log("result statics", this.statics);
 
-
+      console.log("response",res);
 
       let json = JSON.stringify(res)
 
@@ -92,6 +85,14 @@ export class MyStatsComponent implements OnInit {
       this.hasErrors = true
     })
 
+  }
+
+  returnDaysPlay(days: number): number {
+    return  days / 86.400;
+  }
+
+  returnKd(kd: number): number {
+    return Math.round(kd * 100) / 100;
   }
 
   returnMode(mode: string) {
