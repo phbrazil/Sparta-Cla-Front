@@ -76,7 +76,7 @@ export class MyStatsComponent implements OnInit {
 
 
     }, err => {
-
+      console.log(err, "erro aqui");
       this.isLoading = false;
 
       this.hasErrors = true
