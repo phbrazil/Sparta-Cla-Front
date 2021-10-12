@@ -265,6 +265,8 @@ export class AccountService {
 
     const headers = { 'Authorization': `Bearer ${token}` }
 
+    console.log(headers)
+
     return this.http.put<any>(`${this.baseUrl}/spartaclan/editAccount`, body, { headers });
 
   }

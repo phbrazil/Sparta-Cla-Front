@@ -17,7 +17,7 @@ import { AccountModule } from '../pages/account/account.module';
     FooterComponent,
     ModalComponent,
     BannerAlertComponent,
-    AlertComponent
+    AlertComponent,
   ],
   imports: [
     CommonModule,
@@ -31,7 +31,7 @@ import { AccountModule } from '../pages/account/account.module';
     FooterComponent,
     ModalComponent,
     BannerAlertComponent,
-    AlertComponent
+    AlertComponent,
   ]
 })
 export class SharedModule { }

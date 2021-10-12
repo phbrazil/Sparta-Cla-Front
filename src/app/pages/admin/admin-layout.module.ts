@@ -17,6 +17,7 @@ import { ListTournamentsComponent } from './logged-pages/manage/tournament/list-
 import { EditTournamentComponent } from './logged-pages/manage/tournament/edit-tournament/edit-tournament.component';
 import { ListUsersComponent } from './logged-pages/manage/users/list-users/list-users.component';
 import { EditUserComponent } from './logged-pages/manage/users/edit-user/edit-user.component';
+import { ChartsModule } from 'ng2-charts';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { EditUserComponent } from './logged-pages/manage/users/edit-user/edit-us
     ReactiveFormsModule,
     SharedModule,
     RouterModule.forChild(AdminLayoutRoutes),
+    ChartsModule
 
   ], exports: [
     WelcomeComponent,
