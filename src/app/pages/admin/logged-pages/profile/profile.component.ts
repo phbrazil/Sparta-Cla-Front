@@ -96,6 +96,8 @@ export class ProfileComponent implements OnInit {
     if (this.user.idUser) {
 
       this.isLoading = true;
+      this.isCheckingProfile = true;
+
       this.accountService.editUser(this.userForm.value).subscribe(() => {
         this.isLoading = false;
         let user = JSON.parse(localStorage.getItem('user'));
@@ -132,8 +134,6 @@ export class ProfileComponent implements OnInit {
   }
 
   checkProfileActivision() {
-
-    this.isCheckingProfile = true;
 
     //CHECK IF ACTIVISION PROFILE IS PUBLIC
     this.activisionService.checkPublicStatus(this.user.wzProfile, this.user.platform);

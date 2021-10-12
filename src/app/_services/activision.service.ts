@@ -7,7 +7,7 @@ import { Constants } from '../utils/Constants';
 export class ActivisionService {
 
     declare require: any;
-    private isPublic = new BehaviorSubject<boolean>(false);
+    private isPublic = new BehaviorSubject<boolean>(true);
 
     constructor(private http: HttpClient) {
 
