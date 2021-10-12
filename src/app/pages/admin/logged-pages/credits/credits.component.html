@@ -1,10 +1,22 @@
-<div class="col-md-12">
-    <div class="row">
-        <div class="col-md-6">
-            <div style="display: block;">
-                <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
-                    [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType">
-                </canvas>
+<div class="container">
+    <div class="col-md-12 mt-4 mb-4">
+        <div class="row">
+            <div class="col-md-6 center">
+                <div class="card w-50">
+                    <div class="card-body">
+                        <h5 class="card-title">Créditos</h5>
+                        <h2 class="text-yellow">10</h2>
+                        <a routerLink="/torneios" class="btn btn-primary">Ir para Torneios</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div style="display: block;">
+                    <canvas baseChart [colors]="chartColors" [datasets]="barChartData" [labels]="barChartLabels"
+                        [options]="barChartOptions" [plugins]="barChartPlugins" [legend]="barChartLegend"
+                        [chartType]="barChartType">
+                    </canvas>
+                </div>
             </div>
         </div>
     </div>

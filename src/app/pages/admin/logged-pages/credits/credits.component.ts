@@ -12,10 +12,15 @@ export class CreditsComponent implements OnInit {
   public barChartOptions: ChartOptions = {
     responsive: true,
   };
-  public barChartLabels: Label[] = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+  public barChartLabels: Label[] = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul'];
   public barChartType: ChartType = 'bar';
   public barChartLegend = true;
   public barChartPlugins = [];
+
+  public chartColors: any[] = [
+    { 
+      backgroundColor:["#e4a101", "#6FC8CE", "#FAFFF2", "#FFFCC4", "#B9E8E0"] 
+    }];
 
   public barChartData: ChartDataSets[] = [
     { data: [65, 59, 80, 81, 56, 55, 40], label: 'Vitórias' },
