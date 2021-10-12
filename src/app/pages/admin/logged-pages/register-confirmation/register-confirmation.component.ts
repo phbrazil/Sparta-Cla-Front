@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/_models/user';
 import { AccountService, AlertService } from 'src/app/_services';
+import { CheckPublicProfileService } from 'src/app/_services/check-public-profile';
 
 @Component({
   selector: 'app-register-confirmation',
@@ -17,9 +18,12 @@ export class RegisterConfirmationComponent implements OnInit {
   user: User
 
   isLoading = false;
+  isCheckingProfile = false;
+  isPublicProfile = true;
 
   constructor(private fb: FormBuilder, private activatedRoute: ActivatedRoute, private accountService: AccountService,
-    private alertService: AlertService, private router: Router) { }
+    private alertService: AlertService, private router: Router,
+    private checkPublicProfileService: CheckPublicProfileService) { }
 
   ngOnInit(): void {
 
@@ -43,7 +47,7 @@ export class RegisterConfirmationComponent implements OnInit {
 
     this.isLoading = true;
 
-    this.accountService.completeRegister(this.formRegisterConfirmation.value).subscribe(user =>{
+    this.accountService.completeRegister(this.formRegisterConfirmation.value).subscribe(user => {
 
       this.accountService.setUser(user);
 
@@ -53,19 +57,33 @@ export class RegisterConfirmationComponent implements OnInit {
 
       this.isLoading = false;
 
+      //CHECK IF ACTIVISION PROFILE IS PUBLIC
+      this.checkProfileActivision();
+
+      if (!this.isPublicProfile && !this.isCheckingProfile) {
+
+        this.alertService.error('Seu Perfil Activision não está público', 'Acesse o menu Meu Perfil para mais detalhes', { keepAfterRouteChange: true });
+
+      }
+
+
       this.router.navigate(['/welcome']);
 
     }, err => {
 
-      console.log(err)
-
       this.isLoading = false;
 
-      if(err.status == 500){
+      if (err.status == 500) {
 
         this.alertService.error('Ocorreu um erro', 'Tente novamente mais tarde', { keepAfterRouteChange: true });
 
-      }else{
+      } else if (err.status == 401) {
+
+        this.alertService.error('Ocorreu um erro', 'Tente novamente mais tarde', { keepAfterRouteChange: true });
+
+        this.accountService.logout();
+
+      } else {
 
         this.alertService.error(err.error.message.text, err.error.message.subText, { keepAfterRouteChange: true });
 
@@ -73,6 +91,21 @@ export class RegisterConfirmationComponent implements OnInit {
 
 
 
+    })
+  }
+
+  checkProfileActivision() {
+
+    this.isCheckingProfile = true;
+
+    //CHECK IF ACTIVISION PROFILE IS PUBLIC
+    this.checkPublicProfileService.checkPublicStatus(this.user.wzProfile, this.user.platform);
+
+    this.checkPublicProfileService.getPublicStatus().subscribe(status => {
+      this.isCheckingProfile = false;
+      this.isPublicProfile = status;
+    }, err => {
+      this.isCheckingProfile = false;
     })
   }
 
@@ -85,9 +118,9 @@ export class RegisterConfirmationComponent implements OnInit {
 
   }
 
-  choosePlatform(platform){
+  choosePlatform(platform) {
     this.platform = platform;
-    this.formRegisterConfirmation.patchValue({platform: platform});
+    this.formRegisterConfirmation.patchValue({ platform: platform });
 
   }
 

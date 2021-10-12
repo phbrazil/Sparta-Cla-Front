@@ -4,6 +4,7 @@ import { User } from 'src/app/_models/user';
 import { AccountService, AlertService } from 'src/app/_services';
 import { ActivisionService } from 'src/app/_services/activision.service';
 import { Constants } from 'src/app/utils/Constants';
+import { CheckPublicProfileService } from 'src/app/_services/check-public-profile';
 
 @Component({
   selector: 'app-profile',
@@ -19,37 +20,42 @@ export class ProfileComponent implements OnInit {
   kd: any;
   disable = true;
   isLoading = false;
+  isCheckingProfile = false;
+  isPublicProfile = true;
 
   constructor(private accountService: AccountService,
-              private fb: FormBuilder,
-              private alertService: AlertService,
-              private activisionService: ActivisionService) {
+    private fb: FormBuilder,
+    private alertService: AlertService,
+    private activisionService: ActivisionService,
+    private checkPublicProfileService: CheckPublicProfileService) {
 
     this.accountService.user.subscribe(x => this.user = x);
 
-   }
+  }
 
   ngOnInit(): void {
+
+    this.checkProfileActivision();
 
     this.getStats(this.user.wzProfile, this.user.platform);
 
     if (this.user.idUser) {
-       this.formUser(this.user);
+      this.formUser(this.user);
     }
     else {
       this.formUser(this.formUserNull());
     }
   }
 
-  formUser (user: User): void {
+  formUser(user: User): void {
     this.userForm = this.fb.group({
-      idUser: [{value: `${user.idUser}`, disabled: true}, [Validators.required]],
-      username: [{value: `${user.username}`, disabled: true}, [Validators.required]],
-      pais: [{value: `${user.pais}`, disabled: true}, [Validators.required]],
-      estado: [{value: `${user.estado}`, disabled: true}, [Validators.required]],
-      nascimento: [{value: `${user.nascimento}`, disabled: true}, [Validators.required]],
-      wzProfile: [{value: `${user.wzProfile}`, disabled: true}, [Validators.required]],
-      platform: [{value: `${user.platform}`, disabled: true}, [Validators.required]],
+      idUser: [{ value: `${user.idUser}`, disabled: true }, [Validators.required]],
+      username: [{ value: `${user.username}`, disabled: true }, [Validators.required]],
+      pais: [{ value: `${user.pais}`, disabled: true }, [Validators.required]],
+      estado: [{ value: `${user.estado}`, disabled: true }, [Validators.required]],
+      nascimento: [{ value: `${user.nascimento}`, disabled: true }, [Validators.required]],
+      wzProfile: [{ value: `${user.wzProfile}`, disabled: true }, [Validators.required]],
+      platform: [{ value: `${user.platform}`, disabled: true }, [Validators.required]],
     })
   }
 
@@ -72,7 +78,6 @@ export class ProfileComponent implements OnInit {
     document.getElementsByTagName("select")[0].disabled = false;
     document.getElementsByTagName("select")[1].disabled = false;
     document.getElementsByTagName("select")[2].disabled = false;
-    document.getElementsByTagName("input")[1].disabled = false;
     document.getElementsByTagName("input")[2].disabled = false;
     document.getElementsByTagName("input")[5].disabled = false;
 
@@ -83,7 +88,6 @@ export class ProfileComponent implements OnInit {
     document.getElementsByTagName("select")[0].disabled = true;
     document.getElementsByTagName("select")[1].disabled = true;
     document.getElementsByTagName("select")[2].disabled = true;
-    document.getElementsByTagName("input")[1].disabled = true;
     document.getElementsByTagName("input")[2].disabled = true;
     document.getElementsByTagName("input")[5].disabled = true;
   }
@@ -93,10 +97,22 @@ export class ProfileComponent implements OnInit {
     if (this.user.idUser) {
 
       this.isLoading = true;
-      this.accountService.editUser(this.userForm.value).subscribe( () => {
+      this.accountService.editUser(this.userForm.value).subscribe(() => {
         this.isLoading = false;
         let user = JSON.parse(localStorage.getItem('user'));
+
+        user.username = this.userForm.value.username;
         user.estado = this.userForm.value.estado;
+        user.pais = this.userForm.value.pais;
+        user.wzProfile = this.userForm.value.wzProfile;
+        user.platform = this.userForm.value.platform;
+
+        this.user.username = this.userForm.value.username;
+        this.user.estado = this.userForm.value.estado;
+        this.user.pais = this.userForm.value.pais;
+        this.user.wzProfile = this.userForm.value.wzProfile;
+        this.user.platform = this.userForm.value.platform;
+
         localStorage.setItem('user', JSON.stringify(user));
 
         this.alertService.success('Usuário alterado com sucesso', '');
@@ -104,18 +120,36 @@ export class ProfileComponent implements OnInit {
         this.disable = false;
         this.disableForm();
 
+        //CHECK IF ACTIVISION PROFILE IS PUBLIC
+        this.checkProfileActivision();
+
 
       }, error => {
+
         this.isLoading = false;
         this.alertService.error('Ocorreu um erro', 'Tente novamente mais tarde');
-        console.log("deu ruim", error)
       });
     }
   }
 
+  checkProfileActivision() {
+
+    this.isCheckingProfile = true;
+
+    //CHECK IF ACTIVISION PROFILE IS PUBLIC
+    this.checkPublicProfileService.checkPublicStatus(this.user.wzProfile, this.user.platform);
+
+    this.checkPublicProfileService.getPublicStatus().subscribe(status => {
+      this.isCheckingProfile = false;
+      this.isPublicProfile = status;
+    }, err =>{
+      this.isCheckingProfile = false;
+    })
+  }
+
   getStats(wzProfile: string, platform: string) {
 
-    this.activisionService.getWarzoneInfoCloudFunction(Constants.email, Constants.password, wzProfile, platform).subscribe( res => {
+    this.activisionService.getWarzoneInfoCloudFunction(Constants.email, Constants.password, wzProfile, platform).subscribe(res => {
       this.stats = res.response;
       this.kd = Math.round(this.stats.br.kdRatio * 100) / 100;
     });

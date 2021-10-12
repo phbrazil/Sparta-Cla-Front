@@ -17,6 +17,11 @@
                 <div class="mt-2">
                   <h4>Créditos: <span class="text-yellow">{{user.creditos}}</span></h4>
                 </div>
+
+                <div *ngIf="!isPublicProfile && !isCheckingProfile" class="mt-2">
+                  <h5><span class="text-danger">Seu perfil Activision não está PÚBLICO</span><br>
+                  <small class="text-danger">ou seu usuário e plataforma estão incorretos</small></h5>
+                </div>
               </div>
               <div class="row">
                 <div class="col">
