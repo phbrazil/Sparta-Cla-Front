@@ -1,24 +1,39 @@
 ﻿import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { AlertService } from './alert.service';
-import { Observable } from 'rxjs';
-import { AccountService } from './account.service';
-import { User } from '../_models/user';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Constants } from '../utils/Constants';
 
 @Injectable({ providedIn: 'root' })
 export class ActivisionService {
 
     declare require: any;
+    private isPublic = new BehaviorSubject<boolean>(false);
 
-    constructor(
-        private http: HttpClient,
-    ) {
-
+    constructor(private http: HttpClient) {
 
     }
 
+    public setPublicStatus(status: boolean): void{
+      this.isPublic.next(status);
+    }
+
+    public getPublicStatus(): Observable<boolean>{
+      return this.isPublic.asObservable();
+    }
+
+    checkPublicStatus(gamerTag: string, platform: string){
+
+      this.getWarzoneInfoCloudFunction(Constants.email, Constants.password, gamerTag, platform).subscribe(res =>{
+
+        this.setPublicStatus(true);
+
+      }, err =>{
+
+        this.setPublicStatus(false);
+
+      })
+
+    }
 
 
     /** Log a message with the MessageService */

@@ -4,7 +4,6 @@ import { User } from 'src/app/_models/user';
 import { AccountService, AlertService } from 'src/app/_services';
 import { ActivisionService } from 'src/app/_services/activision.service';
 import { Constants } from 'src/app/utils/Constants';
-import { CheckPublicProfileService } from 'src/app/_services/check-public-profile';
 
 @Component({
   selector: 'app-profile',
@@ -26,8 +25,7 @@ export class ProfileComponent implements OnInit {
   constructor(private accountService: AccountService,
     private fb: FormBuilder,
     private alertService: AlertService,
-    private activisionService: ActivisionService,
-    private checkPublicProfileService: CheckPublicProfileService) {
+    private activisionService: ActivisionService) {
 
     this.accountService.user.subscribe(x => this.user = x);
 
@@ -137,9 +135,9 @@ export class ProfileComponent implements OnInit {
     this.isCheckingProfile = true;
 
     //CHECK IF ACTIVISION PROFILE IS PUBLIC
-    this.checkPublicProfileService.checkPublicStatus(this.user.wzProfile, this.user.platform);
+    this.activisionService.checkPublicStatus(this.user.wzProfile, this.user.platform);
 
-    this.checkPublicProfileService.getPublicStatus().subscribe(status => {
+    this.activisionService.getPublicStatus().subscribe(status => {
       this.isCheckingProfile = false;
       this.isPublicProfile = status;
     }, err =>{

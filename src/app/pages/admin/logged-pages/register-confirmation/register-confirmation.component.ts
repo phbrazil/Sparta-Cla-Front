@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/_models/user';
 import { AccountService, AlertService } from 'src/app/_services';
-import { CheckPublicProfileService } from 'src/app/_services/check-public-profile';
+import { ActivisionService } from 'src/app/_services/activision.service';
 
 @Component({
   selector: 'app-register-confirmation',
@@ -23,7 +23,7 @@ export class RegisterConfirmationComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private activatedRoute: ActivatedRoute, private accountService: AccountService,
     private alertService: AlertService, private router: Router,
-    private checkPublicProfileService: CheckPublicProfileService) { }
+    private activisionService: ActivisionService) { }
 
   ngOnInit(): void {
 
@@ -99,9 +99,9 @@ export class RegisterConfirmationComponent implements OnInit {
     this.isCheckingProfile = true;
 
     //CHECK IF ACTIVISION PROFILE IS PUBLIC
-    this.checkPublicProfileService.checkPublicStatus(this.user.wzProfile, this.user.platform);
+    this.activisionService.checkPublicStatus(this.user.wzProfile, this.user.platform);
 
-    this.checkPublicProfileService.getPublicStatus().subscribe(status => {
+    this.activisionService.getPublicStatus().subscribe(status => {
       this.isCheckingProfile = false;
       this.isPublicProfile = status;
     }, err => {
