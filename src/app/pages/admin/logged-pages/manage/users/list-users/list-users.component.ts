@@ -38,7 +38,7 @@ export class ListUsersComponent implements OnInit {
       this.isLoading = false;
 
     }, err => {
-      console.log("Ocorreu algum Erro", err);
+      this.alertService.error('Ocorreu um erro', 'Tente novamente mais tarde', { keepAfterRouteChange: true });
       this.isLoading = false;
     });
   }

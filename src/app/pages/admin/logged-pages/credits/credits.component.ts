@@ -19,12 +19,17 @@ export class CreditsComponent implements OnInit {
 
   public chartColors: any[] = [
     { 
-      backgroundColor:["#e4a101", "#6FC8CE", "#FAFFF2", "#FFFCC4", "#B9E8E0"] 
+      backgroundColor:["#e4a101", "#e4a101", "#e4a101", "#e4a101", "#e4a101", "#e4a101", "#e4a101", "#e4a101"] 
     }];
 
-  public barChartData: ChartDataSets[] = [
-    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Vitórias' },
-    { data: [28, 48, 40, 19, 86, 27, 90], label: 'Derrotas' }
+  public vitorias: ChartDataSets[] = [
+    { data: [65, 59, 80, 81, 56, 55, 50], label: 'Vitórias' },
+    //{ data: [28, 48, 40, 19, 86, 27, 90], label: 'Derrotas' }
+  ];
+
+  public creditos: ChartDataSets[] = [
+    //{ data: [65, 59, 80, 81, 56, 55, 40], label: 'Vitórias' },
+    { data: [28, 48, 40, 19, 86, 27, 90], label: 'Créditos' }
   ];
 
   constructor() { }

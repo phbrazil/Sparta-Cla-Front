@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AlertService } from 'src/app/_services';
 import { TournamentService } from 'src/app/_services/tournament.service';
 import { Tournament } from '../../_models/tournament';
 
@@ -14,7 +15,7 @@ export class TournamentComponent implements OnInit {
   tournaments: Tournament[] = [];
   isLoading = false;
 
-  constructor(private service: TournamentService) { }
+  constructor(private service: TournamentService, private alertService: AlertService) { }
 
   ngOnInit(): void {
     this.findAllTournament();
@@ -34,8 +35,11 @@ export class TournamentComponent implements OnInit {
       this.isLoading = false;
 
     }, err => {
-      console.log("Ocorreu algum Erro", err);
+
       this.isLoading = false;
+
+      this.alertService.error('Ocorreu um erro', 'Tente novamente mais tarde');
+
     });
   }
 }

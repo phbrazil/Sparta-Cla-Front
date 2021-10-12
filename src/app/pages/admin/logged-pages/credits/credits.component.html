@@ -12,7 +12,15 @@
             </div>
             <div class="col-md-6">
                 <div style="display: block;">
-                    <canvas baseChart [colors]="chartColors" [datasets]="barChartData" [labels]="barChartLabels"
+                    <canvas baseChart [colors]="chartColors" [datasets]="vitorias" [labels]="barChartLabels"
+                        [options]="barChartOptions" [plugins]="barChartPlugins" [legend]="barChartLegend"
+                        [chartType]="barChartType">
+                    </canvas>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div style="display: block;">
+                    <canvas baseChart [colors]="chartColors" [datasets]="creditos" [labels]="barChartLabels"
                         [options]="barChartOptions" [plugins]="barChartPlugins" [legend]="barChartLegend"
                         [chartType]="barChartType">
                     </canvas>

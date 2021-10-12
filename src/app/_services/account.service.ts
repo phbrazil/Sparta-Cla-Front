@@ -236,6 +236,8 @@ export class AccountService {
         .set('Authorization', `Bearer ${token}`)
     }
 
+    console.log(header)
+
     const url = `${this.baseUrl}/spartaclan/getAllUsers`
 
     return this.http.get<[User]>(url, header);
