@@ -168,9 +168,6 @@ export class ProfileComponent implements OnInit {
   choosePlatform(platform) {
     this.platform = platform;
     this.userForm.patchValue({ platform: platform });
-
-    console.log(this.userForm.value)
-
   }
 
 }
