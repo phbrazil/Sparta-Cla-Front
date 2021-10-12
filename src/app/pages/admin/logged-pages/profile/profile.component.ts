@@ -155,4 +155,15 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  getPlatform(platform: string){
+    switch(platform){
+      case 'psn':
+        return 'PSN';
+      case 'xbl':
+        return 'Xbox Live';
+      case 'battle':
+        return 'Battle Net';
+    }
+  }
+
 }
