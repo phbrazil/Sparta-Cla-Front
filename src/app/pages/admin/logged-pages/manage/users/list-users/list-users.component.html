@@ -1,4 +1,4 @@
-<section class="container">
+<section *ngIf="user.admin" class="container">
   <div class="row mb-5 mt-5 pb-5 pt-5">
     <div class="col-md-12 game-content">
       <div class="row">
@@ -57,11 +57,31 @@
   </div>
 </section>
 
-<div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="modalEdit" aria-hidden="true">
+<div class="modal fade modal-edit-position" id="modalEdit" tabindex="-1" aria-labelledby="modalEdit" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-body">
         <app-edit-user [idUser]="idUser"></app-edit-user>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade modal-delete-position" tabindex="-1" role="dialog" id="modalDisable">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Desativar Usuário</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Deseja realmente desativar esse usuário?</p>
+      </div>
+      <div class="modal-footer">
+        <button  (click)="confirmDisable()" type="button" class="btn btn-primary">Sim</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
       </div>
     </div>
   </div>

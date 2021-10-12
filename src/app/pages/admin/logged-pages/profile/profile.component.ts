@@ -18,6 +18,7 @@ export class ProfileComponent implements OnInit {
   stats: any;
   kd: any;
   disable = true;
+  isLoading = false;
 
   constructor(private accountService: AccountService,
               private fb: FormBuilder,
@@ -69,41 +70,44 @@ export class ProfileComponent implements OnInit {
   enableForm(): void {
     this.disable = false;
     document.getElementsByTagName("select")[0].disabled = false;
+    document.getElementsByTagName("select")[1].disabled = false;
+    document.getElementsByTagName("select")[2].disabled = false;
     document.getElementsByTagName("input")[1].disabled = false;
     document.getElementsByTagName("input")[2].disabled = false;
     document.getElementsByTagName("input")[5].disabled = false;
-    document.getElementsByTagName("input")[6].disabled = false;
-    document.getElementsByTagName("input")[7].disabled = false;
 
   }
 
   disableForm() {
     this.disable = true;
     document.getElementsByTagName("select")[0].disabled = true;
+    document.getElementsByTagName("select")[1].disabled = true;
+    document.getElementsByTagName("select")[2].disabled = true;
     document.getElementsByTagName("input")[1].disabled = true;
     document.getElementsByTagName("input")[2].disabled = true;
     document.getElementsByTagName("input")[5].disabled = true;
-    document.getElementsByTagName("input")[6].disabled = true;
-    document.getElementsByTagName("input")[7].disabled = true;
   }
 
   editUser(): void {
 
     if (this.user.idUser) {
-      this.accountService.editUser(this.userForm.value).subscribe( () => {
 
+      this.isLoading = true;
+      this.accountService.editUser(this.userForm.value).subscribe( () => {
+        this.isLoading = false;
         let user = JSON.parse(localStorage.getItem('user'));
         user.estado = this.userForm.value.estado;
         localStorage.setItem('user', JSON.stringify(user));
 
-        this.alertService.success('Sucesso', 'usuário editado');
+        this.alertService.success('Usuário alterado com sucesso', '');
 
-        this.disable = true;
+        this.disable = false;
         this.disableForm();
 
 
       }, error => {
-        alert("Erro");
+        this.isLoading = false;
+        this.alertService.error('Ocorreu um erro', 'Tente novamente mais tarde');
         console.log("deu ruim", error)
       });
     }

@@ -1,4 +1,9 @@
-<div class="modal-content">
+<div *ngIf="isLoadingTournament" class="d-flex justify-content-center">
+  <div class="spinner-grow text-warning" role="status" style="width: 5rem; height: 5rem;">
+  </div>
+</div>
+
+<div *ngIf="!isLoadingTournament" class="modal-content">
   <div class="modal-header">
     <h5 class="modal-title">Campeonato {{tournament?.mode}} dia {{tournament?.date}}</h5>
     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -126,7 +131,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-custom mb-3" [disabled]="!formEditTournament.valid">
+        <button type="submit" class="btn btn-custom mb-3" [disabled]="!formEditTournament.valid || isLoading">
           <span *ngIf="isLoading" class="spinner-border spinner-border-sm mr-1"></span>
           Salvar</button>
         <button type="button" class="btn btn-custom mb-3" data-dismiss="modal">Fechar</button>

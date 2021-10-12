@@ -26,7 +26,7 @@ export class RegisterConfirmationComponent implements OnInit {
     this.accountService.user.subscribe(x => this.user = x);
 
     this.formRegisterConfirmation = this.fb.group({
-      usuario: ['', [Validators.required]],
+      username: ['', [Validators.required]],
       nome: ['', [Validators.required]],
       email: ['', [Validators.required]],
       pais: ['Brasil', [Validators.required]],
@@ -57,9 +57,21 @@ export class RegisterConfirmationComponent implements OnInit {
 
     }, err => {
 
-      this.alertService.error(err.error.message.text, err.error.message.subText, { keepAfterRouteChange: true });
+      console.log(err)
 
       this.isLoading = false;
+
+      if(err.status == 500){
+
+        this.alertService.error('Ocorreu um erro', 'Tente novamente mais tarde', { keepAfterRouteChange: true });
+
+      }else{
+
+        this.alertService.error(err.error.message.text, err.error.message.subText, { keepAfterRouteChange: true });
+
+      }
+
+
 
     })
   }

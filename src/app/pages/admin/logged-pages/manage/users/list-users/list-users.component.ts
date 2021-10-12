@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/_models/user';
-import { AccountService } from 'src/app/_services';
-
+import { AccountService, AlertService } from 'src/app/_services';
+import * as $ from 'jquery';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-list-users',
   templateUrl: './list-users.component.html',
@@ -12,8 +13,13 @@ export class ListUsersComponent implements OnInit {
   isLoading = false;
   users: User[] = [];
   idUser: number;
+  user: User;
 
-  constructor(private accountService: AccountService) { }
+  constructor(private accountService: AccountService, private alertService: AlertService, private router: Router) {
+
+    this.accountService.user.subscribe(x => this.user = x);
+
+  }
 
   ngOnInit(): void {
 
@@ -43,6 +49,34 @@ export class ListUsersComponent implements OnInit {
 
   disableUser(idUser){
     this.idUser = idUser;
+  }
+
+  confirmDisable() {
+
+    //this.accountService.disa(this.idUser).subscribe(res => {
+
+      //this.alertService.success(res.text, res.subText, { keepAfterRouteChange: true });
+
+      //REMOVE FADE BUGADO QUE CONTINUAVA
+      $('body').removeClass('modal-open');
+      $('.modal-backdrop').remove();
+      $('#modalDisable').toggle();
+
+      this.reloadCurrentRoute();
+
+    //}, err => {
+
+      //this.alertService.error(err.text, err.subText, { keepAfterRouteChange: true });
+
+    //})
+
+  }
+
+  reloadCurrentRoute() {
+    const currentUrl = this.router.url;
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([currentUrl]);
+    });
   }
 
 }

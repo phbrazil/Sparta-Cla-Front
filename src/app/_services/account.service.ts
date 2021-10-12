@@ -14,8 +14,8 @@ export class AccountService {
   private emailNewPassword = new BehaviorSubject<string>(null);
 
 
-  //readonly baseUrl: string = 'https://sparta-clan.herokuapp.com'
-  readonly baseUrl: string = 'http://localhost:8080'
+  readonly baseUrl: string = 'https://sparta-clan.herokuapp.com'
+  //readonly baseUrl: string = 'http://localhost:8080'
 
 
   constructor(
@@ -75,7 +75,7 @@ export class AccountService {
       const validaCep = /^[0-9]{8}$/;
 
       if (validaCep.test(cep)) {
-        //let url = `http://localhost:8080/sparta/getCep/${cep}`;
+
         let url = `${this.baseUrl}/sparta/getCep/${cep}`;
 
         return this.http.get<any>(url)
@@ -209,6 +209,8 @@ export class AccountService {
   }
 
   completeRegister(body) {
+
+    console.log(body)
 
     const token = localStorage.getItem('token');
 

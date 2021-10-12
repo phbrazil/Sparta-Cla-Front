@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Constants } from 'src/app/utils/Constants';
 import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services';
 import { ActivisionService } from 'src/app/_services/activision.service';
@@ -30,7 +31,6 @@ export class MyStatsComponent implements OnInit {
 
   ngOnInit(): void {
 
-
     this.getStats(this.user.wzProfile, this.user.platform)
   }
 
@@ -38,11 +38,12 @@ export class MyStatsComponent implements OnInit {
 
     this.isLoading = true;
 
-    const email = 'paulo.henriqueb@me.com';
-    const password = 'mortadela1';
-
     //this.activisionService.getWarzoneInfoRapidAPI(wzProfile, platform, this.user.token).subscribe(res => {
-    this.activisionService.getWarzoneInfoCloudFunction(email, password, wzProfile, platform).subscribe(res => {
+    this.activisionService.getWarzoneInfoCloudFunction(Constants.email, Constants.password, wzProfile, platform).subscribe(res => {
+
+      console.log(res);
+
+      this.isLoading = false;
 
       this.statics = res.recentMatches.matches;
 
@@ -51,7 +52,6 @@ export class MyStatsComponent implements OnInit {
       if (JSON.parse(json).error) {
 
         this.hasErrors = true
-        this.isLoading = false;
 
       } else {
 
@@ -69,9 +69,6 @@ export class MyStatsComponent implements OnInit {
 
         this.KD = Math.round(this.stats.br.kdRatio * 100) / 100;
         this.KDRecent = Math.round(this.recentMatches.summary.all.kdRatio * 100) / 100;
-
-        this.isLoading = false;
-
       }
 
 

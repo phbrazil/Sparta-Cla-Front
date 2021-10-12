@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Tournament } from 'src/app/_models/tournament';
-import { AlertService } from 'src/app/_services';
+import { AccountService, AlertService } from 'src/app/_services';
 import { TournamentService } from 'src/app/_services/tournament.service';
 import * as $ from 'jquery';
+import { User } from 'src/app/_models/user';
 @Component({
   selector: 'app-list-tournaments',
   templateUrl: './list-tournaments.component.html',
@@ -16,8 +17,14 @@ export class ListTournamentsComponent implements OnInit {
   tournaments: Tournament[] = [];
   isLoading = false;
   idTournament: number;
+  user: User;
 
-  constructor(private service: TournamentService, private router: Router, private alertService: AlertService) { }
+  constructor(private service: TournamentService, private router: Router, private alertService: AlertService,
+    private accountService: AccountService) {
+
+    this.accountService.user.subscribe(x => this.user = x);
+
+  }
 
   ngOnInit(): void {
 

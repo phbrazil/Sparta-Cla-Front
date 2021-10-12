@@ -14,4 +14,5 @@ export class User {
   message: string
   changePassword: boolean
   admin: boolean
+  creditos: number
 }

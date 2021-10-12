@@ -15,6 +15,7 @@ export class EditUserComponent implements OnInit {
 
   formEditUser: FormGroup;
   isLoading = false;
+  isLoadingUser = false;
   user: User;
 
   @Input() idUser: number;
@@ -42,13 +43,19 @@ export class EditUserComponent implements OnInit {
 
     if (this.idUser) {
 
+      this.isLoadingUser = true;
+
       this.accountService.getUserById(this.idUser).subscribe(user => {
+
+        this.isLoadingUser = false;
 
         this.user = user;
 
         this.loadUser();
 
       }, err => {
+
+        this.isLoadingUser = false;
 
         console.log(err)
 
@@ -59,6 +66,8 @@ export class EditUserComponent implements OnInit {
   }
 
   enviar() {
+
+    this.isLoading = true;
 
     this.accountService.getUserById(this.idUser).subscribe(res => {
 
@@ -71,6 +80,8 @@ export class EditUserComponent implements OnInit {
 
       this.accountService.editUser(this.user).subscribe(res => {
 
+        this.isLoading = false;
+
         this.alertService.success('Usuário alterado com sucesso', 'Verifique a lista de usuários', { keepAfterRouteChange: true });
 
         //REMOVE FADE BUGADO QUE CONTINUAVA
@@ -82,6 +93,8 @@ export class EditUserComponent implements OnInit {
 
 
       }, err => {
+
+        this.isLoading = false;
 
         this.alertService.error('Ocorreu um erro', 'Tente novamente mais tarde', { keepAfterRouteChange: true });
 
