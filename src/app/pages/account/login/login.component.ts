@@ -92,11 +92,11 @@ export class LoginComponent implements OnInit {
 
       if (err.status === 401) {
 
-        this.alertService.error('Acesso Negado', 'tente novamente', { keepAfterRouteChange: true });
+        this.alertService.error('Acesso Negado', 'Verifique seu email e senha', { keepAfterRouteChange: true });
 
       } else {
 
-        this.alertService.error('Erro ' + err.status, 'tente novamente mais tarde', { keepAfterRouteChange: true });
+        this.alertService.error('Erro ' + err.status, 'Tente novamente mais tarde', { keepAfterRouteChange: true });
 
       }
 

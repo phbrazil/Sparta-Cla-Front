@@ -1,23 +1,16 @@
-<div class="container h-100 d-flex justify-content-center">
-    <div class="col-md-6">
-        <div *ngFor="let alert of alerts" class="{{cssClass(alert)}} alert">
-            <div class="toast-header text-dark" style="background-color: transparent;">
-                <img src="assets/images/spartan-cla-logo.png" style="width: 15%; height: 15%" class="rounded mr-2" alt="Logo Sparta">
-                <h2>Sparta Clã</h2>
-            </div>
-            <div class="toast-body pt-5 pb-5">
-              <h2>{{ title }}	<span class="text-yellow"></span></h2>
-                <p class=""> {{ description }}</p>
-                <a class="btn btn-custom" (click)="removeAlert(alert)">Fechar</a>
-            </div>
-        </div>
+<div id="alert" class="container h-100 d-flex justify-content-center">
+  <div class="col-md-6">
+    <div *ngFor="let alert of alerts" class="{{cssClass(alert)}} alert">
+      <div class="toast-header text-dark" style="background-color: transparent;">
+        <img src="assets/images/spartan-cla-logo.png" style="width: 15%; height: 15%" class="rounded mr-2"
+          alt="Logo Sparta">
+        <h2>Sparta Clã</h2>
+      </div>
+      <div class="toast-body pt-5 pb-5">
+        <h2 class="{{titleCss(alert)}}">{{ title }} <span class="text-yellow"></span></h2>
+        <p class=""> {{ description }}</p>
+        <a class="btn btn-custom" (click)="removeAlert(alert)">Fechar</a>
+      </div>
     </div>
+  </div>
 </div>
-
-<script>
-    window.setTimeout(function() {
-    $(".alert").fadeTo(500, 0).slideUp(500, function(){
-        $(this).remove();
-    });
-}, 2000);
-</script>

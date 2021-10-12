@@ -21,6 +21,8 @@ export class ProfileComponent implements OnInit {
   isLoading = false;
   isCheckingProfile = false;
   isPublicProfile = true;
+  platform: string;
+
 
   constructor(private accountService: AccountService,
     private fb: FormBuilder,
@@ -39,6 +41,7 @@ export class ProfileComponent implements OnInit {
 
     if (this.user.idUser) {
       this.formUser(this.user);
+      this.choosePlatform(this.user.platform);
     }
     else {
       this.formUser(this.formUserNull());
@@ -75,7 +78,6 @@ export class ProfileComponent implements OnInit {
     this.disable = false;
     document.getElementsByTagName("select")[0].disabled = false;
     document.getElementsByTagName("select")[1].disabled = false;
-    document.getElementsByTagName("select")[2].disabled = false;
     document.getElementsByTagName("input")[2].disabled = false;
     document.getElementsByTagName("input")[5].disabled = false;
 
@@ -85,7 +87,6 @@ export class ProfileComponent implements OnInit {
     this.disable = true;
     document.getElementsByTagName("select")[0].disabled = true;
     document.getElementsByTagName("select")[1].disabled = true;
-    document.getElementsByTagName("select")[2].disabled = true;
     document.getElementsByTagName("input")[2].disabled = true;
     document.getElementsByTagName("input")[5].disabled = true;
   }
@@ -113,7 +114,7 @@ export class ProfileComponent implements OnInit {
 
         localStorage.setItem('user', JSON.stringify(user));
 
-        this.alertService.success('Usuário alterado com sucesso', '');
+        this.alertService.success('Usuário alterado com sucesso', '', {autoClose: true});
 
         this.disable = false;
         this.disableForm();
@@ -162,6 +163,14 @@ export class ProfileComponent implements OnInit {
       case 'battle':
         return 'Battle Net';
     }
+  }
+
+  choosePlatform(platform) {
+    this.platform = platform;
+    this.userForm.patchValue({ platform: platform });
+
+    console.log(this.userForm.value)
+
   }
 
 }
