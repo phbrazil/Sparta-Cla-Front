@@ -25,8 +25,6 @@ export class AuthInterceptor implements HttpInterceptor {
       },
     });
 
-    console.log('Accessing interceptor')
-
     /*this.accountService.getTokenStatus().subscribe(res =>{
       console.log(res)
     }, err =>{

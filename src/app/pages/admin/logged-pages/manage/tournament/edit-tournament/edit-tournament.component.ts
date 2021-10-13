@@ -21,7 +21,11 @@ export class EditTournamentComponent implements OnInit {
   @Input() id: number;
 
   constructor(private fb: FormBuilder, private tournamentService: TournamentService, private alertService: AlertService,
-    private accountService: AccountService, private router: Router) { }
+    private accountService: AccountService, private router: Router) {
+
+      this.accountService.user.subscribe(x => this.user = x);
+
+     }
 
   ngOnInit(): void {
 
