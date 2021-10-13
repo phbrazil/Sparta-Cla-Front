@@ -1,10 +1,18 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AccountService } from '.';
 
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
+
+
+  constructor(private accountService: AccountService
+
+  ) {
+
+  }
 
   token = localStorage.getItem('token');
 
@@ -16,6 +24,15 @@ export class AuthInterceptor implements HttpInterceptor {
         'Authorization': `Bearer ${this.token}`,
       },
     });
+
+    console.log('Accessing interceptor')
+
+    /*this.accountService.getTokenStatus().subscribe(res =>{
+      console.log(res)
+    }, err =>{
+      console.log(err)
+    })*/
+
 
     return next.handle(req);
   }

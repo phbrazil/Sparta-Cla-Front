@@ -60,7 +60,7 @@ export class ListTournamentsComponent implements OnInit {
 
   confirmDisable() {
 
-    this.service.disableTournament(this.idTournament).subscribe(res => {
+    this.service.disableTournament(this.idTournament, this.user.token).subscribe(res => {
 
       this.alertService.success(res.text, res.subText, { keepAfterRouteChange: true });
 

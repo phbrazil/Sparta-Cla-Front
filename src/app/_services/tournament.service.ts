@@ -27,9 +27,9 @@ export class TournamentService {
 
     }
 
-    newTournament(body: Tournament) {
+    newTournament(body: Tournament, token: string) {
 
-      const token = localStorage.getItem('token');
+      //const token = localStorage.getItem('token');
 
       const headers = { 'Authorization': `Bearer ${token}` }
 
@@ -37,9 +37,9 @@ export class TournamentService {
 
     }
 
-    editTournament(body: Tournament) {
+    editTournament(body: Tournament, token: string) {
 
-      const token = localStorage.getItem('token');
+      //const token = localStorage.getItem('token');
 
       const headers = { 'Authorization': `Bearer ${token}` }
 
@@ -47,9 +47,9 @@ export class TournamentService {
 
     }
 
-    getTournamentById(id: number) {
+    getTournamentById(id: number, token: string) {
 
-      const token = localStorage.getItem('token');
+      //const token = localStorage.getItem('token');
 
       const headers = { 'Authorization': `Bearer ${token}` }
 
@@ -57,9 +57,9 @@ export class TournamentService {
 
     }
 
-    disableTournament(id: number) {
+    disableTournament(id: number, token: string) {
 
-      const token = localStorage.getItem('token');
+      //const token = localStorage.getItem('token');
 
       const headers = { 'Authorization': `Bearer ${token}` }
 

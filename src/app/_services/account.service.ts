@@ -193,12 +193,21 @@ export class AccountService {
     // remove user from local storage and set current user to null
     localStorage.removeItem('user');
     localStorage.removeItem('token');
-    localStorage.removeItem('lastName');
-    localStorage.removeItem('userName');
-    localStorage.removeItem('email');
-    localStorage.removeItem('id');
     this.userSubject.next(null);
     this.router.navigate(['/']);
+
+  }
+
+  getTokenStatus(token: string) {
+
+
+    //const token = localStorage.getItem('token');
+
+    const headers = { 'Authorization': `Bearer ${token}` }
+
+    return this.http.get<any>(`${this.baseUrl}/account/api/auth/refreshToken`, { headers });
+
+
   }
 
   register(body) {
@@ -208,11 +217,9 @@ export class AccountService {
 
   }
 
-  completeRegister(body) {
+  completeRegister(body: any, token: string) {
 
-    console.log(body)
-
-    const token = localStorage.getItem('token');
+    //const token = localStorage.getItem('token');
 
     const headers = { 'Authorization': `Bearer ${token}` }
 
@@ -227,9 +234,9 @@ export class AccountService {
 
   }
 
-  getAllUsers() {
+  getAllUsers(token: string) {
 
-    const token = localStorage.getItem('token');
+    //const token = localStorage.getItem('token');
 
     var header = {
       headers: new HttpHeaders()
@@ -244,9 +251,9 @@ export class AccountService {
   }
 
 
-  getUserById(idUser: number) {
+  getUserById(idUser: number, token: string) {
 
-    const token = localStorage.getItem('token');
+    //const token = localStorage.getItem('token');
 
     var header = {
       headers: new HttpHeaders()
@@ -259,11 +266,9 @@ export class AccountService {
     return this.http.get<User>(url, header);
   }
 
-  editUser(body) {
+  editUser(body: any, token: string) {
 
-    console.log(body)
-
-    const token = localStorage.getItem('token');
+    //const token = localStorage.getItem('token');
 
     const headers = { 'Authorization': `Bearer ${token}` }
 

@@ -98,7 +98,7 @@ export class ProfileComponent implements OnInit {
       this.isLoading = true;
       this.isCheckingProfile = true;
 
-      this.accountService.editUser(this.userForm.value).subscribe(() => {
+      this.accountService.editUser(this.userForm.value, this.user.token).subscribe(() => {
         this.isLoading = false;
         let user = JSON.parse(localStorage.getItem('user'));
 

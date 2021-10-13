@@ -47,7 +47,7 @@ export class RegisterConfirmationComponent implements OnInit {
 
     this.isLoading = true;
 
-    this.accountService.completeRegister(this.formRegisterConfirmation.value).subscribe(user => {
+    this.accountService.completeRegister(this.formRegisterConfirmation.value, this.user.token).subscribe(user => {
 
       this.accountService.setUser(user);
 

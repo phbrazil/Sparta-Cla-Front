@@ -46,7 +46,7 @@ export class EditTournamentComponent implements OnInit {
 
       this.isLoadingTournament = true;
 
-      this.tournamentService.getTournamentById(this.id).subscribe(tournament => {
+      this.tournamentService.getTournamentById(this.id, this.user.token).subscribe(tournament => {
 
         this.isLoadingTournament = false;
 
@@ -70,7 +70,7 @@ export class EditTournamentComponent implements OnInit {
 
     this.isLoading = true;
 
-    this.tournamentService.editTournament(this.formEditTournament.value).subscribe(res => {
+    this.tournamentService.editTournament(this.formEditTournament.value, this.user.token).subscribe(res => {
 
       this.alertService.success(res.text, res.subText, { keepAfterRouteChange: true });
 

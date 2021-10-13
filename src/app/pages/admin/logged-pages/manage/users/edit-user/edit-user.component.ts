@@ -20,7 +20,11 @@ export class EditUserComponent implements OnInit {
 
   @Input() idUser: number;
 
-  constructor(private fb: FormBuilder, private accountService: AccountService, private alertService: AlertService, private router: Router) { }
+  constructor(private fb: FormBuilder, private accountService: AccountService, private alertService: AlertService, private router: Router) {
+
+    this.accountService.user.subscribe(x => this.user = x);
+
+  }
 
   ngOnInit(): void {
 
@@ -45,7 +49,7 @@ export class EditUserComponent implements OnInit {
 
       this.isLoadingUser = true;
 
-      this.accountService.getUserById(this.idUser).subscribe(user => {
+      this.accountService.getUserById(this.idUser, this.user.token).subscribe(user => {
 
         this.isLoadingUser = false;
 
@@ -69,7 +73,7 @@ export class EditUserComponent implements OnInit {
 
     this.isLoading = true;
 
-    this.accountService.getUserById(this.idUser).subscribe(res => {
+    this.accountService.getUserById(this.idUser, this.user.token).subscribe(res => {
 
       this.user = res;
 
@@ -78,7 +82,7 @@ export class EditUserComponent implements OnInit {
       this.user.pais = this.formEditUser.value.pais;
       this.user.estado = this.formEditUser.value.estado;
 
-      this.accountService.editUser(this.user).subscribe(res => {
+      this.accountService.editUser(this.user, this.user.token).subscribe(res => {
 
         this.isLoading = false;
 
