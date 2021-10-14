@@ -1,3 +1,5 @@
+@import 'https://pro.fontawesome.com/releases/v5.10.0/css/all.css';
+
 .header-logged {
   background-color: var(--background-Black);
   background-image: url(../../../../../assets/images/banner_alert.jpg);

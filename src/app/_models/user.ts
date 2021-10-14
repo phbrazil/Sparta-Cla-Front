@@ -1,6 +1,6 @@
 export class User {
   token: string
-  idUser: string
+  idUser: number
   nome: string
   username: string
   email: string

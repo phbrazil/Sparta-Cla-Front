@@ -12,6 +12,7 @@ export class AccountService {
   private userSubject: BehaviorSubject<User>;
   public user: Observable<User>;
   private emailNewPassword = new BehaviorSubject<string>(null);
+  private isLogged = new BehaviorSubject<boolean>(false);
 
 
   readonly baseUrl: string = 'https://sparta-clan.herokuapp.com'
@@ -38,12 +39,22 @@ export class AccountService {
 
   }
 
+
+  public setIsLogged(status: boolean): void{
+    this.isLogged.next(status);
+  }
+
+  public getIsLogged(): Observable<boolean> {
+    return this.isLogged.asObservable();
+
+  }
+
   //email para troca de senha
-  public setEmailNewPassword(email: string){
+  public setEmailNewPassword(email: string) {
     this.emailNewPassword.next(email);
   }
 
-  public getEmailNewPassword(): Observable<string>{
+  public getEmailNewPassword(): Observable<string> {
     return this.emailNewPassword.asObservable();
   }
 
@@ -183,7 +194,7 @@ export class AccountService {
         localStorage.setItem('user', JSON.stringify(user));
         localStorage.setItem('token', user.token);
         this.userSubject.next(user);
-        console.log(user)
+        this.setIsLogged(true);
         return user;
       }));
   }
@@ -277,7 +288,7 @@ export class AccountService {
   }
 
 
-  delete(id: string) {
+  delete(id: number) {
 
     const url = `${this.baseUrl}/account/api/auth/delete/${id}`
 

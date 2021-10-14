@@ -2,19 +2,27 @@ import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/c
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AccountService } from '.';
+import { User } from '../_models/user';
 
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
+  user: User;
+  token: string;
 
   constructor(private accountService: AccountService
 
   ) {
 
+    this.accountService.user.subscribe(x => this.user = x);
+
+    this.token = this.user ? this.user.token : '' ;
+
   }
 
-  token = localStorage.getItem('token');
+  //token = localStorage.getItem('token');
+
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     req = req.clone({
@@ -25,13 +33,15 @@ export class AuthInterceptor implements HttpInterceptor {
       },
     });
 
-    /*this.accountService.getTokenStatus().subscribe(res =>{
+    /*this.accountService.getTokenStatus(this.token).subscribe(res =>{
       console.log(res)
-    }, err =>{
-      console.log(err)
     })*/
 
+    this.accountService.getIsLogged().subscribe(status =>{
+
+    })
 
     return next.handle(req);
+
   }
 }
