@@ -1,5 +1,5 @@
 export class Tournament {
-    id: number;
+    idCamp: number;
     mode: string;
     date: string;
     award: string;
@@ -9,5 +9,6 @@ export class Tournament {
     division: number;
     cost: any;
     active: boolean;
+    privateCamp: boolean;
 }
 

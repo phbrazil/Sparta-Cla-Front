@@ -13,6 +13,7 @@ import { AboutComponent } from './about/about.component';
 import { RulesComponent } from './rules/rules.component';
 import { TournamentComponent } from './tournament/tournament.component';
 import { TableResultComponent } from './table-result/table-result.component';
+import { RegisterTournamentComponent } from './admin/logged-pages/register-tournament/register-tournament.component';
 
 
 
@@ -26,6 +27,7 @@ import { TableResultComponent } from './table-result/table-result.component';
     RulesComponent,
     TournamentComponent,
     TableResultComponent,
+    RegisterTournamentComponent
     ],
   imports: [
     CommonModule,
@@ -43,6 +45,7 @@ import { TableResultComponent } from './table-result/table-result.component';
     AboutComponent,
     RulesComponent,
     TournamentComponent,
+    RegisterTournamentComponent
   ]
 })
 export class HomeModule { }

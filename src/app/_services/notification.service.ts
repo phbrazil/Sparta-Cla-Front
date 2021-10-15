@@ -1,7 +1,7 @@
 ﻿import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { Constants } from '../utils/Constants';
+import { AccountService } from '.';
+
 
 @Injectable({ providedIn: 'root' })
 export class NotificationService {
@@ -10,13 +10,13 @@ export class NotificationService {
   readonly baseUrl: string = 'https://sparta-clan.herokuapp.com'
   //readonly baseUrl: string = 'http://localhost:8080'
 
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient, private accountService: AccountService) {
 
     }
 
-    getNotifications(idUser: number, token: string) {
+    getNotifications(idUser: number) {
 
-      //const token = localStorage.getItem('token');
+      const token = this.accountService.getToken();
 
       var header = {
         headers: new HttpHeaders()

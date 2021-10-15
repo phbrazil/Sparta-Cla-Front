@@ -1,6 +1,8 @@
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { map } from 'underscore';
 import { AccountService } from '.';
 import { User } from '../_models/user';
 
@@ -15,9 +17,15 @@ export class AuthInterceptor implements HttpInterceptor {
 
   ) {
 
-    this.accountService.user.subscribe(x => this.user = x);
+    this.accountService.user.subscribe(x => {
 
-    this.token = this.user ? this.user.token : '' ;
+      this.user = x;
+
+      this.token = this.accountService.getToken();
+
+    });
+
+    //this.token = this.user ? this.user.token : '' ;
 
   }
 
@@ -25,6 +33,13 @@ export class AuthInterceptor implements HttpInterceptor {
 
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+
+    if (!this.token) {
+
+      this.token = this.accountService.getToken();
+      //this.accountService.logout()
+    }
+
     req = req.clone({
       setHeaders: {
         'Content-Type': 'application/json; charset=utf-8',
@@ -37,11 +52,30 @@ export class AuthInterceptor implements HttpInterceptor {
       console.log(res)
     })*/
 
-    this.accountService.getIsLogged().subscribe(status =>{
+    this.accountService.getIsLogged().subscribe(status => {
 
     })
 
-    return next.handle(req);
+    return next.handle(req).pipe(
+      catchError(err => {
+        if (err.status === 401) {
+
+          console.log('Accesso negado ', req)
+
+          //this.accountService.logout();
+
+        } else {
+          console.log('to no else ', req)
+        }
+        return throwError(err);
+      }));
+
+    //return next.handle(req);
 
   }
+
+
+
+
+
 }

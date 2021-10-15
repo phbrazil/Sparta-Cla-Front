@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AccountService } from '.';
 import { Tournament } from '../_models/tournament'
 
 @Injectable({
@@ -16,7 +17,7 @@ export class TournamentService {
   readonly baseUrl: string = 'https://sparta-clan.herokuapp.com'
   //readonly baseUrl: string = 'http://localhost:8080'
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private accountService: AccountService) { }
 
   getTournament(pagina: number, qtdPagina: number):Observable<any[]> {
     let httpParams = new HttpParams();
@@ -27,9 +28,11 @@ export class TournamentService {
 
     }
 
-    newTournament(body: Tournament, token: string) {
+    newTournament(body: Tournament) {
 
       //const token = localStorage.getItem('token');
+
+      const token = this.accountService.getToken();
 
       const headers = { 'Authorization': `Bearer ${token}` }
 
@@ -37,9 +40,11 @@ export class TournamentService {
 
     }
 
-    editTournament(body: Tournament, token: string) {
+    editTournament(body: TournamentService) {
 
       //const token = localStorage.getItem('token');
+
+      const token = this.accountService.getToken();
 
       const headers = { 'Authorization': `Bearer ${token}` }
 
@@ -47,9 +52,11 @@ export class TournamentService {
 
     }
 
-    getTournamentById(id: number, token: string) {
+    getTournamentById(id: number) {
 
       //const token = localStorage.getItem('token');
+
+      const token = this.accountService.getToken();
 
       const headers = { 'Authorization': `Bearer ${token}` }
 
@@ -57,9 +64,11 @@ export class TournamentService {
 
     }
 
-    disableTournament(id: number, token: string) {
+    disableTournament(id: number) {
 
       //const token = localStorage.getItem('token');
+
+      const token = this.accountService.getToken();
 
       const headers = { 'Authorization': `Bearer ${token}` }
 

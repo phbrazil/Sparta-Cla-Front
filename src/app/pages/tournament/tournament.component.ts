@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertService } from 'src/app/_services';
+import { User } from 'src/app/_models/user';
+import { AccountService, AlertService } from 'src/app/_services';
 import { TournamentService } from 'src/app/_services/tournament.service';
 import { Tournament } from '../../_models/tournament';
 
@@ -14,8 +15,15 @@ export class TournamentComponent implements OnInit {
   pagina = 0;
   tournaments: Tournament[] = [];
   isLoading = false;
+  idCamp: number;
 
-  constructor(private service: TournamentService, private alertService: AlertService) { }
+  user: User;
+
+  constructor(private service: TournamentService, private alertService: AlertService, private accountService: AccountService) {
+
+    this.accountService.user.subscribe(x => this.user = x);
+
+  }
 
   ngOnInit(): void {
     this.findAllTournament();
@@ -41,5 +49,11 @@ export class TournamentComponent implements OnInit {
       this.alertService.error('Ocorreu um erro', 'Tente novamente mais tarde');
 
     });
+  }
+
+  registerTournament(idCamp: number){
+
+    this.idCamp = idCamp;
+
   }
 }

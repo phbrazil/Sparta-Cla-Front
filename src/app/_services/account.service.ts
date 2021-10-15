@@ -49,6 +49,14 @@ export class AccountService {
 
   }
 
+  //GET TOKEN
+  public getToken() {
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    console.log("GET TOKEN VALUE ", user.token);
+    return user.token;
+}
+
+
   //email para troca de senha
   public setEmailNewPassword(email: string) {
     this.emailNewPassword.next(email);
@@ -192,7 +200,7 @@ export class AccountService {
       .pipe(map(user => {
         // store user details and jwt token in local storage to keep user logged in between page refreshes
         localStorage.setItem('user', JSON.stringify(user));
-        localStorage.setItem('token', user.token);
+        //localStorage.setItem('token', user.token);
         this.userSubject.next(user);
         this.setIsLogged(true);
         return user;
@@ -203,16 +211,15 @@ export class AccountService {
 
     // remove user from local storage and set current user to null
     localStorage.removeItem('user');
-    localStorage.removeItem('token');
+    //localStorage.removeItem('token');
     this.userSubject.next(null);
     this.router.navigate(['/']);
 
   }
 
-  getTokenStatus(token: string) {
+  getTokenStatus() {
 
-
-    //const token = localStorage.getItem('token');
+    const token = this.getToken();
 
     const headers = { 'Authorization': `Bearer ${token}` }
 
@@ -228,9 +235,9 @@ export class AccountService {
 
   }
 
-  completeRegister(body: any, token: string) {
+  completeRegister(body: any) {
 
-    //const token = localStorage.getItem('token');
+    const token = this.getToken();
 
     const headers = { 'Authorization': `Bearer ${token}` }
 
@@ -242,12 +249,11 @@ export class AccountService {
 
     return this.http.post<any>(`${this.baseUrl}/spartaclan/confirmEmail/${validationCode}`, {});
 
-
   }
 
-  getAllUsers(token: string) {
+  getAllUsers() {
 
-    //const token = localStorage.getItem('token');
+    const token = this.getToken();
 
     var header = {
       headers: new HttpHeaders()
@@ -262,9 +268,9 @@ export class AccountService {
   }
 
 
-  getUserById(idUser: number, token: string) {
+  getUserById(idUser: number) {
 
-    //const token = localStorage.getItem('token');
+    const token = this.getToken();
 
     var header = {
       headers: new HttpHeaders()
@@ -277,9 +283,9 @@ export class AccountService {
     return this.http.get<User>(url, header);
   }
 
-  editUser(body: any, token: string) {
+  editUser(body: any) {
 
-    //const token = localStorage.getItem('token');
+    const token = this.getToken();
 
     const headers = { 'Authorization': `Bearer ${token}` }
 

@@ -23,10 +23,9 @@
             <div class="match-team-info">
               <div class="match-team-logo">
                 <h2 class="text-yellow">{{ torneio.mode }}</h2>
-
               </div>
               <div class="match-team-name">
-                <h5 class="tournament-date">{{ torneio.date }}</h5>
+                <h5 class="tournament-date">{{ torneio.date | date : 'fullDate' : '' : 'pt-BR' }}</h5>
               </div>
               <div class="match-team-name">
                 <h5 class="pt-4 tournament-award">{{ torneio.award }} <br><span class="subtxt">Por Time</span></h5>
@@ -47,7 +46,13 @@
           </div>
           <div class="coming-match-time">
             <div class="coming-time">
-              <app-buttom title="Jogar"></app-buttom>
+              <button *ngIf="user" (click)="registerTournament(torneio.idCamp)" type="button" class="btn btn-custom" data-toggle="modal" data-target="#modalRegister">
+                Jogar
+              </button>
+
+              <app-modal *ngIf="!user" (click)="registerTournament(torneio.idCamp)" title="Jogar"></app-modal>
+
+              <!--app-buttom title="Jogar"></app-buttom-->
             </div>
           </div>
         </div>
@@ -57,7 +62,7 @@
 </section>
 
 <ng-template>
-  <div *ngIf="!isLoading && tournament.length == 0" class="row justify-content-center">
+  <div *ngIf="!isLoading && tournaments.length == 0" class="row justify-content-center">
     <div class="col-xl-6 col-lg-8">
       <div class="section-title title-style-three text-center mb-70">
         <h2>Não possuí  <span class="text-yellow">Jogos</span></h2>
@@ -67,3 +72,13 @@
   </div>
 </ng-template>
 
+
+<div class="modal fade modal-edit-position" id="modalRegister" tabindex="-1" aria-labelledby="modalRegister" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-body">
+        <app-register-tournament [idCamp]="idCamp"></app-register-tournament>
+      </div>
+    </div>
+  </div>
+</div>

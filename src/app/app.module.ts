@@ -13,6 +13,10 @@ import { RouterModule } from '@angular/router';
 import { LoggedPagesComponent } from './pages/admin/logged-pages/logged-pages.component';
 import { AdminLayoutModule } from './pages/admin/admin-layout.module';
 import { InterceptorModule } from './_services/interceptor.module';
+import localePT from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(localePT);
+
 @NgModule({
   declarations: [
     AppComponent,
