@@ -18,7 +18,7 @@ export class EditTournamentComponent implements OnInit {
   isLoadingTournament = false;
   tournament: Tournament;
   user: User;
-  @Input() id: number;
+  @Input() idCamp: number;
 
   constructor(private fb: FormBuilder, private tournamentService: TournamentService, private alertService: AlertService,
     private accountService: AccountService, private router: Router) {
@@ -30,7 +30,7 @@ export class EditTournamentComponent implements OnInit {
   ngOnInit(): void {
 
     this.formEditTournament = this.fb.group({
-      id: ['', [Validators.required]],
+      idCamp: ['', [Validators.required]],
       mode: ['', [Validators.required]],
       date: ['', [Validators.required]],
       award: ['', [Validators.required]],
@@ -46,11 +46,11 @@ export class EditTournamentComponent implements OnInit {
 
   ngOnChanges() {
 
-    if (this.id) {
+    if (this.idCamp) {
 
       this.isLoadingTournament = true;
 
-      this.tournamentService.getTournamentById(this.id, this.user.token).subscribe(tournament => {
+      this.tournamentService.getTournamentById(this.idCamp).subscribe(tournament => {
 
         this.isLoadingTournament = false;
 
@@ -74,7 +74,7 @@ export class EditTournamentComponent implements OnInit {
 
     this.isLoading = true;
 
-    this.tournamentService.editTournament(this.formEditTournament.value, this.user.token).subscribe(res => {
+    this.tournamentService.editTournament(this.formEditTournament.value).subscribe(res => {
 
       this.alertService.success(res.text, res.subText, { keepAfterRouteChange: true });
 
@@ -109,7 +109,7 @@ export class EditTournamentComponent implements OnInit {
   loadTournament() {
 
     this.formEditTournament = this.fb.group({
-      id: [this.tournament.id, [Validators.required]],
+      idCamp: [this.tournament.idCamp, [Validators.required]],
       mode: [this.tournament.mode, [Validators.required]],
       date: [this.tournament.date, [Validators.required]],
       award: [this.tournament.award, [Validators.required]],

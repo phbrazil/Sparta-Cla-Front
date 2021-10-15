@@ -24,25 +24,15 @@
                 <em class="fas fa-bell fa-1x"></em>
                 <span class="badge badge-danger ml-2" style="font-size: large;">{{notifications?.length}}</span>
               </a>
-              <div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary"
+              <div *ngIf="notifications?.length > 0" class="dropdown-menu dropdown-menu-lg-right dropdown-primary custom-drop"
                 aria-labelledby="notification-list">
-                <div class="list-group" style="width: 500px;">
                   <a *ngFor="let notification of notifications" href="#" class="list-group-item list-group-item-action flex-column align-items-start">
                     <div class="d-flex w-100 justify-content-between">
                       <h5 class="mb-1 text-dark">{{notification.title}}</h5>
-                      <small class="text-dark">{{notification.date}}</small>
+                      <small class="text-muted">{{notification.date}}</small>
                     </div>
-                    <p class="mb-1 text-dark">{{notification.message}}</p>
-                    <!--small class="text-muted">Donec id elit non mi porta.</small-->
+                    <p class="mb-1 text-muted">{{notification.message}}</p>
                   </a>
-                </div>
-
-                <!--a class="dropdown-item waves-effect waves-light" href="#">Campeonatos <span
-                    class="badge badge-danger ml-2">4</span></a>
-                <a class="dropdown-item waves-effect waves-light" href="#">Mensagens <span
-                    class="badge badge-danger ml-2">1</span></a>
-                <a class="dropdown-item waves-effect waves-light" href="#">Web Namoro <span
-                    class="badge badge-danger ml-2">4</span></a-->
               </div>
             </div>
           </li>
@@ -50,7 +40,5 @@
         </ul>
       </div>
     </nav>
-
-
   </div>
 </header>

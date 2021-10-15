@@ -45,7 +45,7 @@ export class NewTournamentComponent implements OnInit {
 
     this.isLoading = true;
 
-    this.tournamentService.newTournament(this.formNewTournament.value, this.user.token).subscribe(res =>{
+    this.tournamentService.newTournament(this.formNewTournament.value).subscribe(res =>{
 
       this.alertService.success(res.text, res.subText, { keepAfterRouteChange: true });
 

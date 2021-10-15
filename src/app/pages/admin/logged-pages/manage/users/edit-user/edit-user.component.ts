@@ -49,7 +49,7 @@ export class EditUserComponent implements OnInit {
 
       this.isLoadingUser = true;
 
-      this.accountService.getUserById(this.idUser, this.user.token).subscribe(user => {
+      this.accountService.getUserById(this.idUser).subscribe(user => {
 
         this.isLoadingUser = false;
 
@@ -73,7 +73,7 @@ export class EditUserComponent implements OnInit {
 
     this.isLoading = true;
 
-    this.accountService.getUserById(this.idUser, this.user.token).subscribe(res => {
+    this.accountService.getUserById(this.idUser).subscribe(res => {
 
       this.user = res;
 
@@ -82,7 +82,7 @@ export class EditUserComponent implements OnInit {
       this.user.pais = this.formEditUser.value.pais;
       this.user.estado = this.formEditUser.value.estado;
 
-      this.accountService.editUser(this.user, this.user.token).subscribe(res => {
+      this.accountService.editUser(this.user).subscribe(res => {
 
         this.isLoading = false;
 

@@ -30,7 +30,7 @@ export class HeaderLoggedComponent implements OnInit {
 
   getNotifications() {
 
-    this.notificationService.getNotifications(this.user.idUser, this.user.token).subscribe(res => {
+    this.notificationService.getNotifications(this.user.idUser).subscribe(res => {
       this.notifications = res;
     }, err => {
       console.log(err)

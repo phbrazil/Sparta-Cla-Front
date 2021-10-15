@@ -1,0 +1,62 @@
+<div *ngIf="isLoading" class="d-flex justify-content-center">
+  <div class="spinner-grow text-warning" role="status" style="width: 5rem; height: 5rem;">
+  </div>
+</div>
+
+<div *ngIf="!isLoading" class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title">Torneio {{tournament?.mode}} dia {{tournament?.start}}, premiação {{tournament?.award}}</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="formRegister" (ngSubmit)="enviar()">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="nomeTime">Nome do Time</label>
+              <input type="text" class="form-control" id="nomeTime" aria-describedby="nomeTime"
+                formControlName="nomeTime" name="nomeTime">
+              <ng-container *ngIf="formRegister.controls.nomeTime.touched">
+                <span class="text-danger" *ngIf="formRegister.controls.nomeTime.errors?.required">
+                  Nome do Time obrigatório
+                </span>
+              </ng-container>
+            </div>
+          </div>
+          <div *ngIf="tournament?.mode != 'Solo'" class="col-md-12 mb-2">
+            <label for="membroTime">Email do membro do Time</label>
+            <div class="input-group mb-3">
+              <input type="email" name="membroTime" formControlName="membroTime" [(ngModel)]="membroTime"
+                class="form-control" placeholder="Email" aria-label="membroTime" aria-describedby="membroTime">
+              <div class="input-group-append">
+                <button (click)="addTeamMember()" class="btn btn-outline-secondary" type="button">Adicionar</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12 mb-2">
+            <ul *ngFor="let membroTime of membrosTime" class="list-group">
+              <li class="list-group-item">{{membroTime}}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button *ngIf="tournament?.mode != 'Solo'; else solo" type="submit" class="btn btn-custom mb-3"
+          [disabled]="isLoading || formRegister.controls.nomeTime.errors?.required || membrosTime.length == 0">
+          <span *ngIf="isLoading" class="spinner-border spinner-border-sm mr-1"></span>
+          Registrar</button>
+
+          <ng-template #solo>
+            <button type="submit" class="btn btn-custom mb-3"
+            [disabled]="isLoading || formRegister.controls.nomeTime.errors?.required">
+            <span *ngIf="isLoading" class="spinner-border spinner-border-sm mr-1"></span>
+            Registrar</button>
+          </ng-template>
+
+      </div>
+    </form>
+  </div>
+</div>

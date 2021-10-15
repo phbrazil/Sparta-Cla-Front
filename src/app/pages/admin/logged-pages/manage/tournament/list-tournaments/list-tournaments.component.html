@@ -44,10 +44,10 @@
             <td>{{ tournament.duration }}</td>
             <td>{{ tournament.scoring }}</td>
             <td>{{ tournament.start }}</td>
-            <td> <button (click)="editTournament(tournament.id)" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEdit">
+            <td> <button (click)="editTournament(tournament.idCamp)" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEdit">
               Editar
             </button> </td>
-            <td> <button (click)="disableTournament(tournament.id)" type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDisable">
+            <td> <button (click)="disableTournament(tournament.idCamp)" type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDisable">
               Desativar
             </button> </td>
           </tr>
@@ -61,7 +61,7 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-body">
-        <app-edit-tournament [id]="idTournament"></app-edit-tournament>
+        <app-edit-tournament [idCamp]="idCamp"></app-edit-tournament>
       </div>
     </div>
   </div>

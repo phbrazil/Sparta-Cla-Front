@@ -16,7 +16,7 @@ export class ListTournamentsComponent implements OnInit {
   pagina = 0;
   tournaments: Tournament[] = [];
   isLoading = false;
-  idTournament: number;
+  idCamp: number;
   user: User;
 
   constructor(private service: TournamentService, private router: Router, private alertService: AlertService,
@@ -50,17 +50,17 @@ export class ListTournamentsComponent implements OnInit {
     });
   }
 
-  editTournament(id) {
-    this.idTournament = id;
+  editTournament(idCamp) {
+    this.idCamp = idCamp;
   }
 
-  disableTournament(id) {
-    this.idTournament = id;
+  disableTournament(idCamp) {
+    this.idCamp = idCamp;
   }
 
   confirmDisable() {
 
-    this.service.disableTournament(this.idTournament, this.user.token).subscribe(res => {
+    this.service.disableTournament(this.idCamp).subscribe(res => {
 
       this.alertService.success(res.text, res.subText, { keepAfterRouteChange: true });
 
