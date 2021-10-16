@@ -23,9 +23,9 @@ export class EditTournamentComponent implements OnInit {
   constructor(private fb: FormBuilder, private tournamentService: TournamentService, private alertService: AlertService,
     private accountService: AccountService, private router: Router) {
 
-      this.accountService.user.subscribe(x => this.user = x);
+    this.accountService.user.subscribe(x => this.user = x);
 
-     }
+  }
 
   ngOnInit(): void {
 
@@ -39,7 +39,8 @@ export class EditTournamentComponent implements OnInit {
       scoring: ['', [Validators.required]],
       division: ['', [Validators.required]],
       cost: ['', [Validators.required]],
-      active: [true, [Validators.required]]
+      active: [true, [Validators.required]],
+      times: ['', [Validators.required]]
     })
 
   }
@@ -118,7 +119,10 @@ export class EditTournamentComponent implements OnInit {
       scoring: [this.tournament.scoring, [Validators.required]],
       division: [this.tournament.division, [Validators.required]],
       cost: [this.tournament.cost, [Validators.required]],
-      active: [true, [Validators.required]]
+      active: [true, [Validators.required]],
+      privateCamp: [false, [Validators.required]],
+      times: [this.tournament.times, [Validators.required]]
+
     })
   }
 

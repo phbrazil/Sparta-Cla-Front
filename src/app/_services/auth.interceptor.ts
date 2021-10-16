@@ -62,7 +62,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
           console.log('Accesso negado ', req)
 
-          //this.accountService.logout();
+          this.accountService.logout();
 
         } else {
           console.log('to no else ', req)

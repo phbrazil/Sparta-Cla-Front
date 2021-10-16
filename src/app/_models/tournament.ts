@@ -10,5 +10,6 @@ export class Tournament {
     cost: any;
     active: boolean;
     privateCamp: boolean;
+    times: number
 }
 

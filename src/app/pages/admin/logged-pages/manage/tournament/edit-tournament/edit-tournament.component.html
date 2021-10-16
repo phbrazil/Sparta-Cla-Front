@@ -67,6 +67,29 @@
           </div>
           <div class="col-md-6">
             <div class="form-group">
+              <label for="times">Times*</label>
+              <select class="form-control" id="times" name="times" formControlName="times">
+                <option value=""></option>
+                <option value="1">1 Time</option>
+                <option value="2">2 Times</option>
+                <option value="3">3 Times</option>
+                <option value="4">4 Times</option>
+                <option value="5">5 Times</option>
+                <option value="6">6 Times</option>
+                <option value="7">7 Times</option>
+                <option value="8">8 Times</option>
+                <option value="9">9 Times</option>
+                <option value="10">10 Times</option>
+              </select>
+              <ng-container *ngIf="formEditTournament.controls.times.touched">
+                <span class="text-danger" *ngIf="formEditTournament.controls.times.errors?.required">
+                  Campo obrigatório
+                </span>
+              </ng-container>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
               <label for="duration">Duração*</label>
               <select class="form-control" id="duration" name="duration" formControlName="duration">
                 <option value=""></option>

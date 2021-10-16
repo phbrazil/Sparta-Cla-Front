@@ -36,7 +36,10 @@ export class NewTournamentComponent implements OnInit {
       scoring: ['', [Validators.required]],
       division: [0, [Validators.required]],
       cost: ['', [Validators.required]],
-      active: [true, [Validators.required]]
+      active: [true, [Validators.required]],
+      privateCamp: [false, [Validators.required]],
+      times: [true, [Validators.required]]
+
     })
 
   }

@@ -14,8 +14,8 @@ export class TournamentService {
     'Content-Type': 'application/json',
   });
 
-  readonly baseUrl: string = 'https://sparta-clan.herokuapp.com'
-  //readonly baseUrl: string = 'http://localhost:8080'
+  //readonly baseUrl: string = 'https://sparta-clan.herokuapp.com'
+  readonly baseUrl: string = 'http://localhost:8080'
 
   constructor(private http: HttpClient, private accountService: AccountService) { }
 
@@ -37,6 +37,18 @@ export class TournamentService {
       const headers = { 'Authorization': `Bearer ${token}` }
 
       return this.http.post<any>(`${this.baseUrl}/tournaments/newTournament`, body, { headers });
+
+    }
+
+    registerTournament(body: any) {
+
+      //const token = localStorage.getItem('token');
+
+      const token = this.accountService.getToken();
+
+      const headers = { 'Authorization': `Bearer ${token}` }
+
+      return this.http.post<any>(`${this.baseUrl}/tournaments/registerTournament`, body, { headers });
 
     }
 

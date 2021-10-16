@@ -1,7 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Tournament } from 'src/app/_models/tournament';
+import { User } from 'src/app/_models/user';
 import { TournamentService } from 'src/app/_services/tournament.service';
+import { AccountService, AlertService } from 'src/app/_services';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-register-tournament',
@@ -20,19 +23,26 @@ export class RegisterTournamentComponent implements OnInit {
 
   tournament: Tournament;
 
+  user: User;
+
   @Input() idCamp: number;
 
 
-  constructor(private fb: FormBuilder, private tournamentService: TournamentService) { }
+  constructor(private fb: FormBuilder, private tournamentService: TournamentService,
+    private accountService: AccountService, private alertService: AlertService) {
+
+    this.accountService.user.subscribe(x => this.user = x);
+
+   }
 
   ngOnInit(): void {
 
     this.formRegister = this.fb.group({
-      idInsc: ['', [Validators.required]],
+      idCamp: ['', [Validators.required]],
+      idUser: [this.user.idUser, [Validators.required]],
       nomeTime: ['', [Validators.required]],
-      membroTime: [''],
       membrosTime: [this.membrosTime, [Validators.required]],
-      data: ['', [Validators.required]]
+      membroTime: [''],
     })
 
   }
@@ -57,6 +67,50 @@ export class RegisterTournamentComponent implements OnInit {
 
   enviar(){
 
+    this.isLoading = true;
+
+    this.formRegister.patchValue({idCamp: this.idCamp});
+
+    //FORMATA LISTA SIMPLES PARA UMA LISTA DE OBJETO JSON
+    let membrosTime: { email: string}[] = []
+
+    this.membrosTime.forEach(element => {
+
+      let membro = {
+        email : element
+      }
+
+      membrosTime.push(membro)
+
+    });
+
+    this.formRegister.patchValue({membrosTime: membrosTime});
+
+
+    this.tournamentService.registerTournament(this.formRegister.value).subscribe(res => {
+
+
+      this.formRegister.reset();
+
+      this.isLoading = false;
+
+      //REMOVE FADE BUGADO QUE CONTINUAVA
+      $('body').removeClass('modal-open');
+      $('.modal-backdrop').remove();
+      $('#modalRegister').toggle();
+
+      this.alertService.success(res.text, res.subText, { keepAfterRouteChange: true });
+
+    }, err =>{
+
+      this.isLoading = false;
+
+      this.alertService.error(err.text, err.subText, { keepAfterRouteChange: true });
+
+    })
+
+    console.log(this.formRegister.value);
+
 
   }
 
@@ -64,9 +118,14 @@ export class RegisterTournamentComponent implements OnInit {
 
     if(this.membroTime.includes('@') && this.membroTime.includes('.com')){
 
-      this.membrosTime.push(this.membroTime);
+      if(!this.membrosTime.includes(this.membroTime)){
 
-      this.membroTime = '';
+        this.membrosTime.push(this.membroTime);
+
+        this.membroTime = '';
+
+      }
+
 
     }
 
