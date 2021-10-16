@@ -83,7 +83,7 @@ export class AlertComponent implements OnInit, OnDestroy {
 
     switch (alert.type) {
       case 0:
-        return 'text-success';
+        return 'text-muted';
       case 1:
         return 'text-danger';
       case 2:

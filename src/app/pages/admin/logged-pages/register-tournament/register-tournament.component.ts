@@ -33,13 +33,13 @@ export class RegisterTournamentComponent implements OnInit {
 
     this.accountService.user.subscribe(x => this.user = x);
 
-   }
+  }
 
   ngOnInit(): void {
 
     this.formRegister = this.fb.group({
       idCamp: ['', [Validators.required]],
-      idUser: [this.user.idUser, [Validators.required]],
+      idUser: ['', [Validators.required]],
       nomeTime: ['', [Validators.required]],
       membrosTime: [this.membrosTime, [Validators.required]],
       membroTime: [''],
@@ -47,44 +47,46 @@ export class RegisterTournamentComponent implements OnInit {
 
   }
 
-  ngOnChanges(){
+  ngOnChanges() {
 
-    if(this.idCamp){
+    if (this.idCamp) {
 
       this.isLoading = true;
 
-      this.tournamentService.getTournamentById(this.idCamp).subscribe(tournament=>{
+      this.tournamentService.getTournamentById(this.idCamp).subscribe(tournament => {
 
         this.isLoading = false;
         this.tournament = tournament;
 
-      }, err=>{
+      }, err => {
         this.isLoading = false;
         console.log(err)
       })
     }
   }
 
-  enviar(){
+  enviar() {
+
 
     this.isLoading = true;
 
-    this.formRegister.patchValue({idCamp: this.idCamp});
+    this.formRegister.patchValue({ idCamp: this.idCamp });
+    this.formRegister.patchValue({ idUser: this.user.idUser });
 
     //FORMATA LISTA SIMPLES PARA UMA LISTA DE OBJETO JSON
-    let membrosTime: { email: string}[] = []
+    let membrosTime: { email: string }[] = []
 
     this.membrosTime.forEach(element => {
 
       let membro = {
-        email : element
+        email: element
       }
 
       membrosTime.push(membro)
 
     });
 
-    this.formRegister.patchValue({membrosTime: membrosTime});
+    this.formRegister.patchValue({ membrosTime: membrosTime });
 
 
     this.tournamentService.registerTournament(this.formRegister.value).subscribe(res => {
@@ -101,7 +103,7 @@ export class RegisterTournamentComponent implements OnInit {
 
       this.alertService.success(res.text, res.subText, { keepAfterRouteChange: true });
 
-    }, err =>{
+    }, err => {
 
       this.isLoading = false;
 
@@ -114,11 +116,11 @@ export class RegisterTournamentComponent implements OnInit {
 
   }
 
-  addTeamMember(){
+  addTeamMember() {
 
-    if(this.membroTime.includes('@') && this.membroTime.includes('.com')){
+    if (this.membroTime.includes('@') && this.membroTime.includes('.com')) {
 
-      if(!this.membrosTime.includes(this.membroTime)){
+      if (!this.membrosTime.includes(this.membroTime)) {
 
         this.membrosTime.push(this.membroTime);
 

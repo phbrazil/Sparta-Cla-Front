@@ -40,7 +40,7 @@ export class AccountService {
   }
 
 
-  public setIsLogged(status: boolean): void{
+  public setIsLogged(status: boolean): void {
     this.isLogged.next(status);
   }
 
@@ -54,7 +54,7 @@ export class AccountService {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     console.log("GET TOKEN VALUE ", user.token);
     return user.token;
-}
+  }
 
 
   //email para troca de senha
@@ -208,6 +208,10 @@ export class AccountService {
   }
 
   logout() {
+
+    //REMOVE FADE BUGADO QUE CONTINUAVA
+    $('body').removeClass('modal-open');
+    $('.modal-backdrop').remove();
 
     // remove user from local storage and set current user to null
     localStorage.removeItem('user');

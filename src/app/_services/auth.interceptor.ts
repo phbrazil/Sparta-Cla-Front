@@ -48,6 +48,12 @@ export class AuthInterceptor implements HttpInterceptor {
       },
     });
 
+    if(!this.user){
+
+      this.accountService.logout();
+
+    }
+
     /*this.accountService.getTokenStatus(this.token).subscribe(res =>{
       console.log(res)
     })*/
