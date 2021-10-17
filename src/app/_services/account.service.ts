@@ -15,8 +15,8 @@ export class AccountService {
   private isLogged = new BehaviorSubject<boolean>(false);
 
 
-  readonly baseUrl: string = 'https://sparta-clan.herokuapp.com'
-  //readonly baseUrl: string = 'http://localhost:8080'
+  //readonly baseUrl: string = 'https://sparta-clan.herokuapp.com'
+  readonly baseUrl: string = 'http://localhost:8080'
 
 
   constructor(

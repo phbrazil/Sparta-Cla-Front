@@ -1,5 +1,5 @@
 <section class="container">
-  <div class="warp mt-5 mb-5 pt-5 pb-5">
+  <div class="warp mt-4 mb-2 pt-5 pb-5">
     <div class="row justify-content-center">
       <div class="col-xl-6 col-lg-8">
         <div class="section-title title-style-three text-center mb-70">
@@ -17,13 +17,16 @@
       </div>
     </div>
     <div class="row" infiniteScroll (scrolled)="onScroll()" *ngIf="!isLoading && tournaments.length > 0">
-      <div class="col-lg-4 col-md-6 mt-5 mb-2" *ngFor="let torneio of tournaments">
+      <div class="col-lg-4 col-md-6 mt-4 mb-2" *ngFor="let torneio of tournaments">
         <div class="coming-match-item mb-30">
           <div class="coming-match-team">
             <div class="match-team-info">
               <div class="match-team-logo">
                 <h2 class="text-yellow">{{ torneio.mode }}</h2>
                 <h2 class="text-yellow">Time {{ torneio.nomeTime }}</h2>
+                <ul *ngFor="let membroTime of torneio.membrosTime" class="list-group list-group-flush">
+                  <li class="list-group-item text-yellow bg-dark">{{membroTime.email}}</li>
+                </ul>
               </div>
               <div class="match-team-name">
                 <h5 class="tournament-date">{{ torneio.date | date : 'fullDate' : '' : 'pt-BR' }}</h5>
@@ -52,13 +55,11 @@
   </div>
 </section>
 
-<ng-template>
-  <div *ngIf="!isLoading && tournaments.length == 0" class="row justify-content-center">
-    <div class="col-xl-6 col-lg-8">
-      <div class="section-title title-style-three text-center mb-70">
-        <h2>Você não possuí <span class="text-yellow">Jogos</span></h2>
-        <p>Se inscreva em um de nossos campeonatos</p>
-      </div>
+<div *ngIf="!isLoading && tournaments.length == 0" class="row justify-content-center mb-4">
+  <div class="col-xl-6 col-lg-8">
+    <div class="section-title title-style-three text-center mb-70">
+      <h2>Você não possuí <span class="text-yellow">Jogos</span></h2>
+      <p>Se inscreva em um de nossos campeonatos</p>
     </div>
   </div>
-</ng-template>
+</div>

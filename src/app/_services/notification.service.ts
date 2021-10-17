@@ -7,8 +7,8 @@ import { AccountService } from '.';
 export class NotificationService {
 
 
-  readonly baseUrl: string = 'https://sparta-clan.herokuapp.com'
-  //readonly baseUrl: string = 'http://localhost:8080'
+  //readonly baseUrl: string = 'https://sparta-clan.herokuapp.com'
+  readonly baseUrl: string = 'http://localhost:8080'
 
     constructor(private http: HttpClient, private accountService: AccountService) {
 
