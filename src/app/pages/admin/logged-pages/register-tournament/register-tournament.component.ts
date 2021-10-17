@@ -74,20 +74,22 @@ export class RegisterTournamentComponent implements OnInit {
     this.formRegister.patchValue({ idUser: this.user.idUser });
 
     //FORMATA LISTA SIMPLES PARA UMA LISTA DE OBJETO JSON
-    let membrosTime: { email: string }[] = []
+    let membrosTime: { email: string, confirmed: boolean  }[] = []
 
     this.membrosTime.forEach(element => {
 
       let membro = {
-        email: element
+        email: element,
+        confirmed: false
       }
 
       membrosTime.push(membro)
 
     });
 
-    this.formRegister.patchValue({ membrosTime: membrosTime });
+    let membrosTimeString = JSON.stringify(membrosTime);
 
+    this.formRegister.patchValue({ membrosTime: membrosTimeString });
 
     this.tournamentService.registerTournament(this.formRegister.value).subscribe(res => {
 
@@ -107,7 +109,7 @@ export class RegisterTournamentComponent implements OnInit {
 
       this.isLoading = false;
 
-      this.alertService.error(err.text, err.subText, { keepAfterRouteChange: true });
+      this.alertService.error('Ocorreu um erro', 'Tente novamente mais tarde', { keepAfterRouteChange: true });
 
     })
 
@@ -118,7 +120,7 @@ export class RegisterTournamentComponent implements OnInit {
 
   addTeamMember() {
 
-    if (this.membroTime.includes('@') && this.membroTime.includes('.com')) {
+    if (this.membroTime && this.membroTime.includes('@') && this.membroTime.includes('.com')) {
 
       if (!this.membrosTime.includes(this.membroTime)) {
 

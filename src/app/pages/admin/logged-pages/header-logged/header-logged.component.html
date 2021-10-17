@@ -13,6 +13,7 @@
           <li class="nav-item show"><a routerLink="/my-profile" routerLinkActive="is-active">Meu Perfil</a></li>
           <li *ngIf="user.admin" class="nav-item show"><a routerLink="/manage"
               routerLinkActive="is-active">Gerenciar</a></li>
+          <li class="nav-item"><a routerLink="/tournaments" routerLinkActive="is-active">Torneios</a></li>
           <li class="nav-item"><a routerLink="/my-tournaments" routerLinkActive="is-active">Meus Torneios</a></li>
           <li class="nav-item show">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#notification"
@@ -22,7 +23,7 @@
               <a class="nav-link waves-effect waves-light" id="notification-list"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 <em class="fas fa-bell fa-1x"></em>
-                <span class="badge badge-danger ml-2" style="font-size: large;">{{notifications?.length}}</span>
+                <span class="badge badge-danger ml-2" style="font-size: medium;">{{notifications?.length}}</span>
               </a>
               <div *ngIf="notifications?.length > 0" class="dropdown-menu dropdown-menu-lg-right dropdown-primary custom-drop"
                 aria-labelledby="notification-list">

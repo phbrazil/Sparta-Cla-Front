@@ -53,6 +53,7 @@
 .navbar-expand-lg .navbar-collapse ul li a {
   color: #edeaea;
   font-weight: 700;
+  font-size: 12px;
   padding: 0.9375rem;
   text-transform: uppercase;
 }
