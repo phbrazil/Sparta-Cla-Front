@@ -1,4 +1,6 @@
-export class Tournament {
+import { Subscription } from "./subscription";
+
+export class Tournament extends Subscription {
     idCamp: number;
     mode: string;
     date: string;

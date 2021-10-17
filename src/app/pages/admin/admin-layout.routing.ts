@@ -9,13 +9,15 @@ import { RegisterConfirmationComponent } from "./logged-pages/register-confirmat
 import { WelcomeComponent } from "./logged-pages/welcome/welcome.component";
 import { ListTournamentsComponent } from "./logged-pages/manage/tournament/list-tournaments/list-tournaments.component";
 import { ListUsersComponent } from "./logged-pages/manage/users/list-users/list-users.component";
+import { MyTournamentsComponent } from "./logged-pages/my-tournaments/my-tournaments.component";
 
 export const AdminLayoutRoutes: Routes = [
 
     //NOVAS ROTAS INTERNAS DO SITE DEVEM SER INCLUIDAS AQUI
     { path: 'welcome', component: WelcomeComponent },
     { path: 'my-profile', component: ProfileComponent },
-    { path: 'my-tournaments', component: TournamentComponent },
+    { path: 'tournaments', component: TournamentComponent },
+    { path: 'my-tournaments', component: MyTournamentsComponent },
     { path: 'my-stats', component: MyStatsComponent },
     { path: 'confirm-registration', component: RegisterConfirmationComponent },
     { path: 'credits', component: CreditsComponent },

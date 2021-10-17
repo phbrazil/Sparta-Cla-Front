@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AccountService } from '.';
+import { Subscription } from '../_models/subscription';
 import { Tournament } from '../_models/tournament'
 
 @Injectable({
@@ -14,8 +15,8 @@ export class TournamentService {
     'Content-Type': 'application/json',
   });
 
-  //readonly baseUrl: string = 'https://sparta-clan.herokuapp.com'
-  readonly baseUrl: string = 'http://localhost:8080'
+  readonly baseUrl: string = 'https://sparta-clan.herokuapp.com'
+  //readonly baseUrl: string = 'http://localhost:8080'
 
   constructor(private http: HttpClient, private accountService: AccountService) { }
 
@@ -73,6 +74,18 @@ export class TournamentService {
       const headers = { 'Authorization': `Bearer ${token}` }
 
       return this.http.get<Tournament>(`${this.baseUrl}/tournaments/getTournament/${id}`, { headers });
+
+    }
+
+    getSubscriptionByIdUser(idUser: number) {
+
+      //const token = localStorage.getItem('token');
+
+      const token = this.accountService.getToken();
+
+      const headers = { 'Authorization': `Bearer ${token}` }
+
+      return this.http.get<Subscription[]>(`${this.baseUrl}/tournaments/getSubscription/${idUser}`, { headers });
 
     }
 

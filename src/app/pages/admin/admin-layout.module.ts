@@ -19,6 +19,7 @@ import { ListUsersComponent } from './logged-pages/manage/users/list-users/list-
 import { EditUserComponent } from './logged-pages/manage/users/edit-user/edit-user.component';
 import { ChartsModule } from 'ng2-charts';
 import { RegisterTournamentComponent } from './logged-pages/register-tournament/register-tournament.component';
+import { MyTournamentsComponent } from './logged-pages/my-tournaments/my-tournaments.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { RegisterTournamentComponent } from './logged-pages/register-tournament/
     EditTournamentComponent,
     ListUsersComponent,
     EditUserComponent,
+    MyTournamentsComponent,
     //RegisterTournamentComponent
   ],
   imports: [
