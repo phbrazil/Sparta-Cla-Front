@@ -94,7 +94,7 @@ export class RegisterTournamentComponent implements OnInit {
     this.tournamentService.registerTournament(this.formRegister.value).subscribe(res => {
 
 
-      this.formRegister.reset();
+      this.clearForm();
 
       this.isLoading = false;
 
@@ -134,5 +134,14 @@ export class RegisterTournamentComponent implements OnInit {
     }
 
   }
+
+  clearForm(){
+
+    this.formRegister.reset();
+    this.membroTime = '';
+    this.membrosTime = [];
+
+  }
+
 
 }
