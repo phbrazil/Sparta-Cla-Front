@@ -38,7 +38,7 @@
                   <button (click)="addTeamMember()" class="btn btn-outline-secondary" type="button">Adicionar</button>
                 </div>
                 <mat-autocomplete #auto="matAutocomplete">
-                  <mat-option *ngFor="let option of options" [value]="option" style="z-index: 1;">
+                  <mat-option *ngFor="let option of options" [value]="option" class="dropdown-content">
                     {{option}}
                   </mat-option>
                 </mat-autocomplete>
