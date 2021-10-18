@@ -15,6 +15,8 @@ import { AdminLayoutModule } from './pages/admin/admin-layout.module';
 import { InterceptorModule } from './_services/interceptor.module';
 import localePT from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularMaterialModule } from './shared/angular-material/angular-material.module';
 registerLocaleData(localePT);
 
 @NgModule({
@@ -31,7 +33,9 @@ registerLocaleData(localePT);
     HttpClientModule,
     RouterModule,
     AdminLayoutModule,
-    InterceptorModule
+    InterceptorModule,
+    BrowserAnimationsModule,
+    AngularMaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

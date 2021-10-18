@@ -14,6 +14,7 @@ import { RulesComponent } from './rules/rules.component';
 import { TournamentComponent } from './tournament/tournament.component';
 import { TableResultComponent } from './table-result/table-result.component';
 import { RegisterTournamentComponent } from './admin/logged-pages/register-tournament/register-tournament.component';
+import { AngularMaterialModule } from '../shared/angular-material/angular-material.module';
 
 
 
@@ -35,7 +36,8 @@ import { RegisterTournamentComponent } from './admin/logged-pages/register-tourn
     AccordionModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    AngularMaterialModule
   ],
   exports: [
     PageComponent,

@@ -27,6 +27,9 @@ export class RegisterTournamentComponent implements OnInit {
 
   @Input() idCamp: number;
 
+  options: string[] = ['Delhi', 'Mumbai', 'Banglore', 'Delhi', 'Mumbai', 'Banglore', 'Delhi', 'Mumbai', 'Banglore', 'Delhi', 'Mumbai', 'Banglore', 'Delhi', 'Mumbai', 'Banglore', 'Delhi', 'Mumbai', 'Banglore'];
+
+
 
   constructor(private fb: FormBuilder, private tournamentService: TournamentService,
     private accountService: AccountService, private alertService: AlertService) {
@@ -43,11 +46,15 @@ export class RegisterTournamentComponent implements OnInit {
       nomeTime: ['', [Validators.required]],
       membrosTime: [this.membrosTime, [Validators.required]],
       membroTime: [''],
+      myControl: [''],
+
     })
 
   }
 
   ngOnChanges() {
+
+    this.clearForm();
 
     if (this.idCamp) {
 
