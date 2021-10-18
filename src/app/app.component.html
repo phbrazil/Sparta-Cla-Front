@@ -2,6 +2,7 @@
 <div *ngIf="!user; else logged">
     <app-header></app-header>
     <app-banner-alert></app-banner-alert>
+    <app-progress-bar></app-progress-bar>
     <router-outlet></router-outlet>
 </div>
 <ng-template #logged>

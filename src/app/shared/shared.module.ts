@@ -9,6 +9,7 @@ import { ModalComponent } from './components/modal/modal.component';
 import { BannerAlertComponent } from './components/banner-alert/banner-alert.component';
 import { AlertComponent } from './components/alert';
 import { AccountModule } from '../pages/account/account.module';
+import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { AccountModule } from '../pages/account/account.module';
     ModalComponent,
     BannerAlertComponent,
     AlertComponent,
+    ProgressBarComponent,
   ],
   imports: [
     CommonModule,
@@ -32,6 +34,7 @@ import { AccountModule } from '../pages/account/account.module';
     ModalComponent,
     BannerAlertComponent,
     AlertComponent,
+    ProgressBarComponent
   ]
 })
 export class SharedModule { }
