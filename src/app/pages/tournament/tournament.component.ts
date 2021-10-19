@@ -1,6 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ModalAngularMaterialComponent } from 'src/app/shared/components/modal-angular-material/modal-angular-material.component';
 import { User } from 'src/app/_models/user';
 import { AccountService, AlertService } from 'src/app/_services';
 import { TournamentService } from 'src/app/_services/tournament.service';
@@ -72,6 +71,7 @@ export class TournamentComponent implements OnInit {
 
   openSubscribeModal() {
 
+    //SE PASSA DIRETAMENTE O COMPONENTE A SER ABERTO DENTRO DO MODAL
     const dialogRef = this.dialog.open(RegisterTournamentComponent);
 
     dialogRef.afterClosed().subscribe(result => {

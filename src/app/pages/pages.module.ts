@@ -15,7 +15,6 @@ import { TournamentComponent } from './tournament/tournament.component';
 import { TableResultComponent } from './table-result/table-result.component';
 import { RegisterTournamentComponent } from './admin/logged-pages/register-tournament/register-tournament.component';
 import { AngularMaterialModule } from '../shared/angular-material/angular-material.module';
-import { ModalAngularMaterialComponent } from '../shared/components/modal-angular-material/modal-angular-material.component';
 
 
 
@@ -30,7 +29,6 @@ import { ModalAngularMaterialComponent } from '../shared/components/modal-angula
     TournamentComponent,
     TableResultComponent,
     RegisterTournamentComponent,
-    ModalAngularMaterialComponent
     ],
   imports: [
     CommonModule,
@@ -50,7 +48,6 @@ import { ModalAngularMaterialComponent } from '../shared/components/modal-angula
     RulesComponent,
     TournamentComponent,
     RegisterTournamentComponent,
-    ModalAngularMaterialComponent
   ]
 })
 export class HomeModule { }
