@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { AccountService } from '.';
 import { Member } from '../_models/Member';
 import { Subscription } from '../_models/subscription';
@@ -11,6 +11,16 @@ import { Tournament } from '../_models/tournament'
 })
 export class TournamentService {
 
+  private idCamp = new BehaviorSubject<number>(null);
+
+
+  public setIdCamp(idCamp: number): void{
+    this.idCamp.next(idCamp);
+  }
+
+  public getIdCamp(): Observable<number>{
+    return this.idCamp.asObservable();
+  }
 
   private headers = new HttpHeaders({
     'Content-Type': 'application/json',

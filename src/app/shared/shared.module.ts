@@ -10,6 +10,8 @@ import { BannerAlertComponent } from './components/banner-alert/banner-alert.com
 import { AlertComponent } from './components/alert';
 import { AccountModule } from '../pages/account/account.module';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
+import { ModalAngularMaterialComponent } from './components/modal-angular-material/modal-angular-material.component';
+import { AngularMaterialModule } from './angular-material/angular-material.module';
 
 @NgModule({
   declarations: [
@@ -19,12 +21,13 @@ import { ProgressBarComponent } from './components/progress-bar/progress-bar.com
     ModalComponent,
     BannerAlertComponent,
     AlertComponent,
-    ProgressBarComponent,
+    ProgressBarComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
-    AccountModule
+    AccountModule,
+    AngularMaterialModule
   ],
 
   exports: [

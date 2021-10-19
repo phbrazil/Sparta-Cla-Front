@@ -46,9 +46,11 @@
           </div>
           <div class="coming-match-time">
             <div class="coming-time">
-              <button *ngIf="user" (click)="registerTournament(torneio.idCamp)" type="button" class="btn btn-custom" data-toggle="modal" data-target="#modalRegister">
+              <!--button *ngIf="user" (click)="registerTournament(torneio.idCamp)" type="button" class="btn btn-custom" data-toggle="modal" data-target="#modalRegister">
                 Jogar
-              </button>
+              </button-->
+              <button *ngIf="user" mat-button (click)="registerTournament(torneio.idCamp)" [idCamp]="idCamp" class="btn btn-custom">Jogar</button>
+
 
               <app-modal *ngIf="!user" (click)="registerTournament(torneio.idCamp)" title="Jogar"></app-modal>
 
@@ -71,7 +73,7 @@
   </div>
 
 
-<div class="modal fade modal-edit-position" id="modalRegister" tabindex="-1" aria-labelledby="modalRegister" aria-hidden="true">
+<!--div class="modal fade modal-edit-position" id="modalRegister" tabindex="-1" aria-labelledby="modalRegister" aria-hidden="true">
   <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-body">
@@ -79,4 +81,4 @@
       </div>
     </div>
   </div>
-</div>
+</div-->

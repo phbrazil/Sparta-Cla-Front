@@ -1,8 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ModalAngularMaterialComponent } from 'src/app/shared/components/modal-angular-material/modal-angular-material.component';
 import { User } from 'src/app/_models/user';
 import { AccountService, AlertService } from 'src/app/_services';
 import { TournamentService } from 'src/app/_services/tournament.service';
 import { Tournament } from '../../_models/tournament';
+import { RegisterTournamentComponent } from '../admin/logged-pages/register-tournament/register-tournament.component';
+
+
+export interface DialogData {
+  animal: 'panda' | 'unicorn' | 'lion';
+}
 
 @Component({
   selector: 'app-tournament',
@@ -19,7 +27,8 @@ export class TournamentComponent implements OnInit {
 
   user: User;
 
-  constructor(private service: TournamentService, private alertService: AlertService, private accountService: AccountService) {
+  constructor(private service: TournamentService, private alertService: AlertService, private accountService: AccountService,
+    public dialog: MatDialog) {
 
     this.accountService.user.subscribe(x => this.user = x);
 
@@ -55,5 +64,21 @@ export class TournamentComponent implements OnInit {
 
     this.idCamp = idCamp;
 
+    this.service.setIdCamp(this.idCamp);
+
+    this.openSubscribeModal();
+
   }
+
+  openSubscribeModal() {
+
+    const dialogRef = this.dialog.open(RegisterTournamentComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
 }
+
+

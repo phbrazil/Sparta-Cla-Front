@@ -37,7 +37,7 @@
                 <div class="input-group-append">
                   <button (click)="addTeamMember()" class="btn btn-outline-secondary" type="button">Adicionar</button>
                 </div>
-                <mat-autocomplete #auto="matAutocomplete">
+                <mat-autocomplete #auto="matAutocomplete" >
                   <mat-option *ngFor="let option of options" [value]="option">
                     {{option}}
                   </mat-option>

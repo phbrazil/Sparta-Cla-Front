@@ -19,6 +19,7 @@ import { ListUsersComponent } from './logged-pages/manage/users/list-users/list-
 import { EditUserComponent } from './logged-pages/manage/users/edit-user/edit-user.component';
 import { ChartsModule } from 'ng2-charts';
 import { MyTournamentsComponent } from './logged-pages/my-tournaments/my-tournaments.component';
+import { AngularMaterialModule } from 'src/app/shared/angular-material/angular-material.module';
 
 
 @NgModule({
@@ -45,12 +46,14 @@ import { MyTournamentsComponent } from './logged-pages/my-tournaments/my-tournam
     ReactiveFormsModule,
     SharedModule,
     RouterModule.forChild(AdminLayoutRoutes),
-    ChartsModule
+    ChartsModule,
+    AngularMaterialModule
   ], exports: [
     WelcomeComponent,
     HeaderLoggedComponent,
     ProfileComponent,
     MyStatsComponent,
-    RegisterConfirmationComponent],
+    RegisterConfirmationComponent
+  ],
 })
 export class AdminLayoutModule { }

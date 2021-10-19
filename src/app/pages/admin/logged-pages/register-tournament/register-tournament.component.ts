@@ -5,6 +5,7 @@ import { User } from 'src/app/_models/user';
 import { TournamentService } from 'src/app/_services/tournament.service';
 import { AccountService, AlertService } from 'src/app/_services';
 import * as $ from 'jquery';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-register-tournament',
@@ -25,23 +26,20 @@ export class RegisterTournamentComponent implements OnInit {
 
   user: User;
 
-  @Input() idCamp: number;
+  idCamp: number;
 
   options: string[] = [];
 
 
 
   constructor(private fb: FormBuilder, private tournamentService: TournamentService,
-    private accountService: AccountService, private alertService: AlertService) {
+    private accountService: AccountService, private alertService: AlertService, public dialog: MatDialog) {
 
     this.accountService.user.subscribe(x => this.user = x);
 
   }
 
   ngOnInit(): void {
-
-
-    this.getRecentMembers();
 
     this.formRegister = this.fb.group({
       idCamp: ['', [Validators.required]],
@@ -53,26 +51,14 @@ export class RegisterTournamentComponent implements OnInit {
 
     })
 
+    this.getCampInfo();
+
+    this.getRecentMembers();
+
   }
 
   ngOnChanges() {
 
-    if (this.idCamp) {
-
-      this.clearForm();
-
-      this.isLoading = true;
-
-      this.tournamentService.getTournamentById(this.idCamp).subscribe(tournament => {
-
-        this.isLoading = false;
-        this.tournament = tournament;
-
-      }, err => {
-        this.isLoading = false;
-        console.log(err)
-      })
-    }
   }
 
   enviar() {
@@ -84,7 +70,7 @@ export class RegisterTournamentComponent implements OnInit {
     this.formRegister.patchValue({ idUser: this.user.idUser });
 
     //FORMATA LISTA SIMPLES PARA UMA LISTA DE OBJETO JSON
-    let membrosTime: { email: string, confirmed: boolean  }[] = []
+    let membrosTime: { email: string, confirmed: boolean }[] = []
 
     this.membrosTime.forEach(element => {
 
@@ -106,6 +92,8 @@ export class RegisterTournamentComponent implements OnInit {
 
       this.clearForm();
 
+      this.closeModalDialog();
+
       this.isLoading = false;
 
       //REMOVE FADE BUGADO QUE CONTINUAVA
@@ -116,6 +104,8 @@ export class RegisterTournamentComponent implements OnInit {
       this.alertService.success(res.text, res.subText, { keepAfterRouteChange: true });
 
     }, err => {
+
+      this.closeModalDialog();
 
       this.isLoading = false;
 
@@ -145,7 +135,7 @@ export class RegisterTournamentComponent implements OnInit {
 
   }
 
-  clearForm(){
+  clearForm() {
 
     this.formRegister.reset();
     this.membroTime = '';
@@ -153,13 +143,13 @@ export class RegisterTournamentComponent implements OnInit {
 
   }
 
-  getRecentMembers(){
+  getRecentMembers() {
 
-    this.tournamentService.getRecentMembers(this.user.idUser).subscribe(res =>{
+    this.tournamentService.getRecentMembers(this.user.idUser).subscribe(res => {
 
       res.forEach(member => {
 
-        if(!this.options.includes(member.email)){
+        if (!this.options.includes(member.email)) {
           this.options.push(member.email)
         }
 
@@ -167,5 +157,33 @@ export class RegisterTournamentComponent implements OnInit {
     })
   }
 
+  closeModalDialog() {
 
+    this.dialog.closeAll();
+
+  }
+
+  getCampInfo(){
+
+    this.tournamentService.getIdCamp().subscribe(idCamp => {
+      this.idCamp = idCamp;
+
+      if (this.idCamp) {
+
+        this.clearForm();
+
+        this.isLoading = true;
+
+        this.tournamentService.getTournamentById(this.idCamp).subscribe(tournament => {
+
+          this.isLoading = false;
+          this.tournament = tournament;
+
+        }, err => {
+          this.isLoading = false;
+          console.log(err)
+        })
+      }
+    })
+  }
 }
