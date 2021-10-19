@@ -27,7 +27,7 @@ export class RegisterTournamentComponent implements OnInit {
 
   @Input() idCamp: number;
 
-  options: string[] = ['Delhi', 'Mumbai', 'Banglore', 'Delhi', 'Mumbai', 'Banglore', 'Delhi', 'Mumbai', 'Banglore', 'Delhi', 'Mumbai', 'Banglore', 'Delhi', 'Mumbai', 'Banglore', 'Delhi', 'Mumbai', 'Banglore'];
+  options: string[] = [];
 
 
 
@@ -39,6 +39,9 @@ export class RegisterTournamentComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+
+    this.getRecentMembers();
 
     this.formRegister = this.fb.group({
       idCamp: ['', [Validators.required]],
@@ -54,9 +57,9 @@ export class RegisterTournamentComponent implements OnInit {
 
   ngOnChanges() {
 
-    this.clearForm();
-
     if (this.idCamp) {
+
+      this.clearForm();
 
       this.isLoading = true;
 
@@ -148,6 +151,20 @@ export class RegisterTournamentComponent implements OnInit {
     this.membroTime = '';
     this.membrosTime = [];
 
+  }
+
+  getRecentMembers(){
+
+    this.tournamentService.getRecentMembers(this.user.idUser).subscribe(res =>{
+
+      res.forEach(member => {
+
+        if(!this.options.includes(member.email)){
+          this.options.push(member.email)
+        }
+
+      });
+    })
   }
 
 

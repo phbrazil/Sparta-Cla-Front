@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AccountService } from '.';
+import { Member } from '../_models/Member';
 import { Subscription } from '../_models/subscription';
 import { Tournament } from '../_models/tournament'
 
@@ -86,6 +87,18 @@ export class TournamentService {
       const headers = { 'Authorization': `Bearer ${token}` }
 
       return this.http.get<Subscription[]>(`${this.baseUrl}/tournaments/getSubscription/${idUser}`, { headers });
+
+    }
+
+    getRecentMembers(idUser: number) {
+
+      //const token = localStorage.getItem('token');
+
+      const token = this.accountService.getToken();
+
+      const headers = { 'Authorization': `Bearer ${token}` }
+
+      return this.http.get<Member[]>(`${this.baseUrl}/tournaments/getRecentMembers/${idUser}`, { headers });
 
     }
 
