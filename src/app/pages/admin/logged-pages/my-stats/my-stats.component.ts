@@ -38,6 +38,8 @@ export class MyStatsComponent implements OnInit {
 
     this.isLoading = true;
 
+    this.hasErrors = false;
+
     //this.activisionService.getWarzoneInfoRapidAPI(wzProfile, platform, this.user.token).subscribe(res => {
     this.activisionService.getWarzoneInfoCloudFunction(Constants.email, Constants.password, wzProfile, platform).subscribe(res => {
 

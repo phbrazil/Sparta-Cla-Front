@@ -64,7 +64,9 @@ export class AuthInterceptor implements HttpInterceptor {
 
     return next.handle(req).pipe(
       catchError(err => {
-        if (err.status === 401) {
+
+        //ACTIVISION ID INCORRETO TAMBEM RETORNA 401
+        if (err.status === 401 && !err.error.includes('Incorrect username or platform')) {
 
           console.log('Accesso negado ', req)
 
