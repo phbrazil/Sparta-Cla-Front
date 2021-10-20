@@ -27,7 +27,16 @@ export class RegisterConfirmationComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.accountService.user.subscribe(x => this.user = x);
+    this.accountService.user.subscribe(x => {
+      this.user = x
+
+      if(!this.user){
+
+        this.router.navigate(['/']);
+
+      }
+
+    });
 
     this.formRegisterConfirmation = this.fb.group({
       username: ['', [Validators.required]],

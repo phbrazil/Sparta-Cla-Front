@@ -23,13 +23,13 @@ const adminModule = () => import('./pages/admin/admin-layout.module').then(x => 
 const routes: Routes = [
 
   { path: '', component: PageComponent },
-  { path: 'sobre', component: AboutComponent },
+  { path: 'about', component: AboutComponent },
   { path: 'tournaments', component: TournamentComponent },
-  { path: 'regras', component: RulesComponent },
+  { path: 'rules', component: RulesComponent },
   { path: 'faq', component: FAQComponent },
-  { path: 'politicas-de-privacidade', component: PrivacyPolicyComponent },
-  { path: 'termos-de-uso', component: TermsComponent },
-  { path: 'resultado-partida', component: TableResultComponent },
+  { path: 'privacy', component: PrivacyPolicyComponent },
+  { path: 'terms', component: TermsComponent },
+  { path: 'result-game', component: TableResultComponent },
   { path: 'register', component: RegisterConfirmationComponent },
   { path: 'confirm', component: ConfirmEmailComponent },
   { path: 'profile', component: ProfileComponent },

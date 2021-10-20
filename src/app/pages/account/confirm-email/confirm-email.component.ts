@@ -21,6 +21,10 @@ export class ConfirmEmailComponent implements OnInit {
 
     this.activateRoute.queryParams.subscribe(params => {
       this.validationCode = params['key'];
+
+      if(!this.validationCode){
+        this.router.navigate(['/']);
+      }
     });
   }
 
