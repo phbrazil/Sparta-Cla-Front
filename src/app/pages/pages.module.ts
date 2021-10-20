@@ -47,6 +47,7 @@ import { AngularMaterialModule } from '../shared/angular-material/angular-materi
     AboutComponent,
     RulesComponent,
     TournamentComponent,
+    TableResultComponent,
     RegisterTournamentComponent,
   ]
 })

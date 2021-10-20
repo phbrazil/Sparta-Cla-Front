@@ -24,7 +24,7 @@ const routes: Routes = [
 
   { path: '', component: PageComponent },
   { path: 'sobre', component: AboutComponent },
-  { path: 'torneios', component: TournamentComponent },
+  { path: 'tournaments', component: TournamentComponent },
   { path: 'regras', component: RulesComponent },
   { path: 'faq', component: FAQComponent },
   { path: 'politicas-de-privacidade', component: PrivacyPolicyComponent },

@@ -6,11 +6,6 @@ import { TournamentService } from 'src/app/_services/tournament.service';
 import { Tournament } from '../../_models/tournament';
 import { RegisterTournamentComponent } from '../admin/logged-pages/register-tournament/register-tournament.component';
 
-
-export interface DialogData {
-  animal: 'panda' | 'unicorn' | 'lion';
-}
-
 @Component({
   selector: 'app-tournament',
   templateUrl: './tournament.component.html',

@@ -37,7 +37,6 @@ import { AngularMaterialModule } from 'src/app/shared/angular-material/angular-m
     ListUsersComponent,
     EditUserComponent,
     MyTournamentsComponent,
-    //RegisterTournamentComponent
   ],
   imports: [
     CommonModule,
