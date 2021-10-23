@@ -1,4 +1,4 @@
-<<section class="container">
+<section class="container">
   <div class="warp mt-5 mb-2 pt-5 pb-5">
     <div class="row justify-content-center">
       <div class="col-xl-6 col-lg-8">
@@ -52,7 +52,7 @@
               <button *ngIf="user" mat-button (click)="registerTournament(torneio.idCamp)" [idCamp]="idCamp" class="btn btn-custom">Jogar</button>
 
 
-              <app-modal *ngIf="!user" (click)="registerTournament(torneio.idCamp)" title="Jogar"></app-modal>
+              <app-modal *ngIf="!user" title="Jogar"></app-modal>
 
               <!--app-buttom title="Jogar"></app-buttom-->
             </div>

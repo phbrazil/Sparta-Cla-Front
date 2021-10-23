@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/_models/user';
 import { AccountService, AlertService } from 'src/app/_services';
 import { ActivisionService } from 'src/app/_services/activision.service';
-import { Constants } from 'src/app/utils/Constants';
 
 @Component({
   selector: 'app-profile',
@@ -148,8 +147,9 @@ export class ProfileComponent implements OnInit {
 
   getStats(wzProfile: string, platform: string) {
 
-    this.activisionService.getWarzoneInfoCloudFunction(Constants.email, Constants.password, wzProfile, platform).subscribe(res => {
-      this.stats = res.response;
+    this.activisionService.getWarzoneInfoCloudFunction(wzProfile, platform).subscribe(res => {
+      let json = JSON.parse(res.stats.body);
+      this.stats = json.response;
       this.kd = Math.round(this.stats.br.kdRatio * 100) / 100;
     });
   }

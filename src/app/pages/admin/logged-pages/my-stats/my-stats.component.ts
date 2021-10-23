@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Constants } from 'src/app/utils/Constants';
 import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services';
 import { ActivisionService } from 'src/app/_services/activision.service';
@@ -40,32 +39,31 @@ export class MyStatsComponent implements OnInit {
 
     this.hasErrors = false;
 
-    //this.activisionService.getWarzoneInfoRapidAPI(wzProfile, platform, this.user.token).subscribe(res => {
-    this.activisionService.getWarzoneInfoCloudFunction(Constants.email, Constants.password, wzProfile, platform).subscribe(res => {
+    this.activisionService.getWarzoneInfoCloudFunction(wzProfile, platform).subscribe(res => {
 
-      console.log(res);
+      let json = JSON.parse(res.stats.body);
+
+      console.log(json)
 
       this.isLoading = false;
 
-      this.statics = res.recentMatches.matches;
+      this.statics = json.recentMatches.matches;
 
-      let json = JSON.stringify(res)
-
-      if (JSON.parse(json).error) {
+      if (json.error) {
 
         this.hasErrors = true
 
       } else {
 
-        var SSOToken = res.SSOToken.replaceAll('=', ':').replaceAll(';', ':');
+        var SSOToken = json.SSOToken.replaceAll('=', ':').replaceAll(';', ':');
 
         SSOToken = SSOToken.split(":");
 
         console.log(SSOToken[7].trim())
 
         //SE API FOR CLOUD FUNCTION
-        this.stats = res.response;
-        this.recentMatches = res.recentMatches;
+        this.stats = json.response;
+        this.recentMatches = json.recentMatches;
 
         //this.stats = res;
 

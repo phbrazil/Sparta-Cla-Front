@@ -9,6 +9,10 @@ export class ActivisionService {
     declare require: any;
     private isPublic = new BehaviorSubject<boolean>(true);
 
+    readonly baseUrl: string = 'https://sparta-clan.herokuapp.com'
+    //readonly baseUrl: string = 'http://localhost:8080'
+
+
     constructor(private http: HttpClient) {
 
     }
@@ -23,7 +27,7 @@ export class ActivisionService {
 
     checkPublicStatus(gamerTag: string, platform: string){
 
-      this.getWarzoneInfoCloudFunction(Constants.email, Constants.password, gamerTag, platform).subscribe(res =>{
+      this.getWarzoneInfoCloudFunction(gamerTag, platform).subscribe(res =>{
 
         this.setPublicStatus(true);
 
@@ -69,10 +73,10 @@ export class ActivisionService {
 
     }
 
-    getWarzoneInfoCloudFunction(email: string, password: string, gamerTag: string, platform: string): Observable<any> {
+    getWarzoneInfoCloudFunction(gamerTag: string, platform: string): Observable<any> {
 
-
-      let url = `https://us-central1-cyber-oficina.cloudfunctions.net/warzone-stats`
+      //let url = `https://us-central1-cyber-oficina.cloudfunctions.net/warzone-stats`
+      let url = `${this.baseUrl}/stats/getStats/${gamerTag}/${platform}`
 
       //LOCAL FAKE BACKEND
       //let url = 'http://localhost:3000/stats';
@@ -82,8 +86,8 @@ export class ActivisionService {
 
 
       const body = {
-        "email": email,
-        "password": password,
+        //"email": email,
+        //"password": password,
         "gamerTag": gamerTag,
         "platform": platform,
         "SSOToken": Constants.SSOToken
@@ -95,8 +99,9 @@ export class ActivisionService {
       //JSON SERVER LOCAL
       //return this.http.get<any>(url);
 
-      return this.http.post<any>(url, JSON.stringify(body), {headers: headers});
+      //return this.http.post<any>(url, JSON.stringify(body), {headers: headers});
 
+      return this.http.get<any>(url, {headers: headers});
 
   }
 

@@ -33,6 +33,10 @@ h2 {
   text-align: center;
 }
 
+.font-trophy {
+  font-size: 2rem
+}
+
 .media-body {
   flex: 1;
 }

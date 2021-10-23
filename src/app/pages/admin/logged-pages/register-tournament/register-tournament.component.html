@@ -5,8 +5,8 @@
 
 <div *ngIf="!isLoading" class="modal-content">
   <div class="modal-header">
-    <h3 class="modal-title text-muted">Torneio <span class="text-yellow">{{tournament?.mode}}</span>, {{tournament?.date | date :
-      'fullDate' : '' : 'pt-BR'}}. Premiação <strong>{{tournament?.award}}</strong></h3>
+    <h5 class="modal-title text-muted">Torneio <span class="text-yellow">{{tournament?.mode}}</span>, {{tournament?.date | date :
+      'fullDate' : '' : 'pt-BR'}}. Premiação <strong>{{tournament?.award}}</strong></h5>
     <button type="button" mat-button mat-dialog-close class="close" data-dismiss="modal" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
