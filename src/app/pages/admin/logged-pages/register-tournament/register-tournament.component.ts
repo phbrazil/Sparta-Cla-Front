@@ -16,6 +16,8 @@ export class RegisterTournamentComponent implements OnInit {
 
   isLoading = false;
 
+  isMaxMembers = false;
+
   formRegister: FormGroup;
 
   membrosTime: string[] = []
@@ -29,6 +31,8 @@ export class RegisterTournamentComponent implements OnInit {
   idCamp: number;
 
   options: string[] = [];
+
+  maxMembers = 0;
 
 
 
@@ -59,6 +63,22 @@ export class RegisterTournamentComponent implements OnInit {
 
   ngOnChanges() {
 
+  }
+
+  checkMaxMembers() {
+    //VERIFICAR MAXIMO DE MEMBROS NO TORNEIO
+    if (this.tournament.mode.includes('Squad')) {
+      this.maxMembers = 4;
+    }else if(this.tournament.mode.includes('Trio')){
+      this.maxMembers = 3;
+    }else if(this.tournament.mode.includes('Duo')){
+      this.maxMembers = 2;
+    }else if(this.tournament.mode.includes('Solo')){
+      this.maxMembers = 1;
+    }
+
+    console.log(this.maxMembers);
+    console.log(this.tournament)
   }
 
   enviar() {
@@ -124,9 +144,17 @@ export class RegisterTournamentComponent implements OnInit {
 
       if (!this.membrosTime.includes(this.membroTime)) {
 
-        this.membrosTime.push(this.membroTime);
+        if(this.membrosTime.length < this.maxMembers){
+          this.membrosTime.push(this.membroTime);
 
-        this.membroTime = '';
+          this.membroTime = '';
+        }else{
+
+          this.isMaxMembers = true;
+
+        }
+
+
 
       }
 
@@ -163,7 +191,7 @@ export class RegisterTournamentComponent implements OnInit {
 
   }
 
-  getCampInfo(){
+  getCampInfo() {
 
     this.tournamentService.getIdCamp().subscribe(idCamp => {
       this.idCamp = idCamp;
@@ -178,6 +206,8 @@ export class RegisterTournamentComponent implements OnInit {
 
           this.isLoading = false;
           this.tournament = tournament;
+
+          this.checkMaxMembers();
 
         }, err => {
           this.isLoading = false;

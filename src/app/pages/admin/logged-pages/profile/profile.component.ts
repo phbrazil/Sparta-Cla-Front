@@ -115,7 +115,7 @@ export class ProfileComponent implements OnInit {
 
         localStorage.setItem('user', JSON.stringify(user));
 
-        this.alertService.success('Usuário alterado com sucesso', '', {autoClose: true});
+        this.alertService.success('Usuário alterado com sucesso', '', { autoClose: true });
 
         this.disable = false;
         this.disableForm();
@@ -140,22 +140,28 @@ export class ProfileComponent implements OnInit {
     this.activisionService.getPublicStatus().subscribe(status => {
       this.isCheckingProfile = false;
       this.isPublicProfile = status;
-    }, err =>{
+    }, err => {
       this.isCheckingProfile = false;
     })
   }
 
   getStats(wzProfile: string, platform: string) {
 
+    this.isLoading = true;
+
     this.activisionService.getWarzoneInfoCloudFunction(wzProfile, platform).subscribe(res => {
+      this.isLoading = false;
       let json = JSON.parse(res.stats.body);
       this.stats = json.response;
       this.kd = Math.round(this.stats.br.kdRatio * 100) / 100;
+
+    }, err => {
+      this.isLoading = false;
     });
   }
 
-  getPlatform(platform: string){
-    switch(platform){
+  getPlatform(platform: string) {
+    switch (platform) {
       case 'psn':
         return 'PSN';
       case 'xbl':

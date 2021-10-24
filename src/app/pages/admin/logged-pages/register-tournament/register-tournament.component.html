@@ -5,7 +5,8 @@
 
 <div *ngIf="!isLoading" class="modal-content">
   <div class="modal-header">
-    <h5 class="modal-title text-muted">Torneio <span class="text-yellow">{{tournament?.mode}}</span>, {{tournament?.date | date :
+    <h5 class="modal-title text-muted">Torneio <span class="text-yellow">{{tournament?.mode}}</span>, {{tournament?.date
+      | date :
       'fullDate' : '' : 'pt-BR'}}. Premiação <strong>{{tournament?.award}}</strong></h5>
     <button type="button" mat-button mat-dialog-close class="close" data-dismiss="modal" aria-label="Close">
       <span aria-hidden="true">&times;</span>
@@ -35,9 +36,10 @@
                   [(ngModel)]="membroTime" class="form-control" placeholder="Email" aria-label="membroTime"
                   aria-describedby="membroTime" matInput [matAutocomplete]="auto">
                 <div class="input-group-append">
-                  <button (click)="addTeamMember()" class="btn btn-outline-secondary" type="button">Adicionar</button>
+                  <button [disabled]="isMaxMembers" (click)="addTeamMember()" class="btn btn-outline-secondary"
+                    type="button">Adicionar</button>
                 </div>
-                <mat-autocomplete #auto="matAutocomplete" >
+                <mat-autocomplete #auto="matAutocomplete">
                   <mat-option *ngFor="let option of options" [value]="option">
                     {{option}}
                   </mat-option>
@@ -45,27 +47,30 @@
               </div>
             </mat-form-field>
           </div>
-            <div class="col-md-12 mb-2">
-              <ul *ngFor="let membroTime of membrosTime" class="list-group">
-                <li class="list-group-item">{{membroTime}}</li>
-              </ul>
-            </div>
+          <div class="col-md-12 mb-2">
+            <ul *ngFor="let membroTime of membrosTime" class="list-group">
+              <li class="list-group-item">{{membroTime}}</li>
+            </ul>
           </div>
         </div>
-        <div class="modal-footer">
-          <button *ngIf="tournament?.mode != 'Solo'; else solo" type="submit" class="btn btn-custom mb-3"
-            [disabled]="isLoading || formRegister.controls.nomeTime.errors?.required || membrosTime.length == 0">
+        <div *ngIf="isMaxMembers" class="alert alert-danger" role="alert">
+          <span class="text-danger">{{maxMembers}} membros já foram adicionados</span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button *ngIf="tournament?.mode != 'Solo'; else solo" type="submit" class="btn btn-custom mb-3"
+          [disabled]="isLoading || formRegister.controls.nomeTime.errors?.required || membrosTime.length == 0">
+          <span *ngIf="isLoading" class="spinner-border spinner-border-sm mr-1"></span>
+          Registrar</button>
+
+        <ng-template #solo>
+          <button type="submit" class="btn btn-custom mb-3"
+            [disabled]="isLoading || formRegister.controls.nomeTime.errors?.required">
             <span *ngIf="isLoading" class="spinner-border spinner-border-sm mr-1"></span>
             Registrar</button>
+        </ng-template>
 
-          <ng-template #solo>
-            <button type="submit" class="btn btn-custom mb-3"
-              [disabled]="isLoading || formRegister.controls.nomeTime.errors?.required">
-              <span *ngIf="isLoading" class="spinner-border spinner-border-sm mr-1"></span>
-              Registrar</button>
-          </ng-template>
-
-        </div>
+      </div>
     </form>
   </div>
 </div>
