@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Subscription } from 'src/app/_models/subscription';
 import { User } from 'src/app/_models/user';
 import { AccountService, AlertService } from 'src/app/_services';
 import { TournamentService } from 'src/app/_services/tournament.service';
@@ -45,6 +46,10 @@ export class TournamentComponent implements OnInit {
       this.tournaments = res;
       this.isLoading = false;
 
+      if(this.user){
+        this.checkSubscribed();
+      }
+
     }, err => {
 
       this.isLoading = false;
@@ -70,8 +75,40 @@ export class TournamentComponent implements OnInit {
     const dialogRef = this.dialog.open(RegisterTournamentComponent);
 
     dialogRef.afterClosed().subscribe(result => {
+
+      this.findAllTournament();
+
       console.log(`Dialog result: ${result}`);
     });
+  }
+
+  checkSubscribed(){
+
+    let subscribed: Subscription[] = [];
+
+    this.service.getSubscriptionByIdUser(this.user.idUser).subscribe(res =>{
+
+      subscribed = res;
+
+      console.log(subscribed)
+
+      this.tournaments.forEach(tournament => {
+        console.log('to aqui')
+
+        if(subscribed.some(x=> x.idCamp === tournament.idCamp)){
+
+          tournament.subscribed = true;
+
+          }else{
+
+            tournament.subscribed = false;
+
+          }
+
+      });
+
+    })
+
   }
 
 }

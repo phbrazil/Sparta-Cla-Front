@@ -49,10 +49,17 @@
               <!--button *ngIf="user" (click)="registerTournament(torneio.idCamp)" type="button" class="btn btn-custom" data-toggle="modal" data-target="#modalRegister">
                 Jogar
               </button-->
-              <button *ngIf="user" mat-button (click)="registerTournament(torneio.idCamp)" [idCamp]="idCamp" class="btn btn-custom">Jogar</button>
+              <button *ngIf="user && !torneio.subscribed" mat-button (click)="registerTournament(torneio.idCamp)" [idCamp]="idCamp" class="btn btn-custom">Jogar</button>
 
 
               <app-modal *ngIf="!user" title="Jogar"></app-modal>
+
+              <div *ngIf="torneio.subscribed" class="alert alert-success" role="alert">
+                <h4 class="text-success">Já inscrito!</h4>
+                <div>
+                  <a class="btn btn-custom" href="#/my-tournaments">Ver meus torneios</a>
+                </div>
+              </div>
 
               <!--app-buttom title="Jogar"></app-buttom-->
             </div>
