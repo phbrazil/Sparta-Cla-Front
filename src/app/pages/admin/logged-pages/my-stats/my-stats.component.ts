@@ -15,9 +15,11 @@ export class MyStatsComponent implements OnInit {
   stats;
   KD;
   recentMatches;
+  lastMatchDetail;
   KDRecent;
   isLoading = false;
   hasErrors = false;
+  lastMatchKDInfo;
 
 
 
@@ -64,11 +66,17 @@ export class MyStatsComponent implements OnInit {
         //SE API FOR CLOUD FUNCTION
         this.stats = json.response;
         this.recentMatches = json.recentMatches;
+        this.lastMatchDetail = json.lastMatchDetail;
 
         //this.stats = res;
 
         this.KD = Math.round(this.stats.br.kdRatio * 100) / 100;
         this.KDRecent = Math.round(this.recentMatches.summary.all.kdRatio * 100) / 100;
+
+        //AVERAGE KD LAST MATCH
+
+        this.lastMatchKDInfo = this.getLastMatchKD();
+
       }
 
 
@@ -81,12 +89,51 @@ export class MyStatsComponent implements OnInit {
 
   }
 
+  getLastMatchKD() {
+
+    let higherKD = {
+      name: '',
+      kdRatio: 0
+    };
+
+    let response = {
+      higherKD: higherKD,
+      averageKD: 0
+    }
+
+    let averageKD = 0;
+
+    let qtdPlayers = 0;
+
+    this.lastMatchDetail.allPlayers.forEach(player => {
+
+      console.log(player)
+
+      averageKD = averageKD + player.playerStats.kdRatio;
+
+      if (player.playerStats.kdRatio > 0) {
+        qtdPlayers++;
+      }
+
+      if(player.playerStats.kdRatio > higherKD.kdRatio){
+        higherKD.kdRatio = player.playerStats.kdRatio;
+        higherKD.name = player.player.username;
+      }
+
+    });
+
+    response.higherKD = higherKD;
+    response.averageKD = Math.round(averageKD / qtdPlayers);
+
+    return response;
+  }
+
   returnDaysPlay(days: number): number {
     let result = Math.round(days / 86.400);
     const day = result.toString();
     let dayNumber = day.substr(0, 2);
     result = parseInt(dayNumber);
-    return   result;
+    return result;
   }
 
   returnKd(kd: number): number {

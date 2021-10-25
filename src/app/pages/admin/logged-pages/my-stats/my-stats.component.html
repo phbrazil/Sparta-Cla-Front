@@ -145,6 +145,36 @@
               </div>
             </div>
           </div>
+          <div class="col-sm-3">
+            <div class="card">
+              <div class="card-body">
+                <div class="media align-items-center">
+                  <span class="activity-icon bgl-success mr-md-4 mr-3">
+                    <em class="fa fa-trophy"></em>
+                  </span>
+                  <div class="media-body">
+                    <p class="fs-14 mb-2">KD do Lobby na última partida</p>
+                    <span class="title text-black font-w600">{{lastMatchKDInfo.averageKD}}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="card">
+              <div class="card-body">
+                <div class="media align-items-center">
+                  <span class="activity-icon bgl-success mr-md-4 mr-3">
+                    <em class="fa fa-trophy"></em>
+                  </span>
+                  <div class="media-body">
+                    <p class="fs-14 mb-2">Mais matador da última partida</p>
+                    <span class="title text-black font-w600 font-trophy">{{lastMatchKDInfo.higherKD.name}} <br> KD {{lastMatchKDInfo.higherKD.kdRatio}}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div *ngIf="!hasErrors" class="table-responsive-xl">
           <h2>Útimas<span class="text-yellow"> Partidas</span></h2>
