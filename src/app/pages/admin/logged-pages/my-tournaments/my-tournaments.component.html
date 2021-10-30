@@ -17,36 +17,40 @@
       </div>
     </div>
     <div class="row" infiniteScroll (scrolled)="onScroll()" *ngIf="!isLoading && tournaments.length > 0">
-      <div class="col-lg-4 col-md-6 mt-4 mb-2" *ngFor="let torneio of tournaments">
+      <div class="col-lg-12 col-md-12 mt-4 mb-2" *ngFor="let torneio of tournaments">
         <div class="coming-match-item mb-30">
-          <div class="coming-match-team">
-            <div class="match-team-info">
-              <div class="match-team-logo">
-                <h2 class="text-yellow">{{ torneio.mode }}</h2>
-                <h2 class="text-yellow">Time {{ torneio.nomeTime }}</h2>
-                <ul *ngFor="let membroTime of torneio.membrosTime" class="list-group list-group-flush">
-                  <li class="list-group-item text-yellow bg-dark">{{membroTime.email}}</li>
-                </ul>
-              </div>
-              <div class="match-team-name">
-                <h5 class="tournament-date">{{ torneio.date | date : 'fullDate' : '' : 'pt-BR' }}</h5>
-              </div>
-              <div class="match-team-name">
-                <h5 class="pt-4 tournament-award">{{ torneio.award }} <br><span class="subtxt">Por Time</span></h5>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="coming-match-team">
+                <div class="match-team-info">
+                  <div class="match-team-logo">
+                    <h2 class="text-yellow">{{ torneio.mode }}</h2>
+                    <div class="match-team-name mb-5">
+                      <h5 class="tournament-date">{{ torneio.date | date : 'fullDate' : '' : 'pt-BR' }} <span>as {{ torneio.start }}</span></h5>
+                    </div>
+                    <h2 class="text-yellow">Time: {{ torneio.nomeTime }}</h2>
+                    <ul *ngFor="let membroTime of torneio.membrosTime" class="list-group list-group-flush">
+                      <li class="list-group-item text-yellow bg-dark">{{membroTime.nome}} <br>{{membroTime.email}} <span><i class="fa fa-check-circle"></i></span></li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="coming-match-info">
-            <div class="match-info-action">
-              <ul>
-                <li>Modo: <span>{{ torneio.mode }}</span></li>
-                <li>Duração: <span>{{ torneio.duration }}</span></li>
-                <li>Início: <span>{{ torneio.start }}</span></li>
-                <li>Pontos: <span>{{ torneio.scoring }}</span></li>
-                <li>Times: <span>{{ torneio.times }}</span></li>
-                <li>Valor: <span>{{ torneio.cost }}</span></li>
-                <li>Posição: <span>{{ torneio.position }}</span></li>
-              </ul>
+            <div class="col-sm-6">
+              <div class="coming-match-info">
+                <h2 class="text-yellow">Torneio Info</h2>
+                <div class="match-info-action">
+                  <ul>
+                    <li>Modo: <span>{{ torneio.mode }}</span></li>
+                    <li>Duração: <span>{{ torneio.duration }}</span></li>
+                    <li>Início: <span>{{ torneio.start }}</span></li>
+                    <li>Pontos: <span>{{ torneio.scoring }}</span></li>
+                    <li>Times: <span>{{ torneio.times }}</span></li>
+                    <li>Valor: <span>{{ torneio.cost }}</span></li>
+                    <li>Posição: <span>{{ torneio.position }}</span></li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
