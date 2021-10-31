@@ -10,7 +10,6 @@
   display: flex;
   align-items: first baseline;
   justify-content: center;
-  text-align: center;
   padding: 30px 35px 40px;
 }
 
@@ -25,6 +24,7 @@
   padding: 35px 35px;
   text-align: center;
   background: #1b1024;
+  margin: 35px;
 }
 
 .coming-match-time .coming-time {
@@ -65,4 +65,8 @@ li {
   width: 100%;
   margin-bottom: 20px;
   border-bottom: 1px solid rgb(115 115 115 / 10%);
+}
+
+.fa-check-circle {
+  color: #7FBA7A;
 }

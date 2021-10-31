@@ -29,6 +29,9 @@
               </div>
               <div class="match-team-name">
                 <h5 class="pt-4 tournament-award">{{ torneio.award }} <br><span class="subtxt">Por Time</span></h5>
+                <div *ngIf="torneio.subscribed">
+                  <span class="text-success">Já inscrito!</span>
+                </div>
               </div>
             </div>
           </div>
@@ -54,11 +57,8 @@
 
               <app-modal *ngIf="!user" title="Jogar"></app-modal>
 
-              <div *ngIf="torneio.subscribed" class="alert alert-success" role="alert">
-                <h4 class="text-success">Já inscrito!</h4>
-                <div>
+              <div *ngIf="torneio.subscribed">
                   <a class="btn btn-custom" href="#/my-tournaments">Ver meus torneios</a>
-                </div>
               </div>
 
               <!--app-buttom title="Jogar"></app-buttom-->

@@ -67,3 +67,6 @@ li {
   border-bottom: 1px solid rgb(115 115 115 / 10%);
 }
 
+.text-success {
+  text-transform: uppercase;
+}
