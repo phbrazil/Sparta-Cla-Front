@@ -123,6 +123,8 @@ export class ProfileComponent implements OnInit {
         //CHECK IF ACTIVISION PROFILE IS PUBLIC
         this.checkProfileActivision();
 
+        this.getStats(this.user.wzProfile, this.user.platform);
+
 
       }, error => {
 

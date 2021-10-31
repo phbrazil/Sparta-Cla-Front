@@ -53,6 +53,8 @@ export class AccountService {
   public getToken() {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     console.log("GET TOKEN VALUE ", user.token);
+    //expired token example
+    //return 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwYXVsb2gyMDEyc3VsQGdtYWlsLmNvbSIsImlhdCI6MTYzNTI3Nzg2NywiZXhwIjoxNjM1MzY0MjY3fQ.nYGf8hDBrLbLYHElFQFiPjjAi0MqsNMP_vZZWQ4SW-nc2HRW05UUtOZU7Sv2EPo30t6O4DpUmWpNdz--84KIuQ'
     return user.token;
   }
 
@@ -196,6 +198,7 @@ export class AccountService {
 
     const url = `${this.baseUrl}/account/api/auth/signin`;
 
+    https://sparta-clan.herokuapp.com/account/api/auth/signin
     return this.http.post<User>(url, { username, password })
       .pipe(map(user => {
         // store user details and jwt token in local storage to keep user logged in between page refreshes

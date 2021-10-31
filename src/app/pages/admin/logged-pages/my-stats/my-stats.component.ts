@@ -45,11 +45,11 @@ export class MyStatsComponent implements OnInit {
 
       let json = JSON.parse(res.stats.body);
 
-      console.log(json)
-
       this.isLoading = false;
 
       this.statics = json.recentMatches.matches;
+
+      console.log(this.statics)
 
       if (json.error) {
 
@@ -107,8 +107,6 @@ export class MyStatsComponent implements OnInit {
 
     this.lastMatchDetail.allPlayers.forEach(player => {
 
-      console.log(player)
-
       averageKD = averageKD + player.playerStats.kdRatio;
 
       if (player.playerStats.kdRatio > 0) {
@@ -143,7 +141,11 @@ export class MyStatsComponent implements OnInit {
   returnMode(mode: string) {
     switch (mode) {
       case "br_rebirth_rbrthquad":
-        return "Rebirth";
+        return "Rebirth Squad";
+      case "br_rebirth_rbrthtrios":
+        return "Rebirth Trio";
+      case "br_rebirth_rbrthduo":
+        return "Rebirth Duo";
       case "br_dbd_dbd":
         return "Prova de Ferro 84";
       case "br_brquads":
