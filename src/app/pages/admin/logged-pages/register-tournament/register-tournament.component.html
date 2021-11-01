@@ -49,17 +49,22 @@
           </div>
           <div class="col-md-12 mb-2">
             <ul *ngFor="let membroTime of membrosTime" class="list-group">
-              <li class="list-group-item">{{membroTime}}</li>
+              <li class="list-group-item">{{membroTime}}
+                <button type="button" (click)="removeMember(membroTime)" mat-button class="close"
+                   aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </li>
             </ul>
           </div>
         </div>
         <div *ngIf="isMaxMembers" class="alert alert-danger" role="alert">
-          <span class="text-danger">{{maxMembers}} membros já foram adicionados</span>
+          <span class="text-danger">{{maxMembers +1}} membros já formados</span>
         </div>
       </div>
       <div class="modal-footer">
         <button *ngIf="tournament?.mode != 'Solo'; else solo" type="submit" class="btn btn-custom mb-3"
-          [disabled]="isLoading || formRegister.controls.nomeTime.errors?.required || membrosTime.length == 0">
+          [disabled]="isLoading || formRegister.controls.nomeTime.errors?.required || membrosTime.length == 0 || maxMembers !== membrosTime.length">
           <span *ngIf="isLoading" class="spinner-border spinner-border-sm mr-1"></span>
           Registrar</button>
 

@@ -55,7 +55,7 @@ export class RegisterTournamentComponent implements OnInit {
 
     })
 
-    this.getCampInfo();
+    this.getTournamentInfo();
 
     this.getRecentMembers();
 
@@ -66,15 +66,15 @@ export class RegisterTournamentComponent implements OnInit {
   }
 
   checkMaxMembers() {
-    //VERIFICAR MAXIMO DE MEMBROS NO TORNEIO
+    //VERIFICAR MAXIMO DE MEMBROS NO TORNEIO (INICIA NO 0)
     if (this.tournament.mode.includes('Squad')) {
-      this.maxMembers = 4;
-    }else if(this.tournament.mode.includes('Trio')){
       this.maxMembers = 3;
-    }else if(this.tournament.mode.includes('Duo')){
+    } else if (this.tournament.mode.includes('Trio')) {
       this.maxMembers = 2;
-    }else if(this.tournament.mode.includes('Solo')){
+    } else if (this.tournament.mode.includes('Duo')) {
       this.maxMembers = 1;
+    } else if (this.tournament.mode.includes('Solo')) {
+      this.maxMembers = 0;
     }
 
     console.log(this.maxMembers);
@@ -133,33 +133,38 @@ export class RegisterTournamentComponent implements OnInit {
 
     })
 
-    console.log(this.formRegister.value);
-
 
   }
 
   addTeamMember() {
 
+    console.log(this.membrosTime.length)
+    console.log(this.maxMembers)
+    console.log(this.isMaxMembers)
+
     if (this.membroTime && this.membroTime.includes('@') && this.membroTime.includes('.com')) {
 
       if (!this.membrosTime.includes(this.membroTime)) {
 
-        if(this.membrosTime.length < this.maxMembers){
+        if (this.membrosTime.length < this.maxMembers) {
           this.membrosTime.push(this.membroTime);
 
           this.membroTime = '';
-        }else{
+        } else {
 
           this.isMaxMembers = true;
 
         }
 
-
-
       }
 
-
     }
+
+  }
+
+  removeMember(member){
+
+    this.membrosTime = this.membrosTime.filter(item => item !== member)
 
   }
 
@@ -191,9 +196,10 @@ export class RegisterTournamentComponent implements OnInit {
 
   }
 
-  getCampInfo() {
+  getTournamentInfo() {
 
     this.tournamentService.getIdCamp().subscribe(idCamp => {
+
       this.idCamp = idCamp;
 
       if (this.idCamp) {

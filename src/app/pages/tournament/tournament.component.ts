@@ -90,10 +90,7 @@ export class TournamentComponent implements OnInit {
 
       subscribed = res;
 
-      console.log(subscribed)
-
       this.tournaments.forEach(tournament => {
-        console.log('to aqui')
 
         if(subscribed.some(x=> x.idCamp === tournament.idCamp)){
 
