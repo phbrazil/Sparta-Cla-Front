@@ -11,6 +11,7 @@ import { AlertComponent } from './components/alert';
 import { AccountModule } from '../pages/account/account.module';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
 import { AngularMaterialModule } from './angular-material/angular-material.module';
+import { MessagesComponent } from './components/messages/messages.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AngularMaterialModule } from './angular-material/angular-material.modul
     ModalComponent,
     BannerAlertComponent,
     AlertComponent,
-    ProgressBarComponent
+    ProgressBarComponent,
+    MessagesComponent
   ],
   imports: [
     CommonModule,
@@ -36,7 +38,8 @@ import { AngularMaterialModule } from './angular-material/angular-material.modul
     ModalComponent,
     BannerAlertComponent,
     AlertComponent,
-    ProgressBarComponent
+    ProgressBarComponent,
+    MessagesComponent
   ]
 })
 export class SharedModule { }

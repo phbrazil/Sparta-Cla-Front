@@ -10,6 +10,8 @@ import { WelcomeComponent } from "./logged-pages/welcome/welcome.component";
 import { ListTournamentsComponent } from "./logged-pages/manage/tournament/list-tournaments/list-tournaments.component";
 import { ListUsersComponent } from "./logged-pages/manage/users/list-users/list-users.component";
 import { MyTournamentsComponent } from "./logged-pages/my-tournaments/my-tournaments.component";
+import { ConfirmTournamentComponent } from "./logged-pages/confirm-tournament/confirm-tournament.component";
+import { NotificationsComponent } from "./logged-pages/notifications/notifications.component";
 
 export const AdminLayoutRoutes: Routes = [
 
@@ -25,5 +27,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'new-tournament', component: NewTournamentComponent },
     { path: 'list-tournaments', component: ListTournamentsComponent },
     { path: 'list-users', component: ListUsersComponent },
+    { path: 'confirm-tournament', component: ConfirmTournamentComponent },
+    { path: 'notifications', component: NotificationsComponent },
 
 ];

@@ -76,9 +76,6 @@ export class RegisterTournamentComponent implements OnInit {
     } else if (this.tournament.mode.includes('Solo')) {
       this.maxMembers = 0;
     }
-
-    console.log(this.maxMembers);
-    console.log(this.tournament)
   }
 
   enviar() {
@@ -162,7 +159,7 @@ export class RegisterTournamentComponent implements OnInit {
 
   }
 
-  removeMember(member){
+  removeMember(member: string){
 
     this.membrosTime = this.membrosTime.filter(item => item !== member)
 

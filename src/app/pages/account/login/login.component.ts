@@ -1,10 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AccountService, AlertService } from 'src/app/_services';
 import * as $ from 'jquery';
 import { ModalControlService } from 'src/app/_services/modal-control.service';
 import { User } from 'src/app/_models/user';
+import { MatDialog } from '@angular/material/dialog';
+import { BehaviorSubject } from 'rxjs';
+import { PreviousURLService } from 'src/app/_services/previous-url.service';
+import { ConfirmTournamentComponent } from '../../admin/logged-pages/confirm-tournament/confirm-tournament.component';
 
 @Component({
   selector: 'app-login',
@@ -16,14 +20,16 @@ export class LoginComponent implements OnInit {
 
   emailNewPassword: string;
 
-
   isLoading = false;
 
   user: User;
 
   constructor(private fb: FormBuilder,
     private alertService: AlertService, private router: Router,
-    private accountService: AccountService, private modalControl: ModalControlService) {
+    private accountService: AccountService, private modalControl: ModalControlService,
+    public dialog: MatDialog,
+    private previousURLService: PreviousURLService,
+    private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
@@ -67,24 +73,32 @@ export class LoginComponent implements OnInit {
       $('body').removeClass('modal-open');
       $('.modal-backdrop').remove();
 
-      //this.user = JSON.parse(localStorage.getItem('user'));
+      //fecha modal do angular material rota confirmar torneio apos login
+      this.dialog.closeAll();
 
-      if (this.user.pendingEmailConfirmation) {
-        this.accountService.logout();
-        this.alertService.info("Sua conta foi criada mas você ainda não confirmou seu email cadastrado.", "Verifique sua caixa de emails ou clique <a (click)='resendEmailConfirmation()'>aqui</a> para reenviar.", { keepAfterRouteChange: true })
-      } else {
-        if (this.user.changePassword) {
-          this.accountService.setEmailNewPassword(this.user.email);
+      //verifica se há url anterior
+      this.previousURLService.getPreviousURL().subscribe(url => {
+
+        if (url != '' && this.user) {
+
+          this.router.navigate(['/notifications']);
+
+          this.dialog.open(ConfirmTournamentComponent);
+
+        } else if (this.user.pendingEmailConfirmation) {
           this.accountService.logout();
-          this.router.navigate(['/new-password']);
-
+          this.alertService.info("Sua conta foi criada mas você ainda não confirmou seu email cadastrado.", "Verifique sua caixa de emails ou clique <a (click)='resendEmailConfirmation()'>aqui</a> para reenviar.", { keepAfterRouteChange: true })
         } else {
-          this.router.navigate(['/welcome']);
+          if (this.user.changePassword) {
+            this.accountService.setEmailNewPassword(this.user.email);
+            this.accountService.logout();
+            this.router.navigate(['/new-password']);
+
+          } else {
+            this.router.navigate(['/welcome']);
+          }
         }
-      }
-
-
-
+      })
 
     }, err => {
 

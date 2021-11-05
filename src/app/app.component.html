@@ -1,12 +1,18 @@
 <app-alert class="transparencia-alert col-md-12 mt-4"></app-alert>
 <div *ngIf="!user; else logged">
-    <app-header></app-header>
-    <app-banner-alert></app-banner-alert>
-    <app-progress-bar></app-progress-bar>
-    <router-outlet></router-outlet>
+  <app-header></app-header>
+  <app-banner-alert></app-banner-alert>
+  <div *ngIf="isMessage">
+    <app-messages></app-messages>
+  </div>
+  <app-progress-bar></app-progress-bar>
+  <router-outlet></router-outlet>
 </div>
 <ng-template #logged>
-    <app-header-logged></app-header-logged>
-    <app-logged-pages></app-logged-pages>
+  <app-header-logged></app-header-logged>
+  <div *ngIf="isMessage">
+    <app-messages></app-messages>
+  </div>
+  <app-logged-pages></app-logged-pages>
 </ng-template>
 <app-footer></app-footer>

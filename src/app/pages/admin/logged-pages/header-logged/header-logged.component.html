@@ -27,7 +27,7 @@
               </a>
               <div *ngIf="notifications?.length > 0" class="dropdown-menu dropdown-menu-lg-right dropdown-primary custom-drop"
                 aria-labelledby="notification-list">
-                  <a *ngFor="let notification of notifications" href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                  <a *ngFor="let notification of notifications" href="{{notification.link}}" class="list-group-item list-group-item-action flex-column align-items-start">
                     <div class="d-flex w-100 justify-content-between">
                       <h5 class="mb-1 text-dark">{{notification.title}}</h5>
                       <small class="text-muted">{{notification.date}}</small>

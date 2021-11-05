@@ -20,6 +20,8 @@ import { EditUserComponent } from './logged-pages/manage/users/edit-user/edit-us
 import { ChartsModule } from 'ng2-charts';
 import { MyTournamentsComponent } from './logged-pages/my-tournaments/my-tournaments.component';
 import { AngularMaterialModule } from 'src/app/shared/angular-material/angular-material.module';
+import { ConfirmTournamentComponent } from './logged-pages/confirm-tournament/confirm-tournament.component';
+import { NotificationsComponent } from './logged-pages/notifications/notifications.component';
 
 
 @NgModule({
@@ -37,6 +39,8 @@ import { AngularMaterialModule } from 'src/app/shared/angular-material/angular-m
     ListUsersComponent,
     EditUserComponent,
     MyTournamentsComponent,
+    ConfirmTournamentComponent,
+    NotificationsComponent,
   ],
   imports: [
     CommonModule,

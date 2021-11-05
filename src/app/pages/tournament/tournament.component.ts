@@ -84,6 +84,8 @@ export class TournamentComponent implements OnInit {
 
   checkSubscribed(){
 
+    this.isLoading = true;
+
     let subscribed: Subscription[] = [];
 
     this.service.getSubscriptionByIdUser(this.user.idUser).subscribe(res =>{
@@ -103,6 +105,12 @@ export class TournamentComponent implements OnInit {
           }
 
       });
+
+      this.isLoading = false;
+
+    }, err => {
+
+      this.isLoading = false;
 
     })
 

@@ -1,0 +1,30 @@
+<div class="modal-content">
+  <div class="modal-body">
+    <div *ngIf="isLoading" class="d-flex justify-content-center">
+      <div class="spinner-grow text-warning" role="status" style="width: 5rem; height: 5rem;">
+      </div>
+    </div>
+    <div *ngIf="!isLoading" class="col-xl-12 col-lg-12">
+      <div class="section-title title-style-three text-center">
+        <h2>Confirmação de <span class="text-yellow">INSCRIÇÃO</span></h2>
+        <p>Clique no botão abaixo para confirmar sua inscrição no torneio</p>
+        <ul class="list-group">
+          <li class="list-group-item">Modo <span class="text-yellow">{{tournament.mode}}</span></li>
+          <li class="list-group-item">Data <span class="text-yellow">{{ tournament.date | date : 'fullDate' : '' : 'pt-BR' }}</span></li>
+          <li class="list-group-item">Duração <span class="text-yellow">{{tournament.duration}}</span></li>
+          <li class="list-group-item">Início <span class="text-yellow">{{tournament.start}}</span></li>
+          <li class="list-group-item">Pontos <span class="text-yellow">{{tournament.scoring}}</span></li>
+          <li class="list-group-item">Premiação <span class="text-yellow">{{tournament.award}}</span></li>
+          <li class="list-group-item">Custo <span class="text-yellow">{{tournament.cost}}</span></li>
+        </ul>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-9 text-center mt-4">
+          <button (click)="confirm()" [disabled]="isLoading" class="btn-custom" title="Confirmar">
+            <span *ngIf="isLoading" class="spinner-border spinner-border-sm mr-1"></span>
+            Confirmar Inscrição</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
