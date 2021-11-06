@@ -2,7 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Tournament } from 'src/app/_models/tournament';
-import { AlertService } from 'src/app/_services';
+import { User } from 'src/app/_models/user';
+import { AccountService, AlertService } from 'src/app/_services';
 import { PreviousURLService } from 'src/app/_services/previous-url.service';
 import { TournamentService } from 'src/app/_services/tournament.service';
 
@@ -15,18 +16,50 @@ export class ConfirmTournamentComponent implements OnInit {
 
   isLoading = false;
   idTournament: number;
-  tournament: Tournament
+  tournament: Tournament;
+  user: User;
+  hasError: boolean  = false;
+  isInvited: boolean = true;
 
   constructor(private tournamentService: TournamentService, private alertService: AlertService,
     private activateRoute: ActivatedRoute, private router: Router,
     private previousURLService: PreviousURLService,
-    public dialog: MatDialog) { }
+    public dialog: MatDialog, private accountService: AccountService) {
+
+      this.accountService.user.subscribe(x => this.user = x);
+
+     }
 
   ngOnInit(): void {
 
  //   this.dialog.open(ConfirmTournamentComponent);
 
+
+
     this.loadTournament();
+
+
+  }
+
+  checkMember(idCamp: number, loggedUser: string){
+
+    //VERIFICA SE O USUARIO LOGADO REALMENTE FOI CONVIDADO PARA ESSE TORNEIO
+
+    this.tournamentService.getSubscriptionByIdTour(idCamp).subscribe(members =>{
+
+      let membros = JSON.parse(members[0].membrosTime)
+
+      if(membros.some(x => x.email === loggedUser)){
+        this.isInvited = true;
+      }else{
+        this.isInvited = false;
+      }
+
+    }, err => {
+
+
+    })
+
   }
 
   loadTournament(){
@@ -38,13 +71,13 @@ export class ConfirmTournamentComponent implements OnInit {
 
     this.previousURLService.getPreviousURL().subscribe(url => {
 
-      console.log(url)
-
       let urlP = new URL(`https://www.spartacla.com.br${url}`);
 
       this.idTournament = Number(urlP.searchParams.get("id"));
 
       this.tournamentService.getTournamentById(this.idTournament).subscribe(tournament => {
+
+        this.checkMember(tournament.idCamp, this.user.email);
 
         this.tournament = tournament;
 
@@ -55,14 +88,11 @@ export class ConfirmTournamentComponent implements OnInit {
         this.isLoading = false;
 
         this.router.navigate(['/welcome']);
-        console.log('1', err)
 
       })
 
     }, err => {
       this.isLoading = false;
-
-      console.log('2', err)
 
     });
 
@@ -71,6 +101,26 @@ export class ConfirmTournamentComponent implements OnInit {
   confirm() {
 
     this.isLoading = true;
+
+    let body = {
+
+      "idUser": this.user.idUser,
+      "idCamp": this.tournament.idCamp
+
+    }
+
+    this.tournamentService.confirmSubscribeTour(body).subscribe(res =>{
+
+      this.isLoading = false;
+
+    }, err =>{
+
+      this.isLoading = false;
+
+      this.alertService.error('Ocorreu um erro', 'Tente novamente mais tarde', { keepAfterRouteChange: true });
+
+    })
+
 
   }
 }

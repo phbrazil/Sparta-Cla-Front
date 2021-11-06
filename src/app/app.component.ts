@@ -70,7 +70,8 @@ export class AppComponent {
 
         this.isCheckingConfirmTournament = false;
 
-        if (event[0].urlAfterRedirects.startsWith('/confirm-tournament')) {
+        if (event[0].urlAfterRedirects.startsWith('/confirm-tournament') ||
+        event[1].urlAfterRedirects.startsWith('/confirm-tournament')) {
 
           //SET SERVICE URL
           this.previousUrlService.setPreviousURL(event[0].urlAfterRedirects);
@@ -90,7 +91,6 @@ export class AppComponent {
             console.log(res)
           })
 
-          console.log(event[0].urlAfterRedirects);
         }
       });
   }

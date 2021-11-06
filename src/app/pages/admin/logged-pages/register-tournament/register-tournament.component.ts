@@ -135,11 +135,8 @@ export class RegisterTournamentComponent implements OnInit {
 
   addTeamMember() {
 
-    console.log(this.membrosTime.length)
-    console.log(this.maxMembers)
-    console.log(this.isMaxMembers)
-
-    if (this.membroTime && this.membroTime.includes('@') && this.membroTime.includes('.com')) {
+    if (this.membroTime && this.membroTime.includes('@') && this.membroTime.includes('.com') &&
+    this.membroTime !== this.user.email) {
 
       if (!this.membrosTime.includes(this.membroTime)) {
 
@@ -160,6 +157,8 @@ export class RegisterTournamentComponent implements OnInit {
   }
 
   removeMember(member: string){
+
+    this.isMaxMembers = false;
 
     this.membrosTime = this.membrosTime.filter(item => item !== member)
 

@@ -54,6 +54,8 @@ export class TournamentService {
 
     registerTournament(body: any) {
 
+      //SE REGISTRA NO TORNEIO E CONVIDA MEMBROS DO SQUAD
+
       //const token = localStorage.getItem('token');
 
       const token = this.accountService.getToken();
@@ -61,6 +63,20 @@ export class TournamentService {
       const headers = { 'Authorization': `Bearer ${token}` }
 
       return this.http.post<any>(`${this.baseUrl}/tournaments/registerTournament`, body, { headers });
+
+    }
+
+    confirmSubscribeTour(body: any) {
+
+      //MEMBROS CONVIDADOS CONFIRMAM PARTICIPACAO NO TORNEIO
+
+      //const token = localStorage.getItem('token');
+
+      const token = this.accountService.getToken();
+
+      const headers = { 'Authorization': `Bearer ${token}` }
+
+      return this.http.post<any>(`${this.baseUrl}/tournaments/confirmSubscribeTour`, body, { headers });
 
     }
 
@@ -96,7 +112,19 @@ export class TournamentService {
 
       const headers = { 'Authorization': `Bearer ${token}` }
 
-      return this.http.get<Subscription[]>(`${this.baseUrl}/tournaments/getSubscription/${idUser}`, { headers });
+      return this.http.get<Subscription[]>(`${this.baseUrl}/tournaments/getSubscriptionUser/${idUser}`, { headers });
+
+    }
+
+    getSubscriptionByIdTour(idCamp: number) {
+
+      //const token = localStorage.getItem('token');
+
+      const token = this.accountService.getToken();
+
+      const headers = { 'Authorization': `Bearer ${token}` }
+
+      return this.http.get<Subscription[]>(`${this.baseUrl}/tournaments/getSubscriptionTour/${idCamp}`, { headers });
 
     }
 
