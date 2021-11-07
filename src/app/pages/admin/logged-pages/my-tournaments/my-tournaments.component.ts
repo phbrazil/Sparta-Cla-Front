@@ -62,7 +62,6 @@ export class MyTournamentsComponent implements OnInit {
     this.isLoading = true;
 
     this.tournamentService.getTournamentById(idCamp).subscribe(tournament => {
-      console.log(tournament, "teste");
       tournament.nomeTime = sub.nomeTime;
       tournament.membrosTime = JSON.parse(sub.membrosTime);
       tournament.data = sub.data;

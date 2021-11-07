@@ -7,6 +7,7 @@ import { AlertService } from './alert.service';
 import { User } from '../_models/user';
 import { ModalControlService } from './modal-control.service';
 import * as $ from 'jquery';
+import { PreviousURLService } from './previous-url.service';
 @Injectable({ providedIn: 'root' })
 export class AccountService {
   private userSubject: BehaviorSubject<User>;
@@ -23,7 +24,8 @@ export class AccountService {
     private router: Router,
     private http: HttpClient,
     private alertService: AlertService,
-    private modalControl: ModalControlService
+    private modalControl: ModalControlService,
+    private previousUrl: PreviousURLService
   ) {
     this.userSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
     this.user = this.userSubject.asObservable();
@@ -219,6 +221,7 @@ export class AccountService {
     localStorage.removeItem('user');
     //localStorage.removeItem('token');
     this.userSubject.next(null);
+    this.previousUrl.setPreviousURL(null);
     this.router.navigate(['/']);
 
   }
@@ -265,8 +268,6 @@ export class AccountService {
       headers: new HttpHeaders()
         .set('Authorization', `Bearer ${token}`)
     }
-
-    console.log(header)
 
     const url = `${this.baseUrl}/spartaclan/getAllUsers`
 

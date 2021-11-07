@@ -32,16 +32,11 @@ export class ConfirmTournamentComponent implements OnInit {
 
   ngOnInit(): void {
 
- //   this.dialog.open(ConfirmTournamentComponent);
-
-
-
     this.loadTournament();
-
 
   }
 
-  checkMember(idCamp: number, loggedUser: string){
+  checkInvite(idCamp: number, loggedUser: string){
 
     //VERIFICA SE O USUARIO LOGADO REALMENTE FOI CONVIDADO PARA ESSE TORNEIO
 
@@ -77,7 +72,7 @@ export class ConfirmTournamentComponent implements OnInit {
 
       this.tournamentService.getTournamentById(this.idTournament).subscribe(tournament => {
 
-        this.checkMember(tournament.idCamp, this.user.email);
+        this.checkInvite(tournament.idCamp, this.user.email);
 
         this.tournament = tournament;
 
@@ -122,5 +117,9 @@ export class ConfirmTournamentComponent implements OnInit {
     })
 
 
+  }
+
+  closeModal(){
+    this.dialog.closeAll();
   }
 }

@@ -61,8 +61,6 @@ export class MyStatsComponent implements OnInit {
 
         SSOToken = SSOToken.split(":");
 
-        console.log(SSOToken[7].trim())
-
         //SE API FOR CLOUD FUNCTION
         this.stats = json.response;
         this.recentMatches = json.recentMatches;
