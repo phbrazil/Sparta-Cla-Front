@@ -66,7 +66,7 @@ export class TournamentService {
 
     }
 
-    confirmSubscribeTour(body: any) {
+    confirmTournament(idUser: number, idCamp: number) {
 
       //MEMBROS CONVIDADOS CONFIRMAM PARTICIPACAO NO TORNEIO
 
@@ -76,7 +76,7 @@ export class TournamentService {
 
       const headers = { 'Authorization': `Bearer ${token}` }
 
-      return this.http.post<any>(`${this.baseUrl}/tournaments/confirmSubscribeTour`, body, { headers });
+      return this.http.post<any>(`${this.baseUrl}/tournaments/confirmTournament/${idUser}/${idCamp}`, { headers });
 
     }
 

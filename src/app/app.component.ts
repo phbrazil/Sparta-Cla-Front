@@ -85,13 +85,14 @@ export class AppComponent {
             this.dialog.open(ConfirmTournamentComponent);
           }
 
-        }else{
+        }
+        /*else{
 
           this.previousUrlService.getPreviousURL().subscribe(res =>{
             console.log(res)
           })
 
-        }
+        }*/
       });
   }
 }

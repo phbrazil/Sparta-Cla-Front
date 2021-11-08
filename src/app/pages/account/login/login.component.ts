@@ -81,7 +81,7 @@ export class LoginComponent implements OnInit {
 
         if (url != '' && this.user) {
 
-          this.router.navigate(['/notifications']);
+          //this.router.navigate(['/notifications']);
 
           this.dialog.open(ConfirmTournamentComponent);
 

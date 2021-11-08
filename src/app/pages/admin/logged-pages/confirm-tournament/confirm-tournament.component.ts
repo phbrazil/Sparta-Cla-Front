@@ -18,7 +18,7 @@ export class ConfirmTournamentComponent implements OnInit {
   idTournament: number;
   tournament: Tournament;
   user: User;
-  hasError: boolean  = false;
+  hasError: boolean = false;
   isInvited: boolean = true;
 
   constructor(private tournamentService: TournamentService, private alertService: AlertService,
@@ -26,9 +26,9 @@ export class ConfirmTournamentComponent implements OnInit {
     private previousURLService: PreviousURLService,
     public dialog: MatDialog, private accountService: AccountService) {
 
-      this.accountService.user.subscribe(x => this.user = x);
+    this.accountService.user.subscribe(x => this.user = x);
 
-     }
+  }
 
   ngOnInit(): void {
 
@@ -36,17 +36,17 @@ export class ConfirmTournamentComponent implements OnInit {
 
   }
 
-  checkInvite(idCamp: number, loggedUser: string){
+  checkInvite(idCamp: number, loggedUser: string) {
 
     //VERIFICA SE O USUARIO LOGADO REALMENTE FOI CONVIDADO PARA ESSE TORNEIO
 
-    this.tournamentService.getSubscriptionByIdTour(idCamp).subscribe(members =>{
+    this.tournamentService.getSubscriptionByIdTour(idCamp).subscribe(members => {
 
       let membros = JSON.parse(members[0].membrosTime)
 
-      if(membros.some(x => x.email === loggedUser)){
+      if (membros.some(x => x.email === loggedUser)) {
         this.isInvited = true;
-      }else{
+      } else {
         this.isInvited = false;
       }
 
@@ -57,7 +57,7 @@ export class ConfirmTournamentComponent implements OnInit {
 
   }
 
-  loadTournament(){
+  loadTournament() {
 
     this.isLoading = true;
 
@@ -66,25 +66,38 @@ export class ConfirmTournamentComponent implements OnInit {
 
     this.previousURLService.getPreviousURL().subscribe(url => {
 
-      let urlP = new URL(`https://www.spartacla.com.br${url}`);
+      if (url) {
 
-      this.idTournament = Number(urlP.searchParams.get("id"));
+        console.log(url);
 
-      this.tournamentService.getTournamentById(this.idTournament).subscribe(tournament => {
+        let urlP = new URL(`https://www.spartacla.com.br${url}`);
 
-        this.checkInvite(tournament.idCamp, this.user.email);
+        this.idTournament = Number(urlP.searchParams.get("id"));
 
-        this.tournament = tournament;
+        if (this.idTournament != 0) {
 
-        this.isLoading = false;
+          this.tournamentService.getTournamentById(this.idTournament).subscribe(tournament => {
 
-      }, err => {
+            this.checkInvite(tournament.idCamp, this.user.email);
 
-        this.isLoading = false;
+            this.tournament = tournament;
 
-        this.router.navigate(['/welcome']);
+            this.isLoading = false;
 
-      })
+          }, err => {
+
+            this.isLoading = false;
+
+            this.router.navigate(['/welcome']);
+
+          })
+        } else {
+
+          this.router.navigate(['/my-tournaments']);
+
+        }
+      }
+
 
     }, err => {
       this.isLoading = false;
@@ -97,29 +110,37 @@ export class ConfirmTournamentComponent implements OnInit {
 
     this.isLoading = true;
 
-    let body = {
+    this.tournamentService.confirmTournament(this.user.idUser, this.tournament.idCamp).subscribe(res => {
 
-      "idUser": this.user.idUser,
-      "idCamp": this.tournament.idCamp
-
-    }
-
-    this.tournamentService.confirmSubscribeTour(body).subscribe(res =>{
+      this.dialog.closeAll();
 
       this.isLoading = false;
 
-    }, err =>{
+      this.reloadCurrentRoute(res);
+
+
+    }, err => {
 
       this.isLoading = false;
 
-      this.alertService.error('Ocorreu um erro', 'Tente novamente mais tarde', { keepAfterRouteChange: true });
+      this.alertService.error(err.text, err.subText, { keepAfterRouteChange: true });
 
     })
 
 
   }
 
-  closeModal(){
+  reloadCurrentRoute(res: any) {
+    const currentUrl = this.router.url;
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([currentUrl]);
+
+      this.alertService.success(res.text, res.subText, { keepAfterRouteChange: true });
+
+    });
+  }
+
+  closeModal() {
     this.dialog.closeAll();
   }
 }

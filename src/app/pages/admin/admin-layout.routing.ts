@@ -12,6 +12,7 @@ import { ListUsersComponent } from "./logged-pages/manage/users/list-users/list-
 import { MyTournamentsComponent } from "./logged-pages/my-tournaments/my-tournaments.component";
 import { ConfirmTournamentComponent } from "./logged-pages/confirm-tournament/confirm-tournament.component";
 import { NotificationsComponent } from "./logged-pages/notifications/notifications.component";
+import { TableResultComponent } from "../table-result/table-result.component";
 
 export const AdminLayoutRoutes: Routes = [
 
@@ -28,6 +29,8 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'list-tournaments', component: ListTournamentsComponent },
     { path: 'list-users', component: ListUsersComponent },
     { path: 'confirm-tournament', component: ConfirmTournamentComponent },
-    { path: 'notifications', component: NotificationsComponent },
+    { path: 'result-game/:idCamp', component: TableResultComponent },
+
+    //{ path: 'notifications', component: NotificationsComponent },
 
 ];

@@ -13,7 +13,6 @@ import { AuthGuard } from './_services/auth.guard';
 import { LoggedPagesComponent } from './pages/admin/logged-pages/logged-pages.component';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { TableResultComponent } from './pages/table-result/table-result.component';
 import { ConfirmEmailComponent } from './pages/account/confirm-email/confirm-email.component';
 import { NewPasswordComponent } from './pages/account/new-password/new-password.component';
 import { ProfileComponent } from './pages/admin/logged-pages/profile/profile.component';
@@ -29,7 +28,6 @@ const routes: Routes = [
   { path: 'faq', component: FAQComponent },
   { path: 'privacy', component: PrivacyPolicyComponent },
   { path: 'terms', component: TermsComponent },
-  { path: 'result-game', component: TableResultComponent },
   { path: 'register', component: RegisterConfirmationComponent },
   { path: 'confirm', component: ConfirmEmailComponent },
   { path: 'profile', component: ProfileComponent },

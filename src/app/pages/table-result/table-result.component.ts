@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { TableService } from 'src/app/_services/table.service';
 
 @Component({
@@ -8,11 +9,19 @@ import { TableService } from 'src/app/_services/table.service';
 })
 export class TableResultComponent implements OnInit {
 
+  idCamp: number;
   tables: TableService[] = []
 
-  constructor(private pontuacao: TableService) { }
+  constructor(private pontuacao: TableService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      this.idCamp = +params.get('idCamp')
+      console.log(this.idCamp)
+    })
+
+
     this.getPontuacao();
   }
 

@@ -12,7 +12,7 @@
       <div class="spinner-grow text-warning" role="status" style="width: 5rem; height: 5rem;">
       </div>
       <div class="ml-4">
-        <span class="text-warning">Favor aguarde... <br>nossos servidores estão iniciando,<br> ainda há homens
+        <span class="text-warning">Favor aguarde... <br>nossos servidores estão iniciando,<br> ainda estamos
           trabalhando...</span>
       </div>
     </div>
@@ -26,13 +26,26 @@
                   <div class="match-team-logo">
                     <h2 class="text-yellow">{{ torneio.mode }}</h2>
                     <div class="match-team-name mb-5">
-                      <h5 class="tournament-date">{{ torneio.date | date : 'fullDate' : '' : 'pt-BR' }} <span>as {{ torneio.start }}</span></h5>
+                      <h5 class="tournament-date">{{ torneio.date | date : 'fullDate' : '' : 'pt-BR' }} <span>às {{
+                          torneio.start }}</span></h5>
                     </div>
                     <h2 class="text-yellow">Time: {{ torneio.nomeTime }}</h2>
                     <ul *ngFor="let membroTime of torneio.membrosTime" class="list-group list-group-flush">
-                      <li class="list-group-item text-yellow bg-dark">{{membroTime.nome}} <br>{{membroTime.email}} <span><i class="fa fa-check-circle"></i></span></li>
+                      <li class="list-group-item text-yellow bg-dark">{{membroTime.nome}} <br>{{membroTime.email}}
+                        <span><em [ngClass]="membroTime.confirmed === true ? 'fa fa-check-circle' : 'fa fa-times-circle text-danger'"></em></span></li>
                     </ul>
                   </div>
+
+                  <div *ngFor="let membroTime of torneio.membrosTime" class="mt-4">
+                    <a *ngIf="membroTime.email == user.email && membroTime.confirmed == false" href="{{baseUrl}}/#/confirm-tournament?id={{torneio.idCamp}}"
+                    class="btn-custom">Confirmar Incrição</a>
+                  </div>
+
+                  <div *ngFor="let membroTime of torneio.membrosTime" class="mt-4">
+                    <a *ngIf="membroTime.email == user.email && membroTime.confirmed == true" routerLink="/result-game/{{torneio.idCamp}}"
+                    class="btn-custom">Acompanhar pontuação</a>
+                  </div>
+
                 </div>
               </div>
             </div>
