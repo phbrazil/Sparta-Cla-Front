@@ -100,6 +100,13 @@ export class RegisterTournamentComponent implements OnInit {
 
     });
 
+    //ADICIONA O PROPRIO CRIADOR NA LISTA DE MEMBROS
+    let creator = {
+      email: this.user.email,
+      confirmed: true
+    }
+    membrosTime.push(creator)
+
     let membrosTimeString = JSON.stringify(membrosTime);
 
     this.formRegister.patchValue({ membrosTime: membrosTimeString });

@@ -18,7 +18,7 @@ export class MyTournamentsComponent implements OnInit {
   isLoading = false;
   user: User;
   //baseUrl: string = 'http://localhost:4200';
-  baseUrl: string = 'https://spartacla.com.br';
+  baseUrl: string = 'https://www.spartacla.com.br';
 
   merged: any[] = []
 
