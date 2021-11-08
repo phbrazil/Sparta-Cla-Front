@@ -52,7 +52,7 @@ export class ConfirmTournamentComponent implements OnInit {
 
     }, err => {
 
-
+      console.log(err)
     })
 
   }
@@ -68,8 +68,6 @@ export class ConfirmTournamentComponent implements OnInit {
 
       if (url) {
 
-        console.log(url);
-
         let urlP = new URL(`https://www.spartacla.com.br${url}`);
 
         this.idTournament = Number(urlP.searchParams.get("id"));
@@ -83,6 +81,8 @@ export class ConfirmTournamentComponent implements OnInit {
             this.tournament = tournament;
 
             this.isLoading = false;
+
+            this.router.navigate(['/my-tournaments']);
 
           }, err => {
 

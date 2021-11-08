@@ -48,11 +48,11 @@ export class AppComponent {
     this.checkConfirmTournament();
 
     //se logado direciona para a pagina inicial welcome
-    if (this.user && !this.user.changePassword && !this.isCheckingConfirmTournament) {
+   // if (this.user && !this.user.changePassword && !this.isCheckingConfirmTournament) {
 
-      this.router.navigate(['/welcome']);
+     // this.router.navigate(['/welcome']);
 
-    }
+    //}
 
   }
 
@@ -65,8 +65,7 @@ export class AppComponent {
     this.router.events.pipe(
       filter(e => e instanceof RoutesRecognized),
       pairwise(),
-    )
-      .subscribe((event: any[]) => {
+    ).subscribe((event: any[]) => {
 
         this.isCheckingConfirmTournament = false;
 
@@ -82,17 +81,15 @@ export class AppComponent {
 
           } else {
 
+            this.router.navigate(['/welcome']);
+
             this.dialog.open(ConfirmTournamentComponent);
           }
 
         }
-        /*else{
 
-          this.previousUrlService.getPreviousURL().subscribe(res =>{
-            console.log(res)
-          })
-
-        }*/
+      }, err =>{
+        this.isCheckingConfirmTournament = false;
       });
   }
 }
