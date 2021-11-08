@@ -28,7 +28,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'new-tournament', component: NewTournamentComponent },
     { path: 'list-tournaments', component: ListTournamentsComponent },
     { path: 'list-users', component: ListUsersComponent },
-    { path: 'confirm-tournament', component: ConfirmTournamentComponent },
+    { path: 'confirm-tournament/:idCamp', component: ConfirmTournamentComponent },
     { path: 'result-game/:idCamp', component: TableResultComponent },
 
     //{ path: 'notifications', component: NotificationsComponent },

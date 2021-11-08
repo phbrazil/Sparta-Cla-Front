@@ -2,10 +2,11 @@
   <div class="row mb-5 mt-5 pb-5 pt-5">
     <div class="col-md-12 game-content">
       <h2 class="mb-5">Tabela de <span class="text-yellow">classificação</span></h2>
-      <table class="table">
+      <table class="table table-responsive">
         <thead class="thead-dark">
           <tr>
             <th scope="col"># Time</th>
+            <th scope="col">Membros</th>
             <th scope="col">Divisao</th>
             <th scope="col">Total de<br> jogos</th>
             <th scope="col">Melhores 2<br> vitórias</th>
@@ -15,13 +16,18 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let table of tables">
-            <td>{{ table.Classification }} {{ table.team }}</td>
+          <tr *ngFor="let subscription of subscriptions">
+            <td>{{ subscription.nomeTime }}</td>
+            <td><ul>
+              <li *ngFor="let member of members">
+                {{member}}
+              </li>
+            </ul></td>
             <th scope="row"></th>
-            <td>{{ table.match }}</td>
-            <td>{{ table.kills }}</td>
-            <td>{{ table.position }}</td>
-            <td>{{ table.score }}</td>
+            <td>{{ subscription.membrosTime }}</td>
+            <td>{{ subscription.membrosTime }}</td>
+            <td>{{ subscription.membrosTime }}</td>
+            <td>{{ subscription.membrosTime }}</td>
           </tr>
         </tbody>
       </table>

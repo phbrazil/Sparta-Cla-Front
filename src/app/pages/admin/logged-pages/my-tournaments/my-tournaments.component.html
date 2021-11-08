@@ -37,7 +37,7 @@
                   </div>
 
                   <div *ngFor="let membroTime of torneio.membrosTime" class="mt-4">
-                    <a *ngIf="membroTime.email == user.email && membroTime.confirmed == false" href="{{baseUrl}}/#/confirm-tournament?id={{torneio.idCamp}}"
+                    <a *ngIf="membroTime.email == user.email && membroTime.confirmed == false" href="{{baseUrl}}/#/confirm-tournament/{{torneio.idCamp}}"
                     class="btn-custom">Confirmar Incrição</a>
                   </div>
 

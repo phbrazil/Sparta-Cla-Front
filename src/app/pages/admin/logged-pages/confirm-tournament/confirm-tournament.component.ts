@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Params, Router } from '@angular/router';
 import { Tournament } from 'src/app/_models/tournament';
 import { User } from 'src/app/_models/user';
 import { AccountService, AlertService } from 'src/app/_services';
@@ -15,7 +15,7 @@ import { TournamentService } from 'src/app/_services/tournament.service';
 export class ConfirmTournamentComponent implements OnInit {
 
   isLoading = false;
-  idTournament: number;
+  idCamp: number;
   tournament: Tournament;
   user: User;
   hasError: boolean = false;
@@ -24,7 +24,8 @@ export class ConfirmTournamentComponent implements OnInit {
   constructor(private tournamentService: TournamentService, private alertService: AlertService,
     private activateRoute: ActivatedRoute, private router: Router,
     private previousURLService: PreviousURLService,
-    public dialog: MatDialog, private accountService: AccountService) {
+    public dialog: MatDialog, private accountService: AccountService,
+    private route: ActivatedRoute) {
 
     this.accountService.user.subscribe(x => this.user = x);
 
@@ -32,7 +33,7 @@ export class ConfirmTournamentComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.loadTournament();
+    this.getPreviousURL();
 
   }
 
@@ -57,6 +58,23 @@ export class ConfirmTournamentComponent implements OnInit {
 
   }
 
+  getPreviousURL(){
+
+    this.previousURLService.getPreviousURL().subscribe(url => {
+
+      if(url != null && url.startsWith('/confirm-tournament')){
+
+        this.idCamp = Number(url.replace("/confirm-tournament/", ""));
+
+        this.loadTournament();
+
+      }
+
+
+    })
+
+  }
+
   loadTournament() {
 
     this.isLoading = true;
@@ -64,45 +82,51 @@ export class ConfirmTournamentComponent implements OnInit {
     //REFATORAR ESSE CODIGO USANDO QUERY PARAM DO ANGULAR
     //https://angular.io/guide/router
 
-    this.previousURLService.getPreviousURL().subscribe(url => {
+    // if (url) {
 
-      if (url) {
-
-        let urlP = new URL(`https://www.spartacla.com.br${url}`);
-
-        this.idTournament = Number(urlP.searchParams.get("id"));
-
-        if (this.idTournament != 0) {
-
-          this.tournamentService.getTournamentById(this.idTournament).subscribe(tournament => {
-
-            this.checkInvite(tournament.idCamp, this.user.email);
-
-            this.tournament = tournament;
-
-            this.isLoading = false;
-
-            this.router.navigate(['/my-tournaments']);
-
-          }, err => {
-
-            this.isLoading = false;
-
-            this.router.navigate(['/welcome']);
-
-          })
-        } else {
-
-          this.router.navigate(['/my-tournaments']);
-
-        }
-      }
+    //  let urlP = new URL(`https://www.spartacla.com.br${url}`);
 
 
-    }, err => {
+
+    //this.idCamp = Number(urlP.searchParams.get("id"));
+
+    if (this.idCamp != 0) {
+
+      this.tournamentService.getTournamentById(this.idCamp).subscribe(tournament => {
+
+        this.checkInvite(tournament.idCamp, this.user.email);
+
+        this.tournament = tournament;
+
+        this.isLoading = false;
+
+        this.router.navigate(['/my-tournaments']);
+
+      }, err => {
+
+        this.isLoading = false;
+
+        this.router.navigate(['/welcome']);
+
+      })
+    } else {
+
+      this.hasError = true;
+
       this.isLoading = false;
 
-    });
+      this.router.navigate(['/my-tournaments']);
+
+      //this.dialog.closeAll();
+
+    }
+    //  }
+
+
+    // }, err => {
+    // this.isLoading = false;
+
+    //});
 
   }
 

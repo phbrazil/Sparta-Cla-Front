@@ -79,17 +79,17 @@ export class LoginComponent implements OnInit {
       //verifica se há url anterior
       this.previousURLService.getPreviousURL().subscribe(url => {
 
-        if (url != '' && this.user) {
+        if (url != null && url != '' && this.user) {
 
-          //this.router.navigate(['/notifications']);
+          this.router.navigate([url]);
 
-          this.dialog.open(ConfirmTournamentComponent);
+          //this.dialog.open(ConfirmTournamentComponent);
 
-        } else if (this.user.pendingEmailConfirmation) {
+        } else if (this.user && this.user.pendingEmailConfirmation) {
           this.accountService.logout();
           this.alertService.info("Sua conta foi criada mas você ainda não confirmou seu email cadastrado.", "Verifique sua caixa de emails ou clique <a (click)='resendEmailConfirmation()'>aqui</a> para reenviar.", { keepAfterRouteChange: true })
         } else {
-          if (this.user.changePassword) {
+          if (this.user && this.user.changePassword) {
             this.accountService.setEmailNewPassword(this.user.email);
             this.accountService.logout();
             this.router.navigate(['/new-password']);

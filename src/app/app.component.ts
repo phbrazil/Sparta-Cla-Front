@@ -24,7 +24,7 @@ export class AppComponent {
   validationCode: string;
   isCheckingConfirmTournament = false;
 
-  isMessage: boolean = true;
+  isMessage: boolean = false;
 
   // save the previous route
   public previousRoutePath = new BehaviorSubject<string>('');
@@ -69,26 +69,33 @@ export class AppComponent {
 
         this.isCheckingConfirmTournament = false;
 
-        if (event[0].urlAfterRedirects.startsWith('/confirm-tournament') ||
-        event[1].urlAfterRedirects.startsWith('/confirm-tournament')) {
+        event.forEach(url => {
 
-          //SET SERVICE URL
-          this.previousUrlService.setPreviousURL(event[0].urlAfterRedirects);
+          if (url.urlAfterRedirects.startsWith('/confirm-tournament')) {
 
-          if (!this.user) {
+            //SET SERVICE URL
+            this.previousUrlService.setPreviousURL(url.urlAfterRedirects);
 
-            this.dialog.open(LoginComponent);
+            if (!this.user) {
 
-          } else {
+              this.dialog.open(LoginComponent);
 
-            this.router.navigate(['/welcome']);
+            } else {
 
-            this.dialog.open(ConfirmTournamentComponent);
+              this.router.navigate(['/welcome']);
+
+              this.dialog.open(ConfirmTournamentComponent);
+            }
+
           }
+        });
 
-        }
+
 
       }, err =>{
+
+        console.log(err)
+
         this.isCheckingConfirmTournament = false;
       });
   }
