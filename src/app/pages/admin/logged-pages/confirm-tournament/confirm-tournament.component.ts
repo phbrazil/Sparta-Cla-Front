@@ -4,7 +4,7 @@ import { ActivatedRoute, ParamMap, Params, Router } from '@angular/router';
 import { Tournament } from 'src/app/_models/tournament';
 import { User } from 'src/app/_models/user';
 import { AccountService, AlertService } from 'src/app/_services';
-import { PreviousURLService } from 'src/app/_services/previous-url.service';
+import { PreviousRouteService } from 'src/app/_services/previous-route.service';
 import { TournamentService } from 'src/app/_services/tournament.service';
 
 @Component({
@@ -23,7 +23,7 @@ export class ConfirmTournamentComponent implements OnInit {
 
   constructor(private tournamentService: TournamentService, private alertService: AlertService,
     private activateRoute: ActivatedRoute, private router: Router,
-    private previousURLService: PreviousURLService,
+    private previousRouteService: PreviousRouteService,
     public dialog: MatDialog, private accountService: AccountService,
     private route: ActivatedRoute) {
 
@@ -60,7 +60,7 @@ export class ConfirmTournamentComponent implements OnInit {
 
   getPreviousURL(){
 
-    this.previousURLService.getPreviousURL().subscribe(url => {
+    this.previousRouteService.getPreviousURL().subscribe(url => {
 
       if(url != null && url.startsWith('/confirm-tournament')){
 

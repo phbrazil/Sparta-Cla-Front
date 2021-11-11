@@ -41,7 +41,7 @@ const routes: Routes = [
       loadChildren: adminModule
     }]
   },
-  { path: '**', redirectTo: '' },
+  //{ path: '**', redirectTo: '' },
 ];
 
 

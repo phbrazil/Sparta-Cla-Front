@@ -7,7 +7,7 @@ import { AlertService } from './alert.service';
 import { User } from '../_models/user';
 import { ModalControlService } from './modal-control.service';
 import * as $ from 'jquery';
-import { PreviousURLService } from './previous-url.service';
+import { PreviousRouteService } from './previous-route.service';
 @Injectable({ providedIn: 'root' })
 export class AccountService {
   private userSubject: BehaviorSubject<User>;
@@ -25,7 +25,7 @@ export class AccountService {
     private http: HttpClient,
     private alertService: AlertService,
     private modalControl: ModalControlService,
-    private previousUrl: PreviousURLService
+    private previousRouteService: PreviousRouteService
   ) {
     this.userSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
     this.user = this.userSubject.asObservable();
@@ -221,7 +221,8 @@ export class AccountService {
     localStorage.removeItem('user');
     //localStorage.removeItem('token');
     this.userSubject.next(null);
-    this.previousUrl.setPreviousURL(null);
+    this.setUser(null);
+    this.previousRouteService.setPreviousURL(null);
     this.router.navigate(['/']);
 
   }

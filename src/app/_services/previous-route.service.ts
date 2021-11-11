@@ -4,7 +4,7 @@ import * as $ from 'jquery'
 @Injectable({
   providedIn: 'root'
 })
-export class PreviousURLService {
+export class PreviousRouteService {
 
   private previousURL = new BehaviorSubject<string>('');
 

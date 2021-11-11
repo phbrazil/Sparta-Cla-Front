@@ -1,16 +1,15 @@
 import { Location } from '@angular/common';
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router, RoutesRecognized } from '@angular/router';
+import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
-import { filter, pairwise } from 'rxjs/operators';
 import { User } from './_models/user';
 import { AccountService } from './_services';
 import { ModalControlService } from './_services/modal-control.service';
 import * as $ from 'jquery';
 import { LoginComponent } from './pages/account/login/login.component';
 import { MatDialog } from '@angular/material/dialog';
-import { PreviousURLService } from './_services/previous-url.service';
 import { ConfirmTournamentComponent } from './pages/admin/logged-pages/confirm-tournament/confirm-tournament.component';
+import { PreviousRouteService } from './_services/previous-route.service';
 //declare var $ : any;
 
 @Component({
@@ -27,13 +26,12 @@ export class AppComponent {
   isMessage: boolean = false;
 
   // save the previous route
-  public previousRoutePath = new BehaviorSubject<string>('');
+  //public previousRoutePath = new BehaviorSubject<string>('');
 
   constructor(private accountService: AccountService, private router: Router,
     private modalControl: ModalControlService,
     private location: Location, public dialog: MatDialog,
-    private previousUrlService: PreviousURLService,
-    private activatedRoute: ActivatedRoute) {
+    private previousRoutePath: PreviousRouteService) {
 
     this.accountService.user.subscribe(x => this.user = x);
 
@@ -43,16 +41,25 @@ export class AppComponent {
 
   ngOnInit(): void {
 
+    console.log('to no init')
+
+    //this.previousRoutePath.setPreviousURL(this.location.path());
+
     this.modalControl.closeAllModals();
 
     this.checkConfirmTournament();
 
-    //se logado direciona para a pagina inicial welcome
-   // if (this.user && !this.user.changePassword && !this.isCheckingConfirmTournament) {
+  }
 
-     // this.router.navigate(['/welcome']);
+  ngOnChanges(): void {
 
-    //}
+    console.log('to no onchanges')
+
+    //this.previousRoutePath.setPreviousURL(this.location.path());
+
+    this.modalControl.closeAllModals();
+
+    this.checkConfirmTournament();
 
   }
 
@@ -60,43 +67,31 @@ export class AppComponent {
 
     this.isCheckingConfirmTournament = true;
 
-    this.previousRoutePath.next(this.location.path());
+    this.previousRoutePath.getPreviousURL().subscribe(url => {
 
-    this.router.events.pipe(
-      filter(e => e instanceof RoutesRecognized),
-      pairwise(),
-    ).subscribe((event: any[]) => {
+      if (this.user && !this.user.changePassword) {
+        if (this.location.path().startsWith('/confirm-tournament')
+          || url && url.startsWith('/confirm-tournament')) {
 
-        this.isCheckingConfirmTournament = false;
+          this.dialog.open(ConfirmTournamentComponent);
 
-        event.forEach(url => {
+        } else {
 
-          if (url.urlAfterRedirects.startsWith('/confirm-tournament')) {
+          this.router.navigate(['/welcome']);
 
-            //SET SERVICE URL
-            this.previousUrlService.setPreviousURL(url.urlAfterRedirects);
+        }
 
-            if (!this.user) {
+      } else {
+        if (this.location.path().startsWith('/confirm-tournament')
+          || url && url.startsWith('/confirm-tournament')) {
 
-              this.dialog.open(LoginComponent);
+          this.dialog.open(LoginComponent);
 
-            } else {
+        }
 
-              this.router.navigate(['/welcome']);
+      }
 
-              this.dialog.open(ConfirmTournamentComponent);
-            }
-
-          }
-        });
-
-
-
-      }, err =>{
-
-        console.log(err)
-
-        this.isCheckingConfirmTournament = false;
-      });
+    });
   }
+
 }

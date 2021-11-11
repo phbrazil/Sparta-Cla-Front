@@ -7,8 +7,8 @@ import { ModalControlService } from 'src/app/_services/modal-control.service';
 import { User } from 'src/app/_models/user';
 import { MatDialog } from '@angular/material/dialog';
 import { BehaviorSubject } from 'rxjs';
-import { PreviousURLService } from 'src/app/_services/previous-url.service';
 import { ConfirmTournamentComponent } from '../../admin/logged-pages/confirm-tournament/confirm-tournament.component';
+import { PreviousRouteService } from 'src/app/_services/previous-route.service';
 
 @Component({
   selector: 'app-login',
@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
     private alertService: AlertService, private router: Router,
     private accountService: AccountService, private modalControl: ModalControlService,
     public dialog: MatDialog,
-    private previousURLService: PreviousURLService,
+    private previousRouteService: PreviousRouteService,
     private activatedRoute: ActivatedRoute) {
   }
 
@@ -77,7 +77,7 @@ export class LoginComponent implements OnInit {
       this.dialog.closeAll();
 
       //verifica se há url anterior
-      this.previousURLService.getPreviousURL().subscribe(url => {
+      this.previousRouteService.getPreviousURL().subscribe(url => {
 
         if (url != null && url != '' && this.user) {
 

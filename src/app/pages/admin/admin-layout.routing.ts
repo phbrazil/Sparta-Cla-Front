@@ -13,6 +13,7 @@ import { MyTournamentsComponent } from "./logged-pages/my-tournaments/my-tournam
 import { ConfirmTournamentComponent } from "./logged-pages/confirm-tournament/confirm-tournament.component";
 import { NotificationsComponent } from "./logged-pages/notifications/notifications.component";
 import { TableResultComponent } from "../table-result/table-result.component";
+import { ModalPublicComponent } from "src/app/shared/components/modal-public/modal-public.component";
 
 export const AdminLayoutRoutes: Routes = [
 
@@ -28,7 +29,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'new-tournament', component: NewTournamentComponent },
     { path: 'list-tournaments', component: ListTournamentsComponent },
     { path: 'list-users', component: ListUsersComponent },
-    { path: 'confirm-tournament/:idCamp', component: ConfirmTournamentComponent },
+    { path: 'confirm-tournament/:idCamp', component: ModalPublicComponent },
     { path: 'result-game/:idCamp', component: TableResultComponent },
 
     //{ path: 'notifications', component: NotificationsComponent },
