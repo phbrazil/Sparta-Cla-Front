@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, ParamMap, Params, Router } from '@angular/router';
@@ -25,7 +26,8 @@ export class ConfirmTournamentComponent implements OnInit {
     private activateRoute: ActivatedRoute, private router: Router,
     private previousRouteService: PreviousRouteService,
     public dialog: MatDialog, private accountService: AccountService,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private location: Location) {
 
     this.accountService.user.subscribe(x => this.user = x);
 
@@ -33,7 +35,7 @@ export class ConfirmTournamentComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.getPreviousURL();
+    this.getPreviousRoute();
 
   }
 
@@ -58,18 +60,25 @@ export class ConfirmTournamentComponent implements OnInit {
 
   }
 
-  getPreviousURL(){
+  getPreviousRoute() {
+
+    const returnUrl = decodeURIComponent(this.location.path()).replace("?returnUrl=", "");
 
     this.previousRouteService.getPreviousURL().subscribe(url => {
 
-      if(url != null && url.startsWith('/confirm-tournament')){
+      if (url != null && url.startsWith('/confirm-tournament')) {
 
         this.idCamp = Number(url.replace("/confirm-tournament/", ""));
 
         this.loadTournament();
 
-      }
+      } else if (returnUrl.startsWith('/confirm-tournament')) {
 
+        this.idCamp = Number(returnUrl.replace("/confirm-tournament/", ""))
+
+        this.loadTournament();
+
+      }
 
     })
 
@@ -79,18 +88,7 @@ export class ConfirmTournamentComponent implements OnInit {
 
     this.isLoading = true;
 
-    //REFATORAR ESSE CODIGO USANDO QUERY PARAM DO ANGULAR
-    //https://angular.io/guide/router
-
-    // if (url) {
-
-    //  let urlP = new URL(`https://www.spartacla.com.br${url}`);
-
-
-
-    //this.idCamp = Number(urlP.searchParams.get("id"));
-
-    if (this.idCamp != 0) {
+    if (this.idCamp != 0 && this.user) {
 
       this.tournamentService.getTournamentById(this.idCamp).subscribe(tournament => {
 
@@ -117,16 +115,7 @@ export class ConfirmTournamentComponent implements OnInit {
 
       this.router.navigate(['/my-tournaments']);
 
-      //this.dialog.closeAll();
-
     }
-    //  }
-
-
-    // }, err => {
-    // this.isLoading = false;
-
-    //});
 
   }
 

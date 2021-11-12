@@ -22,6 +22,7 @@ export class AppComponent {
   user: User;
   validationCode: string;
   isCheckingConfirmTournament = false;
+  returnUrl: string;
 
   isMessage: boolean = false;
 
@@ -41,21 +42,13 @@ export class AppComponent {
 
   ngOnInit(): void {
 
-    console.log('to no init')
+    this.returnUrl = decodeURIComponent(this.location.path()).replace("?returnUrl=", "");
 
-    //this.previousRoutePath.setPreviousURL(this.location.path());
+    if(this.returnUrl.startsWith("/confirm-tournament")){
 
-    this.modalControl.closeAllModals();
+      this.previousRoutePath.setPreviousURL(this.location.path());
 
-    this.checkConfirmTournament();
-
-  }
-
-  ngOnChanges(): void {
-
-    console.log('to no onchanges')
-
-    //this.previousRoutePath.setPreviousURL(this.location.path());
+    }
 
     this.modalControl.closeAllModals();
 
@@ -70,7 +63,7 @@ export class AppComponent {
     this.previousRoutePath.getPreviousURL().subscribe(url => {
 
       if (this.user && !this.user.changePassword) {
-        if (this.location.path().startsWith('/confirm-tournament')
+        if (this.returnUrl.startsWith('/confirm-tournament')
           || url && url.startsWith('/confirm-tournament')) {
 
           this.dialog.open(ConfirmTournamentComponent);
@@ -82,7 +75,7 @@ export class AppComponent {
         }
 
       } else {
-        if (this.location.path().startsWith('/confirm-tournament')
+        if (this.returnUrl.startsWith('/confirm-tournament')
           || url && url.startsWith('/confirm-tournament')) {
 
           this.dialog.open(LoginComponent);

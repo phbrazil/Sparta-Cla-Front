@@ -223,9 +223,18 @@ export class AccountService {
     this.userSubject.next(null);
     this.setUser(null);
     this.previousRouteService.setPreviousURL(null);
-    this.router.navigate(['/']);
+    this.reloadCurrentRoute();
 
   }
+
+  reloadCurrentRoute() {
+    const currentUrl = this.router.url;
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([currentUrl]);
+    });
+  }
+
+
 
   getTokenStatus() {
 

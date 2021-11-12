@@ -22,7 +22,13 @@ export class AuthGuard implements CanActivate {
             return true;
         }
 
-        this.previousRoutePath.setPreviousURL(this.location.path());
+        const returnUrl = decodeURIComponent(this.location.path()).replace("?returnUrl=", "");
+
+        if(returnUrl.startsWith("/confirm-tournament")){
+
+          this.previousRoutePath.setPreviousURL(this.location.path());
+
+        }
 
         //open login modal
         this.dialog.open(LoginComponent);

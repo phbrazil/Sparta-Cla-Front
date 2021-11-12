@@ -45,7 +45,6 @@ export class ListTournamentsComponent implements OnInit {
       this.isLoading = false;
 
     }, err => {
-      console.log("Ocorreu algum Erro", err);
       this.isLoading = false;
     });
   }
