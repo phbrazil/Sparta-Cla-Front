@@ -1,18 +1,14 @@
-<div *ngIf="!isLoading && isInvited" class="modal-content">
-  <div class="modal-body">
-    <div *ngIf="isLoading" class="d-flex justify-content-center">
-      <div class="spinner-grow text-warning" role="status" style="width: 5rem; height: 5rem;">
+<div *ngIf="!isLoading && isInvited && !isAccepted" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirmação de <span class="text-yellow">INSCRIÇÃO</span></h5>
+        <button class="close" (click)="closeModal()" mat-button mat-dialog-close aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-    </div>
-    <div  class="col-xl-12 col-lg-12">
-      <div class="section-title title-style-three text-center">
-        <div class="modal-header">
-          <h2 class="modal-title">Confirmação de <span class="text-yellow">INSCRIÇÃO</span></h2>
-          <button class="close" (click)="closeModal()" mat-button mat-dialog-close aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <p>Clique no botão abaixo para confirmar sua inscrição no torneio</p>
+      <div class="modal-body">
+        <p>Confirme sua inscricão no torneio abaixo</p>
         <ul class="list-group">
           <li class="list-group-item">Modo <span class="text-yellow">{{tournament?.mode}}</span></li>
           <li class="list-group-item">Data <span class="text-yellow">{{ tournament?.date | date : 'fullDate' : '' :
@@ -24,26 +20,38 @@
           <li class="list-group-item">Custo <span class="text-yellow">{{tournament?.cost}}</span></li>
         </ul>
       </div>
-      <div class="row justify-content-center">
-        <div class="col-md-9 text-center mt-4">
-          <button (click)="confirm()" [disabled]="isLoading" class="btn-custom" title="Confirmar">
-            <span *ngIf="isLoading" class="spinner-border spinner-border-sm mr-1"></span>
-            Confirmar Inscrição</button>
-        </div>
+      <div class="modal-footer">
+        <button (click)="confirm()" [disabled]="isLoading" class="btn btn-primary">Confirmar</button>
+        <button (click)="closeModal()" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
       </div>
     </div>
   </div>
 </div>
 
-<div *ngIf="!isInvited && !isLoading" class="modal-content">
+<div *ngIf="!isInvited && !isLoading && !isAccepted" class="modal-content">
   <div class="modal-header">
-    <h5 class="modal-title">Atenção!</h5>
+    <h5 class="modal-title text-muted">Atenção!</h5>
     <button class="close" (click)="closeModal()" mat-button mat-dialog-close aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
     <p class="text-danger">Você não foi convidado para esse Torneio</p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-secondary" (click)="closeModal()" mat-button mat-dialog-close>Fechar</button>
+  </div>
+</div>
+
+<div *ngIf="isAccepted" class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title text-muted">Participação já confirmada!</h5>
+    <button class="close" (click)="closeModal()" mat-button mat-dialog-close aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p class="text-success">Você já confirmou participação nesse torneio</p>
   </div>
   <div class="modal-footer">
     <button class="btn btn-secondary" (click)="closeModal()" mat-button mat-dialog-close>Fechar</button>

@@ -21,6 +21,7 @@ export class ConfirmTournamentComponent implements OnInit {
   user: User;
   hasError: boolean = false;
   isInvited: boolean = true;
+  isAccepted: boolean = false;
 
   constructor(private tournamentService: TournamentService, private alertService: AlertService,
     private activateRoute: ActivatedRoute, private router: Router,
@@ -84,6 +85,38 @@ export class ConfirmTournamentComponent implements OnInit {
 
   }
 
+  checkIsAccepted(idCamp: number) {
+
+    //VERIFICAR SE CONVITE JÁ FOI ACEITO
+
+    this.isLoading = true;
+
+    this.tournamentService.getSubscriptionByIdTour(idCamp).subscribe(res => {
+
+      res.forEach(insc => {
+
+        let membrosTime = JSON.parse(insc.membrosTime);
+
+        membrosTime.forEach(membro => {
+
+          if (membro.email == this.user.email && membro.confirmed) {
+
+            this.isAccepted = true;
+          }
+
+        });
+
+      });
+
+      this.isLoading = false;
+
+    }, err => {
+      this.isLoading = false;
+      console.log(err)
+    })
+
+  }
+
   loadTournament() {
 
     this.isLoading = true;
@@ -97,6 +130,8 @@ export class ConfirmTournamentComponent implements OnInit {
         this.tournament = tournament;
 
         this.isLoading = false;
+
+        this.checkIsAccepted(this.tournament.idCamp);
 
         this.router.navigate(['/my-tournaments']);
 
