@@ -10,8 +10,6 @@ import { WelcomeComponent } from "./logged-pages/welcome/welcome.component";
 import { ListTournamentsComponent } from "./logged-pages/manage/tournament/list-tournaments/list-tournaments.component";
 import { ListUsersComponent } from "./logged-pages/manage/users/list-users/list-users.component";
 import { MyTournamentsComponent } from "./logged-pages/my-tournaments/my-tournaments.component";
-import { ConfirmTournamentComponent } from "./logged-pages/confirm-tournament/confirm-tournament.component";
-import { NotificationsComponent } from "./logged-pages/notifications/notifications.component";
 import { TableResultComponent } from "../table-result/table-result.component";
 import { ModalPublicComponent } from "src/app/shared/components/modal-public/modal-public.component";
 
@@ -31,7 +29,5 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'list-users', component: ListUsersComponent },
     { path: 'confirm-tournament/:idCamp', component: ModalPublicComponent },
     { path: 'result-game/:idCamp', component: TableResultComponent },
-
-    //{ path: 'notifications', component: NotificationsComponent },
-
+    { path: '**', component: WelcomeComponent },
 ];

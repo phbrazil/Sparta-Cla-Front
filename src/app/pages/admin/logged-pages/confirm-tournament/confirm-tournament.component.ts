@@ -1,7 +1,7 @@
 import { Location } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, ParamMap, Params, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Tournament } from 'src/app/_models/tournament';
 import { User } from 'src/app/_models/user';
 import { AccountService, AlertService } from 'src/app/_services';
@@ -24,10 +24,9 @@ export class ConfirmTournamentComponent implements OnInit {
   isAccepted: boolean = false;
 
   constructor(private tournamentService: TournamentService, private alertService: AlertService,
-    private activateRoute: ActivatedRoute, private router: Router,
+    private router: Router,
     private previousRouteService: PreviousRouteService,
     public dialog: MatDialog, private accountService: AccountService,
-    private route: ActivatedRoute,
     private location: Location) {
 
     this.accountService.user.subscribe(x => this.user = x);
