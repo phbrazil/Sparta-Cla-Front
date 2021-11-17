@@ -43,13 +43,14 @@ export class MyStatsComponent implements OnInit {
 
     this.activisionService.getWarzoneInfoCloudFunction(wzProfile, platform).subscribe(res => {
 
+
       let json = JSON.parse(res.stats.body);
+
+      console.log(json);
 
       this.isLoading = false;
 
       this.statics = json.recentMatches.matches;
-
-      console.log(this.statics)
 
       if (json.error) {
 
