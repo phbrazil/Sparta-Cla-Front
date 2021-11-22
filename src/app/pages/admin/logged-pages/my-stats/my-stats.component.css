@@ -98,3 +98,13 @@ h2 {
 .fa-times-circle, .fa-flag {
   color: #c0392b
 }
+
+
+@media (max-width: 465px) {
+  .table-responsive-xl tbody td:nth-child(1) {
+    font-size: 1rem;
+  }
+  .table-responsive-xl tbody td {
+    font-size: 14px;
+  }
+}
