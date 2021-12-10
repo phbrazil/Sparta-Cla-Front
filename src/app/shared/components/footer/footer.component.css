@@ -36,6 +36,10 @@
   line-height: 2.5rem;
 }
 
+.fab {
+  color: var(--primary-color);
+}
+
 .fa:hover {
   color: var(--primary-color);
 }
