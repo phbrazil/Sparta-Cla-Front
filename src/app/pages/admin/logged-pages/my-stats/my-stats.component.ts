@@ -112,7 +112,7 @@ export class MyStatsComponent implements OnInit {
         qtdPlayers++;
       }
 
-      if(player.playerStats.kdRatio > higherKD.kdRatio){
+      if (player.playerStats.kdRatio > higherKD.kdRatio) {
         higherKD.kdRatio = player.playerStats.kdRatio;
         higherKD.name = player.player.username;
       }
@@ -155,6 +155,27 @@ export class MyStatsComponent implements OnInit {
         return "BR Duos";
       case "br_brsolo":
         return "BR Solo";
+
+      //NOVO MAPA CALDERA
+      case "br_vg_royale_solo":
+        return "BR Solo (Vanguard)";
+      case "br_vg_royale_duos":
+        return "BR Duo (Vanguard)";
+      case "br_vg_royale_trios":
+        return "BR Trio (Vanguard)";
+      case "br_vg_royale_quads":
+        return "BR Squad (Vanguard)";
+      case "br_br_quads":
+        return "BR Squad";
+      case "br_dmz_plndsolo":
+        return "Saque Solo"
+      case "br_dmz_plndduos":
+        return "Saque Duo"
+      case "br_dmz_plndtrios":
+        return "Saque Trio"
+      case "br_dmz_plndquads":
+        return "Saque Squad"
+
     }
   }
 }

@@ -164,7 +164,7 @@
             </thead>
             <tbody>
               <tr *ngFor="let stats of statics">
-                <td>{{stats.playerStats.teamPlacement}} º</td>
+                <td>{{stats.playerStats.teamPlacement ? stats.playerStats.teamPlacement + 'º' : 'N/A'}}</td>
                 <td>{{returnMode(stats.mode)}}</td>
                 <td>{{returnKd(stats.playerStats.kdRatio)}}</td>
                 <td>{{stats.playerStats.kills}}</td>
