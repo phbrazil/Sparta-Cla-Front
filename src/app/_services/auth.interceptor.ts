@@ -58,7 +58,7 @@ export class AuthInterceptor implements HttpInterceptor {
         //ACTIVISION ID INCORRETO TAMBEM RETORNA 401
         if (err.status === 401 && err.error.error == 'Unauthorized') {
 
-          this.accountService.logout();
+          this.accountService.logout('interceptor');
 
         } else {
           console.log(err)

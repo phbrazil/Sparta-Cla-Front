@@ -90,7 +90,7 @@ export class RegisterConfirmationComponent implements OnInit {
 
         this.alertService.error('Ocorreu um erro', 'Tente novamente mais tarde', { keepAfterRouteChange: true });
 
-        this.accountService.logout();
+        this.accountService.logout('register-confirmation');
 
       } else {
 

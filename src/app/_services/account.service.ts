@@ -211,7 +211,7 @@ export class AccountService {
       }));
   }
 
-  logout() {
+  logout(caller: String) {
 
     //REMOVE FADE BUGADO QUE CONTINUAVA
     $('body').removeClass('modal-open');
@@ -223,7 +223,9 @@ export class AccountService {
     this.userSubject.next(null);
     this.setUser(null);
     this.previousRouteService.setPreviousURL(null);
-    this.reloadCurrentRoute();
+    if(caller != 'new-password'){
+      this.reloadCurrentRoute();
+    }
 
   }
 
@@ -321,7 +323,7 @@ export class AccountService {
       .pipe(map(x => {
         // auto logout if the logged in user deleted their own record
         if (id == this.userValue.idUser) {
-          this.logout();
+          this.logout('delete');
         }
         return x;
       }));

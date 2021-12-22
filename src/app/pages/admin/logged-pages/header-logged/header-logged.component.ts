@@ -25,7 +25,7 @@ export class HeaderLoggedComponent implements OnInit {
 
   logout() {
 
-    this.accountService.logout();
+    this.accountService.logout('header-logged');
   }
 
   getNotifications() {
