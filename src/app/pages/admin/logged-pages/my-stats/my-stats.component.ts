@@ -113,7 +113,7 @@ export class MyStatsComponent implements OnInit {
       }
 
       if (player.playerStats.kdRatio > higherKD.kdRatio) {
-        higherKD.kdRatio = player.playerStats.kdRatio;
+        higherKD.kdRatio = Math.round(player.playerStats.kdRatio*100)/100;
         higherKD.name = player.player.username;
       }
 

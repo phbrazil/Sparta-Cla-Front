@@ -106,6 +106,8 @@ export class LoginComponent implements OnInit {
 
       if (err.status === 401) {
 
+        console.log('to aqui')
+
         this.alertService.error('Acesso Negado', 'Verifique seu email e senha', { keepAfterRouteChange: true });
 
       } else {
