@@ -134,6 +134,10 @@ h2 {
     font-size: 19px;
   }
 
+  .card-header {
+    border: 1px solid rgba(0,0,0,.125);
+  }
+
   .pdn {
     display: flex;
     flex-direction: row;
