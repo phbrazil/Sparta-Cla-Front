@@ -156,6 +156,10 @@ ul {
   text-align: center;
 }
 
+.bg-grey {
+  color: #E9ECEF !important;
+}
+
 
 @media (max-width: 465px) {
   .title {
