@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { retry } from 'rxjs/operators';
 import { User } from 'src/app/_models/user';
 import { AccountService, AlertService } from 'src/app/_services';
 import { ActivisionService } from 'src/app/_services/activision.service';
@@ -151,7 +152,11 @@ export class ProfileComponent implements OnInit {
 
     this.isLoading = true;
 
-    this.activisionService.getWarzoneInfoCloudFunction(wzProfile, platform).subscribe(res => {
+    this.activisionService.getWarzoneInfoCloudFunction(wzProfile, platform)
+    .pipe(
+      retry(3), // you retry 3 times
+    )
+    .subscribe(res => {
       this.isLoading = false;
       let json = JSON.parse(res.stats.body);
       this.stats = json.response;

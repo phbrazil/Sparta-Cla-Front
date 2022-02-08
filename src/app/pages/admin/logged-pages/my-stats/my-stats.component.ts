@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { interval } from 'rxjs';
+import { retry } from 'rxjs/operators';
 import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services';
 import { ActivisionService } from 'src/app/_services/activision.service';
+import { delay, map } from 'underscore';
 
 @Component({
   selector: 'app-my-stats',
@@ -41,50 +44,53 @@ export class MyStatsComponent implements OnInit {
 
     this.hasErrors = false;
 
-    this.activisionService.getWarzoneInfoCloudFunction(wzProfile, platform).subscribe(res => {
+    this.activisionService.getWarzoneInfoCloudFunction(wzProfile, platform)
+      .pipe(
+        retry(3), // you retry 3 times
+      ).subscribe(res => {
 
 
-      let json = JSON.parse(res.stats.body);
+        let json = JSON.parse(res.stats.body);
 
-      console.log(json);
+        console.log(json);
 
-      this.isLoading = false;
+        this.isLoading = false;
 
-      this.statics = json.recentMatches.matches;
+        this.statics = json.recentMatches.matches;
 
-      if (json.error) {
+        if (json.error) {
+
+          this.hasErrors = true
+
+        } else {
+
+          var SSOToken = json.SSOToken.replaceAll('=', ':').replaceAll(';', ':');
+
+          SSOToken = SSOToken.split(":");
+
+          //SE API FOR CLOUD FUNCTION
+          this.stats = json.response;
+          this.recentMatches = json.recentMatches;
+          this.lastMatchDetail = json.lastMatchDetail;
+
+          //this.stats = res;
+
+          this.KD = Math.round(this.stats.br.kdRatio * 100) / 100;
+          this.KDRecent = Math.round(this.recentMatches.summary.all.kdRatio * 100) / 100;
+
+          //AVERAGE KD LAST MATCH
+
+          this.lastMatchKDInfo = this.getLastMatchKD();
+
+        }
+
+
+      }, err => {
+        console.log(err, "erro aqui");
+        this.isLoading = false;
 
         this.hasErrors = true
-
-      } else {
-
-        var SSOToken = json.SSOToken.replaceAll('=', ':').replaceAll(';', ':');
-
-        SSOToken = SSOToken.split(":");
-
-        //SE API FOR CLOUD FUNCTION
-        this.stats = json.response;
-        this.recentMatches = json.recentMatches;
-        this.lastMatchDetail = json.lastMatchDetail;
-
-        //this.stats = res;
-
-        this.KD = Math.round(this.stats.br.kdRatio * 100) / 100;
-        this.KDRecent = Math.round(this.recentMatches.summary.all.kdRatio * 100) / 100;
-
-        //AVERAGE KD LAST MATCH
-
-        this.lastMatchKDInfo = this.getLastMatchKD();
-
-      }
-
-
-    }, err => {
-      console.log(err, "erro aqui");
-      this.isLoading = false;
-
-      this.hasErrors = true
-    })
+      })
 
   }
 
@@ -113,7 +119,7 @@ export class MyStatsComponent implements OnInit {
       }
 
       if (player.playerStats.kdRatio > higherKD.kdRatio) {
-        higherKD.kdRatio = Math.round(player.playerStats.kdRatio*100)/100;
+        higherKD.kdRatio = Math.round(player.playerStats.kdRatio * 100) / 100;
         higherKD.name = player.player.username;
       }
 

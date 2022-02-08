@@ -2,6 +2,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Constants } from '../utils/Constants';
+import { retry } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class ActivisionService {
@@ -27,7 +28,13 @@ export class ActivisionService {
 
     checkPublicStatus(gamerTag: string, platform: string){
 
-      this.getWarzoneInfoCloudFunction(gamerTag, platform).subscribe(res =>{
+      this.getWarzoneInfoCloudFunction(gamerTag, platform)
+      .pipe(
+        retry(3), // you retry 3 times
+      )
+      .subscribe(res =>{
+
+        console.log(res)
 
         this.setPublicStatus(true);
 
