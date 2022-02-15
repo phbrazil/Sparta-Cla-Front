@@ -1,31 +1,128 @@
-<div class="container">
-    <div class="col-md-12 mt-4 mb-4">
-        <div class="row">
-            <div class="col-md-6 center">
-                <div class="card w-50">
-                    <div class="card-body">
-                        <h5 class="card-title">Créditos</h5>
-                        <h2 class="text-yellow">10</h2>
-                        <a routerLink="/torneios" class="btn btn-primary">Ir para Torneios</a>
-                    </div>
+<section>
+  <div class="container game-content mt-5 mb-5 pt-5 pb-5">
+    <div class="row">
+      <div  class="col-12">
+        <h2>Meus <span class="text-yellow">Créditos</span></h2>
+        <div  class="row">
+          <div class="col-12 col-sm-6 col-6">
+            <div class="card hg">
+              <div class="card-body">
+                <div class="media align-items-center">
+                  <!-- <span class="activity-icon bgl-success mr-md-4 mr-3">
+                    <em class="fa fa-trophy"></em>
+                  </span> -->
+                  <div class="media-body">
+                    <p class="fs-14 mb-2">Saldo de caixa</p>
+                    <span class="title text-yellow font-w600">R$ 100</span>
+                    <button class="btn btn-custom">Resgatar</button>
+                  </div>
                 </div>
+              </div>
             </div>
-            <div class="col-md-6">
-                <div style="display: block;">
-                    <canvas baseChart [colors]="chartColors" [datasets]="vitorias" [labels]="barChartLabels"
-                        [options]="barChartOptions" [plugins]="barChartPlugins" [legend]="barChartLegend"
-                        [chartType]="barChartType">
-                    </canvas>
+          </div>
+          <div class="col-12 col-sm-6 col-6">
+            <div class="card hg">
+              <div class="card-body">
+                <div class="media align-items-center">
+                  <div class="media-body">
+                    <p class="fs-14 mb-2">Créditos</p>
+                    <span class="title text-yellow font-w600">40</span>
+                    <button class="btn btn-custom"> Comprar</button>
+                  </div>
                 </div>
+              </div>
             </div>
-            <div class="col-md-6">
-                <div style="display: block;">
-                    <canvas baseChart [colors]="chartColors" [datasets]="creditos" [labels]="barChartLabels"
-                        [options]="barChartOptions" [plugins]="barChartPlugins" [legend]="barChartLegend"
-                        [chartType]="barChartType">
-                    </canvas>
-                </div>
-            </div>
+          </div>
         </div>
+        <div class="row">
+          <div class="col-12">
+
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 col-12">
+            <div class="card">
+              <div class="card-body">
+                <div class="table-responsive-xl">
+                  <h4>Histórico<span class="text-yellow"> de Créditos</span></h4>
+                  <table class="table mt-0">
+                    <thead>
+                      <tr>
+                        <th scope="col">Data</th>
+                        <th scope="col">Descrição</th>
+                        <th scope="col">Saldo</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>12/02/2022</td>
+                        <td>Sparta credito</td>
+                        <td>R$ 20</td>
+                      </tr>
+                      <tr>
+                        <td>12/02/2022</td>
+                        <td>Premio trio</td>
+                        <td>R$ 200</td>
+                      </tr>
+                      <tr>
+                        <td>12/02/2022</td>
+                        <td>Premio solo</td>
+                        <td>R$ 100</td>
+                      </tr>
+                      <tr>
+                        <td>12/02/2022</td>
+                        <td>Premio squad</td>
+                        <td>R$ 500</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-12">
+            <div class="card">
+              <div class="card-body">
+                <div class="table-responsive-xl">
+                  <h4>Histórico<span class="text-yellow"> de  Transações</span></h4>
+                  <table class="table mt-0">
+                    <thead>
+                      <tr>
+                        <th scope="col">Data</th>
+                        <th scope="col">Descrição</th>
+                        <th scope="col">Saldo</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>12/02/2022</td>
+                        <td>Saque</td>
+                        <td>R$ 200</td>
+                      </tr>
+                      <tr>
+                        <td>12/02/2022</td>
+                        <td>Saque</td>
+                        <td>R$ 200</td>
+                      </tr>
+                      <tr>
+                        <td>12/02/2022</td>
+                        <td>Deposito</td>
+                        <td>R$ 200</td>
+                      </tr>
+                      <tr>
+                        <td>12/02/2022</td>
+                        <td>Deposito</td>
+                        <td>R$ 200</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
+</section>
