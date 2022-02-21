@@ -149,7 +149,7 @@ export class MyStatsComponent implements OnInit {
         return "Rebirth Squad";
       case "br_rebirth_rbrthtrios":
         return "Rebirth Trio";
-      case "br_rebirth_rbrthduo":
+      case "br_rebirth_rbrthduos":
         return "Rebirth Duo";
       case "br_dbd_dbd":
         return "Prova de Ferro 84";
