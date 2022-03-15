@@ -57,7 +57,10 @@
               </button-->
               <button *ngIf="user && !torneio.subscribed && torneio.hoursToStart > hoursToStart" mat-button (click)="registerTournament(torneio.idCamp)" [idCamp]="idCamp" class="btn btn-custom">Jogar</button>
 
-              <span *ngIf="torneio.hoursToStart < hoursToStart" class="text-warning">Faltam {{torneio.hoursToStart + timeZone}} horas para iniciar esse torneio</span>
+              <span *ngIf="torneio.hoursToStart < hoursToStart && torneio.hoursToStart + timeZone > 1" class="text-warning">Faltam {{torneio.hoursToStart + timeZone}} horas para iniciar esse torneio</span>
+              <span *ngIf="torneio.hoursToStart < hoursToStart && torneio.hoursToStart + timeZone == 1" class="text-warning">Falta {{torneio.hoursToStart + timeZone}} hora para iniciar esse torneio</span>
+              <span *ngIf="torneio.hoursToStart < hoursToStart && torneio.hoursToStart + timeZone == 0" class="text-warning">Esse torneio está prestes a começar</span>
+              <span *ngIf="torneio.hoursToStart < hoursToStart && torneio.hoursToStart + timeZone < 0" class="text-warning">Esse torneio já foi encerrado</span>
 
               <app-modal *ngIf="!user" title="Jogar"></app-modal>
 
