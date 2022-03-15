@@ -46,6 +46,7 @@ export class TournamentComponent implements OnInit {
     //this.pagina++;
     //this.service.getTournament(this.pagina, this.qtdPagina).subscribe( (tournament: Tournament[]) => this.tournament.push(...tournament),
     this.service.getTournament(this.pagina, this.qtdPagina).subscribe(res => {
+      console.log(res)
       this.tournaments = res;
       this.isLoading = false;
 

@@ -62,7 +62,7 @@
               <span *ngIf="torneio.hoursToStart < hoursToStart && torneio.hoursToStart + timeZone == 0" class="text-warning">Esse torneio está prestes a começar</span>
               <span *ngIf="torneio.hoursToStart < hoursToStart && torneio.hoursToStart + timeZone < 0" class="text-warning">Esse torneio já foi encerrado</span>
 
-              <app-modal *ngIf="!user" title="Jogar"></app-modal>
+              <app-modal *ngIf="!user && torneio.hoursToStart > hoursToStart" title="Jogar"></app-modal>
 
               <div *ngIf="torneio.subscribed">
                   <a class="btn btn-custom" href="#/my-tournaments">Ver meus torneios</a>
