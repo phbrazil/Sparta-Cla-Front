@@ -32,6 +32,9 @@
                 <div *ngIf="torneio.subscribed">
                   <span class="text-success">Já inscrito!</span>
                 </div>
+                <div *ngIf="torneio.hoursToStart < hoursToStart">
+                  <span class="text-warning">Inscrição encerrada</span><br>
+                </div>
               </div>
             </div>
           </div>
@@ -52,8 +55,9 @@
               <!--button *ngIf="user" (click)="registerTournament(torneio.idCamp)" type="button" class="btn btn-custom" data-toggle="modal" data-target="#modalRegister">
                 Jogar
               </button-->
-              <button *ngIf="user && !torneio.subscribed" mat-button (click)="registerTournament(torneio.idCamp)" [idCamp]="idCamp" class="btn btn-custom">Jogar</button>
+              <button *ngIf="user && !torneio.subscribed && torneio.hoursToStart > hoursToStart" mat-button (click)="registerTournament(torneio.idCamp)" [idCamp]="idCamp" class="btn btn-custom">Jogar</button>
 
+              <span *ngIf="torneio.hoursToStart < hoursToStart" class="text-warning">Faltam {{torneio.hoursToStart + timeZone}} horas para iniciar esse torneio</span>
 
               <app-modal *ngIf="!user" title="Jogar"></app-modal>
 

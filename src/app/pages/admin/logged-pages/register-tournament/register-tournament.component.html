@@ -30,7 +30,10 @@
           </div>
           <div *ngIf="tournament?.mode != 'Solo'" class="col-md-12 mb-2">
             <mat-form-field>
-              <label for="membroTime">Email do membro do Time</label>
+              <label *ngIf="!tournament?.mode.includes('X1'); else x1" for="membroTime">Email do membro do seu Time</label>
+              <ng-template #x1>
+                <label for="membroTime">Email do seu rival</label>
+              </ng-template>
               <div class="input-group mb-3">
                 <input type="email" maxlength="60" name="membroTime" formControlName="membroTime"
                   [(ngModel)]="membroTime" class="form-control" placeholder="Email" aria-label="membroTime"

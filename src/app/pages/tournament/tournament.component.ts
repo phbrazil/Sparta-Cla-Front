@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Constants } from 'src/app/utils/Constants';
 import { Subscription } from 'src/app/_models/subscription';
 import { User } from 'src/app/_models/user';
 import { AccountService, AlertService } from 'src/app/_services';
@@ -19,6 +20,8 @@ export class TournamentComponent implements OnInit {
   tournaments: Tournament[] = [];
   isLoading = false;
   idCamp: number;
+  hoursToStart = Constants.hoursToStart;
+  timeZone = Constants.timeZone;
 
   user: User;
 

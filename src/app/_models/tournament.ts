@@ -13,6 +13,7 @@ export class Tournament extends Subscription {
     active: boolean;
     privateCamp: boolean;
     times: number;
-    subscribed: boolean
+    subscribed: boolean;
+    hoursToStart: number;
 }
 
