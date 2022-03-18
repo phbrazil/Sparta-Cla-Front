@@ -64,7 +64,7 @@
 
               <app-modal *ngIf="!user && torneio.hoursToStart > hoursToStart" title="Jogar"></app-modal>
 
-              <div *ngIf="torneio.subscribed">
+              <div *ngIf="user && torneio.subscribed">
                   <a class="btn btn-custom" href="#/my-tournaments">Ver meus torneios</a>
               </div>
 

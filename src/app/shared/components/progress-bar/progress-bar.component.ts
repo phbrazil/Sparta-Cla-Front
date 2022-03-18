@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class ProgressBarComponent implements OnInit {
 
 
-  completed: number = 45;
+  completed: number = 65;
 
 
   constructor() { }
