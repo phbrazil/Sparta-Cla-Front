@@ -182,6 +182,17 @@ export class MyStatsComponent implements OnInit {
       case "br_dmz_plndquads":
         return "Saque Squad"
 
+      //NOVO MAPA FORTUNE'S KEEP
+      case "br_rebirth_playlist_wz340/fortkeep_res_quad":
+        return "Fortune's Keep Squad";
+      case "br_rebirth_playlist_wz340/fortkeep_res_trios":
+        return "Fortune's Keep Trio";
+      case "br_rebirth_playlist_wz340/fortkeep_res_duos":
+        return "Fortune's Keep Duo";
+      case "br_rebirth_playlist_wz340/fortkeep_res_solo":
+        return "Fortune's Keep Solo";
+
+
     }
   }
 }
