@@ -1,0 +1,99 @@
+<section class="container">
+  <div class="row mt-5 mb-5 pt-5 pb-5">
+    <div class="col-md-12 game-content">
+      <div class="card card0 rounded-0">
+				<div class="row">
+					<div class="col-md-6 d-md-block p-0 box">
+						<div class="card rounded-0 border-0 card1" id="bill">
+							<h3 id="heading1">Comprar Cod Points</h3>
+							<div class="row hover mt-5" [ngClass]="{'clicado' : clicked1 } " (click)="select($event, 10)">
+								<div class="col-lg-7 col-8 line pl ptb">
+									<h2 class="bill-head">Elite</h2>
+									<small class="bill-date">R$10,00</small>
+								</div>
+								<div class="col-lg-5 col-4 pl ptb text-center">
+									<h2 class="bill-head px-xl-5 px-lg-4">100</h2>
+                  <small class="bill-date">cod points</small><br>
+								</div>
+							</div>
+							<div class="row hover " [ngClass]="{'clicado' : clicked2 } " (click)="select($event, 30)">
+								<div class="col-lg-7 col-8 line pl ptb ">
+									<h2 class="bill-head">Platinum</h2>
+									<small class="bill-date">R$30,00</small>
+								</div>
+								<div class="col-lg-5 col-4 pl ptb text-center">
+									<h2 class="bill-head px-xl-5 px-lg-4">300</h2>
+                  <small class="bill-date">cod points</small><br>
+								</div>
+							</div>
+							<div class="row hover" [ngClass]="{'clicado' : clicked3 } " (click)="select($event, 50)">
+								<div class="col-lg-7 col-8 line pl ptb">
+									<h2 class="bill-head">Premium</h2>
+									<small class="bill-date">R$50,00</small><br>
+								</div>
+								<div class="col-lg-5 col-4 pl ptb text-center">
+									<h2 class="bill-head px-xl-5 px-lg-4">600</h2>
+                  <small class="bill-date">cod points</small><br>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-lg-7 col-8 line pl ptb">
+									<h2 class="bill-head">Outro valor</h2>
+									<small class="bill-date">{{valorParcial | currency : 'BRL'}}</small>
+								</div>
+								<div class="col-lg-5 col-4 pl ptb text-center">
+                  <input type="text" class="form-control text-center fb" maxlength="5" (click)="reset()" (keyup)="onKeyUp($event)">
+                  <small class="bill-date">cod points</small><br>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12 red-bg">
+									<p class="bill-date" id="total-label">Valor Total</p>
+									<h2 class="bill-head" id="total">{{valorTotal | currency : 'BRL'}}</h2>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-6 col-sm-12 p-0 box">
+						<div class="card rounded-0 border-0 card2" id="paypage">
+							<div class="form-card">
+			                    <h2 id="heading2" class="">Método de Pagamento</h2>
+			                    <div class="radio-group">
+			                        <div class='radio' data-value="credit"><img src="https://i.imgur.com/28akQFX.jpg" width="200px" height="60px"></div>
+			                        <div class='radio' data-value="paypal"><img src="https://i.imgur.com/5QFsx7K.jpg" width="200px" height="60px"></div>
+			                        <br>
+			                    </div>
+			                    <label class="pay">Nome identico do cartao</label>
+			                    <input type="text" class="form-control" name="name" placeholder="Exemplo E A Exemplo">
+			                    <div class="row">
+			                        <div class="col-8 col-md-6">
+			                            <label class="pay">Numero do cartão</label>
+			                            <input type="text" class="form-control" name="cardno" id="cr_no" placeholder="0000-0000-0000-0000" minlength="19" maxlength="19">
+			                        </div>
+			                        <div class="col-4 col-md-6">
+			                            <label class="pay">CVV</label>
+			                            <input type="password" name="cvcpwd" placeholder="&#9679;&#9679;&#9679;" class="placeicon form-control" minlength="3" maxlength="3">
+			                        </div>
+			                    </div>
+			                    <div class="row">
+			                        <div class="col-md-12">
+			                            <label class="pay ">Data Expiração</label>
+			                        </div>
+			                        <div class="col-md-12">
+			                            <input type="text" class="form-control" name="exp" id="exp" placeholder="MM/YY" minlength="5" maxlength="5">
+			                        </div>
+			                    </div>
+			                    <div class="row jctc">
+			                        <div class="col-md-6 mt-5">
+			                            <button type="submit" class="btn btn-custom">EFETUAR COMPRA</button>
+			                        </div>
+			                    </div>
+			                </div>
+						</div>
+					</div>
+				</div>
+			</div>
+    </div>
+  </div>
+</section>

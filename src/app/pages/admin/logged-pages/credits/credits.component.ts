@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { Label } from 'ng2-charts';
 
@@ -18,8 +19,8 @@ export class CreditsComponent implements OnInit {
   public barChartPlugins = [];
 
   public chartColors: any[] = [
-    { 
-      backgroundColor:["#e4a101", "#e4a101", "#e4a101", "#e4a101", "#e4a101", "#e4a101", "#e4a101", "#e4a101"] 
+    {
+      backgroundColor:["#e4a101", "#e4a101", "#e4a101", "#e4a101", "#e4a101", "#e4a101", "#e4a101", "#e4a101"]
     }];
 
   public vitorias: ChartDataSets[] = [
@@ -32,9 +33,13 @@ export class CreditsComponent implements OnInit {
     { data: [28, 48, 40, 19, 86, 27, 90], label: 'Créditos' }
   ];
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  navegate() {
+    this.router.navigate(['/buy-credits']);
   }
 
 }

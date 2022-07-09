@@ -16,6 +16,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ConfirmEmailComponent } from './pages/account/confirm-email/confirm-email.component';
 import { NewPasswordComponent } from './pages/account/new-password/new-password.component';
 import { ProfileComponent } from './pages/admin/logged-pages/profile/profile.component';
+import { BuyCreditsComponent } from './pages/admin/logged-pages/buy-credits/buy-credits.component';
 
 const adminModule = () => import('./pages/admin/admin-layout.module').then(x => x.AdminLayoutModule);
 

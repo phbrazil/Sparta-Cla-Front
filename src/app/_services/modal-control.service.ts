@@ -9,6 +9,7 @@ export class ModalControlService {
   private isModalLogin = new BehaviorSubject<boolean>(false);
   private isModalRegister = new BehaviorSubject<boolean>(false);
   private isModalReset = new BehaviorSubject<boolean>(false);
+  private modalCodPonits = new BehaviorSubject<boolean>(false);
 
 
 
@@ -38,6 +39,14 @@ export class ModalControlService {
     return this.isModalRegister.asObservable();
   }
 
+  public setModalCodPonits(status: boolean): void{
+    this.modalCodPonits.next(status);
+  }
+
+  public getModalCodPonits(): Observable<boolean>{
+    return this.modalCodPonits.asObservable();
+  }
+
   closeAllModals() {
 
     //REMOVE FADE BUGADO QUE CONTINUAVA
@@ -47,6 +56,7 @@ export class ModalControlService {
     this.setModalLogin(false);
     this.setModalRegister(false);
     this.setModalReset(false);
+    this.setModalCodPonits(false);
 
   }
 

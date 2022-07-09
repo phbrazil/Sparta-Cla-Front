@@ -28,6 +28,19 @@ p {
 
 }
 
+.fs-14 {
+  font-family: 'Oxanium', cursive;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--secondary-color);
+  text-transform: uppercase;
+}
+
+.subtitle {
+  font-size: 0.9375rem;
+  text-transform: uppercase;
+}
+
 .media-body {
   display: flex;
   flex-wrap: wrap;

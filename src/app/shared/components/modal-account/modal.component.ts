@@ -18,6 +18,7 @@ export class ModalComponent implements OnInit {
   isModalLogin = false;
   isModalRegister = false;
   isModalReset = false;
+  modalCodPonits = false;
 
   user: User;
 
@@ -43,6 +44,10 @@ export class ModalComponent implements OnInit {
       this.isModalReset = status;
     })
 
+    this.modalControl.getModalCodPonits().subscribe(status => {
+      this.modalCodPonits = status;
+    })
+
     this.cdr.detectChanges();
 
   }
@@ -56,6 +61,7 @@ export class ModalComponent implements OnInit {
     this.modalControl.setModalLogin(true);
     this.modalControl.setModalRegister(false);
     this.modalControl.setModalReset(false);
+    this.modalControl.setModalCodPonits(false);
 
   }
 

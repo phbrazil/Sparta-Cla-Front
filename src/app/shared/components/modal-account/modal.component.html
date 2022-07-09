@@ -1,7 +1,7 @@
 <app-buttom (click)="setModalLoginAsOpen()" title="{{title}}" data-toggle="modal" data-target="#modalLogin"></app-buttom>
 
 <!-- Modal login -->
-<div *ngIf="!user && isModalLogin && !isModalReset && !isModalRegister" class="modal fade" id="modalLogin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div *ngIf="!user && isModalLogin && !isModalReset && !isModalRegister && !modalCodPonits" class="modal fade" id="modalLogin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">
@@ -12,7 +12,7 @@
 </div>
 
 <!-- Modal Register-->
-<div *ngIf="isModalRegister && !isModalLogin && !isModalReset" class="modal fade" id="modalRegister" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div *ngIf="isModalRegister && !isModalLogin && !isModalReset && !modalCodPonits" class="modal fade" id="modalRegister" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">
@@ -23,11 +23,22 @@
 </div>
 
 <!-- Modal Reset-->
-<div *ngIf="isModalReset && !isModalLogin && !isModalRegister" class="modal fade" id="modalReset" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div *ngIf="isModalReset && !isModalLogin && !isModalRegister && !modalCodPonits" class="modal fade" id="modalReset" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">
         <app-reset-password></app-reset-password>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Compra Creditos-->
+<div *ngIf="modalCodPonits && !isModalReset && !isModalLogin && !isModalRegister " class="modal fade" id="modalCodPonits" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <app-buy-credits></app-buy-credits>
       </div>
     </div>
   </div>

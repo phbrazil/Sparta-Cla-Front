@@ -22,6 +22,7 @@ import { MyTournamentsComponent } from './logged-pages/my-tournaments/my-tournam
 import { AngularMaterialModule } from 'src/app/shared/angular-material/angular-material.module';
 import { ConfirmTournamentComponent } from './logged-pages/confirm-tournament/confirm-tournament.component';
 import { NotificationsComponent } from './logged-pages/notifications/notifications.component';
+import { BuyCreditsComponent } from './logged-pages/buy-credits/buy-credits.component';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { NotificationsComponent } from './logged-pages/notifications/notificatio
     MyTournamentsComponent,
     ConfirmTournamentComponent,
     NotificationsComponent,
+    BuyCreditsComponent,
   ],
   imports: [
     CommonModule,
@@ -56,7 +58,8 @@ import { NotificationsComponent } from './logged-pages/notifications/notificatio
     HeaderLoggedComponent,
     ProfileComponent,
     MyStatsComponent,
-    RegisterConfirmationComponent
+    RegisterConfirmationComponent,
+    BuyCreditsComponent
   ],
 })
 export class AdminLayoutModule { }
