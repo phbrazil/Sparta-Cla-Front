@@ -23,7 +23,13 @@ import { AngularMaterialModule } from 'src/app/shared/angular-material/angular-m
 import { ConfirmTournamentComponent } from './logged-pages/confirm-tournament/confirm-tournament.component';
 import { NotificationsComponent } from './logged-pages/notifications/notifications.component';
 import { BuyCreditsComponent } from './logged-pages/buy-credits/buy-credits.component';
+import { NgxMaskModule, IConfig } from 'ngx-mask';
 
+const maskConfigFunction: () => Partial<IConfig> = () => {
+  return {
+    validation: false,
+  };
+};
 
 @NgModule({
   declarations: [
@@ -46,6 +52,7 @@ import { BuyCreditsComponent } from './logged-pages/buy-credits/buy-credits.comp
   ],
   imports: [
     CommonModule,
+    NgxMaskModule.forRoot(maskConfigFunction),
     HomeModule,
     FormsModule,
     ReactiveFormsModule,

@@ -13,12 +13,12 @@ export class BuyCreditsComponent implements OnInit {
   platinum: number;
   premium: number;
   outroValor: number;
-  valorParcial: number;
+  valorParcial: number = 0;
   valorTotal: number;
   clicked1: boolean = false;
   clicked2: boolean = false;
   clicked3: boolean = false;
-  notClicked:  boolean;
+  inputCodPoints: string;
 
   constructor(private fb: FormBuilder, private elemento: ElementRef) { }
 
@@ -67,7 +67,8 @@ export class BuyCreditsComponent implements OnInit {
   }
 
   inputReset(){
-
+    this.inputCodPoints = '';
+    this.valorParcial = 0;
   }
 
   calculoPontos() {
