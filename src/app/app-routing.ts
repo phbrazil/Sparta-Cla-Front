@@ -17,6 +17,7 @@ import { ConfirmEmailComponent } from './pages/account/confirm-email/confirm-ema
 import { NewPasswordComponent } from './pages/account/new-password/new-password.component';
 import { ProfileComponent } from './pages/admin/logged-pages/profile/profile.component';
 import { BuyCreditsComponent } from './pages/admin/logged-pages/buy-credits/buy-credits.component';
+import { ChallengeComponent } from './pages/challenge/challenge.component';
 
 const adminModule = () => import('./pages/admin/admin-layout.module').then(x => x.AdminLayoutModule);
 
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: '', component: PageComponent },
   { path: 'about', component: AboutComponent },
   { path: 'tournaments', component: TournamentComponent },
+  { path: 'challenges', component: ChallengeComponent },
   { path: 'rules', component: RulesComponent },
   { path: 'faq', component: FAQComponent },
   { path: 'privacy', component: PrivacyPolicyComponent },
