@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AlertService } from 'src/app/_services';
 
 @Component({
   selector: 'app-buy-credits',
@@ -19,11 +20,27 @@ export class BuyCreditsComponent implements OnInit {
   clicked2: boolean = false;
   clicked3: boolean = false;
   inputCodPoints: string;
+  formBuyCredits: FormGroup;
 
-  constructor(private fb: FormBuilder, private elemento: ElementRef) { }
+  constructor(private fb: FormBuilder,  private alertService: AlertService) { }
+
+
 
   ngOnInit(): void {
     this.valorTotal = 0;
+    this.createdForm();
+  }
+
+  createdForm() {
+    this.formBuyCredits = this.fb.group({
+      nomeCartao: ['', [Validators.required]],
+      numeroCartao: ['', [Validators.required]],
+      cvv: ['', [Validators.required]],
+      cpf: ['', [Validators.required]],
+      dataExp: ['', [Validators.required]]
+    })
+
+
   }
 
   onKeyUp(x){
@@ -69,6 +86,18 @@ export class BuyCreditsComponent implements OnInit {
   inputReset(){
     this.inputCodPoints = '';
     this.valorParcial = 0;
+  }
+
+  onSubmit() {
+    if(this.valorTotal == 0){
+      this.alertService.error('O valor nao pode ser R$0', 'Selecione um valor de cod points', { keepAfterRouteChange: true });
+    } else if(this.formBuyCredits.invalid) {
+      this.alertService.error('Formulario incorreto', 'tente novamente', { keepAfterRouteChange: true });
+    } else {
+      alert("Compra efetuada")
+      console.log(this.formBuyCredits);
+    }
+
   }
 
   calculoPontos() {

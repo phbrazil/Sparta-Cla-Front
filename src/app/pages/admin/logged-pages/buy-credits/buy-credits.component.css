@@ -13,6 +13,10 @@
 	height: 100%;
 }
 
+.valid{
+  color: rgb(167, 14, 14);
+}
+
 .bill-head {
 	color: #ffffff;
 	font-weight: bold;

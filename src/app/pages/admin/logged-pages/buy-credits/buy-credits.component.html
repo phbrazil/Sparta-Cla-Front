@@ -58,40 +58,67 @@
 					<div class="col-md-6 col-sm-12 p-0 box">
 						<div class="card rounded-0 border-0 card2" id="paypage">
 							<div class="form-card">
-			                    <h2 id="heading2" class="">Método de Pagamento</h2>
-			                    <div class="radio-group">
-			                        <div class='radio' data-value="credit"><img src="https://i.imgur.com/28akQFX.jpg" width="200px" height="60px"></div>
-			                        <div class='radio' data-value="paypal"><img src="https://i.imgur.com/5QFsx7K.jpg" width="200px" height="60px"></div>
-			                        <br>
-			                    </div>
-			                    <label class="pay">Nome identico do cartao</label>
-			                    <input type="text" class="form-control" name="name" placeholder="Exemplo E A Exemplo">
-			                    <div class="row">
-			                        <div class="col-8 col-md-8">
-			                            <label class="pay">Numero do cartão</label>
-			                            <input type="text" class="form-control" name="cardno" id="cr_no" placeholder="0000-0000-0000-0000" minlength="19" maxlength="19" mask="0000-0000-0000-0000">
-			                        </div>
-			                        <div class="col-4 col-md-4">
-			                            <label class="pay">CVV</label>
-			                            <input type="password" name="cvcpwd" placeholder="&#9679;&#9679;&#9679;" class="placeicon form-control" minlength="3" maxlength="3">
-			                        </div>
-			                    </div>
-			                    <div class="row">
-			                        <div class="col-md-8">
-			                            <label class="pay ">CPF</label>
-                                  <input type="text" class="form-control" name="cpf" id="cpf" placeholder="000.000.000-00" minlength="19" maxlength="19" mask="000.000.000-00">
-			                        </div>
-			                        <div class="col-md-4">
-                                <label class="pay ">Data Expiração</label>
-			                            <input type="text" class="form-control" name="exp" id="exp" placeholder="MM/YY" minlength="5" maxlength="5" mask="00/00" >
-			                        </div>
-			                    </div>
-			                    <div class="row jctc">
-			                        <div class="col-md-6 mt-5">
-			                            <button type="submit" class="btn btn-custom">EFETUAR COMPRA</button>
-			                        </div>
-			                    </div>
-			                </div>
+                    <h2 id="heading2" class="">Método de Pagamento</h2>
+                    <div class="radio-group">
+                        <div class='radio' data-value="credit"><img src="https://i.imgur.com/28akQFX.jpg" width="200px" height="60px"></div>
+                        <div class='radio' data-value="paypal"><img src="https://i.imgur.com/5QFsx7K.jpg" width="200px" height="60px"></div>
+                        <br>
+                    </div>
+                  <form (ngSubmit)="onSubmit()" [formGroup]="formBuyCredits" >
+                    <label class="pay">Nome identico do cartao</label>
+                    <input type="text" class="form-control" formControlName="nomeCartao" placeholder="Exemplo E A Exemplo" required>
+                    <ng-container *ngIf="formBuyCredits.controls.nomeCartao.touched">
+                      <span class="valid" *ngIf="formBuyCredits.controls.nomeCartao.errors?.required">
+                          Nome no cartão é obrigatório
+                      </span>
+                    </ng-container>
+                    <div class="row">
+                        <div class="col-8 col-md-8 mb-3">
+                            <label class="pay">Numero do cartão</label>
+                            <input type="text" class="form-control" formControlName="numeroCartao" id="cr_no" placeholder="0000-0000-0000-0000"  maxlength="19" mask="0000-0000-0000-0000">
+                            <ng-container *ngIf="formBuyCredits.controls.numeroCartao.touched">
+                              <span class="valid" *ngIf="formBuyCredits.controls.numeroCartao.errors?.required">
+                                  Número do cartão é obrigatório
+                              </span>
+                            </ng-container>
+                        </div>
+                        <div class="col-4 col-md-4">
+                            <label class="pay">CVV</label>
+                            <input type="password" formControlName="cvv" placeholder="&#9679;&#9679;&#9679;" class="placeicon form-control"  maxlength="3">
+                            <ng-container *ngIf="formBuyCredits.controls.cvv.touched">
+                              <span class="valid" *ngIf="formBuyCredits.controls.cvv.errors?.required">
+                                  CVV é obrigatório
+                              </span>
+                            </ng-container>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <label class="pay ">CPF</label>
+                            <input type="text" class="form-control" formControlName="cpf" id="cpf" placeholder="000.000.000-00"  maxlength="19" mask="000.000.000-00">
+                            <ng-container *ngIf="formBuyCredits.controls.cpf.touched">
+                              <span class="valid" *ngIf="formBuyCredits.controls.cpf.errors?.required">
+                                  CPF é obrigatório
+                              </span>
+                            </ng-container>
+                        </div>
+                        <div class="col-md-4">
+                          <label class="pay ">Data Expiração</label>
+                            <input type="text" class="form-control" formControlName="dataExp" id="exp" placeholder="MM/YY"  maxlength="5" mask="00/00" >
+                            <ng-container *ngIf="formBuyCredits.controls.dataExp.touched">
+                              <span class="valid" *ngIf="formBuyCredits.controls.dataExp.errors?.required">
+                                  Data da expiração é obrigatório
+                              </span>
+                            </ng-container>
+                        </div>
+                    </div>
+                    <div class="row jctc">
+                        <div class="col-md-6 mt-5">
+                            <button type="submit"  class="btn btn-custom">EFETUAR COMPRA</button>
+                        </div>
+                    </div>
+              </form>
+              </div>
 						</div>
 					</div>
 				</div>

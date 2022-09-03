@@ -1,1 +1,102 @@
-<p>challenge works!</p>
+<section class="container">
+  <div class="row mt-5 mb-5 pt-5 pb-5">
+    <div class="col-md-12 game-content">
+      <div class="section-title title-style-three text-center mb-70">
+        <h2>Crie um <span class="text-yellow">Desafio</span></h2>
+        <p>Desafie seus amigos em disputas no jogo</p>
+      </div>
+        <div class="card">
+          <div class="card-body">
+            <form autocomplete="off" novalidate [formGroup]="" >
+              <input type="hidden" formControlName="idUser" name="idUser" value="">
+              <h6 class="heading-small text-muted mb-4">Informação pessoal</h6>
+              <div class="pl-lg-4">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-group focused">
+                      <label class="form-control-label" for="input-username">Inicio do desafio</label>
+                      <select class="form-control" id="pais" name="pais" formControlName="pais">
+                        <option value=""></option>
+                        <option value="Argentina">2 de agosto</option>
+                        <option value="Bolívia">2 de agosto</option>
+                        <option value="Brasil">2 de agosto</option>
+                        <option value="Chile">2 de agosto</option>
+                        <option value="Colômbia">2 de agosto</option>
+                        <option value="Equador">2 de agosto</option>
+                        <option value="Guiana">2 de agosto</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group focused">
+                      <label class="form-control-label" for="input-userWz">Usuário Warzone</label>
+                      <input type="text" id="input-userWz" class="form-control form-control-alternative"
+                        name="username" formControlName="username">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-email">Email</label>
+                      <input type="email" id="input-email" class="form-control form-control-alternative"
+                        value="">
+                    </div>
+                  </div>
+
+                  <div class="col-lg-6">
+                    <div class="form-group focused">
+                      <label class="form-control-label" for="input-last-name">Data Nascimento</label>
+                      <input type="text" id="input-last-name" class="form-control form-control-alternative"
+                        name="nascimento" formControlName="nascimento"
+                        value="" >
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr class="my-4">
+              <!-- Address -->
+              <h6 class="heading-small text-muted mb-4">Endereço</h6>
+              <div class="pl-lg-4">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-group focused">
+                      <label class="form-control-label" for="input-address">País</label>
+                      <select class="form-control" id="pais" name="pais" formControlName="pais">
+                        <option value=""></option>
+                        <option value="Argentina">Argentina</option>
+                        <option value="Bolívia">Bolívia</option>
+                        <option value="Brasil" selected>Brasil</option>
+                        <option value="Chile">Chile</option>
+                        <option value="Colômbia">Colômbia</option>
+                        <option value="Equador">Equador</option>
+                        <option value="Guiana">Guiana</option>
+                        <option value="Paraguai">Paraguai</option>
+                        <option value="Peru">Peru</option>
+                        <option value="Suriname">Suriname</option>
+                        <option value="Uruguai">Uruguai</option>
+                        <option value="Venezuela">Venezuela</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group focused">
+                      <label class="form-control-label" for="input-address">Estado</label>
+                      <select class="form-control" id="input-address" name="estado" formControlName="estado">
+                        <option value="" selected></option>
+                        <option value="Acre">Acre</option>
+                        <option value="Alagoas">Alagoas</option>
+                        <option value="Amapá">Amapá</option>
+                        <option value="Amazonas">Amazonas</option>
+                        <option value="Bahia">Bahia</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+  </div>
+</section>
