@@ -90,9 +90,9 @@ export class BuyCreditsComponent implements OnInit {
 
   onSubmit() {
     if(this.valorTotal == 0){
-      this.alertService.error('O valor nao pode ser R$0', 'Selecione um valor de cod points', { keepAfterRouteChange: true });
+      this.alertService.error('O valor não pode ser R$0', 'Selecione um valor de cod points', { keepAfterRouteChange: true });
     } else if(this.formBuyCredits.invalid) {
-      this.alertService.error('Formulario incorreto', 'tente novamente', { keepAfterRouteChange: true });
+      this.alertService.error('Formulário incorreto', 'tente novamente', { keepAfterRouteChange: true });
     } else {
       alert("Compra efetuada")
       console.log(this.formBuyCredits);

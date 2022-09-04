@@ -12,4 +12,8 @@ export class ChallengeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  criarDesafio() {
+
+  }
+
 }

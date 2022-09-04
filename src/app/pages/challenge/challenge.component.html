@@ -3,19 +3,19 @@
     <div class="col-md-12 game-content">
       <div class="section-title title-style-three text-center mb-70">
         <h2>Crie um <span class="text-yellow">Desafio</span></h2>
-        <p>Desafie seus amigos em disputas no jogo</p>
+        <p>Desafie seus amigos para ver quem consegue mais mortes ou ganhar mais partidas em um determinado período de tempo.</p>
       </div>
         <div class="card">
           <div class="card-body">
-            <form autocomplete="off" novalidate [formGroup]="" >
+            <form [formGroup]="" (ngSubmit)="criarDesafio()" >
               <input type="hidden" formControlName="idUser" name="idUser" value="">
-              <h6 class="heading-small text-muted mb-4">Informação pessoal</h6>
+              <h6 class="heading-small text-muted mb-4"> </h6>
               <div class="pl-lg-4">
                 <div class="row">
                   <div class="col-lg-6">
                     <div class="form-group focused">
                       <label class="form-control-label" for="input-username">Inicio do desafio</label>
-                      <select class="form-control" id="pais" name="pais" formControlName="pais">
+                      <select class="form-control" name="iniDesafio" formControlName="iniDesafio">
                         <option value=""></option>
                         <option value="Argentina">2 de agosto</option>
                         <option value="Bolívia">2 de agosto</option>
@@ -29,70 +29,93 @@
                   </div>
                   <div class="col-lg-6">
                     <div class="form-group focused">
-                      <label class="form-control-label" for="input-userWz">Usuário Warzone</label>
-                      <input type="text" id="input-userWz" class="form-control form-control-alternative"
-                        name="username" formControlName="username">
+                      <label class="form-control-label" for="input-userWz">Horário de início</label>
+                      <select class="form-control" name="horaInicio" formControlName="horaInicio">
+                        <option value=""></option>
+                        <option value="Argentina">12:00</option>
+                        <option value="Bolívia">12:30</option>
+                        <option value="Brasil">2 de agosto</option>
+                        <option value="Chile">2 de agosto</option>
+                        <option value="Colômbia">2 de agosto</option>
+                        <option value="Equador">2 de agosto</option>
+                        <option value="Guiana">2 de agosto</option>
+                      </select>
                     </div>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-lg-6">
                     <div class="form-group">
-                      <label class="form-control-label" for="input-email">Email</label>
-                      <input type="email" id="input-email" class="form-control form-control-alternative"
-                        value="">
+                      <label class="form-control-label" for="input-email">Fim do desafio</label>
+                      <select class="form-control" name="fimDesafio" formControlName="fimDesafio">
+                        <option value=""></option>
+                        <option value="Argentina">2 de agosto</option>
+                        <option value="Bolívia">2 de agosto</option>
+                        <option value="Brasil">2 de agosto</option>
+                        <option value="Chile">2 de agosto</option>
+                        <option value="Colômbia">2 de agosto</option>
+                        <option value="Equador">2 de agosto</option>
+                        <option value="Guiana">2 de agosto</option>
+                      </select>
                     </div>
                   </div>
 
                   <div class="col-lg-6">
                     <div class="form-group focused">
-                      <label class="form-control-label" for="input-last-name">Data Nascimento</label>
-                      <input type="text" id="input-last-name" class="form-control form-control-alternative"
-                        name="nascimento" formControlName="nascimento"
-                        value="" >
+                      <label class="form-control-label" for="input-last-name">Horário de termino</label>
+                      <select class="form-control" name="horaFim" formControlName="horaFim">
+                        <option value=""></option>
+                        <option value="Argentina">12:00</option>
+                        <option value="Bolívia">12:30</option>
+                        <option value="Brasil">2 de agosto</option>
+                        <option value="Chile">2 de agosto</option>
+                        <option value="Colômbia">2 de agosto</option>
+                        <option value="Equador">2 de agosto</option>
+                        <option value="Guiana">2 de agosto</option>
+                      </select>
                     </div>
                   </div>
                 </div>
               </div>
               <hr class="my-4">
               <!-- Address -->
-              <h6 class="heading-small text-muted mb-4">Endereço</h6>
+              <h6 class="heading-small text-muted mb-4">EM QUAL MAPA VOCÊ QUER COMPETIR?</h6>
               <div class="pl-lg-4">
                 <div class="row">
                   <div class="col-lg-6">
                     <div class="form-group focused">
-                      <label class="form-control-label" for="input-address">País</label>
+                      <label class="form-control-label" for="input-address">Escolher mapa</label>
                       <select class="form-control" id="pais" name="pais" formControlName="pais">
                         <option value=""></option>
-                        <option value="Argentina">Argentina</option>
-                        <option value="Bolívia">Bolívia</option>
-                        <option value="Brasil" selected>Brasil</option>
-                        <option value="Chile">Chile</option>
-                        <option value="Colômbia">Colômbia</option>
-                        <option value="Equador">Equador</option>
-                        <option value="Guiana">Guiana</option>
-                        <option value="Paraguai">Paraguai</option>
-                        <option value="Peru">Peru</option>
-                        <option value="Suriname">Suriname</option>
-                        <option value="Uruguai">Uruguai</option>
-                        <option value="Venezuela">Venezuela</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group focused">
-                      <label class="form-control-label" for="input-address">Estado</label>
-                      <select class="form-control" id="input-address" name="estado" formControlName="estado">
-                        <option value="" selected></option>
-                        <option value="Acre">Acre</option>
-                        <option value="Alagoas">Alagoas</option>
-                        <option value="Amapá">Amapá</option>
-                        <option value="Amazonas">Amazonas</option>
-                        <option value="Bahia">Bahia</option>
+                        <option value="Caldeira">Caldeira</option>
+                        <option value="Rebirth">Rebirth</option>
+                        <option value="Fortune's Keep" selected>Fortune's Keep</option>
                       </select>
                     </div>
                   </div>
                 </div>
+              </div>
+
+              <hr class="my-4">
+              <!-- Address -->
+              <h6 class="heading-small text-muted mb-4">FORMATO DE PONTUAÇÃO</h6>
+              <div class="pl-lg-4">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-group focused">
+                      <label class="form-control-label" for="input-address">Escolha o número de melhores jogos para contar para sua pontuação</label>
+                      <select class="form-control" id="pais" name="pais" formControlName="pais">
+                        <option value="1">1 Jogo</option>
+                        <option value="2">2 jogos</option>
+                        <option value="5" selected>5 jogos</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 mt-5">
+                <button type="submit"  class="btn btn-custom">CRIAR DESAFIO</button>
               </div>
             </form>
           </div>
