@@ -13,6 +13,8 @@ import { ProgressBarComponent } from './components/progress-bar/progress-bar.com
 import { AngularMaterialModule } from './angular-material/angular-material.module';
 import { MessagesComponent } from './components/messages/messages.component';
 import { ModalPublicComponent } from './components/modal-public/modal-public.component';
+import { WarzoneSearchComponent } from './components/warzone-search/warzone-search.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,13 +26,16 @@ import { ModalPublicComponent } from './components/modal-public/modal-public.com
     AlertComponent,
     ProgressBarComponent,
     MessagesComponent,
-    ModalPublicComponent
+    ModalPublicComponent,
+    WarzoneSearchComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     AccountModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
 
   exports: [
@@ -42,7 +47,8 @@ import { ModalPublicComponent } from './components/modal-public/modal-public.com
     AlertComponent,
     ProgressBarComponent,
     MessagesComponent,
-    ModalPublicComponent
+    ModalPublicComponent,
+    WarzoneSearchComponent
   ]
 })
 export class SharedModule { }

@@ -12,33 +12,7 @@
   </div>
 </section>
 
-<section class="search-sec mb-5">
-  <div class="container">
-      <form [formGroup]="" (ngSubmit)="consultaUsuario()">
-          <div class="row">
-              <div class="col-lg-12">
-                  <div class="row">
-                    <div class="col-lg-2 col-md-2 col-sm-2 p-0">
-                      <select class="form-control search-slt " id="exampleFormControlSelect1">
-                          <option>Playstation</option>
-                          <option>Xbox</option>
-                          <option>Battle.net</option>
-                          <option>ActivisionID</option>
-                      </select>
-                  </div>
-                       <div class="col-lg-5 col-md-5 col-sm-12 p-0">
-                          <input type="text" class="form-control search-slt" placeholder="Digite o nome de usuario">
-                      </div>
-
-                      <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                          <button type="button" class="btn btn-custom wrn-btn">Buscar</button>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </form>
-  </div>
-</section>
+<app-warzone-search></app-warzone-search>
 
 <section class="bg-area">
   <div class="container">
