@@ -22,7 +22,7 @@ registerLocaleData(localePT);
 @NgModule({
   declarations: [
     AppComponent,
-    LoggedPagesComponent
+    LoggedPagesComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ActivisionService } from 'src/app/_services/activision.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class WarzoneSearchComponent implements OnInit {
   isLoading: boolean = false;
   result: any;
 
-  constructor(private warzone: ActivisionService) { }
+  constructor(private router: Router, private warzone: ActivisionService) { }
 
   ngOnInit(): void {
   }
@@ -21,9 +22,11 @@ export class WarzoneSearchComponent implements OnInit {
   consultaUsuario() {
     this.isLoading = true;
     this.warzone.getWarzoneInfoCloudFunction(this.profile, this.platform).subscribe(resp => {
-      console.log(resp);
       this.result = resp.stats.body;
+      this.result = JSON.parse(this.result);
       this.isLoading = false;
+
+      this.router.navigateByUrl('/warzoneResult', {state: this.result})
     }, err => {
       this.isLoading = false;
       console.log(err)

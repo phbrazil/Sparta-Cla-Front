@@ -25,3 +25,17 @@ p {
   color: var(--secondary-color);
 }
 
+.intro__logo {
+  background-color: var(--primary-color);
+  border-radius: 0.25rem;
+  height: 4rem;
+  width: 4rem;
+  padding: 0.75rem;
+  margin-right: 1rem;
+}
+
+.intro__logo .title-icon {
+  fill: var(--secondary-color);
+  height: 2.5rem;
+  width: 2.5rem;
+}

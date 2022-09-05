@@ -1,30 +1,51 @@
-.search-slt{
-  display: block;
-  width: 100%;
-  font-size: 0.875rem;
-  line-height: 1.5;
-  color: #55595c;
+.card {
+  margin-bottom: 1.875rem;
   background-color: #fff;
-  background-image: none;
-  border: 1px solid #ccc;
-  height: calc(3rem + 2px) !important;
-  border-radius:0;
-}
-.wrn-btn{
-  width: 100%;
-   height: calc(3rem + 2px) !important;
-   border-radius:0;
+  transition: all .5s ease-in-out;
+  position: relative;
+  border: 0px solid transparent;
+  box-shadow: 0px 2px 21px 0px rgb(59 53 63 / 12%);
 }
 
-.btn-custom.wrn-btn {
-  transform:skewX(0deg);
+.card .hg {
+  height: calc(100% - 30px);
 }
 
-.dropdown__item-icon {
-  fill: var(--secondary-color);
-  height: 1.5rem;
-  width: 1.5rem;
-  margin-right: 1.25rem;
+.title {
+  font-size: 2.7rem;
+}
+
+h2 {
+  padding: 1.875rem 0;
+}
+
+.align-items-center {
+  align-items: center !important;
+}
+
+.avtivity-card .activity-icon {
+  height: 80px;
+  width: 80px;
+  min-width: 80px;
+  display: block;
+  -webkit-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  transition: all 0.5s;
+  border-radius: 100%;
+  line-height: 80px;
+  text-align: center;
+}
+
+.font-trophy {
+  font-size: 1.5rem
+}
+
+.media-body {
+  flex: 1;
+}
+
+.fa {
+  font-size: 3rem;
 }
 
 .table-responsive-xl table {
@@ -133,12 +154,4 @@
   .gulag-icon .fa {
     font-size: 1rem;
   }
-}
-
-
-@media (max-width: 465px) {
-  .bg-area {
-    background-position: center;
-  }
-
 }
