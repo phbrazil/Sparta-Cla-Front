@@ -16,7 +16,6 @@ import { TableResultComponent } from './table-result/table-result.component';
 import { RegisterTournamentComponent } from './admin/logged-pages/register-tournament/register-tournament.component';
 import { AngularMaterialModule } from '../shared/angular-material/angular-material.module';
 import { ChallengeComponent } from './challenge/challenge.component';
-import { WarzoneResultComponent } from './warzone-result/warzone-result.component';
 
 
 
@@ -31,8 +30,7 @@ import { WarzoneResultComponent } from './warzone-result/warzone-result.componen
     TournamentComponent,
     TableResultComponent,
     RegisterTournamentComponent,
-    ChallengeComponent,
-    WarzoneResultComponent,
+    ChallengeComponent
     ],
   imports: [
     CommonModule,

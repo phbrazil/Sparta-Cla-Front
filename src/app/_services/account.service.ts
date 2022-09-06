@@ -10,7 +10,7 @@ import * as $ from 'jquery';
 import { PreviousRouteService } from './previous-route.service';
 @Injectable({ providedIn: 'root' })
 export class AccountService {
-  private userSubject: BehaviorSubject<User>;
+  private readonly userSubject: BehaviorSubject<User>;
   public user: Observable<User>;
   private emailNewPassword = new BehaviorSubject<string>(null);
   private isLogged = new BehaviorSubject<boolean>(false);

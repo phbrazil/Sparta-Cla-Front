@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,23 +8,21 @@ import { Router } from '@angular/router';
 })
 export class WarzoneResultComponent implements OnInit {
 
-  statics: Array<any>;
-  stats;
-  kd;
-  KDRecent;
-  isLoading = false;
-  hasErrors = false;
+  @Input() stats: any;
+
+  public statics: Array<any>;
+  public kd: number;
+  public KDRecent: number;
+  public isLoading: boolean = false;
+  public hasErrors: boolean = false;
 
 
-  constructor(private router: Router) {
-    const result = this.router.getCurrentNavigation();
-    this.stats = result.extras.state;
-    this.statics = this.stats.recentMatches.matches;
-    this.kd = this.stats.response.br.kdRatio;
+  constructor() {
   }
 
   ngOnInit(): void {
-    console.log(status)
+    this.statics = this.stats.recentMatches.matches;
+    this.kd = this.stats.response.br.kdRatio;
   }
 
   returnKd(kd: number): number {
@@ -79,8 +77,6 @@ export class WarzoneResultComponent implements OnInit {
         return "Fortune's Keep Duo";
       case "br_rebirth_playlist_wz340/fortkeep_res_solo":
         return "Fortune's Keep Solo";
-
-
     }
   }
 

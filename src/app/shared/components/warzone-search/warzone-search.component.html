@@ -3,23 +3,26 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="row">
-          <div class="col-lg-2 col-md-2 col-sm-2 p-0">
-            <select [(ngModel)]="platform" class="form-control search-slt " id="exampleFormControlSelect1">
-              <option value="psn">Playstation</option>
-              <option value="xbl">Xbox</option>
-              <option value="battle">Battle.net</option>
-              <option value="uno">ActivisionID</option>
-            </select>
-          </div>
-          <div class="col-lg-5 col-md-5 col-sm-12 p-0">
-            <input required type="text" name="profile" [(ngModel)]="profile" class="form-control search-slt"
-              placeholder="Digite o nome de usuario">
-          </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 p-0">
+              <select [(ngModel)]="platform" class="form-control search-slt " id="exampleFormControlSelect1">
+                <option value="psn">Playstation</option>
+                <option value="xbl">Xbox</option>
+                <option value="battle">Battle.net</option>
+                <option value="uno">ActivisionID</option>
+              </select>
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-12 p-0">
+              <input required type="text" name="wzProfile" [(ngModel)]="wzProfile" class="form-control search-slt"
+                placeholder="Digite o nome de usuario">
+            </div>
 
-          <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-            <button [disabled]="isLoading" (click)="consultaUsuario()" type="button" class="btn btn-custom wrn-btn">
-              <span *ngIf="isLoading" class="spinner-border spinner-border-sm mr-1"></span>
-              Buscar</button>
+            <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+              <button [disabled]="isLoading" (click)="consultaUsuario()" type="button" class="btn btn-custom wrn-btn">
+                <span *ngIf="isLoading" class="spinner-border spinner-border-sm mr-1"></span>
+                Buscar</button>
+            </div>
+          <div class="col-lg-12" *ngIf="stats && !isLoading">
+            <app-warzone-result [stats]="stats"></app-warzone-result>
           </div>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { retry } from 'rxjs/operators';
 import { ActivisionService } from 'src/app/_services/activision.service';
 
 @Component({
@@ -9,28 +10,26 @@ import { ActivisionService } from 'src/app/_services/activision.service';
 })
 export class WarzoneSearchComponent implements OnInit {
 
-  profile: string;
+  wzProfile: string;
   platform: string = "psn";
   isLoading: boolean = false;
-  result: any;
+  stats: any;
 
-  constructor(private router: Router, private warzone: ActivisionService) { }
+  constructor(private router: Router, private activisionService: ActivisionService) { }
 
   ngOnInit(): void {
   }
 
   consultaUsuario() {
     this.isLoading = true;
-    this.warzone.getWarzoneInfoCloudFunction(this.profile, this.platform).subscribe(resp => {
-      this.result = resp.stats.body;
-      this.result = JSON.parse(this.result);
-      this.isLoading = false;
-
-      this.router.navigateByUrl('/warzoneResult', {state: this.result})
-    }, err => {
-      this.isLoading = false;
-      console.log(err)
-    })
+    this.activisionService.getWarzoneInfoCloudFunction(this.wzProfile, this.platform)
+      .pipe(
+        retry(3), // you retry 3 times
+      ).subscribe(resp => {
+        this.stats = resp.stats.body;
+        this.stats = JSON.parse(this.stats);
+        this.isLoading = false;
+      });
   }
 
 }

@@ -15,6 +15,7 @@ import { MessagesComponent } from './components/messages/messages.component';
 import { ModalPublicComponent } from './components/modal-public/modal-public.component';
 import { WarzoneSearchComponent } from './components/warzone-search/warzone-search.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { WarzoneResultComponent } from '../pages/warzone-result/warzone-result.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ProgressBarComponent,
     MessagesComponent,
     ModalPublicComponent,
-    WarzoneSearchComponent
+    WarzoneSearchComponent,
+    WarzoneResultComponent
   ],
   imports: [
     CommonModule,
@@ -48,7 +50,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ProgressBarComponent,
     MessagesComponent,
     ModalPublicComponent,
-    WarzoneSearchComponent
+    WarzoneSearchComponent,
+    WarzoneResultComponent
   ]
 })
 export class SharedModule { }

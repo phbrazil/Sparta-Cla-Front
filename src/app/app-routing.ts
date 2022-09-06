@@ -18,7 +18,6 @@ import { NewPasswordComponent } from './pages/account/new-password/new-password.
 import { ProfileComponent } from './pages/admin/logged-pages/profile/profile.component';
 import { BuyCreditsComponent } from './pages/admin/logged-pages/buy-credits/buy-credits.component';
 import { ChallengeComponent } from './pages/challenge/challenge.component';
-import { WarzoneResultComponent } from './pages/warzone-result/warzone-result.component';
 
 const adminModule = () => import('./pages/admin/admin-layout.module').then(x => x.AdminLayoutModule);
 
@@ -28,7 +27,6 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'tournaments', component: TournamentComponent },
   { path: 'challenges', component: ChallengeComponent },
-  { path: 'warzoneResult', component: WarzoneResultComponent },
   { path: 'rules', component: RulesComponent },
   { path: 'faq', component: FAQComponent },
   { path: 'privacy', component: PrivacyPolicyComponent },
