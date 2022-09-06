@@ -70,6 +70,12 @@
   background-image: url(src/assets/images/menu.png);
 }
 
+@media (max-width: 991px) {
+  .collapse:not(.show) {
+    display: none!important;
+  }
+}
+
 @media (max-width: 465px) {
   .collapse:not(.show) {
     display: none!important;

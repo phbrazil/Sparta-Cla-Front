@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { retry } from 'rxjs/operators';
+import { AlertService } from 'src/app/_services';
 import { ActivisionService } from 'src/app/_services/activision.service';
 
 @Component({
@@ -15,7 +16,7 @@ export class WarzoneSearchComponent implements OnInit {
   isLoading: boolean = false;
   stats: any;
 
-  constructor(private router: Router, private activisionService: ActivisionService) { }
+  constructor(private router: Router, private activisionService: ActivisionService, private alertService: AlertService) { }
 
   ngOnInit(): void {
   }
@@ -29,6 +30,10 @@ export class WarzoneSearchComponent implements OnInit {
         this.stats = resp.stats.body;
         this.stats = JSON.parse(this.stats);
         this.isLoading = false;
+      }, err => {
+        this.alertService.error('Tente novamente', 'Nome de usúario ou plataforma  incorreto', { keepAfterRouteChange: true });
+        this.wzProfile = '';
+        this.isLoading = false
       });
   }
 
