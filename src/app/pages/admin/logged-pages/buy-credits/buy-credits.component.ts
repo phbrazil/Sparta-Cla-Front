@@ -1,6 +1,8 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertService } from 'src/app/_services';
+
+import { cpf } from 'cpf-cnpj-validator';
 
 @Component({
   selector: 'app-buy-credits',
@@ -9,7 +11,9 @@ import { AlertService } from 'src/app/_services';
 })
 export class BuyCreditsComponent implements OnInit {
 
-  readonly codPoints = 0.15;
+  readonly codPoints = 0.11;
+  numCPF: string;
+  cpfValid: boolean = false;
   elite: number;
   platinum: number;
   premium: number;
@@ -39,8 +43,6 @@ export class BuyCreditsComponent implements OnInit {
       cpf: ['', [Validators.required]],
       dataExp: ['', [Validators.required]]
     })
-
-
   }
 
   onKeyUp(x){
@@ -88,7 +90,14 @@ export class BuyCreditsComponent implements OnInit {
     this.valorParcial = 0;
   }
 
+  cpf() {
+    this.cpfValid = cpf.isValid(this.numCPF);
+    console.log(this.numCPF);
+    console.log(this.cpfValid);
+  }
+
   onSubmit() {
+
     if(this.valorTotal == 0){
       this.alertService.error('O valor não pode ser R$0', 'Selecione um valor de cod points', { keepAfterRouteChange: true });
     } else if(this.formBuyCredits.invalid) {
