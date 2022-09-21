@@ -15,7 +15,7 @@ export class WarzoneResultComponent implements OnInit {
   public KDRecent: number;
   public isLoading: boolean = false;
   public hasErrors: boolean = false;
-
+  public lastMatchKDInfo: any;
 
   constructor() {
   }
@@ -23,6 +23,42 @@ export class WarzoneResultComponent implements OnInit {
   ngOnInit(): void {
     this.statics = this.stats.recentMatches.matches;
     this.kd = this.stats.response.br.kdRatio;
+    console.log(this.stats);
+    this.lastMatchKDInfo = this.getLastMatchKD();
+  }
+
+  getLastMatchKD() {
+
+    let response = {
+      higherKD: {
+        name: '',
+        kdRatio: 0
+      },
+      averageKD: 0
+    }
+
+    let averageKD = 0;
+
+    let qtdPlayers = 0;
+
+    this.stats.lastMatchDetail.allPlayers.forEach(player => {
+
+      averageKD = averageKD + player.playerStats.kdRatio;
+
+      if (player.playerStats.kdRatio > 0) {
+        qtdPlayers++;
+      }
+
+      if (player.playerStats.kdRatio > response.higherKD.kdRatio) {
+        response.higherKD.kdRatio = Math.round(player.playerStats.kdRatio * 100) / 100;
+        response.higherKD.name = player.player.username;
+      }
+
+    });
+
+    response.averageKD = Math.round(averageKD / qtdPlayers);
+
+    return response;
   }
 
   returnKd(kd: number): number {
