@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { platforms, ModernWarfare, login } from "call-of-duty-api";
 
 @Component({
   selector: 'app-warzone-result',
@@ -21,10 +21,11 @@ export class WarzoneResultComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.statics = this.stats.recentMatches.matches;
-    this.kd = this.stats.response.br.kdRatio;
     console.log(this.stats);
+    this.statics = this.stats.recentMatches.data.matches;
+    this.kd = this.stats.response.data.weekly.all.properties.kdRatio;
     this.lastMatchKDInfo = this.getLastMatchKD();
+
   }
 
   getLastMatchKD() {
@@ -41,7 +42,9 @@ export class WarzoneResultComponent implements OnInit {
 
     let qtdPlayers = 0;
 
-    this.stats.lastMatchDetail.allPlayers.forEach(player => {
+    this.stats.lastMatchInfo.data.allPlayers.forEach(player => {
+
+      console.log(player);
 
       averageKD = averageKD + player.playerStats.kdRatio;
 
@@ -59,9 +62,10 @@ export class WarzoneResultComponent implements OnInit {
     response.averageKD = Math.round(averageKD / qtdPlayers);
 
     return response;
+
   }
 
-  returnKd(kd: number): number {
+  public returnKd(kd: number): number {
     return Math.round(kd * 100) / 100;
   }
 

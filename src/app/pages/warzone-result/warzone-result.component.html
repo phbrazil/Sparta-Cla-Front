@@ -22,7 +22,7 @@
             <div class="media align-items-center">
               <div class="media-body">
                 <p class="fs-14 mb-2">Vitórias</p>
-                <span class="title text-yellow font-w600">{{stats.response.br.wins}}</span>
+                <span class="title text-yellow font-w600">{{stats.response.data.lifetime.all.properties.wins}}</span>
               </div>
             </div>
           </div>
@@ -34,7 +34,7 @@
             <div class="media align-items-center">
               <div class="media-body">
                 <p class="fs-14 mb-2">Kills</p>
-                <span class="title text-yellow font-w600 ">{{stats.response.br.kills}}</span>
+                <span class="title text-yellow font-w600 ">{{stats.response.data.lifetime.all.properties.kills}}</span>
               </div>
             </div>
           </div>
@@ -46,7 +46,7 @@
             <div class="media align-items-center">
               <div class="media-body">
                 <p class="fs-14 mb-2">Mortes</p>
-                <span class="title text-yellow font-w600  ">{{stats.response.br.deaths}}</span>
+                <span class="title text-yellow font-w600  ">{{stats.response.data.lifetime.all.properties.deaths}}</span>
               </div>
             </div>
           </div>
@@ -63,7 +63,7 @@
                 <div class="media align-items-center">
                   <div class="media-body">
                     <p class="fs-14 mb-2">Headshots</p>
-                    <span class="title text-yellow font-w600">{{stats.recentMatches.summary.all.headshots}}</span>
+                    <span class="title text-yellow font-w600">{{stats.response.data.weekly.all.properties.headshots}}</span>
                   </div>
                 </div>
               </div>
@@ -75,7 +75,7 @@
                 <div class="media align-items-center">
                   <div class="media-body">
                     <p class="fs-14 mb-2">Kills</p>
-                    <span class="title text-yellow font-w600">{{stats.recentMatches.summary.all.kills}}</span>
+                    <span class="title text-yellow font-w600">{{stats.response.data.weekly.all.properties.kills}}</span>
                   </div>
                 </div>
               </div>
@@ -87,7 +87,7 @@
                 <div class="media align-items-center">
                   <div class="media-body">
                     <p class="fs-14 mb-2">Kills por partida</p>
-                    <span class="title text-yellow font-w600">{{stats.recentMatches.summary.all.killsPerGame}}</span>
+                    <span class="title text-yellow font-w600">{{stats.response.data.weekly.all.properties.killsPerGame | number}}</span>
                   </div>
                 </div>
               </div>
@@ -99,7 +99,7 @@
                 <div class="media align-items-center">
                   <div class="media-body">
                     <p class="fs-14 mb-2">Partidas Jogadas</p>
-                    <span class="title text-yellow font-w600">{{stats.recentMatches.summary.all.matchesPlayed}}</span>
+                    <span class="title text-yellow font-w600">{{stats.response.data.weekly.all.properties.matchesPlayed}}</span>
                   </div>
                 </div>
               </div>

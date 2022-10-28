@@ -19,7 +19,21 @@ describe('BuyCreditsComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  fit('Testando customDimensionsData', () => {
+
+    spyOn(gmtError, "hashUser");
+
+    let customData = {
+      erro_objError: {},
+      erro_statusCode: 422,
+      erro_message: "erro de negocio",
+      erro_messageError: "erro teste",
+      erro_name: "unauthorized",
+      erro_url: "api/teste"
+    } as CustomDataModel;
+
+   let res = gmtError.customErrorDimensions(customData);
+
+    expect(res.erro_statusCode).toEqual(422);
   });
 });

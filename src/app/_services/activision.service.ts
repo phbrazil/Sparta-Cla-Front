@@ -60,29 +60,8 @@ export class ActivisionService {
     //json-server --watch stats_example.json
 
 
-    getWarzoneInfoRapidAPI(username: string, platform: string, token: string): Observable<any[]> {
-
-        //let url = `https://sparta-clan.herokuapp.com/spartaclan/getStats/${username}/${platform}`
-        //let url = `http://localhost:8080/spartaclan/getStats/${username}/${platform}`
-
-       // let url = `https://call-of-duty-modern-warfare.p.rapidapi.com/warzone/${username}/${platform}`
-
-       let url: string = 'http://localhost:3000'
-
-
-        const headers = new HttpHeaders()
-            .set('x-rapidapi-host', `call-of-duty-modern-warfare.p.rapidapi.com`)
-            .set('x-rapidapi-key', `75e0530bedmshbf71e4633fd28fep125b50jsn269fb6971b8d`)
-            .set('Content-Type', `application/json`)
-
-        return this.http.get<any>(url, { headers: headers });
-
-
-    }
-
     getWarzoneInfoCloudFunction(gamerTag: string, platform: string): Observable<any> {
 
-      //let url = `https://us-central1-cyber-oficina.cloudfunctions.net/warzone-stats`
       let url = `${this.baseUrl}/stats/getStats/${gamerTag}/${platform}`
 
       //LOCAL FAKE BACKEND
