@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { PageComponent } from './home/page.component';
 import { SharedModule } from '../shared/shared.module';
@@ -30,7 +33,7 @@ import { ChallengeComponent } from './challenge/challenge.component';
     TournamentComponent,
     TableResultComponent,
     RegisterTournamentComponent,
-    ChallengeComponent
+    ChallengeComponent,
     ],
   imports: [
     CommonModule,
@@ -39,7 +42,9 @@ import { ChallengeComponent } from './challenge/challenge.component';
     FormsModule,
     ReactiveFormsModule,
     InfiniteScrollModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   exports: [
     PageComponent,
@@ -51,6 +56,7 @@ import { ChallengeComponent } from './challenge/challenge.component';
     TournamentComponent,
     TableResultComponent,
     RegisterTournamentComponent,
-  ]
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class HomeModule { }
