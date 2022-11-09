@@ -77,7 +77,8 @@ const materialModules = [
   ],
   exports: [
     MatAutocompleteModule,
-    MatDialogModule
+    MatDialogModule,
+    MatDatepickerModule
   ],
 })
 

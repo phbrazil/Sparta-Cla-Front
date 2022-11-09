@@ -7,39 +7,21 @@
       </div>
         <div class="card">
           <div class="card-body">
-            <form [formGroup]="" (ngSubmit)="criarDesafio()" >
-              <input type="hidden" formControlName="idUser" name="idUser" value="">
+
+            <form [formGroup]="form" (ngSubmit)="criarDesafio()" >
               <h6 class="heading-small text-muted mb-4"> </h6>
               <div class="pl-lg-4">
                 <div class="row">
                   <div class="col-lg-6">
                     <div class="form-group focused">
                       <label class="form-control-label" for="input-username">Inicio do desafio</label>
-                      <select class="form-control" name="iniDesafio" formControlName="iniDesafio">
-                        <option value=""></option>
-                        <option value="Argentina">2 de agosto</option>
-                        <option value="Bolívia">2 de agosto</option>
-                        <option value="Brasil">2 de agosto</option>
-                        <option value="Chile">2 de agosto</option>
-                        <option value="Colômbia">2 de agosto</option>
-                        <option value="Equador">2 de agosto</option>
-                        <option value="Guiana">2 de agosto</option>
-                      </select>
+                      <input type="date"  class="form-control" formControlName="startData" >
                     </div>
                   </div>
                   <div class="col-lg-6">
                     <div class="form-group focused">
                       <label class="form-control-label" for="input-userWz">Horário de início</label>
-                      <select class="form-control" name="horaInicio" formControlName="horaInicio">
-                        <option value=""></option>
-                        <option value="Argentina">12:00</option>
-                        <option value="Bolívia">12:30</option>
-                        <option value="Brasil">2 de agosto</option>
-                        <option value="Chile">2 de agosto</option>
-                        <option value="Colômbia">2 de agosto</option>
-                        <option value="Equador">2 de agosto</option>
-                        <option value="Guiana">2 de agosto</option>
-                      </select>
+                      <input type="time" class="form-control" name="horaInicio" formControlName="startHour">
                     </div>
                   </div>
                 </div>
@@ -47,32 +29,14 @@
                   <div class="col-lg-6">
                     <div class="form-group">
                       <label class="form-control-label" for="input-email">Fim do desafio</label>
-                      <select class="form-control" name="fimDesafio" formControlName="fimDesafio">
-                        <option value=""></option>
-                        <option value="Argentina">2 de agosto</option>
-                        <option value="Bolívia">2 de agosto</option>
-                        <option value="Brasil">2 de agosto</option>
-                        <option value="Chile">2 de agosto</option>
-                        <option value="Colômbia">2 de agosto</option>
-                        <option value="Equador">2 de agosto</option>
-                        <option value="Guiana">2 de agosto</option>
-                      </select>
+                      <input type="date"  class="form-control" formControlName="endData" >
                     </div>
                   </div>
 
                   <div class="col-lg-6">
                     <div class="form-group focused">
                       <label class="form-control-label" for="input-last-name">Horário de termino</label>
-                      <select class="form-control" name="horaFim" formControlName="horaFim">
-                        <option value=""></option>
-                        <option value="Argentina">12:00</option>
-                        <option value="Bolívia">12:30</option>
-                        <option value="Brasil">2 de agosto</option>
-                        <option value="Chile">2 de agosto</option>
-                        <option value="Colômbia">2 de agosto</option>
-                        <option value="Equador">2 de agosto</option>
-                        <option value="Guiana">2 de agosto</option>
-                      </select>
+                      <input type="time" class="form-control" name="horaFim" formControlName="endHour">
                     </div>
                   </div>
                 </div>
@@ -85,7 +49,7 @@
                   <div class="col-lg-6">
                     <div class="form-group focused">
                       <label class="form-control-label" for="input-address">Escolher mapa</label>
-                      <select class="form-control" id="pais" name="pais" formControlName="pais">
+                      <select class="form-control" name="map" formControlName="map">
                         <option value=""></option>
                         <option value="Caldeira">Caldeira</option>
                         <option value="Rebirth">Rebirth</option>
@@ -104,7 +68,7 @@
                   <div class="col-lg-6">
                     <div class="form-group focused">
                       <label class="form-control-label" for="input-address">Escolha o número de melhores jogos para contar para sua pontuação</label>
-                      <select class="form-control" id="pais" name="pais" formControlName="pais">
+                      <select class="form-control" id="pais" name="games" formControlName="games">
                         <option value="1">1 Jogo</option>
                         <option value="2">2 jogos</option>
                         <option value="5" selected>5 jogos</option>
