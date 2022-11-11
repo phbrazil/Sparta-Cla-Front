@@ -36,7 +36,7 @@ export class MyStatsComponent implements OnInit {
 
     this.hasErrors = false;
 
-    this.activisionService.getWarzoneInfoCloudFunction(wzProfile, platform)
+    this.activisionService.getWarzoneInfoCloudFunction(encodeURIComponent(wzProfile), platform)
       .pipe(
         retry(3), // you retry 3 times
       ).subscribe(resp => {
