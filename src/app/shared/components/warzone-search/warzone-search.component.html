@@ -17,7 +17,7 @@
             </div>
 
             <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-              <button [disabled]="isLoading || !!!wzProfile" (click)="consultaUsuario()" type="button" class="btn btn-custom wrn-btn">
+              <button [disabled]="isLoading || !!!wzProfile" (click)="searchProfile()" type="button" class="btn btn-custom wrn-btn">
                 <span *ngIf="isLoading" class="spinner-border spinner-border-sm mr-1"></span>
                 Buscar</button>
             </div>

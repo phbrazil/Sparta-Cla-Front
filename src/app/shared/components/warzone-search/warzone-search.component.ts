@@ -21,18 +21,18 @@ export class WarzoneSearchComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  consultaUsuario() {
+  searchProfile() {
     this.isLoading = true;
-    this.activisionService.getWarzoneInfoCloudFunction(this.wzProfile, this.platform)
+    this.activisionService.getWarzoneInfoCloudFunction(encodeURIComponent(this.wzProfile), this.platform)
       .pipe(
         retry(3), // you retry 3 times
       ).subscribe(resp => {
         this.stats = resp.stats.body;
         this.stats = JSON.parse(this.stats);
         this.isLoading = false;
-      }, err => {
+      }, _err => {
         this.alertService.error('Tente novamente', 'Nome de usúario ou plataforma  incorreto', { keepAfterRouteChange: true });
-        this.wzProfile = '';
+        //this.wzProfile = '';
         this.isLoading = false
       });
   }
