@@ -32,15 +32,15 @@
                 <div class="col">
                   <div class="card-profile-stats d-flex justify-content-center mt-md-5">
                     <div>
-                      <span class="heading">{{stats?.br.wins}}</span>
+                      <span class="heading">{{stats?.data.lifetime.mode.br.properties.wins}}</span>
                       <span class="description">Wins</span>
                     </div>
                     <div>
-                      <span class="heading">{{stats?.br.kills}}</span>
+                      <span class="heading">{{stats?.data.lifetime.mode.br.properties.kills}}</span>
                       <span class="description">Kills</span>
                     </div>
                     <div>
-                      <span class="heading">{{kd}}</span>
+                      <span class="heading">{{kdRatio}}</span>
                       <span class="description">Kd</span>
                     </div>
                   </div>
@@ -163,6 +163,15 @@
                         <label for="platform">Plataforma*</label>
                         <div class="col-sm-12 col-md-12">
                           <div class="row mt-2">
+                            <div class="col-md-4" (click)="!disable ? choosePlatform('uno') : null">
+                              <div class="card shadow choosePlatform mb-2 {{platform === 'uno' ? 'bg-light' : 'bg-grey'}}">
+                                <img src="/assets/images/activision.png" class="mt-2 ml-2 mr-2 center"
+                                  style="max-height: 170px; max-width: 170px;" alt="Activision logo">
+                                <div class="card-body center">
+                                  <h5 class="card-title">Activision ID</h5>
+                                </div>
+                              </div>
+                            </div>
                             <div class="col-md-4" (click)="!disable ? choosePlatform('psn') : null">
                               <div
                                 class="card shadow choosePlatform mb-2 {{platform === 'psn' ? 'bg-light' : 'bg-grey'}}">

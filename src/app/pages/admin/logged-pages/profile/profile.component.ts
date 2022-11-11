@@ -16,7 +16,7 @@ export class ProfileComponent implements OnInit {
   userForm: FormGroup;
   user: User;
   stats: any;
-  kd: any;
+  kdRatio: any;
   disable = true;
   isLoading = false;
   isCheckingProfile = false;
@@ -138,7 +138,7 @@ export class ProfileComponent implements OnInit {
   checkProfileActivision() {
 
     //CHECK IF ACTIVISION PROFILE IS PUBLIC
-    this.activisionService.checkPublicStatus(this.user.wzProfile, this.user.platform);
+    this.activisionService.checkPublicStatus(encodeURIComponent(this.user.wzProfile), this.user.platform);
 
     this.activisionService.getPublicStatus().subscribe(status => {
       this.isCheckingProfile = false;
@@ -152,7 +152,7 @@ export class ProfileComponent implements OnInit {
 
     this.isLoading = true;
 
-    this.activisionService.getWarzoneInfoCloudFunction(wzProfile, platform)
+    this.activisionService.getWarzoneInfoCloudFunction(encodeURIComponent(wzProfile), platform)
     .pipe(
       retry(3), // you retry 3 times
     )
@@ -160,9 +160,9 @@ export class ProfileComponent implements OnInit {
       this.isLoading = false;
       let json = JSON.parse(res.stats.body);
       this.stats = json.response;
-      this.kd = Math.round(this.stats.br.kdRatio * 100) / 100;
+      this.kdRatio = Math.round(this.stats.data.weekly.all.properties.kdRatio * 100) / 100;
 
-    }, err => {
+    }, _err => {
       this.isLoading = false;
     });
   }
