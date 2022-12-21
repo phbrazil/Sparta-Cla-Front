@@ -21,11 +21,17 @@ export class WarzoneResultComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.stats);
-    this.statics = this.stats.recentMatches.data.matches;
-    this.kd = this.stats.response.data.weekly.all.properties.kdRatio;
-    this.lastMatchKDInfo = this.getLastMatchKD();
 
+  }
+
+  ngOnChanges(): void{
+    console.log(this.stats);
+    if(this.stats){
+      this.statics = this.stats.recentMatches.data.matches;
+      console.log(this.statics);
+      this.kd = this.stats.response.data.lifetime.all.properties.kdRatio;
+      this.lastMatchKDInfo = this.getLastMatchKD();
+    }
   }
 
   getLastMatchKD() {
@@ -42,22 +48,28 @@ export class WarzoneResultComponent implements OnInit {
 
     let qtdPlayers = 0;
 
-    this.stats.lastMatchInfo.data.allPlayers.forEach(player => {
+    console.log(this.stats.lastMatchInfo);
 
-      console.log(player);
+    if(this.stats.lastMatchInfo.status == 200){
+      this.stats.lastMatchInfo.data.allPlayers.forEach(player => {
 
-      averageKD = averageKD + player.playerStats.kdRatio;
+        console.log(player);
 
-      if (player.playerStats.kdRatio > 0) {
-        qtdPlayers++;
-      }
+        averageKD = averageKD + player.playerStats.kdRatio;
 
-      if (player.playerStats.kdRatio > response.higherKD.kdRatio) {
-        response.higherKD.kdRatio = Math.round(player.playerStats.kdRatio * 100) / 100;
-        response.higherKD.name = player.player.username;
-      }
+        if (player.playerStats.kdRatio > 0) {
+          qtdPlayers++;
+        }
 
-    });
+        if (player.playerStats.kdRatio > response.higherKD.kdRatio) {
+          response.higherKD.kdRatio = Math.round(player.playerStats.kdRatio * 100) / 100;
+          response.higherKD.name = player.player.username;
+        }
+
+      });
+    }
+
+
 
     response.averageKD = Math.round(averageKD / qtdPlayers);
 

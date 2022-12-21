@@ -22,7 +22,8 @@
             <div class="media align-items-center">
               <div class="media-body">
                 <p class="fs-14 mb-2">Vitórias</p>
-                <span class="title text-yellow font-w600">{{stats.response.data.lifetime.mode.br.properties.wins}}</span>
+                <span
+                  class="title text-yellow font-w600">{{stats.response.data.lifetime.mode.br.properties.wins}}</span>
               </div>
             </div>
           </div>
@@ -34,7 +35,8 @@
             <div class="media align-items-center">
               <div class="media-body">
                 <p class="fs-14 mb-2">Kills</p>
-                <span class="title text-yellow font-w600 ">{{stats.response.data.lifetime.mode.br.properties.kills}}</span>
+                <span
+                  class="title text-yellow font-w600 ">{{stats.response.data.lifetime.mode.br.properties.kills}}</span>
               </div>
             </div>
           </div>
@@ -46,7 +48,8 @@
             <div class="media align-items-center">
               <div class="media-body">
                 <p class="fs-14 mb-2">Mortes</p>
-                <span class="title text-yellow font-w600  ">{{stats.response.data.lifetime.mode.br.properties.deaths}}</span>
+                <span
+                  class="title text-yellow font-w600  ">{{stats.response.data.lifetime.mode.br.properties.deaths}}</span>
               </div>
             </div>
           </div>
@@ -63,7 +66,8 @@
                 <div class="media align-items-center">
                   <div class="media-body">
                     <p class="fs-14 mb-2">Headshots</p>
-                    <span class="title text-yellow font-w600">{{stats.response.data.weekly.all.properties.headshots}}</span>
+                    <span
+                      class="title text-yellow font-w600">{{stats.response.data.weekly.all.properties?.headshots}}</span>
                   </div>
                 </div>
               </div>
@@ -75,7 +79,8 @@
                 <div class="media align-items-center">
                   <div class="media-body">
                     <p class="fs-14 mb-2">Kills</p>
-                    <span class="title text-yellow font-w600">{{stats.response.data.weekly.all.properties.kills}}</span>
+                    <span
+                      class="title text-yellow font-w600">{{stats.response.data.weekly.all.properties?.kills}}</span>
                   </div>
                 </div>
               </div>
@@ -87,7 +92,8 @@
                 <div class="media align-items-center">
                   <div class="media-body">
                     <p class="fs-14 mb-2">Kills por partida</p>
-                    <span class="title text-yellow font-w600">{{stats.response.data.weekly.all.properties.killsPerGame | number}}</span>
+                    <span class="title text-yellow font-w600">{{stats.response.data.weekly.all.properties?.killsPerGame
+                      | number}}</span>
                   </div>
                 </div>
               </div>
@@ -99,7 +105,8 @@
                 <div class="media align-items-center">
                   <div class="media-body">
                     <p class="fs-14 mb-2">Partidas Jogadas</p>
-                    <span class="title text-yellow font-w600">{{stats.response.data.weekly.all.properties.matchesPlayed}}</span>
+                    <span
+                      class="title text-yellow font-w600">{{stats.response.data.weekly.all.properties?.matchesPlayed}}</span>
                   </div>
                 </div>
               </div>
@@ -111,7 +118,8 @@
                 <div class="media align-items-center">
                   <div class="media-body">
                     <p class="fs-14 mb-2">Matador da última partida</p>
-                    <span class="title text-yellow  ">{{lastMatchKDInfo?.higherKD.name}} <br> KD {{lastMatchKDInfo?.higherKD.kdRatio}}</span>
+                    <span class="title text-yellow  ">{{lastMatchKDInfo?.higherKD.name}} <br> KD
+                      {{lastMatchKDInfo?.higherKD.kdRatio}}</span>
                   </div>
                 </div>
               </div>
@@ -157,8 +165,8 @@
       </div>
     </div>
 
-    <div class="table-responsive-xl">
-      <table class="table mt-0">
+    <div class="table-responsive-xl" *ngIf="statics; else noContent">
+      <table class="table mt-0" aria-describedby="Recente">
         <thead>
           <tr>
             <th scope="col">Posição</th>
@@ -188,5 +196,8 @@
         </tbody>
       </table>
     </div>
+    <ng-template #noContent>
+      <p class="text-muted">Nenhuma partida recente encontrada</p>
+    </ng-template>
   </div>
 </section>
