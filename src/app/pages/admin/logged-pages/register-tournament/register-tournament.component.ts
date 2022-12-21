@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Tournament } from 'src/app/_models/tournament';
+import { Mode, Tournament } from 'src/app/_models/tournament';
 import { User } from 'src/app/_models/user';
 import { TournamentService } from 'src/app/_services/tournament.service';
 import { AccountService, AlertService } from 'src/app/_services';
@@ -67,14 +67,16 @@ export class RegisterTournamentComponent implements OnInit {
 
   checkMaxMembers() {
     //VERIFICAR MAXIMO DE MEMBROS NO TORNEIO (INICIA NO 0)
-    if (this.tournament.mode.includes('Squad')) {
+    if (this.tournament.mode.toString().includes(Mode.SQUAD.toString())) {
       this.maxMembers = 3;
-    } else if (this.tournament.mode.includes('Trio')) {
+    } else if (this.tournament.mode.toString().includes(Mode.TRIO.toString())) {
       this.maxMembers = 2;
-    } else if (this.tournament.mode.includes('Duo')) {
+    } else if (this.tournament.mode.toString().includes(Mode.DUO.toString())) {
       this.maxMembers = 1;
-    } else if (this.tournament.mode.includes('Solo')) {
+    } else if (this.tournament.mode.toString().includes(Mode.SOLO.toString())) {
       this.maxMembers = 0;
+    } else if (this.tournament.mode.toString().includes(Mode.X1.toString())) {
+      this.maxMembers = 1;
     }
   }
 

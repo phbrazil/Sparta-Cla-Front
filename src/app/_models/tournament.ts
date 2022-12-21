@@ -2,7 +2,7 @@ import { Subscription } from "./subscription";
 
 export class Tournament extends Subscription {
     idCamp: number;
-    mode: string;
+    mode: Mode;
     date: string;
     award: string;
     duration: string;
@@ -15,5 +15,13 @@ export class Tournament extends Subscription {
     times: number;
     subscribed: boolean;
     hoursToStart: number;
+}
+
+export enum Mode {
+  SOLO = "Solo",
+  DUO = "Duo",
+  TRIO = "Trio",
+  SQUAD = "Squad",
+  X1 = "X1"
 }
 
