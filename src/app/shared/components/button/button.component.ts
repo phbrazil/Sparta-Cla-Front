@@ -1,11 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-buttom',
-  templateUrl: './buttom.component.html',
-  styleUrls: ['./buttom.component.css']
+  selector: 'app-button',
+  templateUrl: './button.component.html',
+  styleUrls: ['./button.component.css']
 })
-export class ButtomComponent implements OnInit {
+export class ButtonComponent implements OnInit {
 
   @Input() title: string = "";
 

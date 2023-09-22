@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { HeaderComponent } from './components/header/header.component';
-import { ButtomComponent } from './components/buttom/buttom.component';
+import { ButtonComponent } from './components/button/button.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ModalComponent } from './components/modal-account/modal.component';
 import { BannerAlertComponent } from './components/banner-alert/banner-alert.component';
@@ -16,11 +16,13 @@ import { ModalPublicComponent } from './components/modal-public/modal-public.com
 import { WarzoneSearchComponent } from './components/warzone-search/warzone-search.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WarzoneResultComponent } from '../pages/warzone-result/warzone-result.component';
+import { FortniteSearchComponent } from './components/fortnite-search/fortnite-search.component';
+import { FortniteResultComponent } from '../pages/fortnite-result/fortnite-result.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    ButtomComponent,
+    ButtonComponent,
     FooterComponent,
     ModalComponent,
     BannerAlertComponent,
@@ -29,7 +31,9 @@ import { WarzoneResultComponent } from '../pages/warzone-result/warzone-result.c
     MessagesComponent,
     ModalPublicComponent,
     WarzoneSearchComponent,
-    WarzoneResultComponent
+    WarzoneResultComponent,
+    FortniteSearchComponent,
+    FortniteResultComponent
   ],
   imports: [
     CommonModule,
@@ -42,7 +46,7 @@ import { WarzoneResultComponent } from '../pages/warzone-result/warzone-result.c
 
   exports: [
     HeaderComponent,
-    ButtomComponent,
+    ButtonComponent,
     FooterComponent,
     ModalComponent,
     BannerAlertComponent,
@@ -51,7 +55,9 @@ import { WarzoneResultComponent } from '../pages/warzone-result/warzone-result.c
     MessagesComponent,
     ModalPublicComponent,
     WarzoneSearchComponent,
-    WarzoneResultComponent
+    WarzoneResultComponent,
+    FortniteSearchComponent,
+    FortniteResultComponent
   ]
 })
 export class SharedModule { }

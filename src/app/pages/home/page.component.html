@@ -2,25 +2,39 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-12  text-center d-flex">
-        <div data-v-630510d2="" class="intro__logo"><svg data-v-630510d2="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="title-icon"><path data-v-630510d2="" d="M22 4.7H11.8l-.6 8.7h-.3l-.6-8.7h-4l-.6 8.7h-.2l-.7-8.7H2v2.9l1.6 11.7h4l.6-8.9h.2l.7 8.9h4l1.7-12.9h.2l.2 1.3h3.2l-4.2 8.9v2.7h7.4l.4-3h-4.2L22 7.4z"></path></svg></div>
+        <div data-v-630510d2="" class="intro__logo"><svg data-v-630510d2="" xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24" class="title-icon">
+            <path data-v-630510d2=""
+              d="M22 4.7H11.8l-.6 8.7h-.3l-.6-8.7h-4l-.6 8.7h-.2l-.7-8.7H2v2.9l1.6 11.7h4l.6-8.9h.2l.7 8.9h4l1.7-12.9h.2l.2 1.3h3.2l-4.2 8.9v2.7h7.4l.4-3h-4.2L22 7.4z">
+            </path>
+          </svg></div>
         <div>
-          <h2 class="txt-intro"><span class="text-yellow">ESTATÍSTICAS WARZONE</span></h2>
-          <p class="txt-black">Verifique as estatísticas e tabelas de classificação detalhadas do COD Warzone</p>
+          <h2 class="txt-intro"><span class="text-yellow">ESTATÍSTICAS</span></h2>
+          <p class="txt-black">Verifique as estatísticas e tabelas de classificação detalhadas do seu jogo favorito</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<app-warzone-search></app-warzone-search>
+<p-tabView>
+  <p-tabPanel header="Fortnite">
+    <app-fortnite-search></app-fortnite-search>
+  </p-tabPanel>
+  <p-tabPanel header="Warzone">
+    <app-warzone-search></app-warzone-search>
+  </p-tabPanel>
+
+</p-tabView>
 
 <section class="bg-area">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-9 text-center">
-        <h2 class="txt-intro"><span class="text-yellow"> Call Of Duty</span></h2>
-        <h1 class="display-1 mb-3 text-light">Campeonatos <br> Warzone</h1>
-        <p>Convide seu clã para disputar nossos campeonatos de Warzone e ganhe criptomoedas <a href="https://e.cash/" target="_blank">eCash</a> todos os dias.</p>
+        <!--h2 class="txt-intro"><span class="text-yellow"> Call Of Duty</span></h2-->
+        <h1 class="display-1 mb-3 text-light">Campeonatos</h1>
+        <p>Convide seu clã para disputar nossos campeonatos de seu FPS favorito e ganhe criptomoedas <a href="https://e.cash/"
+            target="_blank">eCash</a> todos os dias.</p>
         <app-modal id="buttonLogin" title="Jogar Agora"></app-modal>
       </div>
     </div>

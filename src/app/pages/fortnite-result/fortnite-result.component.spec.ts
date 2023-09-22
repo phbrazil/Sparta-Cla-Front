@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ButtomComponent } from './buttom.component';
+import { FortniteResultComponent } from './fortnite-result.component';
 
-describe('ButtomComponent', () => {
-  let component: ButtomComponent;
-  let fixture: ComponentFixture<ButtomComponent>;
+describe('FortniteResultComponent', () => {
+  let component: FortniteResultComponent;
+  let fixture: ComponentFixture<FortniteResultComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ButtomComponent ]
+      declarations: [ FortniteResultComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ButtomComponent);
+    fixture = TestBed.createComponent(FortniteResultComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

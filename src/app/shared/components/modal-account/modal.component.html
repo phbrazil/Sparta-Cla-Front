@@ -1,4 +1,4 @@
-<app-buttom (click)="setModalLoginAsOpen()" title="{{title}}" data-toggle="modal" data-target="#modalLogin"></app-buttom>
+<app-button (click)="setModalLoginAsOpen()" title="{{title}}" data-toggle="modal" data-target="#modalLogin"></app-button>
 
 <!-- Modal login -->
 <div *ngIf="!user && isModalLogin && !isModalReset && !isModalRegister && !modalCodPonits" class="modal fade" id="modalLogin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
