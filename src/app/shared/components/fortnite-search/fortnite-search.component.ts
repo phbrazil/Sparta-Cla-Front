@@ -11,7 +11,7 @@ import { EpicService } from 'src/app/_services/epic.service';
 })
 export class FortniteSearchComponent implements OnInit {
 
-  wzProfile: string = "paulo_9ember";
+  wzProfile: string;
   platform: string = "psn";
   isLoading: boolean = false;
   stats: any;

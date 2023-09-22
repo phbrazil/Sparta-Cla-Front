@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { platforms, ModernWarfare, login } from "call-of-duty-api";
 
 @Component({
   selector: 'app-fortnite-result',
