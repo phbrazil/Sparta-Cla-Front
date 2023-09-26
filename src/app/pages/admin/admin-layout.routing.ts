@@ -13,6 +13,7 @@ import { MyTournamentsComponent } from "./logged-pages/my-tournaments/my-tournam
 import { TableResultComponent } from "../table-result/table-result.component";
 import { ModalPublicComponent } from "src/app/shared/components/modal-public/modal-public.component";
 import { BuyCreditsComponent } from "./logged-pages/buy-credits/buy-credits.component";
+import { ChallengeComponent } from "./logged-pages/challenge/challenge.component";
 
 export const AdminLayoutRoutes: Routes = [
 
@@ -20,6 +21,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'welcome', component: WelcomeComponent },
     { path: 'my-profile', component: ProfileComponent },
     { path: 'tournaments', component: TournamentComponent },
+    { path: 'challenges', component: ChallengeComponent },
     { path: 'my-tournaments', component: MyTournamentsComponent },
     { path: 'my-stats', component: MyStatsComponent },
     { path: 'confirm-registration', component: RegisterConfirmationComponent },

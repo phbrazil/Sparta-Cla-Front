@@ -1,9 +1,9 @@
 <section *ngIf="user.admin" class="container">
   <div class="row mb-5 mt-5 pb-5 pt-5">
     <div class="col-md-12 game-content">
-      <div class="row">
+      <div class="row mt-4">
         <div class="col-md-8">
-          <h2 class="mb-5">Campeonatos <span class="text-yellow">ativos</span></h2>
+          <h2 class="mb-5 text-white">Campeonatos <span class="text-yellow">ativos</span></h2>
         </div>
         <div class="col-md-4 mb-4">
           <a class="btn-custom" routerLink="/new-tournament">Novo Campeonato</a>
@@ -21,6 +21,7 @@
         <thead class="thead-dark">
           <tr>
             <th scope="col">#</th>
+            <th scope="col">Game</th>
             <th scope="col">Modo</th>
             <th scope="col">Premiação</th>
             <th scope="col">Custo</th>
@@ -37,6 +38,7 @@
         <tbody>
           <tr *ngFor="let tournament of tournaments; let i = index">
             <td>{{ i + 1 }}</td>
+            <td>{{ tournament.game }}</td>
             <td>{{ tournament.mode }}</td>
             <td>{{ tournament.award }}</td>
             <td>{{ tournament.cost }}</td>

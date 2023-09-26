@@ -2,9 +2,9 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { AccountService } from '.';
-import { Member } from '../_models/member';
 import { Subscription } from '../_models/subscription';
 import { Tournament } from '../_models/tournament'
+import { Member } from '../_models/Member';
 
 @Injectable({
   providedIn: 'root'

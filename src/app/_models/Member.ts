@@ -1,4 +1,3 @@
-import { Subscription } from "./subscription";
 
 export class Member{
     email: string;

@@ -3,7 +3,7 @@
     <div class="row justify-content-center">
       <div class="col-xl-6 col-lg-8">
         <div class="section-title title-style-three text-center mb-70">
-          <h2>Próximos <span class="text-yellow">Torneios</span></h2>
+          <h2 class="text-white">Próximos <span class="text-yellow">Torneios</span></h2>
           <p>Inscreva-se em competições com sua equipe</p>
         </div>
       </div>
@@ -22,7 +22,7 @@
           <div class="coming-match-team">
             <div class="match-team-info">
               <div class="match-team-logo">
-                <h2 class="text-yellow">{{ torneio.mode }}</h2>
+                <h2 class="text-white">{{ torneio.game }}<span class="text-yellow"> {{ torneio.mode }}</span></h2>
               </div>
               <div class="match-team-name">
                 <h5 class="tournament-date">{{ torneio.date | date : 'fullDate' : '' : 'pt-BR' }}</h5>

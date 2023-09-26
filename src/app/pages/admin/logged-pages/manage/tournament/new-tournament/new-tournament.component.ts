@@ -28,6 +28,7 @@ export class NewTournamentComponent implements OnInit {
   ngOnInit(): void {
 
     this.formNewTournament = this.fb.group({
+      game: ['Fortnite', [Validators.required]],
       mode: ['', [Validators.required]],
       date: ['', [Validators.required]],
       award: ['', [Validators.required]],

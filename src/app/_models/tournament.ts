@@ -2,6 +2,7 @@ import { Subscription } from "./subscription";
 
 export class Tournament extends Subscription {
     idCamp: number;
+    game: string;
     mode: Mode;
     date: string;
     award: string;
