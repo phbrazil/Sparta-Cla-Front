@@ -1,54 +1,20 @@
-<section class="mt-5">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-12  text-center d-flex">
-        <div data-v-630510d2="" class="intro__logo">
-          <!--svg data-v-630510d2="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="title-icon">
-            <path data-v-630510d2=""
-              d="M22 4.7H11.8l-.6 8.7h-.3l-.6-8.7h-4l-.6 8.7h-.2l-.7-8.7H2v2.9l1.6 11.7h4l.6-8.9h.2l.7 8.9h4l1.7-12.9h.2l.2 1.3h3.2l-4.2 8.9v2.7h7.4l.4-3h-4.2L22 7.4z">
-            </path>
-          </svg-->
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="93.525 -79.6 312.95 309.2" class="intro_logo"
-            preserveAspectRatio="xMidYMid">
-            <defs>
-              <filter id="editing-metal-beveled">
-                <feGaussianBlur stdDeviation="4" in="SourceAlpha" result="blur"></feGaussianBlur>
-                <feSpecularLighting surfaceScale="5" specularConstant="0.8" specularExponent="7.5" lighting-color="#fff"
-                  in="blur" result="specular">
-                </feSpecularLighting>
-                <feComposite operator="in" in="specular" in2="SourceAlpha" result="comp"></feComposite>
-                <feComposite in="SourceGraphic" in2="comp" operator="arithmetic" k1="0" k2="1" k3="1" k4="0">
-                </feComposite>
-              </filter>
-            </defs>
-            <g filter="url(#editing-metal-beveled)">
-              <g transform="translate(141.79998779296875, 140.50000190734863)">
-                <path
-                  d="M5-2.20L5-2.20L10.60-35.20L10.60-35.20Q29-30.60 43.70-30.60L43.70-30.60L43.70-30.60Q58.40-30.60 67.40-31.80L67.40-31.80L67.40-41.80L49.40-43.40L49.40-43.40Q25-45.60 15.90-55.10L15.90-55.10L15.90-55.10Q6.80-64.60 6.80-83.20L6.80-83.20L6.80-83.20Q6.80-108.80 17.90-118.40L17.90-118.40L17.90-118.40Q29-128 55.60-128L55.60-128L55.60-128Q82.20-128 103.60-123L103.60-123L98.60-91L98.60-91Q80-94 68.80-94L68.80-94L68.80-94Q57.60-94 49.80-93L49.80-93L49.80-83.20L64.20-81.80L64.20-81.80Q90.40-79.20 100.40-69.30L100.40-69.30L100.40-69.30Q110.40-59.40 110.40-41.80L110.40-41.80L110.40-41.80Q110.40-29.20 107-20.50L107-20.50L107-20.50Q103.60-11.80 98.90-7.30L98.90-7.30L98.90-7.30Q94.20-2.80 85.60-0.40L85.60-0.40L85.60-0.40Q77 2 70.50 2.50L70.50 2.50L70.50 2.50Q64 3 53.20 3L53.20 3L53.20 3Q27.20 3 5-2.20ZM208.40-35.80L208.40-35.80L211.40-2.20L211.40-2.20Q198.80 3 179.80 3L179.80 3L179.80 3Q160.80 3 149.30-1L149.30-1L149.30-1Q137.80-5 131.20-13.60L131.20-13.60L131.20-13.60Q124.60-22.20 122-33.80L122-33.80L122-33.80Q119.40-45.40 119.40-62.40L119.40-62.40L119.40-62.40Q119.40-79.40 122-91.10L122-91.10L122-91.10Q124.60-102.80 131.20-111.40L131.20-111.40L131.20-111.40Q144-128 178.20-128L178.20-128L178.20-128Q185.80-128 196.10-126.50L196.10-126.50L196.10-126.50Q206.40-125 211.40-122.80L211.40-122.80L205.40-92.20L205.40-92.20Q192.40-95 181.60-95L181.60-95L181.60-95Q170.80-95 166.60-93L166.60-93L166.60-93Q162.40-91 162.40-85L162.40-85L162.40-32.60L162.40-32.60Q170.20-31 178.20-31L178.20-31L178.20-31Q195.20-31 208.40-35.80Z"
-                  fill="#444"></path>
-              </g>
-            </g>
-          </svg>
-
-        </div>
-        <div>
-          <h2 class="txt-intro"><span class="text-yellow">ESTATÍSTICAS</span></h2>
-          <p class="txt-black">Verifique as estatísticas e tabelas de classificação detalhadas do seu jogo favorito</p>
-        </div>
-      </div>
+<section class="mt-5 center">
+    <h2 class="txt-intro"><span class="text-yellow">ESTATÍSTICAS</span></h2>
+    <div class="sub-text">
+      <p>Verifique as estatísticas e tabelas de classificação detalhadas do seu jogo favorito</p>
     </div>
-  </div>
 </section>
 
-<p-tabView>
-  <p-tabPanel header="Fortnite">
-    <app-fortnite-search></app-fortnite-search>
-  </p-tabPanel>
-  <p-tabPanel header="Warzone">
-    <app-warzone-search></app-warzone-search>
-  </p-tabPanel>
+  <p-tabView>
+    <p-tabPanel header="Fortnite">
+      <app-fortnite-search></app-fortnite-search>
+    </p-tabPanel>
+    <p-tabPanel header="Warzone">
+      <app-warzone-search></app-warzone-search>
+    </p-tabPanel>
+  
+  </p-tabView>
 
-</p-tabView>
 
 <section class="bg-area">
   <div class="container">
@@ -56,8 +22,7 @@
       <div class="col-md-9 text-center">
         <!--h2 class="txt-intro"><span class="text-yellow"> Call Of Duty</span></h2-->
         <h1 class="display-1 mb-3 text-light">Campeonatos</h1>
-        <p>Convide seu clã para disputar nossos campeonatos de seu FPS favorito e ganhe criptomoedas <a
-            href="https://e.cash/" target="_blank">eCash</a> todos os dias.</p>
+        <p>Convide seu clã para disputar nossos campeonatos de seu FPS favorito.</p>
         <app-modal id="buttonLogin" title="Jogar Agora"></app-modal>
       </div>
     </div>
