@@ -1,12 +1,13 @@
 .banner-content {
-    width: 100%;
-    background: var(--background-Black);
-  }
+  width: 100%;
+  background: var(--background-Black);
+}
 
+.height {
+  height: 40px;
+}
 
-  .height{
-    height: 40px;
-  }
-
-
-
+.info {
+  margin: 1rem 1rem 1rem 1rem;
+  font-size: 1rem;
+}

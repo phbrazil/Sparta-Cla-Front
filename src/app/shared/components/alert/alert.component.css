@@ -17,6 +17,10 @@
   border-top-right-radius: calc(.25rem - 1px);
 }
 
+.sub-title {
+  color: var(--color-total-black)!important;
+}
+
 .toast-body {
   padding: 3rem .75rem;
   text-align: center;

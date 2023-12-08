@@ -13,10 +13,6 @@
     padding: 10px;
   }
 
-  .sub-text {
-    margin: 0rem 1rem 1rem -15rem;
-  }
-
   h1.display-1 {
     font-size: 6rem;
   }
@@ -25,9 +21,10 @@
     font-size: x-large;
   }
 
-  p {
+  .sub-text {
     padding: 5px 25px;
     color: var(--text-white);
+    margin: 0rem 1rem 1rem -15rem;
   }
 
 
