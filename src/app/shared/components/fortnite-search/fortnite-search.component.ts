@@ -11,8 +11,8 @@ import { EpicService } from 'src/app/_services/epic.service';
 })
 export class FortniteSearchComponent implements OnInit {
 
-  wzProfile: string;
-  platform: string = "psn";
+  name: string;
+  accountType: string = "epic";
   isLoading: boolean = false;
   stats: any;
 
@@ -23,7 +23,7 @@ export class FortniteSearchComponent implements OnInit {
 
   searchProfile() {
     this.isLoading = true;
-    this.epicService.getStats(encodeURIComponent(this.wzProfile), this.platform)
+    this.epicService.getStats(encodeURIComponent(this.name), this.accountType)
       .pipe(
         retry(3), // you retry 3 times
       ).subscribe(res => {
@@ -31,8 +31,7 @@ export class FortniteSearchComponent implements OnInit {
           this.stats = JSON.parse(this.stats);
         this.isLoading = false;
       }, _err => {
-        this.alertService.error('Tente novamente', 'Nome de usúario ou plataforma  incorreto', { keepAfterRouteChange: true });
-        //this.wzProfile = '';
+        this.alertService.error('Não encontrado', 'Provavelmente o perfil desse usuário é privado :(', { keepAfterRouteChange: true });
         this.isLoading = false
       });
   }

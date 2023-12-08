@@ -31,7 +31,7 @@ export class WarzoneSearchComponent implements OnInit {
         this.stats = JSON.parse(this.stats);
         this.isLoading = false;
       }, _err => {
-        this.alertService.error('Tente novamente', 'Nome de usúario ou plataforma  incorreto', { keepAfterRouteChange: true });
+        this.alertService.error('Tente novamente', 'Nome de usuário ou plataforma incorreto', { keepAfterRouteChange: true });
         //this.wzProfile = '';
         this.isLoading = false
       });

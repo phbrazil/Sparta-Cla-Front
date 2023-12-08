@@ -8,20 +8,19 @@
       <div class="col-10 col-lg-10 text-center ">
         <div class="row">
             <div class="col-lg-2 col-md-2 col-sm-2 p-0">
-              <select [(ngModel)]="platform" class="form-control search-slt " id="exampleFormControlSelect1">
+              <select [(ngModel)]="accountType" class="form-control search-slt " id="exampleFormControlSelect1">
+                <option value="epic" selected>Epic</option>
                 <option value="psn">Playstation</option>
                 <option value="xbl">Xbox</option>
-                <option value="battle">Battle.net</option>
-                <option value="acti">ActivisionID</option>
               </select>
             </div>
             <div class="col-lg-5 col-md-5 col-sm-12 p-0">
-              <input required type="text" name="wzProfile" [(ngModel)]="wzProfile" class="form-control search-slt"
+              <input required type="text" name="name" [(ngModel)]="name" class="form-control search-slt"
                 placeholder="Digite o nome de usuario">
             </div>
 
             <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-              <button [disabled]="isLoading || !!!wzProfile" (click)="searchProfile()" type="button" class="btn btn-custom wrn-btn">
+              <button [disabled]="isLoading || !!!name" (click)="searchProfile()" type="button" class="btn btn-custom wrn-btn">
                 <span *ngIf="isLoading" class="spinner-border spinner-border-sm mr-1"></span>
                 Buscar</button>
             </div>

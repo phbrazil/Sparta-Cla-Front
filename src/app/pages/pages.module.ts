@@ -20,6 +20,8 @@ import { RegisterTournamentComponent } from './admin/logged-pages/register-tourn
 import { AngularMaterialModule } from '../shared/angular-material/angular-material.module';
 import { ChallengeComponent } from './admin/logged-pages/challenge/challenge.component';
 import { TabViewModule } from 'primeng/tabview';
+import { DropdownModule } from 'primeng/dropdown';
+import { ButtonModule } from 'primeng/button';
 
 
 
@@ -46,7 +48,9 @@ import { TabViewModule } from 'primeng/tabview';
     AngularMaterialModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    TabViewModule
+    TabViewModule,
+    DropdownModule,
+    ButtonModule
   ],
   exports: [
     PageComponent,
